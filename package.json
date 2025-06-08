@@ -1,0 +1,31 @@
+{
+  "name": "hardhat-project",
+  "scripts": {
+    "compile": "npx hardhat compile"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@typechain/hardhat": "^9.1.0",
+    "@types/chai": "^4.3.20",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.15.21",
+    "hardhat": "^2.24.1",
+    "ts-node": "^10.9.2",
+    "typechain": "^8.3.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.3.0",
+    "@pancakeswap/sdk": "^5.8.14",
+    "@pancakeswap/smart-router": "^7.2.5",
+    "@pancakeswap/tokens": "^0.7.5",
+    "axios": "^1.9.0",
+    "class-transformer": "^0.5.1",
+    "dotenv": "^16.5.0",
+    "graphql-request": "^5.0.0",
+    "ioredis": "^5.6.1",
+    "json-bigint": "^1.0.0",
+    "viem": "^2.30.6",
+    "wagmi": "^2.15.6"
+  }
+}

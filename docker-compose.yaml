@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  anvil:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: anvil_bsc_fork
+    ports:
+      - '8545:8545'
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - '6379:6379'
+    command: redis-server --requirepass myredispassword
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', '-a', 'myredispassword', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  redis-data:
