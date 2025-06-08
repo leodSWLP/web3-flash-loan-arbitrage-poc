@@ -15,10 +15,10 @@ dotenv.config();
 const exec = async () => {
   const start = performance.now();
 
-  // const currencies = [bscTokens.wbnb, bscTokens.usdt, bscTokens.eth];
-  // await ArbitrageUtil.calculateArbitrage(currencies);
-  await RedisUtil.clearByRegex('*');
-  await V3SmartRouterUtil.getBestTrade(bscTokens.wbnb, 1000n, bscTokens.usdt);
+  const currencies = [bscTokens.wbnb, bscTokens.usdt, bscTokens.eth];
+  await ArbitrageUtil.calculateArbitrage(currencies);
+  // await RedisUtil.clearByRegex('*');
+  // await V3SmartRouterUtil.getBestTrade(bscTokens.wbnb, 1000n, bscTokens.usdt);
 
   const end = performance.now();
   const ms = end - start; // Time in milliseconds

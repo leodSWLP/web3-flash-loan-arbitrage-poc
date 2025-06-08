@@ -17,7 +17,7 @@ export class ArbitrageResult {
   netProfit: bigint;
   path: string[];
 }
-
+//todo symbol change back to Currency
 export class ArbitrageUtil {
   static BORROW_COST = 25n; // 0.25% = 25 basis points
   static BASIS_POINTS = 10000n; // 100% = 10000 basis points
@@ -32,11 +32,7 @@ export class ArbitrageUtil {
     const ratioMap = await this.collectAllPairRatio(currencies);
     const symbols = currencies.map((currency) => currency.symbol);
 
-    return this.calculateCycle(
-      symbols,
-      ratioMap as any,
-      ethers.parseEther('1'),
-    );
+    return this.calculateCycle(symbols, ratioMap as any, '1');
   }
 
   private static swap(amountIn: bigint, ratio: Ratio) {
@@ -67,7 +63,7 @@ export class ArbitrageUtil {
       let key = `${token0.symbol}/${token1.symbol}`;
       const trade = await V3SmartRouterUtil.getBestTrade(
         token0,
-        ethers.parseEther('1'),
+        ethers.parseUnits('10', token0.decimals),
         token1,
       );
       if (!trade) {
@@ -94,7 +90,7 @@ export class ArbitrageUtil {
   static calculateCycle(
     symbols: string[],
     ratioMap: { string; Ratio },
-    initialAmount: bigint,
+    initialAmount: string,
   ) {
     let arbitrageResults: ArbitrageResult[] = [];
     if (symbols.length !== 3) {
@@ -123,10 +119,18 @@ export class ArbitrageUtil {
       const path1 = [startSymbol, symbol0, symbol1];
       const path2 = [startSymbol, symbol1, symbol0];
       arbitrageResults.push(
-        this.calculatePathProfit(path1, ratioMap, initialAmount),
+        this.calculatePathProfit(
+          path1,
+          ratioMap,
+          ethers.parseUnits(initialAmount, startSymbol === 'WBTC' ? 8 : 18), //todo
+        ),
       );
       arbitrageResults.push(
-        this.calculatePathProfit(path2, ratioMap, initialAmount),
+        this.calculatePathProfit(
+          path2,
+          ratioMap,
+          ethers.parseUnits(initialAmount, startSymbol === 'WBTC' ? 8 : 18), //todo
+        ),
       );
     }
 

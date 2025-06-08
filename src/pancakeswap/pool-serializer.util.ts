@@ -1,4 +1,4 @@
-import { CurrencyAmount, ERC20Token } from '@pancakeswap/sdk';
+import { CurrencyAmount, ERC20Token, Percent } from '@pancakeswap/sdk';
 import { Pool } from '@pancakeswap/smart-router';
 
 export class PoolSerializerUtil {
@@ -16,33 +16,54 @@ export class PoolSerializerUtil {
   }
 
   static parseV2Reserve(reserve: any) {
-    const currency = PoolSerializerUtil.parseCurrency(reserve.currency);
+    const numerator = BigInt(
+      reserve.numerator.c ? reserve.numerator.c.join('') : reserve.numerator,
+    );
+    const denominator = BigInt(
+      reserve.denominator.c
+        ? reserve.denominator.c.join('')
+        : reserve.denominator,
+    );
+    const currency = this.parseCurrency(reserve.currency);
     const parsedReserve = CurrencyAmount.fromRawAmount(
       currency,
-      BigInt(reserve.numerator.c.join('')) /
-        BigInt(reserve.denominator.c.join('')),
+      numerator / denominator,
     );
     return parsedReserve;
   }
 
   static parseV2Pool(pool: any) {
-    pool.reserve0 = PoolSerializerUtil.parseV2Reserve(pool.reserve0);
-    pool.reserve1 = PoolSerializerUtil.parseV2Reserve(pool.reserve1);
+    pool.reserve0 = this.parseV2Reserve(pool.reserve0);
+    pool.reserve1 = this.parseV2Reserve(pool.reserve1);
     return pool as Pool;
   }
 
   static parseV3Reserve(reserve: any) {
-    const currency = PoolSerializerUtil.parseCurrency(reserve.currency);
+    const currency = this.parseCurrency(reserve.currency);
+    console.log('reserve: ', reserve);
+    console.log('reserve.numerator: ', reserve.numerator);
+
+    const numerator = BigInt(
+      reserve.numerator.c ? reserve.numerator.c.join('') : reserve.numerator,
+    );
+    const denominator = BigInt(
+      reserve.denominator.c
+        ? reserve.denominator.c.join('')
+        : reserve.denominator,
+    );
     const parsedReserve = CurrencyAmount.fromRawAmount(
       currency,
-      BigInt(reserve.numerator.c.join('')),
+      numerator / denominator,
     );
     return parsedReserve;
   }
 
   static parseV3Pool(pool: any) {
-    pool.reserve0 = PoolSerializerUtil.parseV3Reserve(pool.reserve0);
-    pool.reserve1 = PoolSerializerUtil.parseV3Reserve(pool.reserve1);
+    pool.reserve0 = this.parseV3Reserve(pool.reserve0);
+    pool.reserve1 = this.parseV3Reserve(pool.reserve1);
+    pool.token0 = this.parseCurrency(pool.token0);
+    pool.token1 = this.parseCurrency(pool.token1);
+    Percent;
     return pool as Pool;
   }
 }

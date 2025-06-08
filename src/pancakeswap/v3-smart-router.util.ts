@@ -10,7 +10,7 @@ import { PoolSerializerUtil } from './pool-serializer.util';
 export class V3SmartRouterUtil {
   static REDIS_GROUP_PREFIX = 'v3-pairs';
   static REDIS_PAIR_PREFIX = 'v3-one-pair';
-  static TTL = 15 * 60;
+  static TTL = 60 * 60;
 
   static async getV3Pools(swapFrom: Currency, swapTo: Currency) {
     return await SmartRouter.getV3CandidatePools({

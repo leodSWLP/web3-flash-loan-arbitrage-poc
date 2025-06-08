@@ -16,7 +16,7 @@ import { PancakeCommonUtil } from './pancake-common.util';
 export class V2SmartRouterUtil {
   static REDIS_GROUP_PREFIX = 'v2-pairs';
   static REDIS_PAIR_PREFIX = 'v2-one-pair';
-  static TTL = 15 * 60;
+  static TTL = 60 * 60;
 
   static async getV2Pools(swapFrom: Currency, swapTo: Currency) {
     return await SmartRouter.getV2CandidatePools({
