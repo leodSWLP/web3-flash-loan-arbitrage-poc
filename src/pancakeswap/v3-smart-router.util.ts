@@ -6,6 +6,7 @@ import * as JSONbig from 'json-bigint';
 import { PancakeCommonUtil } from './pancake-common.util';
 import { RedisUtil } from '../redis/redis.util';
 import { PoolSerializerUtil } from './pool-serializer.util';
+import { ethers } from 'ethers';
 
 export class V3SmartRouterUtil {
   static REDIS_GROUP_PREFIX = 'v3-pairs';
@@ -77,7 +78,27 @@ export class V3SmartRouterUtil {
       },
     );
 
-    console.log('Trade: ', JSONbig.stringify(trade));
+    if (!trade) {
+      throw Error(
+        `Unable to find trade for input swapFrom: ${swapFrom.asToken.symbol}, swapFromAmount: ${swapFromAmount}, swapTo: ${swapTo.asToken.symbol}`,
+      );
+    }
+    console.log(
+      `Trade Info - swapFrom: ${
+        trade.inputAmount.currency.asToken.symbol
+      }, inputAmount ${ethers.formatUnits(
+        (
+          trade.inputAmount.numerator / trade.inputAmount.denominator
+        ).toString(),
+        trade.inputAmount.currency.asToken.decimals,
+      )}, swapTo ${trade.outputAmount.currency.asToken.symbol}, outputAmount
+        ${ethers.formatUnits(
+          (
+            trade.outputAmount.numerator / trade.outputAmount.denominator
+          ).toString(),
+          trade.outputAmount.currency.asToken.decimals,
+        )}`,
+    );
     return trade;
   }
 }

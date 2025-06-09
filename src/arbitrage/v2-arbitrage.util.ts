@@ -1,4 +1,4 @@
-import { Currency } from '@pancakeswap/sdk';
+import { Currency, CurrencyAmount } from '@pancakeswap/sdk';
 import { start } from 'repl';
 import { V3SmartRouterUtil } from '../pancakeswap/v3-smart-router.util';
 import { ethers } from 'ethers';
@@ -24,15 +24,14 @@ export class ArbitrageUtil {
   static DECIMAL_SCALE = 1000000000000000000n; // 10^18 for token decimals
 
   //entries point
-  static async calculateArbitrage(currencies: Currency[]) {
-    if (currencies.length != 3) {
+  static async calculateArbitrage(currencyAmounts: CurrencyAmount<Currency>[]) {
+    if (currencyAmounts.length != 3) {
       throw new Error('calculateArbitrage() only support 3');
     }
 
-    const ratioMap = await this.collectAllPairRatio(currencies);
-    const symbols = currencies.map((currency) => currency.symbol);
+    const ratioMap = await this.collectAllPairRatio(currencyAmounts);
 
-    return this.calculateCycle(symbols, ratioMap as any, '1');
+    return this.calculateCycle(currencyAmounts, ratioMap as any);
   }
 
   private static swap(amountIn: bigint, ratio: Ratio) {
@@ -52,18 +51,24 @@ export class ArbitrageUtil {
     return ratio;
   }
 
-  static async collectAllPairRatio(currencies: Currency[]) {
-    if (currencies.length != 3) {
+  static async collectAllPairRatio(
+    currencyAmounts: CurrencyAmount<Currency>[],
+  ) {
+    if (currencyAmounts.length != 3) {
       throw new Error('collectAllPairRatio() only support 3');
     }
 
     const rationMap: { string: Ratio } = {} as any;
 
-    const calculatePair = async (token0: Currency, token1: Currency) => {
+    const calculatePair = async (
+      token0: Currency,
+      token1: Currency,
+      amountIn: bigint,
+    ) => {
       let key = `${token0.symbol}/${token1.symbol}`;
       const trade = await V3SmartRouterUtil.getBestTrade(
         token0,
-        ethers.parseUnits('10', token0.decimals),
+        amountIn,
         token1,
       );
       if (!trade) {
@@ -75,29 +80,58 @@ export class ArbitrageUtil {
           trade.outputAmount.numerator / trade.outputAmount.denominator,
       };
     };
+
     await Promise.all([
-      calculatePair(currencies[0], currencies[1]),
-      calculatePair(currencies[1], currencies[0]),
-      calculatePair(currencies[1], currencies[2]),
-      calculatePair(currencies[2], currencies[1]),
-      calculatePair(currencies[2], currencies[0]),
-      calculatePair(currencies[0], currencies[2]),
+      calculatePair(
+        currencyAmounts[0].currency.asToken,
+        currencyAmounts[1].currency.asToken,
+        currencyAmounts[0].numerator / currencyAmounts[0].denominator,
+      ),
+      calculatePair(
+        currencyAmounts[1].currency.asToken,
+        currencyAmounts[0].currency.asToken,
+        currencyAmounts[1].numerator / currencyAmounts[1].denominator,
+      ),
+      calculatePair(
+        currencyAmounts[1].currency.asToken,
+        currencyAmounts[2].currency.asToken,
+        currencyAmounts[1].numerator / currencyAmounts[1].denominator,
+      ),
+      calculatePair(
+        currencyAmounts[2].currency.asToken,
+        currencyAmounts[1].currency.asToken,
+        currencyAmounts[2].numerator / currencyAmounts[2].denominator,
+      ),
+      calculatePair(
+        currencyAmounts[2].currency.asToken,
+        currencyAmounts[0].currency.asToken,
+        currencyAmounts[1].numerator / currencyAmounts[1].denominator,
+      ),
+      calculatePair(
+        currencyAmounts[0].currency.asToken,
+        currencyAmounts[2].currency.asToken,
+        currencyAmounts[0].numerator / currencyAmounts[0].denominator,
+      ),
     ]);
 
     return rationMap;
   }
 
   static calculateCycle(
-    symbols: string[],
+    currencyAmounts: CurrencyAmount<Currency>[],
     ratioMap: { string; Ratio },
-    initialAmount: string,
   ) {
+    const symbols = currencyAmounts.map((item) => item.currency.asToken.symbol);
     let arbitrageResults: ArbitrageResult[] = [];
     if (symbols.length !== 3) {
       throw new Error('Only Support 3 symbols');
     }
 
-    for (let startSymbol of symbols) {
+    for (let i = 0; i < symbols.length; i++) {
+      const startSymbol = symbols[i];
+      const startSymbolUnit = currencyAmounts[i].currency.asToken.decimals;
+      const initialAmount =
+        currencyAmounts[i].numerator / currencyAmounts[i].denominator;
       let symbol0: string | undefined;
       let symbol1: string | undefined;
 
@@ -122,14 +156,16 @@ export class ArbitrageUtil {
         this.calculatePathProfit(
           path1,
           ratioMap,
-          ethers.parseUnits(initialAmount, startSymbol === 'WBTC' ? 8 : 18), //todo
+          //   ethers.parseUnits(initialAmount.toString(), startSymbolUnit), //todo
+          initialAmount,
         ),
       );
       arbitrageResults.push(
         this.calculatePathProfit(
           path2,
           ratioMap,
-          ethers.parseUnits(initialAmount, startSymbol === 'WBTC' ? 8 : 18), //todo
+          //   ethers.parseUnits(initialAmount.toString(), startSymbolUnit), //todo
+          initialAmount,
         ),
       );
     }

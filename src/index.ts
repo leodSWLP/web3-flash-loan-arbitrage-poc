@@ -1,22 +1,32 @@
+import { CurrencyAmount } from '@pancakeswap/sdk';
 import { bscTokens } from '@pancakeswap/tokens';
+import * as dotenv from 'dotenv';
 import { ethers } from 'ethers';
 import { createPublicClient, http } from 'viem';
 import { bsc } from 'viem/chains';
 import { ShareContentLocalStore } from './async-local-store/share-content-local-store';
-import { V2SmartRouterUtil } from './pancakeswap/v2-smart-router.util';
-import * as dotenv from 'dotenv';
-import { V3SmartRouterUtil } from './pancakeswap/v3-smart-router.util';
-import { ArbitrageUtil, Ratio } from './arbitrage/v2-arbitrage.util';
-import { SmartRouter } from '@pancakeswap/smart-router';
-import { RedisUtil } from './redis/redis.util';
+import { ArbitrageUtil } from './arbitrage/v2-arbitrage.util';
 
 dotenv.config();
 
 const exec = async () => {
   const start = performance.now();
 
-  const currencies = [bscTokens.wbnb, bscTokens.usdt, bscTokens.eth];
-  await ArbitrageUtil.calculateArbitrage(currencies);
+  const currencyAmounts = [
+    CurrencyAmount.fromRawAmount(
+      bscTokens.wbnb,
+      ethers.parseUnits('1', bscTokens.wbnb.decimals),
+    ),
+    CurrencyAmount.fromRawAmount(
+      bscTokens.usdt,
+      ethers.parseUnits('600', bscTokens.usdt.decimals),
+    ),
+    CurrencyAmount.fromRawAmount(
+      bscTokens.eth,
+      ethers.parseUnits('0.24', bscTokens.eth.decimals),
+    ),
+  ];
+  await ArbitrageUtil.calculateArbitrage(currencyAmounts);
   // await RedisUtil.clearByRegex('*');
   // await V3SmartRouterUtil.getBestTrade(bscTokens.wbnb, 1000n, bscTokens.usdt);
 
