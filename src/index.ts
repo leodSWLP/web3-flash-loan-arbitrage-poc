@@ -23,7 +23,7 @@ const exec = async () => {
     ),
     CurrencyAmount.fromRawAmount(
       bscTokens.eth,
-      ethers.parseUnits('0.24', bscTokens.eth.decimals),
+      ethers.parseUnits('0.25', bscTokens.eth.decimals),
     ),
   ];
   await ArbitrageUtil.calculateArbitrage(currencyAmounts);

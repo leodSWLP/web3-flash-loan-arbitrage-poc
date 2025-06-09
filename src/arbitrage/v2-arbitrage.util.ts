@@ -184,10 +184,22 @@ export class ArbitrageUtil {
     initialAmount: bigint,
   ): ArbitrageResult {
     let currentAmount = initialAmount;
-    for (let i = 0; i < path.length - 1; i++) {
-      const ratio = this.getRatio(path[i], path[i + 1], ratioMap);
+    console.log(`Swap() - Path: ${path}, initialAmount: ${initialAmount}`);
+    for (let i = 0; i < path.length; i++) {
+      const ratio = this.getRatio(
+        path[(i + 1) % path.length],
+        path[i],
+        ratioMap,
+      ); // swap USDT to ETH should use (initialAmount * ETH) / USDT, time target first and divided by source, so get TARGET/SOURCE ratio
       currentAmount = this.swap(currentAmount, ratio);
+      console.log(
+        `Swap() - swapFrom: ${path}[i], swapTo: ${
+          path[i + 1]
+        }, swapOutputAmount: ${currentAmount}`,
+      );
     }
+
+    console.log(`Swap() ----- end ----\n`);
 
     const repayAmount =
       (initialAmount * (this.BASIS_POINTS + this.BORROW_COST)) /
