@@ -5,7 +5,7 @@ import { ethers } from 'ethers';
 import { createPublicClient, http } from 'viem';
 import { bsc } from 'viem/chains';
 import { ShareContentLocalStore } from './async-local-store/share-content-local-store';
-import { ArbitrageUtil } from './arbitrage/v2-arbitrage.util';
+import { V3ArbitrageUtil } from './pancakeswap-arbitrage/arbitrage/v3-arbitrage.util';
 
 dotenv.config();
 
@@ -26,7 +26,7 @@ const exec = async () => {
       ethers.parseUnits('0.25', bscTokens.eth.decimals),
     ),
   ];
-  await ArbitrageUtil.calculateArbitrage(currencyAmounts);
+  await V3ArbitrageUtil.calculateArbitrage(currencyAmounts);
   // await RedisUtil.clearByRegex('*');
   // await V3SmartRouterUtil.getBestTrade(bscTokens.wbnb, 1000n, bscTokens.usdt);
 

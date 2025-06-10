@@ -1,8 +1,5 @@
 import { Currency, CurrencyAmount } from '@pancakeswap/sdk';
-import { start } from 'repl';
 import { V3SmartRouterUtil } from '../pancakeswap/v3-smart-router.util';
-import { ethers } from 'ethers';
-import { bscTokens } from '@pancakeswap/tokens';
 
 export class Ratio {
   numerator: bigint;
@@ -18,7 +15,7 @@ export class ArbitrageResult {
   path: string[];
 }
 //todo symbol change back to Currency
-export class ArbitrageUtil {
+export class V3ArbitrageUtil {
   static BORROW_COST = 25n; // 0.25% = 25 basis points
   static BASIS_POINTS = 10000n; // 100% = 10000 basis points
   static DECIMAL_SCALE = 1000000000000000000n; // 10^18 for token decimals
@@ -46,7 +43,7 @@ export class ArbitrageUtil {
     const ratio = ratioMap[`${InSymbol}/${OutSymbol}`];
 
     if (!ratio) {
-      throw new Error('V2ArbitrageUtil: invalid ratio Map');
+      throw new Error('V3ArbitrageUtil: invalid ratio Map');
     }
     return ratio;
   }

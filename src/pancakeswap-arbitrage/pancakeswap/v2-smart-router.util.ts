@@ -1,17 +1,11 @@
-import {
-  Currency,
-  CurrencyAmount,
-  ERC20Token,
-  TradeType,
-} from '@pancakeswap/sdk';
+import { Currency, CurrencyAmount, TradeType } from '@pancakeswap/sdk';
 import { SmartRouter } from '@pancakeswap/smart-router';
-import { GraphQLClient } from 'graphql-request';
 import * as JSONbig from 'json-bigint';
-import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
-import { PoolSerializerUtil } from './pool-serializer.util';
-import { PancakeSwapConstant } from './pancakeswap.constant';
-import { RedisUtil } from '../redis/redis.util';
+import { ShareContentLocalStore } from '../../async-local-store/share-content-local-store';
+import { RedisUtil } from '../../redis/redis.util';
 import { PancakeCommonUtil } from './pancake-common.util';
+import { PancakeSwapConstant } from './pancakeswap.constant';
+import { PoolSerializerUtil } from './pool-serializer.util';
 
 export class V2SmartRouterUtil {
   static REDIS_GROUP_PREFIX = 'v2-pairs';
