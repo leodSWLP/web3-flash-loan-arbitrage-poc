@@ -6,14 +6,17 @@ import { createPublicClient, http } from 'viem';
 import { bsc } from 'viem/chains';
 import { ShareContentLocalStore } from './async-local-store/share-content-local-store';
 import { V3ArbitrageUtil } from './pancakeswap-arbitrage/arbitrage/v3-arbitrage.util';
-import { SubgraphUtil } from './subgraph-arbitrage/subgraph.util';
+import {
+  SubgraphEndpoint,
+  SubgraphUtil,
+} from './subgraph-arbitrage/subgraph.util';
 
 dotenv.config();
 
 const exec = async () => {
   const start = performance.now();
 
-  await SubgraphUtil.fetchData(SubgraphUtil.UNISWAP_V3_ENDPOINT);
+  await SubgraphUtil.fetchData(SubgraphEndpoint.UNISWAP_V3);
 
   const end = performance.now();
   const ms = end - start; // Time in milliseconds

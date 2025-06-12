@@ -18,7 +18,6 @@ export class ArbitrageResult {
 export class V3ArbitrageUtil {
   static BORROW_COST = 25n; // 0.25% = 25 basis points
   static BASIS_POINTS = 10000n; // 100% = 10000 basis points
-  static DECIMAL_SCALE = 1000000000000000000n; // 10^18 for token decimals
 
   //entries point
   static async calculateArbitrage(currencyAmounts: CurrencyAmount<Currency>[]) {

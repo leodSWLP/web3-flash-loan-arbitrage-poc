@@ -1,18 +1,19 @@
 import { request, gql } from 'graphql-request';
 import * as fs from 'fs';
 import { plainToInstance } from 'class-transformer';
+import { Token } from '@uniswap/sdk-core';
+import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
+
 export class PoolDetail {
-  id: string;
-  token0: {
-    id: string;
-    symbol: string;
-  };
+  address: string;
+  token0: Token;
   token0Price: string;
-  token1: {
-    id: string;
-    symbol: string;
-  };
+  token1: Token;
   token1Price: string;
+  feeTier;
+  volumeToken0;
+  volumeToken1;
+  volumeUSD;
   symbol: string;
   swapRate: {
     numerator: bigint;
@@ -20,46 +21,74 @@ export class PoolDetail {
   };
 }
 
+export enum SubgraphEndpoint {
+  UNISWAP_V3 = 'https://gateway.thegraph.com/api/subgraphs/id/5zvR82QoaXYFyDEKLZ9t6v9adgnptxYpKpSbxtgVENFV',
+  PANCAKESWAP_V3 = 'https://gateway.thegraph.com/api/subgraphs/id/A1fvJWQLBeUAggX2WQTMm3FKjXTekNXo77ZySun4YN2m',
+}
+
 const poolsData = fs.readFileSync('./backup.txt', 'utf8');
 
 export class SubgraphUtil {
-  static UNISWAP_V3_ENDPOINT =
-    'https://gateway.thegraph.com/api/subgraphs/id/5zvR82QoaXYFyDEKLZ9t6v9adgnptxYpKpSbxtgVENFV';
-  static PANCAKESWAP_V3_ENDPOINT =
-    'https://gateway.thegraph.com/api/subgraphs/id/A1fvJWQLBeUAggX2WQTMm3FKjXTekNXo77ZySun4YN2m';
-
   private static POOL_SIZE = 100;
+  private static DIGITAL_PLACE = 24;
   private static LIST_TOP_POOLS_QUERY = `query {
-  pools(first: ${this.POOL_SIZE}, orderBy: volumeUSD orderDirection: desc) {
-    id
-    token0 { symbol, id }
-    token1 { symbol, id }
+ pools(first: ${this.POOL_SIZE}, orderBy: volumeUSD, orderDirection: desc) {
+    address:id
+    token0 {
+      symbol
+      address: id
+      decimals
+    }
+    token1 {
+      symbol
+      address: id
+      decimals
+    }
     token0Price
     token1Price
+    volumeUSD
+    feeTier
+    volumeToken0
+    volumeToken1
   }
 }`;
 
-  static async fetchData(endpoint: string) {
+  static async fetchSymbolToDetailMap(
+    endpoint: SubgraphEndpoint,
+  ): Promise<Map<string, PoolDetail>> {
+    const poolDetails = await this.fetchData(endpoint);
+    const map = new Map<string, PoolDetail>();
+    for (const pool of poolDetails) {
+      map.set(pool.symbol, pool);
+    }
+    return map;
+  }
+
+  static async fetchData(endpoint: SubgraphEndpoint) {
     const headers = {
       Authorization: `Bearer ${process.env.SUBGRAPH_API_KEY ?? ''}`,
     };
+
     let data = JSON.parse(poolsData).pools.map((pool) =>
       this.parsePoolDetail(pool),
     );
     return data;
 
-    // try {
-    //   const data = await request(
-    //     endpoint,
-    //     this.LIST_TOP_POOLS_QUERY,
-    //     {},
-    //     headers,
-    //   );
-    //   console.log(JSON.stringify(data));
-    //   return data;
-    // } catch (error) {
-    //   console.error('Error fetching data:', error);
-    // }
+    //todo enable later
+    const subgraphUri = this.getSubgraphEndpoint(endpoint);
+    try {
+      const data = await request(
+        subgraphUri,
+        this.LIST_TOP_POOLS_QUERY,
+        {},
+        headers,
+      );
+      console.log(JSON.stringify(data));
+
+      return data.pools.map((pool) => this.parsePoolDetail(pool));
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   }
 
   private static parsePoolDetail(pool: any) {
@@ -70,11 +99,25 @@ export class SubgraphUtil {
     ) {
       throw Error('Unable to Parse Pool Information: ' + JSON.stringify(pool));
     }
+    const chainId = ShareContentLocalStore.getStore().viemChain.id;
+    poolDetail.token0 = new Token(
+      chainId,
+      pool.token0.address,
+      pool.token0.decimals,
+      pool.token0.symbol,
+    );
+
+    poolDetail.token1 = new Token(
+      chainId,
+      pool.token1.address,
+      pool.token1.decimals,
+      pool.token1.symbol,
+    );
 
     poolDetail.symbol = `${poolDetail.token0.symbol}/${poolDetail.token1.symbol}`;
     poolDetail.swapRate = {
-      numerator: this.stringPriceToBigInt(poolDetail.token0Price),
-      denominator: this.stringPriceToBigInt(poolDetail.token1Price),
+      numerator: this.stringPriceToBigInt(poolDetail.token1Price),
+      denominator: 10n ** BigInt(this.DIGITAL_PLACE),
     };
 
     return poolDetail;
@@ -82,8 +125,23 @@ export class SubgraphUtil {
 
   private static stringPriceToBigInt(priceInString: string) {
     const [integerPart, fractionalPart = ''] = priceInString.split('.');
-    const combined = integerPart + fractionalPart.padEnd(18, '0').slice(0, 18); // Take first 18 decimal places
+    const combined =
+      integerPart +
+      fractionalPart
+        .padEnd(this.DIGITAL_PLACE, '0')
+        .slice(0, this.DIGITAL_PLACE); // Take first 24 decimal places
     const result = BigInt(combined);
     return result;
+  }
+
+  private static getSubgraphEndpoint(endpoint: SubgraphEndpoint) {
+    switch (endpoint) {
+      case SubgraphEndpoint.PANCAKESWAP_V3:
+        return 'https://gateway.thegraph.com/api/subgraphs/id/A1fvJWQLBeUAggX2WQTMm3FKjXTekNXo77ZySun4YN2m';
+      case SubgraphEndpoint.UNISWAP_V3:
+        return 'https://gateway.thegraph.com/api/subgraphs/id/5zvR82QoaXYFyDEKLZ9t6v9adgnptxYpKpSbxtgVENFV';
+      default:
+        throw new Error('Invalid subgraph endpoint');
+    }
   }
 }

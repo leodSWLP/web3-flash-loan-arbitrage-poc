@@ -19,6 +19,8 @@
     "@pancakeswap/sdk": "^5.8.14",
     "@pancakeswap/smart-router": "^7.2.5",
     "@pancakeswap/tokens": "^0.7.5",
+    "@uniswap/sdk-core": "^7.7.2",
+    "@uniswap/v3-sdk": "^3.25.2",
     "axios": "^1.9.0",
     "class-transformer": "^0.5.1",
     "dotenv": "^16.5.0",
