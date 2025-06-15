@@ -74,6 +74,7 @@ export class SubgraphArbitrageUtil {
     tokenAmounts.forEach((tokenAmount) => tokenAmount.validate());
   }
 
+  //Entry Point
   static async calculateAllPaths(tokenAmounts: TokenAmount[]) {
     const [uniswapPools, pancakeswapPools] = await Promise.all([
       SubgraphUtil.fetchSymbolToDetailMap(SubgraphEndpoint.UNISWAP_V3),
@@ -92,6 +93,7 @@ export class SubgraphArbitrageUtil {
       const tokenKey = `${tokenAmounts[i].currency.symbol}-${tokenAmounts[i].currency.address}`;
       if (!tokenAmounts[i].amount) {
         console.log(`Skip token: ${tokenKey}, reason: Missing AmountIn`);
+        return;
       }
       const combinations = pathCombinations[tokenKey];
       if (!combinations || combinations.length == 0) {
@@ -108,6 +110,8 @@ export class SubgraphArbitrageUtil {
         );
       });
     }
+
+    return arbitrageResults;
   }
 
   static calculatePairProfit(
@@ -166,7 +170,7 @@ export class SubgraphArbitrageUtil {
 
       if (uniswapTokenOut > pancakeTokenOut) {
         arbitrageResult.SwapPath = [
-          ...arbitrageResult.SwapPath,
+          ...(arbitrageResult.SwapPath ?? []),
           {
             routerType: RouterType.UNISWAP_V3,
             routerAddress: 'todo',
@@ -178,7 +182,7 @@ export class SubgraphArbitrageUtil {
         currentAmount = uniswapTokenOut;
       } else {
         arbitrageResult.SwapPath = [
-          ...arbitrageResult.SwapPath,
+          ...(arbitrageResult.SwapPath ?? []),
           {
             routerType: RouterType.PANCAKESWAP_V3,
             routerAddress: 'todo',

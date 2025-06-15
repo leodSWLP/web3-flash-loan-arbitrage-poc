@@ -148,7 +148,7 @@ export class RedisUtil {
       const store = ShareContentLocalStore.getStore();
       if (store && store.redis) {
         await store.redis.quit();
-        store.redis = null; // Clear the instance
+        store.redis = undefined; // Clear the instance
       }
     } catch (error) {
       throw new Error(`Failed to disconnect: ${error.message}`);

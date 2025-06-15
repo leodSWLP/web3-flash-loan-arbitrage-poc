@@ -27,19 +27,16 @@ export class RouterUtil {
     );
     const cachedPathCombinations = await RedisUtil.getByPrefixOrRegex(key);
     if (cachedPathCombinations?.length > 0) {
-      return this.parsePathCombinations(cachedPathCombinations);
+      return this.parsePathCombinations(cachedPathCombinations[0].value);
     }
 
     const pathCombinations: PathCombinations = {};
 
     const pathArrays = this.generatePermutations(tokens, pathLength);
-    pathArrays.forEach(
-      (path) =>
-        (pathCombinations[`${path[0].symbol}-${path[0].address}`] = [
-          ...pathCombinations[`${path[0].symbol}-${path[0].address}`],
-          path,
-        ]),
-    );
+    pathArrays.forEach((path) => {
+      const key = `${path[0].symbol}-${path[0].address}`;
+      pathCombinations[key] = [...(pathCombinations[key] ?? []), path];
+    });
 
     await RedisUtil.write(key, JSON.stringify(pathCombinations));
     return pathCombinations;
@@ -67,12 +64,20 @@ export class RouterUtil {
     return result;
   }
 
-  private static parsePathCombinations(input: object) {
+  private static parsePathCombinations(input: string) {
     const pathCombinations: PathCombinations = {};
-    Object.entries(input).forEach(([key, value]) => {
-      pathCombinations[key] = value.forEach(
-        (token) =>
-          new Token(token.chainId, token.address, token.decimals, token.symbol),
+    const cachedPath = JSON.parse(input);
+    Object.entries(cachedPath).forEach(([key, value]) => {
+      pathCombinations[key] = (value as any).map((path) =>
+        path.map(
+          (token) =>
+            new Token(
+              token.chainId,
+              token.address,
+              token.decimals,
+              token.symbol,
+            ),
+        ),
       );
     });
     return pathCombinations;
