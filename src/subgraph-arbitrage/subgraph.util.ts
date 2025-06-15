@@ -10,10 +10,10 @@ export class PoolDetail {
   token0Price: string;
   token1: Token;
   token1Price: string;
-  feeTier;
-  volumeToken0;
-  volumeToken1;
-  volumeUSD;
+  feeTier: bigint;
+  volumeToken0: string;
+  volumeToken1: string;
+  volumeUSD: string;
   symbol: string;
   swapRate: {
     numerator: bigint;
@@ -26,14 +26,14 @@ export enum SubgraphEndpoint {
   PANCAKESWAP_V3 = 'https://gateway.thegraph.com/api/subgraphs/id/A1fvJWQLBeUAggX2WQTMm3FKjXTekNXo77ZySun4YN2m',
 }
 
-const poolsData = fs.readFileSync('./backup.txt', 'utf8');
+const poolsData = fs.readFileSync('./backup.json', 'utf8');
 
 export class SubgraphUtil {
   private static POOL_SIZE = 100;
   private static DIGITAL_PLACE = 24;
   private static LIST_TOP_POOLS_QUERY = `query {
  pools(first: ${this.POOL_SIZE}, orderBy: volumeUSD, orderDirection: desc) {
-    address:id
+    address: id
     token0 {
       symbol
       address: id
@@ -55,21 +55,25 @@ export class SubgraphUtil {
 
   static async fetchSymbolToDetailMap(
     endpoint: SubgraphEndpoint,
-  ): Promise<Map<string, PoolDetail>> {
+  ): Promise<Map<string, PoolDetail[]>> {
     const poolDetails = await this.fetchData(endpoint);
-    const map = new Map<string, PoolDetail>();
+    const map = new Map<string, PoolDetail[]>();
     for (const pool of poolDetails) {
-      map.set(pool.symbol, pool);
+      if (!map.get(pool.symbol)) {
+        map.set(pool.symbol, []);
+      }
+      map.get(pool.symbol)!.push(pool);
+      map.get(pool.symbol)!.sort((a, b) => Number(a.feeTier - b.feeTier));
     }
     return map;
   }
 
-  static async fetchData(endpoint: SubgraphEndpoint) {
+  static async fetchData(endpoint: SubgraphEndpoint): Promise<PoolDetail[]> {
     const headers = {
       Authorization: `Bearer ${process.env.SUBGRAPH_API_KEY ?? ''}`,
     };
 
-    let data = JSON.parse(poolsData).pools.map((pool) =>
+    let data = JSON.parse(poolsData).data.pools.map((pool) =>
       this.parsePoolDetail(pool),
     );
     return data;
@@ -99,21 +103,23 @@ export class SubgraphUtil {
     ) {
       throw Error('Unable to Parse Pool Information: ' + JSON.stringify(pool));
     }
+
     const chainId = ShareContentLocalStore.getStore().viemChain.id;
     poolDetail.token0 = new Token(
       chainId,
       pool.token0.address,
-      pool.token0.decimals,
+      +pool.token0.decimals,
       pool.token0.symbol,
     );
 
     poolDetail.token1 = new Token(
       chainId,
       pool.token1.address,
-      pool.token1.decimals,
+      +pool.token1.decimals,
       pool.token1.symbol,
     );
 
+    poolDetail.feeTier = BigInt(poolDetail.feeTier);
     poolDetail.symbol = `${poolDetail.token0.symbol}/${poolDetail.token1.symbol}`;
     poolDetail.swapRate = {
       numerator: this.stringPriceToBigInt(poolDetail.token1Price),

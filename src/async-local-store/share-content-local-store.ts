@@ -1,12 +1,19 @@
 import { AsyncLocalStorage } from 'async_hooks';
 import Redis from 'ioredis';
-import { Assign, Chain, ChainFormatters, Prettify, PublicClient } from 'viem';
+import {
+  Assign,
+  Chain,
+  ChainFormatters,
+  Prettify,
+  PublicClient,
+  WalletClient,
+} from 'viem';
 
 export class ShareContentStore {
   viemChain: Prettify<Assign<Chain<undefined>, Chain<ChainFormatters>>>;
   viemChainClient: PublicClient;
-
-  redis: Redis | null | undefined;
+  viemWalletClient?: WalletClient;
+  redis?: Redis;
 }
 
 export class ShareContentLocalStore {

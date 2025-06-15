@@ -1,11 +1,7 @@
-import { CurrencyAmount } from '@pancakeswap/sdk';
-import { bscTokens } from '@pancakeswap/tokens';
 import * as dotenv from 'dotenv';
-import { ethers } from 'ethers';
 import { createPublicClient, http } from 'viem';
 import { bsc } from 'viem/chains';
 import { ShareContentLocalStore } from './async-local-store/share-content-local-store';
-import { V3ArbitrageUtil } from './pancakeswap-arbitrage/arbitrage/v3-arbitrage.util';
 import {
   SubgraphEndpoint,
   SubgraphUtil,
@@ -16,8 +12,10 @@ dotenv.config();
 const exec = async () => {
   const start = performance.now();
 
-  await SubgraphUtil.fetchData(SubgraphEndpoint.UNISWAP_V3);
-
+  //   await SubgraphUtil.fetchData(SubgraphEndpoint.UNISWAP_V3);
+  const map = await SubgraphUtil.fetchSymbolToDetailMap(
+    SubgraphEndpoint.UNISWAP_V3,
+  );
   const end = performance.now();
   const ms = end - start; // Time in milliseconds
   const s = ms / 1000; // Time in seconds

@@ -2,7 +2,7 @@ import { Token } from '@uniswap/sdk-core';
 import { RedisUtil } from '../redis/redis.util';
 
 export class PathCombinations {
-  [key: string]: Token[]; //key format  `${path[0].symbol}-${path[0].address}
+  [key: string]: Token[][]; //key format  `${path[0].symbol}-${path[0].address}
 }
 export class RouterUtil {
   static async getTokenPairSymbol(token0: Token, token1: Token) {
@@ -23,7 +23,7 @@ export class RouterUtil {
     tokens.sort((a, b) => a.symbol!.localeCompare(b.symbol!));
     const key = tokens.reduce(
       (accumulated, current) => `${accumulated}-${current.symbol!}`,
-      '',
+      `${pathLength}-`,
     );
     const cachedPathCombinations = await RedisUtil.getByPrefixOrRegex(key);
     if (cachedPathCombinations?.length > 0) {
@@ -35,7 +35,10 @@ export class RouterUtil {
     const pathArrays = this.generatePermutations(tokens, pathLength);
     pathArrays.forEach(
       (path) =>
-        (pathCombinations[`${path[0].symbol}-${path[0].address}`] = path),
+        (pathCombinations[`${path[0].symbol}-${path[0].address}`] = [
+          ...pathCombinations[`${path[0].symbol}-${path[0].address}`],
+          path,
+        ]),
     );
 
     await RedisUtil.write(key, JSON.stringify(pathCombinations));
@@ -72,5 +75,6 @@ export class RouterUtil {
           new Token(token.chainId, token.address, token.decimals, token.symbol),
       );
     });
+    return pathCombinations;
   }
 }
