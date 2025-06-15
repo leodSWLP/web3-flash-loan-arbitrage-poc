@@ -93,7 +93,7 @@ export class SubgraphArbitrageUtil {
       const tokenKey = `${tokenAmounts[i].currency.symbol}-${tokenAmounts[i].currency.address}`;
       if (!tokenAmounts[i].amount) {
         console.log(`Skip token: ${tokenKey}, reason: Missing AmountIn`);
-        return;
+        continue;
       }
       const combinations = pathCombinations[tokenKey];
       if (!combinations || combinations.length == 0) {
