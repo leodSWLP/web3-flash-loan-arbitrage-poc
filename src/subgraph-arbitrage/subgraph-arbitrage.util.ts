@@ -75,7 +75,7 @@ export class SubgraphArbitrageUtil {
   }
 
   //Entry Point
-  static async calculateAllPaths(tokenAmounts: TokenAmount[]) {
+  static async calculateAllPaths(tokenAmounts: TokenAmount[], pathLength: number | undefined = 3,) {
     const [uniswapPools, pancakeswapPools] = await Promise.all([
       SubgraphUtil.fetchSymbolToDetailMap(SubgraphEndpoint.UNISWAP_V3),
       SubgraphUtil.fetchSymbolToDetailMap(SubgraphEndpoint.PANCAKESWAP_V3),
@@ -86,7 +86,7 @@ export class SubgraphArbitrageUtil {
     };
 
     const tokens = tokenAmounts.map((item) => item.currency);
-    const pathCombinations = await RouterUtil.getAllRoute(tokens);
+    const pathCombinations = await RouterUtil.getAllRoute(tokens, pathLength);
 
     const arbitrageResults: ArbitrageResult[] = [];
     for (const element of tokenAmounts) {
@@ -125,8 +125,8 @@ export class SubgraphArbitrageUtil {
       pancakeswapPools: Map<string, PoolDetail[]>;
     },
   ) {
-    if (tokenAmount.length !== 3) {
-      throw new Error('Only Support 3 symbols');
+    if (tokenAmount.length > 3) {
+      throw new Error('Only Support less than 3 symbols');
     }
     const symbols = tokenAmount.map((item) => item.currency.symbol!);
 

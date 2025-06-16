@@ -31,6 +31,7 @@ const exec = async () => {
   ];
   const arbitrageResults = await SubgraphArbitrageUtil.calculateAllPaths(
     tokenAmounts,
+    3
   );
   console.log('ArbitrageResult: ' + JSONbig.stringify(arbitrageResults));
 

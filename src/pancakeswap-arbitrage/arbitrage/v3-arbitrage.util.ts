@@ -21,8 +21,8 @@ export class V3ArbitrageUtil {
 
   //entries point
   static async calculateArbitrage(currencyAmounts: CurrencyAmount<Currency>[]) {
-    if (currencyAmounts.length != 3) {
-      throw new Error('calculateArbitrage() only support 3');
+    if (currencyAmounts.length > 3) {
+      throw new Error('calculateArbitrage() only support less than 3');
     }
 
     const ratioMap = await this.collectAllPairRatio(currencyAmounts);
@@ -50,8 +50,8 @@ export class V3ArbitrageUtil {
   static async collectAllPairRatio(
     currencyAmounts: CurrencyAmount<Currency>[],
   ) {
-    if (currencyAmounts.length != 3) {
-      throw new Error('collectAllPairRatio() only support 3');
+    if (currencyAmounts.length > 3) {
+      throw new Error('collectAllPairRatio() only support less than 3');
     }
 
     const rationMap: { string: Ratio } = {} as any;
@@ -119,8 +119,8 @@ export class V3ArbitrageUtil {
   ) {
     const symbols = currencyAmounts.map((item) => item.currency.asToken.symbol);
     let arbitrageResults: ArbitrageResult[] = [];
-    if (symbols.length !== 3) {
-      throw new Error('Only Support 3 symbols');
+    if (symbols.length > 3) {
+      throw new Error('Only Support less than 3 symbols');
     }
 
     for (let i = 0; i < symbols.length; i++) {
