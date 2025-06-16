@@ -89,9 +89,9 @@ export class SubgraphArbitrageUtil {
     const pathCombinations = await RouterUtil.getAllRoute(tokens);
 
     const arbitrageResults: ArbitrageResult[] = [];
-    for (let i = 0; i < tokenAmounts.length; i++) {
-      const tokenKey = `${tokenAmounts[i].currency.symbol}-${tokenAmounts[i].currency.address}`;
-      if (!tokenAmounts[i].amount) {
+    for (const element of tokenAmounts) {
+      const tokenKey = `${element.currency.symbol}-${element.currency.address}`;
+      if (!element.amount) {
         console.log(`Skip token: ${tokenKey}, reason: Missing AmountIn`);
         continue;
       }
@@ -104,9 +104,12 @@ export class SubgraphArbitrageUtil {
         const tokenAmountPaths: TokenAmount[] = tokenPath.map((item) => {
           return new TokenAmount(item);
         });
-        tokenAmountPaths[0].amount = tokenAmounts[i].amount;
+        tokenAmountPaths[0].amount = element.amount;
+
+        const arbitrageResult = this.calculatePairProfit(tokenAmountPaths, poolDetailMap);
+        if (arbitrageResult)
         arbitrageResults.push(
-          this.calculatePairProfit(tokenAmountPaths, poolDetailMap),
+          arbitrageResult
         );
       });
     }
@@ -142,6 +145,9 @@ export class SubgraphArbitrageUtil {
       (repayAmount * (this.BASIS_POINTS - this.BORROW_COST)) /
       this.BASIS_POINTS; //todo roughly 0.3% fee
 
+    console.log(
+      `-------------Start Calculate Path: ${symbols.join(' -> ')}-------------`,
+    );
     let currentAmount = initialAmount;
     for (let i = 0; i < tokenAmount.length; i++) {
       const tokenIn = tokenAmount[i].currency;
@@ -152,31 +158,71 @@ export class SubgraphArbitrageUtil {
         tokenOut,
         poolDetailMap.uniswapPools,
       );
-      const uniswapTokenOut = this.swap(currentAmount, uniswapRatio);
+
+      if (!uniswapRatio) {
+        console.log(
+          `Not Found Uniswap token pair: ${
+            tokenIn.symbol
+          }/${tokenOut.symbol}`,
+        );
+      }
+      const uniswapTokenOut = uniswapRatio
+        ? this.swap(currentAmount, uniswapRatio)
+        : 0n;
 
       const pancakeRatio = this.getRatio(
         tokenIn,
         tokenOut,
         poolDetailMap.pancakeswapPools,
       );
-      const pancakeTokenOut = this.swap(currentAmount, pancakeRatio);
+
+      if (!pancakeRatio) {
+        console.log(
+          `Not Found Pancakeswap token pair: ${
+            tokenIn.symbol
+          }/${tokenOut.symbol}`,
+        );
+      }
+
+      const pancakeTokenOut = pancakeRatio
+        ? this.swap(currentAmount, pancakeRatio)
+        : 0n;
 
       console.log(
-        `${tokenIn.symbol} -> ${tokenOut.symbol} -- uniswapTokenOut: ${uniswapTokenOut}`,
+        `${tokenIn.symbol} -> ${
+          tokenOut.symbol
+        } -- uniswapTokenOut: ${uniswapTokenOut}`,
       );
       console.log(
-        `${tokenIn.symbol} -> ${tokenOut.symbol} -- pancakeTokenOut: ${pancakeTokenOut}`,
+        `${tokenIn.symbol} -> ${
+          tokenOut.symbol
+        } -- pancakeTokenOut: ${pancakeTokenOut}`,
       );
+
+      if (uniswapTokenOut === 0n && pancakeTokenOut === 0n) {
+        console.log(
+          `Not Found Any avaliable token pair: ${tokenIn.symbol}/${
+            tokenOut.symbol
+          }`,
+        );
+
+        console.log(
+          `-------------End Calculate Path: ${symbols.join(
+            ' -> ',
+          )}-------------\n\n`,
+        );
+        return undefined;
+      }
 
       if (uniswapTokenOut > pancakeTokenOut) {
         arbitrageResult.SwapPath = [
           ...(arbitrageResult.SwapPath ?? []),
           {
             routerType: RouterType.UNISWAP_V3,
-            routerAddress: 'todo',
+            routerAddress: 'todo UNISWAP_V3',
             tokenIn: tokenIn.address,
             tokenOut: tokenOut.address,
-            fee: uniswapRatio.feeTier,
+            fee: uniswapRatio!.feeTier,
           },
         ];
         currentAmount = uniswapTokenOut;
@@ -185,15 +231,21 @@ export class SubgraphArbitrageUtil {
           ...(arbitrageResult.SwapPath ?? []),
           {
             routerType: RouterType.PANCAKESWAP_V3,
-            routerAddress: 'todo',
+            routerAddress: 'todo PANCAKESWAP_V3',
             tokenIn: tokenIn.address,
             tokenOut: tokenOut.address,
-            fee: pancakeRatio.feeTier,
+            fee: pancakeRatio!.feeTier,
           },
         ];
         currentAmount = pancakeTokenOut;
       }
     }
+
+    console.log(
+      `-------------End Calculate Path: ${symbols.join(
+        ' -> ',
+      )}-------------\n\n`,
+    );
 
     arbitrageResult.repayAmount = repayAmount;
     arbitrageResult.initialAmount = initialAmount;
@@ -217,7 +269,7 @@ export class SubgraphArbitrageUtil {
     tokenIn: Token,
     tokenOut: Token,
     poolDetailMap: Map<string, PoolDetail[]>,
-  ): Ratio {
+  ): Ratio | undefined {
     const token0 = tokenIn.address < tokenOut.address ? tokenIn : tokenOut;
     const token1 = tokenIn.address > tokenOut.address ? tokenIn : tokenOut;
     const symbol = `${token0.symbol}/${token1.symbol}`;
@@ -225,9 +277,7 @@ export class SubgraphArbitrageUtil {
     const targetPoolDetail = poolDetailMap.get(symbol)?.[0]; //todo check price other then only check fee tier
 
     if (!targetPoolDetail) {
-      throw new Error(
-        'Unable to find Corresponding Pair for symbol: ' + symbol,
-      );
+      return undefined;
     }
     const feeTier = targetPoolDetail.feeTier;
     const ratio = targetPoolDetail.swapRate;

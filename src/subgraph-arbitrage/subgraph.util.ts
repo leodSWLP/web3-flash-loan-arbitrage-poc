@@ -29,7 +29,7 @@ export enum SubgraphEndpoint {
 const poolsData = fs.readFileSync('./backup.json', 'utf8');
 
 export class SubgraphUtil {
-  private static POOL_SIZE = 100;
+  private static POOL_SIZE = 150;
   private static DIGITAL_PLACE = 24;
   private static LIST_TOP_POOLS_QUERY = `query {
  pools(first: ${this.POOL_SIZE}, orderBy: volumeUSD, orderDirection: desc) {

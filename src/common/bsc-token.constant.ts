@@ -29,4 +29,18 @@ export const BscTokenConstant = {
     'BTCB',
     'Binance BTC',
   ),
+  zk: new Token(
+    ChainId.BNB,
+    '0xc71b5f631354be6853efe9c3ab6b9590f8302e81',
+    18,
+    'ZK',
+    'Polyhedra Network'
+  ),
+  usdc: new Token(
+    ChainId.BNB,
+    "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+    18,
+    "USDC",
+    "USD Coin",
+  )
 };
