@@ -11,6 +11,7 @@ import {
   TokenAmount,
 } from './subgraph-arbitrage/subgraph-arbitrage.util';
 import { BscTokenConstant } from './common/bsc-token.constant';
+import * as JSONbig from 'json-bigint';
 
 dotenv.config();
 
@@ -19,14 +20,21 @@ const exec = async () => {
 
   //   await SubgraphUtil.fetchData(SubgraphEndpoint.UNISWAP_V3);
   const tokenAmounts: TokenAmount[] = [
-    new TokenAmount(BscTokenConstant.usdt, '100'),
-    new TokenAmount(BscTokenConstant.eth),
-    new TokenAmount(BscTokenConstant.btcb),
-    new TokenAmount(BscTokenConstant.wbnb),
+    new TokenAmount(BscTokenConstant.usdt, '1000'),
+    new TokenAmount(BscTokenConstant.eth, '0.5'),
+    new TokenAmount(BscTokenConstant.btcb, '0.0001'),
+    new TokenAmount(BscTokenConstant.wbnb, '2'),
+    new TokenAmount(BscTokenConstant.zk, '2000'),
+    new TokenAmount(BscTokenConstant.usdc, '1000'),
+    new TokenAmount(BscTokenConstant.b2, '2000'),
+    new TokenAmount(BscTokenConstant.busd),
   ];
   const arbitrageResults = await SubgraphArbitrageUtil.calculateAllPaths(
     tokenAmounts,
   );
+  console.log('ArbitrageResult: ' + JSONbig.stringify(arbitrageResults));
+
+  // console.log('ArbitrageResult: ' + JSONbig.stringify(arbitrageResults, null, 4));
   const end = performance.now();
   const ms = end - start; // Time in milliseconds
   const s = ms / 1000; // Time in seconds

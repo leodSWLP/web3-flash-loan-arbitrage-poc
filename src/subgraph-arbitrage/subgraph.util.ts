@@ -32,17 +32,19 @@ export class SubgraphUtil {
   private static POOL_SIZE = 150;
   private static DIGITAL_PLACE = 24;
   private static LIST_TOP_POOLS_QUERY = `query {
- pools(first: ${this.POOL_SIZE}, orderBy: volumeUSD, orderDirection: desc) {
+ pools(first: ${this.POOL_SIZE}, orderBy: txCount, orderDirection: desc) {
     address: id
     token0 {
       symbol
       address: id
       decimals
+      name
     }
     token1 {
       symbol
       address: id
       decimals
+      name
     }
     token0Price
     token1Price
@@ -73,10 +75,10 @@ export class SubgraphUtil {
       Authorization: `Bearer ${process.env.SUBGRAPH_API_KEY ?? ''}`,
     };
 
-    let data = JSON.parse(poolsData).data.pools.map((pool) =>
-      this.parsePoolDetail(pool),
-    );
-    return data;
+    // let data = JSON.parse(poolsData).data.pools.map((pool) =>
+    //   this.parsePoolDetail(pool),
+    // );
+    // return data;
 
     //todo enable later
     const subgraphUri = this.getSubgraphEndpoint(endpoint);
@@ -93,6 +95,8 @@ export class SubgraphUtil {
     } catch (error) {
       console.error('Error fetching data:', error);
     }
+
+    throw new Error('Not found Subgraph PoolDetail');
   }
 
   private static parsePoolDetail(pool: any) {

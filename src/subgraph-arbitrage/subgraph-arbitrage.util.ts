@@ -67,8 +67,8 @@ export class Ratio {
 }
 
 export class SubgraphArbitrageUtil {
-  static BORROW_COST = 30n; //todo this is not a fix amount for v3
-  static BASIS_POINTS = 10000n; // 100% = 10000 basis points
+  static BORROW_COST = 3000n; //todo this is not a fix amount for v3
+  static BASIS_POINTS = 1000000n; // 100% = 10000 basis points
 
   static async calculateArbitrage(tokenAmounts: TokenAmount[]) {
     tokenAmounts.forEach((tokenAmount) => tokenAmount.validate());
@@ -114,6 +114,7 @@ export class SubgraphArbitrageUtil {
       });
     }
 
+    arbitrageResults.sort((a, b) => Number(a.netProfit - b.netProfit));
     return arbitrageResults;
   }
 

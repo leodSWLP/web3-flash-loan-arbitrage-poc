@@ -34,13 +34,27 @@ export const BscTokenConstant = {
     '0xc71b5f631354be6853efe9c3ab6b9590f8302e81',
     18,
     'ZK',
-    'Polyhedra Network'
+    'Polyhedra Network',
   ),
   usdc: new Token(
     ChainId.BNB,
-    "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+    '0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d',
     18,
-    "USDC",
-    "USD Coin",
-  )
+    'USDC',
+    'USD Coin',
+  ),
+  b2: new Token(
+    ChainId.BNB,
+    '0x783c3f003f172c6ac5ac700218a357d2d66ee2a2',
+    18,
+    'B2',
+    'BSquared Token',
+  ),
+  busd: new Token(
+    ChainId.BNB,
+    '0xe9e7cea3dedca5984780bafc599bd69add087d56',
+    18,
+    'BUSD',
+    'BUSD Token',
+  ),
 };
