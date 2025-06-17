@@ -4,8 +4,8 @@ import * as dotenv from 'dotenv';
 import { ethers } from 'ethers';
 import { createPublicClient, http } from 'viem';
 import { bsc } from 'viem/chains';
-import { ShareContentLocalStore } from './async-local-store/share-content-local-store';
-import { V3ArbitrageUtil } from './pancakeswap-arbitrage/arbitrage/v3-arbitrage.util';
+import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
+import { V3ArbitrageUtil } from '../pancakeswap-arbitrage/arbitrage/v3-arbitrage.util';
 
 dotenv.config();
 

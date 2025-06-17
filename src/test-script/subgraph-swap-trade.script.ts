@@ -1,17 +1,13 @@
 import * as dotenv from 'dotenv';
+import * as JSONbig from 'json-bigint';
 import { createPublicClient, http } from 'viem';
 import { bsc } from 'viem/chains';
-import { ShareContentLocalStore } from './async-local-store/share-content-local-store';
-import {
-  SubgraphEndpoint,
-  SubgraphUtil,
-} from './subgraph-arbitrage/subgraph.util';
+import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
+import { BscTokenConstant } from '../common/bsc-token.constant';
 import {
   SubgraphArbitrageUtil,
   TokenAmount,
-} from './subgraph-arbitrage/subgraph-arbitrage.util';
-import { BscTokenConstant } from './common/bsc-token.constant';
-import * as JSONbig from 'json-bigint';
+} from '../subgraph-arbitrage/subgraph-arbitrage.util';
 
 dotenv.config();
 
@@ -28,10 +24,16 @@ const exec = async () => {
     new TokenAmount(BscTokenConstant.usdc, '1000'),
     new TokenAmount(BscTokenConstant.b2, '2000'),
     new TokenAmount(BscTokenConstant.busd),
+    new TokenAmount(BscTokenConstant.koge),
+    new TokenAmount(BscTokenConstant.cake),
+    new TokenAmount(BscTokenConstant.rlb),
+    new TokenAmount(BscTokenConstant.turbo),
+    new TokenAmount(BscTokenConstant.pndc),
+    new TokenAmount(BscTokenConstant.shib),
   ];
   const arbitrageResults = await SubgraphArbitrageUtil.calculateAllPaths(
     tokenAmounts,
-    3
+    2,
   );
   console.log('ArbitrageResult: ' + JSONbig.stringify(arbitrageResults));
 

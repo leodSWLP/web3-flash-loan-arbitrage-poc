@@ -26,8 +26,6 @@ export enum SubgraphEndpoint {
   PANCAKESWAP_V3 = 'https://gateway.thegraph.com/api/subgraphs/id/A1fvJWQLBeUAggX2WQTMm3FKjXTekNXo77ZySun4YN2m',
 }
 
-const poolsData = fs.readFileSync('./backup.json', 'utf8');
-
 export class SubgraphUtil {
   private static POOL_SIZE = 150;
   private static DIGITAL_PLACE = 24;
@@ -55,6 +53,29 @@ export class SubgraphUtil {
   }
 }`;
 
+  // ------------------ todo remove mock ---------------------
+
+  static getMockPoolsData(endpoint: SubgraphEndpoint) {
+    const pancakeswapSnapshots = fs.readFileSync(
+      './snapshots/pancakeswap-v3-pools.json',
+      'utf8',
+    );
+    const uniswapSnapshots = fs.readFileSync(
+      './snapshots/uniswap-v3-pools.json',
+      'utf8',
+    );
+    const mockData =
+      endpoint === SubgraphEndpoint.PANCAKESWAP_V3
+        ? pancakeswapSnapshots
+        : uniswapSnapshots;
+    let data = JSON.parse(mockData).pools.map((pool) =>
+      this.parsePoolDetail(pool),
+    );
+    return data;
+  }
+
+  // ------------------ todo remove mock end ---------------------
+
   static async fetchSymbolToDetailMap(
     endpoint: SubgraphEndpoint,
   ): Promise<Map<string, PoolDetail[]>> {
@@ -75,10 +96,7 @@ export class SubgraphUtil {
       Authorization: `Bearer ${process.env.SUBGRAPH_API_KEY ?? ''}`,
     };
 
-    // let data = JSON.parse(poolsData).data.pools.map((pool) =>
-    //   this.parsePoolDetail(pool),
-    // );
-    // return data;
+    return this.getMockPoolsData(endpoint);
 
     //todo enable later
     const subgraphUri = this.getSubgraphEndpoint(endpoint);
@@ -89,7 +107,6 @@ export class SubgraphUtil {
         {},
         headers,
       );
-      console.log(JSON.stringify(data));
 
       return data.pools.map((pool) => this.parsePoolDetail(pool));
     } catch (error) {

@@ -1,0 +1,3154 @@
+{
+  "pools": [
+    {
+      "address": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+      "feeTier": "500",
+      "token0": {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "decimals": "6",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token0Price": "2547.284249135821486361078719733387",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0003925749552054329395242392521289053",
+      "volumeToken0": "560384693826.82529",
+      "volumeToken1": "254046172.706078282650727455",
+      "volumeUSD": "560421399738.3215092292117609711654"
+    },
+    {
+      "address": "0x11b815efb8f581194ae79006d24e0d814b7697f6",
+      "feeTier": "500",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.0003926215739063149388949561842887926",
+      "token1": {
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "decimals": "6",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "2546.981792290950738341779801633509",
+      "volumeToken0": "49118461.136391176144063835",
+      "volumeToken1": "121819404235.392755",
+      "volumeUSD": "121949796251.4629476448214934797474"
+    },
+    {
+      "address": "0xc7bbec68d12a0d1830360f8ec58fa599ba1b0e9b",
+      "feeTier": "100",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.0003926815744916638088205334593120489",
+      "token1": {
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "decimals": "6",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "2546.592620992021826949276102733256",
+      "volumeToken0": "20151646.802971313951606946",
+      "volumeToken1": "54282570786.814249",
+      "volumeUSD": "54318548599.21442848063163701212606"
+    },
+    {
+      "address": "0xe0554a476a092703abdb3ef35c80e0d76d32939f",
+      "feeTier": "100",
+      "token0": {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "decimals": "6",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token0Price": "2547.679614919098548109874684920788",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000392514032825809204091330091363246",
+      "volumeToken0": "32008917163.956338",
+      "volumeToken1": "14830858.165769775824662815",
+      "volumeUSD": "32005520890.91802411200905706452423"
+    },
+    {
+      "address": "0x4585fe77225b41b697c938b018e2ac67ac5a20c0",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "decimals": "8",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC"
+      },
+      "token0Price": "0.02413643439098799251534813358884538",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "41.43114031678920009131779509328347",
+      "volumeToken0": "2440063.75921963",
+      "volumeToken1": "41499043.361499859317946239",
+      "volumeUSD": "88908405102.1992390493243938805658"
+    },
+    {
+      "address": "0x60594a405d53811d3bc4766596efd80fd545a270",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "decimals": "18",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI"
+      },
+      "token0Price": "2546.449260318939516822745864651006",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0003927036817826683408872330768330282",
+      "volumeToken0": "31768601024.549313728744447473",
+      "volumeToken1": "12216980.764001128718668675",
+      "volumeUSD": "31804796535.50862092452803646583691"
+    },
+    {
+      "address": "0x3416cf6c708da44db2624d63ea0aaef7113527c6",
+      "feeTier": "100",
+      "token0": {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "decimals": "6",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token0Price": "1.000322368796023522200695342148681",
+      "token1": {
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "decimals": "6",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.9996777350921268295045778098849224",
+      "volumeToken0": "99518473982.187261",
+      "volumeToken1": "99471675346.747311",
+      "volumeUSD": "99494400589.15621992654301199755291"
+    },
+    {
+      "address": "0x4e68ccd3e89f51c3074ca5072bbac773960dfa36",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.0003922991415580282655772922257675215",
+      "token1": {
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "decimals": "6",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "2549.075167558279219941773676690008",
+      "volumeToken0": "18961580.416885471140801044",
+      "volumeToken1": "47574893275.975871",
+      "volumeUSD": "47588781965.61211087953562885124497"
+    },
+    {
+      "address": "0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "decimals": "6",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token0Price": "2550.169873262242363518245018973347",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0003921307401850742152053128256789432",
+      "volumeToken0": "84739586883.80515",
+      "volumeToken1": "36652664.332095327328772723",
+      "volumeUSD": "84743583016.04766636469000059111008"
+    },
+    {
+      "address": "0x11950d141ecb863f01007add7d1a342041227b58",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
+        "decimals": "18",
+        "name": "Pepe",
+        "symbol": "PEPE"
+      },
+      "token0Price": "245632880.1054967214577748687304675",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000000004071116210380754348242098394809516",
+      "volumeToken0": "3114095765832333.975532941372359224",
+      "volumeToken1": "2601051.928167146472016174",
+      "volumeUSD": "5645811791.808446564213995681318555"
+    },
+    {
+      "address": "0x9e0905249ceefffb9605e034b534544684a58be6",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x2b591e99afe9f32eaa6214f7b7629768c40eeb39",
+        "decimals": "8",
+        "name": "HEX",
+        "symbol": "HEX"
+      },
+      "token0Price": "1286733.636589733607863707134949937",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0000007771616219269188924877283562899118",
+      "volumeToken0": "92420041069.38297979",
+      "volumeToken1": "1156605.357849378278545248",
+      "volumeUSD": "2372409878.351962532684332513221311"
+    },
+    {
+      "address": "0x2f62f2b4c5fcd7570a709dec05d68ea19c82a9ec",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce",
+        "decimals": "18",
+        "name": "SHIBA INU",
+        "symbol": "SHIB"
+      },
+      "token0Price": "217907863.8651970604530920831405403",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000000004589095511571916306891134018613683",
+      "volumeToken0": "188016061086186.432927217901193814",
+      "volumeToken1": "1104541.706345449925059209",
+      "volumeUSD": "2782030190.922259635004413495550276"
+    },
+    {
+      "address": "0xa6cc3c2531fdaa6ae1a3ca84c2855806728693e8",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+        "decimals": "18",
+        "name": "ChainLink Token",
+        "symbol": "LINK"
+      },
+      "token0Price": "192.2327261706273502974969579726364",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.005202027874860349051799117457017655",
+      "volumeToken0": "1020348274.608864257183747621",
+      "volumeToken1": "5767955.206557039923209173",
+      "volumeUSD": "13297505312.83739704489498361687463"
+    },
+    {
+      "address": "0x9a772018fbd77fcd2d25657e5c547baff3fd7d16",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "decimals": "8",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC"
+      },
+      "token0Price": "0.000009472038640775135115524599929472393",
+      "token1": {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "decimals": "6",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token1Price": "105573.8936383990477216019600793769",
+      "volumeToken0": "201963.14891121",
+      "volumeToken1": "10806925239.888655",
+      "volumeUSD": "10805641406.9279376426801958501191"
+    },
+    {
+      "address": "0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x4d224452801aced8b2f0aebe155379bb5d594381",
+        "decimals": "18",
+        "name": "ApeCoin",
+        "symbol": "APE"
+      },
+      "token0Price": "3859.054459720523544205786941572224",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0002591308338448328005793297312664713",
+      "volumeToken0": "1132122670.33075104245948192",
+      "volumeToken1": "3312487.40932553057584114",
+      "volumeUSD": "7145828820.583295786509136095036596"
+    },
+    {
+      "address": "0x4b5ab61593a2401b1075b90c04cbcdd3f87ce011",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.000004582089205550100651959632221131064",
+      "token1": {
+        "address": "0xf4d2888d29d722226fafa5d9b24f9164c092421e",
+        "decimals": "18",
+        "name": "LooksRare Token",
+        "symbol": "LOOKS"
+      },
+      "token1Price": "218241.058857767360126717940388519",
+      "volumeToken0": "2495038.727485109810399218",
+      "volumeToken1": "8010505650.200610821431632442",
+      "volumeUSD": "6254630893.780805212684804284211102"
+    },
+    {
+      "address": "0x69d91b94f0aaf8e8a2586909fa77a5c2c89818d5",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x2b591e99afe9f32eaa6214f7b7629768c40eeb39",
+        "decimals": "8",
+        "name": "HEX",
+        "symbol": "HEX"
+      },
+      "token0Price": "565.7191358406418570638374978168351",
+      "token1": {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "decimals": "6",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token1Price": "0.001767661612708273796028587264420394",
+      "volumeToken0": "65456077059.19212909",
+      "volumeToken1": "5039792175.513034",
+      "volumeUSD": "5039879065.367476076600388248524395"
+    },
+    {
+      "address": "0xcbcdf9626bc03e24f779434178a73a0b4bad62ed",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "decimals": "8",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC"
+      },
+      "token0Price": "0.02415086497787638436849403736917427",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "41.40638444693632854120901803657123",
+      "volumeToken0": "897000.4198568",
+      "volumeToken1": "14120718.099137134299574333",
+      "volumeUSD": "32264505280.09792281204022364827699"
+    },
+    {
+      "address": "0x1d42064fc4beb5f8aaf85f4617ae8b3b5b8bd801",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+        "decimals": "18",
+        "name": "Uniswap",
+        "symbol": "UNI"
+      },
+      "token0Price": "335.9183573393161467700997865143307",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00297691381894287210296650190930478",
+      "volumeToken0": "882837173.633611301069217857",
+      "volumeToken1": "3601150.241915765272227131",
+      "volumeUSD": "8959298911.53685304586533566943172"
+    },
+    {
+      "address": "0x5777d92f208679db4b9778590fa3cab3ac9e2168",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "decimals": "18",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI"
+      },
+      "token0Price": "0.9999781359108043372875577016577863",
+      "token1": {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "decimals": "6",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token1Price": "1.000021864567244511170999836014932",
+      "volumeToken0": "23104881448.366107293350548976",
+      "volumeToken1": "23105454847.107891",
+      "volumeUSD": "23104242486.36268769977746710137811"
+    },
+    {
+      "address": "0x290a6a7460b308ee3f19023d2d00de604bcf5b42",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0",
+        "decimals": "18",
+        "name": "Matic Token",
+        "symbol": "MATIC"
+      },
+      "token0Price": "12923.12335044655854039346154509936",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00007738067438359976645990908758458304",
+      "volumeToken0": "3968386266.993529095785961092",
+      "volumeToken1": "2018955.603976976246588864",
+      "volumeUSD": "4771783152.686529536729131022715281"
+    },
+    {
+      "address": "0x99ac8ca7087fa4a2a1fb6357269965a2014abc35",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "decimals": "8",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC"
+      },
+      "token0Price": "0.000009449764538048030953442657098189631",
+      "token1": {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "decimals": "6",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token1Price": "105822.7425639710931788653649503591",
+      "volumeToken0": "562195.90742358",
+      "volumeToken1": "24541253400.256183",
+      "volumeUSD": "24538812919.07744122769036009706375"
+    },
+    {
+      "address": "0x7b1e5d984a43ee732de195628d20d05cfabc3cc7",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.000298801376193563883507410025518427",
+      "token1": {
+        "address": "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+        "decimals": "18",
+        "name": "Ondo",
+        "symbol": "ONDO"
+      },
+      "token1Price": "3346.704800155267095989062412981649",
+      "volumeToken0": "892512.701607487633516799",
+      "volumeToken1": "3721229509.629181897382014111",
+      "volumeUSD": "2599108097.097383832918996335446225"
+    },
+    {
+      "address": "0xc2e9f25be6257c210d7adf0d4cd6e3e881ba25f8",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "decimals": "18",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI"
+      },
+      "token0Price": "2550.686744186465190286541818527151",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0003920512788484135720616927688435183",
+      "volumeToken0": "15629940518.771005863013407926",
+      "volumeToken1": "6018517.55260319892562058",
+      "volumeUSD": "15633753146.47413104445324140724244"
+    },
+    {
+      "address": "0x3ebec0a1b4055c8d1180fce64db2a8c068170880",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xadd39272e83895e7d3f244f696b7a25635f34234",
+        "decimals": "18",
+        "name": "Pepe Unchained",
+        "symbol": "PEPU"
+      },
+      "token0Price": "19599192.20430991819904692903745111",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00000005102251100839233319237808199626389",
+      "volumeToken0": "64517297983.145997852579020259",
+      "volumeToken1": "141301.200230995115418437",
+      "volumeUSD": "473391754.8963445250713449601576127"
+    },
+    {
+      "address": "0x331399c614ca67dee86733e5a2fba40dbb16827c",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0xb9f599ce614feb2e1bbe58f180f370d05b39344e",
+        "decimals": "18",
+        "name": "PepeFork",
+        "symbol": "PORK"
+      },
+      "token0Price": "122323059343.2979486586306988854243",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000000000008175073492835999464139090205434365",
+      "volumeToken0": "4613928348647512.254946135201061974",
+      "volumeToken1": "315006.714844263225940596",
+      "volumeUSD": "859050974.312977658367159192431425"
+    },
+    {
+      "address": "0xc45a81bc23a64ea556ab4cdf08a86b61cdceea8b",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.00000000005339296422057547060748143717588914",
+      "token1": {
+        "address": "0xf19308f923582a6f7c465e5ce7a9dc1bec6665b1",
+        "decimals": "18",
+        "name": "TITAN X",
+        "symbol": "TITANX"
+      },
+      "token1Price": "18729059429.41899427648215168203718",
+      "volumeToken0": "216627.995966805192032158",
+      "volumeToken1": "787265544151094.918977258288801808",
+      "volumeUSD": "553972830.4653053288445639506011292"
+    },
+    {
+      "address": "0x56534741cd8b152df6d48adf7ac51f75169a83b2",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "decimals": "8",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC"
+      },
+      "token0Price": "0.000009474530024132490615293781057643268",
+      "token1": {
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "decimals": "6",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "105546.132362545577593855696990869",
+      "volumeToken0": "67875.3010633",
+      "volumeToken1": "5851946094.931108",
+      "volumeUSD": "5852706722.611468549102775100271106"
+    },
+    {
+      "address": "0xc3db44adc1fcdfd5671f555236eae49f4a8eea18",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x57e114b691db790c35207b2e685d4a43181e6061",
+        "decimals": "18",
+        "name": "ENA",
+        "symbol": "ENA"
+      },
+      "token0Price": "8891.974026380879356118248793497722",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0001124609672760155157920021304393269",
+      "volumeToken0": "3719573294.467099003022558347",
+      "volumeToken1": "803601.68487700024055982",
+      "volumeUSD": "2446874740.772833321858902738503044"
+    },
+    {
+      "address": "0x7858e59e0c01ea06df3af3d20ac7b0003275d4bf",
+      "feeTier": "500",
+      "token0": {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "decimals": "6",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token0Price": "1.00047659118763146433408540954611",
+      "token1": {
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "decimals": "6",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.9995236358433277091739443647454529",
+      "volumeToken0": "16421936667.104779",
+      "volumeToken1": "16133792258.179213",
+      "volumeUSD": "16279689499.58693872652196430684844"
+    },
+    {
+      "address": "0x127452f3f9cdc0389b0bf59ce6131aa3bd763598",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.05903429075085410236624003748333968",
+      "token1": {
+        "address": "0xd31a59c85ae9d8edefec411d448f90841571b89c",
+        "decimals": "9",
+        "name": "Wrapped SOL (Wormhole)",
+        "symbol": "SOL"
+      },
+      "token1Price": "16.93930743100410836121905878182685",
+      "volumeToken0": "876887.248536430121104747",
+      "volumeToken1": "17838162.583999534",
+      "volumeUSD": "2423703475.677532991785094989651075"
+    },
+    {
+      "address": "0x510100d5143e011db24e2aa38abe85d73d5b2177",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x046eee2cc3188071c02bfc1745a6b17c656e3f3d",
+        "decimals": "18",
+        "name": "Rollbit Coin",
+        "symbol": "RLB"
+      },
+      "token0Price": "54367.77100869694656119421493599692",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00001839324992448255582006637135444314",
+      "volumeToken0": "12839663151.935784040074714325",
+      "volumeToken1": "772569.903396778461131234",
+      "volumeUSD": "1618204473.373059252730189305226905"
+    },
+    {
+      "address": "0x92560c178ce069cc014138ed3c2f5221ba71f58a",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.007926543072899234013693342014136122",
+      "token1": {
+        "address": "0xc18360217d8f7ab5e7c516566761ea12ce7f9d72",
+        "decimals": "18",
+        "name": "Ethereum Name Service",
+        "symbol": "ENS"
+      },
+      "token1Price": "126.1584010587149023764034912473029",
+      "volumeToken0": "1046584.273109169489555503",
+      "volumeToken1": "118989782.604878739108743885",
+      "volumeUSD": "3174107580.063521837753899231536901"
+    },
+    {
+      "address": "0x7baece5d47f1bc5e1953fbe0e9931d54dab6d810",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0xa35923162c49cf95e6bf26623385eb431ad920d3",
+        "decimals": "18",
+        "name": "Turbo",
+        "symbol": "TURBO"
+      },
+      "token0Price": "684118.9561240948583537798011934138",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000001461734090318944933768184254002086",
+      "volumeToken0": "816128405012.608210651647464906",
+      "volumeToken1": "335098.716796581001754194",
+      "volumeUSD": "777233722.7376247243146162122280364"
+    },
+    {
+      "address": "0xa3f558aebaecaf0e11ca4b2199cc5ed341edfd74",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+        "decimals": "18",
+        "name": "Lido DAO Token",
+        "symbol": "LDO"
+      },
+      "token0Price": "3201.429936133432464397520444437937",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0003123604201714196063406469397419585",
+      "volumeToken0": "2077314711.75829704537153922",
+      "volumeToken1": "2070560.393253265431330172",
+      "volumeUSD": "3849008509.363309705277710874270876"
+    },
+    {
+      "address": "0x7c706586679af2ba6d1a9fc2da9c6af59883fdd3",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.0005487332548306534822380411690890365",
+      "token1": {
+        "address": "0xe0f63a424a4439cbe457d80e4f4b51ad25b2c56c",
+        "decimals": "8",
+        "name": "SPX6900",
+        "symbol": "SPX"
+      },
+      "token1Price": "1822.379072521517854743079647740967",
+      "volumeToken0": "277325.316432892593713193",
+      "volumeToken1": "1047306654.34273379",
+      "volumeUSD": "749331639.5842409141364751334088874"
+    },
+    {
+      "address": "0x109830a1aaad605bbf02a9dfa7b0b92ec2fb7daa",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+        "decimals": "18",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH"
+      },
+      "token0Price": "0.8295151033697774018409332982401391",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "1.205523559411581479478802700348688",
+      "volumeToken0": "8289541.123558426426791658",
+      "volumeToken1": "9640088.72429342859303194",
+      "volumeUSD": "25188460867.10732564261280083685525"
+    },
+    {
+      "address": "0xe8c6c9227491c0a8156a0106a0204d881bb7e531",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+        "decimals": "18",
+        "name": "Maker",
+        "symbol": "MKR"
+      },
+      "token0Price": "1.215669165849770532923704746433642",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.822592221709419905685517620052362",
+      "volumeToken0": "2285537.704064902306128213",
+      "volumeToken1": "1606305.519207653594336542",
+      "volumeUSD": "3799433699.368156997067409734775637"
+    },
+    {
+      "address": "0x2a9d2ba41aba912316d16742f259412b681898db",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x06450dee7fd2fb8e39061434babcfc05599a6fb8",
+        "decimals": "18",
+        "name": "XEN Crypto",
+        "symbol": "XEN"
+      },
+      "token0Price": "66443762414.31976576610810974680284",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00000000001505032171062731568613347097249559",
+      "volumeToken0": "730334872059641.161575149924031464",
+      "volumeToken1": "174945.271595293776256785",
+      "volumeUSD": "354927476.8841367084102070354233748"
+    },
+    {
+      "address": "0x98409d8ca9629fbe01ab1b914ebf304175e384c8",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.0000004859583880493581732088110583224515",
+      "token1": {
+        "address": "0xf411903cbc70a74d22900a5de66a2dda66507255",
+        "decimals": "18",
+        "name": "VERA",
+        "symbol": "VRA"
+      },
+      "token1Price": "2057789.359319447072442470928621707",
+      "volumeToken0": "227446.531560605759536539",
+      "volumeToken1": "74028129112.722732132167944964",
+      "volumeUSD": "638387216.7908755082053567828669582"
+    },
+    {
+      "address": "0x5ab53ee1d50eef2c1dd3d5402789cd27bb52c1bb",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+        "decimals": "18",
+        "name": "Aave Token",
+        "symbol": "AAVE"
+      },
+      "token0Price": "9.480414934304001931215346761591812",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.1054806152399081997038342889607404",
+      "volumeToken0": "17506906.031624893586548386",
+      "volumeToken1": "1245920.124044230157887641",
+      "volumeUSD": "3120963457.03361720950244420326616"
+    },
+    {
+      "address": "0x2982d3295a0e1a99e6e88ece0e93ffdfc5c761ae",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x77e06c9eccf2e797fd462a92b6d7642ef85b0a44",
+        "decimals": "9",
+        "name": "Wrapped TAO",
+        "symbol": "wTAO"
+      },
+      "token0Price": "7.27906405437920075180823663178368",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.1373802995178183779091666367495229",
+      "volumeToken0": "3611416.297612019",
+      "volumeToken1": "527538.4974586667178276",
+      "volumeUSD": "1533840212.902264608384422708837413"
+    },
+    {
+      "address": "0x24ee2c6b9597f035088cda8575e9d5e15a84b9df",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x4a220e6096b25eadb88358cb44068a3248254675",
+        "decimals": "18",
+        "name": "Quant",
+        "symbol": "QNT"
+      },
+      "token0Price": "25.19546852599960651925999810398137",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.03968967669595364035515204294025435",
+      "volumeToken0": "9925540.848354529875840715",
+      "volumeToken1": "564275.253098744676591807",
+      "volumeUSD": "1242436862.524423397409225080897804"
+    },
+    {
+      "address": "0xbf85f94d3233ee588f0907a9147fbb59d7246b54",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xa0ef786bf476fe0810408caba05e536ac800ff86",
+        "decimals": "18",
+        "name": "Myria",
+        "symbol": "MYRIA"
+      },
+      "token0Price": "1895686.92400087020509000972492146",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0000005275132656870829137349430005754146",
+      "volumeToken0": "61573784067.993498567331227408",
+      "volumeToken1": "87015.781450076250812603",
+      "volumeUSD": "230857756.3379490973432278596520086"
+    },
+    {
+      "address": "0x844eb5c280f38c7462316aad3f338ef9bda62668",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x38e382f74dfb84608f3c1f10187f6bef5951de93",
+        "decimals": "18",
+        "name": "MUBI",
+        "symbol": "MUBI"
+      },
+      "token0Price": "623368.8338813040794485445790119789",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000001604186712020335650145233692134423",
+      "volumeToken0": "14107980700.883765160805649361",
+      "volumeToken1": "380520.52776571244361051",
+      "volumeUSD": "938025194.2894665233159528617192639"
+    },
+    {
+      "address": "0x435664008f38b0650fbc1c9fc971d0a3bc2f1e47",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
+        "decimals": "18",
+        "name": "USDe",
+        "symbol": "USDe"
+      },
+      "token0Price": "1.000079503500087611087573376004164",
+      "token1": {
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "decimals": "6",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.9999205028202164288004138701465838",
+      "volumeToken0": "15433545007.616315036052028705",
+      "volumeToken1": "15444237319.846507",
+      "volumeUSD": "15444236834.46875065811048596712158"
+    },
+    {
+      "address": "0xb011e4eb4111ef00b620a5ed195836dcd69db1ff",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x9813037ee2218799597d83d4a5b6f3b6778218d9",
+        "decimals": "18",
+        "name": "BONE SHIBASWAP",
+        "symbol": "BONE"
+      },
+      "token0Price": "10890.36963677360423850072140525168",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00009182424778524426319262856632589957",
+      "volumeToken0": "558159648.021341704699506429",
+      "volumeToken1": "352401.209069548102957832",
+      "volumeUSD": "590202403.2542545114536504544417383"
+    },
+    {
+      "address": "0x3019d4e366576a88d28b623afaf3ecb9ec9d9580",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xbb0e17ef65f82ab018d8edd776e8dd940327b28b",
+        "decimals": "18",
+        "name": "Axie Infinity Shard",
+        "symbol": "AXS"
+      },
+      "token0Price": "1113.832139563231998531004767854532",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0008978013512809308069662413325067792",
+      "volumeToken0": "47851789.525960442234353533",
+      "volumeToken1": "744531.158713960747151202",
+      "volumeUSD": "2220993397.278054491328964338672306"
+    },
+    {
+      "address": "0xc64350c0eab6faed8f17cc2cdff0761c53fb4152",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x423f4e6138e475d85cf7ea071ac92097ed631eea",
+        "decimals": "18",
+        "name": "Pond Coin",
+        "symbol": "PNDC"
+      },
+      "token0Price": "74706861424.39349997148859306936294",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00000000001338565134357895959382454262275365",
+      "volumeToken0": "748047307430321.624757922516517854",
+      "volumeToken1": "169379.317762459154877841",
+      "volumeUSD": "367795540.3553257006702499568737022"
+    },
+    {
+      "address": "0x0cfbed8f2248d2735203f602be0cae5a3131ec68",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.0000005131290390448661670962191718727712",
+      "token1": {
+        "address": "0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25",
+        "decimals": "0",
+        "name": "Smooth Love Potion",
+        "symbol": "SLP"
+      },
+      "token1Price": "1948827.534417835935804632085226908",
+      "volumeToken0": "303029.633965461438327022",
+      "volumeToken1": "6711054323",
+      "volumeUSD": "844410961.9382719790149316451070274"
+    },
+    {
+      "address": "0x1385fc1fe0418ea0b4fcf7adc61fc7535ab7f80d",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea",
+        "decimals": "18",
+        "name": "Zero1 Token",
+        "symbol": "DEAI"
+      },
+      "token0Price": "42388.7163264658062638831042141916",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00002359118384945382973781413875749763",
+      "volumeToken0": "1259754107.920787998939612567",
+      "volumeToken1": "182690.324799598726604489",
+      "volumeUSD": "596076315.1785282234939366907888144"
+    },
+    {
+      "address": "0x9db9e0e53058c89e5b94e29621a205198648425b",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "decimals": "8",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC"
+      },
+      "token0Price": "0.000009451631884159838864347382190270256",
+      "token1": {
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "decimals": "6",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "105801.8353080295181329446493347208",
+      "volumeToken0": "123732.47449394",
+      "volumeToken1": "8179821991.784255",
+      "volumeUSD": "8179791653.458074985325541538989823"
+    },
+    {
+      "address": "0xf8a95b2409c27678a6d18d950c5d913d5c38ab03",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x15d4c048f83bd7e37d49ea4c83a07267ec4203da",
+        "decimals": "8",
+        "name": "Gala",
+        "symbol": "GALA"
+      },
+      "token0Price": "3402567865403252211281849958394105000000000000000",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0000000000000000000000000000000000000000000000002938956810142818170490203137305544",
+      "volumeToken0": "16196038815.59033622",
+      "volumeToken1": "528205.009433957260846245",
+      "volumeUSD": "1542420240.002259416904022511658105"
+    },
+    {
+      "address": "0x8107fca5494375fc743a9fc4d4844353a1af3d94",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xa35923162c49cf95e6bf26623385eb431ad920d3",
+        "decimals": "18",
+        "name": "Turbo",
+        "symbol": "TURBO"
+      },
+      "token0Price": "682325.0787312631480097377275838263",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000001465577085132839697670945423016761",
+      "volumeToken0": "72681728113.248463717901514127",
+      "volumeToken1": "126861.321491410864999047",
+      "volumeUSD": "394942473.118402645244231232191167"
+    },
+    {
+      "address": "0x16588709ca8f7b84829b43cc1c5cb7e84a321b16",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xb23d80f5fefcddaa212212f028021b41ded428cf",
+        "decimals": "18",
+        "name": "Prime",
+        "symbol": "PRIME"
+      },
+      "token0Price": "1129.326641363583647588690148962642",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0008854834052197416581186913962305273",
+      "volumeToken0": "107948195.581866424685387921",
+      "volumeToken1": "364760.926557211246007494",
+      "volumeUSD": "1034929336.159154064917773054404009"
+    },
+    {
+      "address": "0x1c98562a2fab5af19d8fb3291a36ac3c618835d9",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x9e32b13ce7f2e80a01932b42553652e053d6ed8e",
+        "decimals": "18",
+        "name": "Metis Token",
+        "symbol": "Metis"
+      },
+      "token0Price": "156.0234526657254578512641067736642",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.006409292852546106858576032805825526",
+      "volumeToken0": "24764230.60446781448270949",
+      "volumeToken1": "663897.875120643973577523",
+      "volumeUSD": "1885083343.928033915928503884546687"
+    },
+    {
+      "address": "0xdce93ed9ae7c53143e19cf799d156b72d1cc2777",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x9bf1d7d63dd7a4ce167cf4866388226eeefa702e",
+        "decimals": "18",
+        "name": "Ben",
+        "symbol": "BEN"
+      },
+      "token0Price": "2530978311207.623148021553328450672",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0000000000003951041364407674828928356353824268",
+      "volumeToken0": "9641491755011855.7794917689645336",
+      "volumeToken1": "295628.522827840494600566",
+      "volumeUSD": "539959951.4460981107355149467937706"
+    },
+    {
+      "address": "0x5764a6f2212d502bc5970f9f129ffcd61e5d7563",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce",
+        "decimals": "18",
+        "name": "SHIBA INU",
+        "symbol": "SHIB"
+      },
+      "token0Price": "216244427.1846621225071253189534647",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000000004624396628478425958558366066415573",
+      "volumeToken0": "113616473598217.997773034667856328",
+      "volumeToken1": "513975.087909155178101033",
+      "volumeUSD": "1732961952.150144762132244489690279"
+    },
+    {
+      "address": "0x919fa96e88d67499339577fa202345436bcdaf79",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.0002276759480164355148868386465557985",
+      "token1": {
+        "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+        "decimals": "18",
+        "name": "Curve DAO Token",
+        "symbol": "CRV"
+      },
+      "token1Price": "4392.207471681689489278382885120817",
+      "volumeToken0": "392095.454782125734525676",
+      "volumeToken1": "1556825298.840227027162526587",
+      "volumeUSD": "895387682.0523842799273157874661926"
+    },
+    {
+      "address": "0xfa45c879fd120d6cc493113ae212a853531f3d91",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.00003675457963956089171515601791626237",
+      "token1": {
+        "address": "0xee2a03aa6dacf51c18679c516ad5283d8e7c2637",
+        "decimals": "9",
+        "name": "Neiro",
+        "symbol": "NEIRO"
+      },
+      "token1Price": "27207.49386353060834422096775137348",
+      "volumeToken0": "181751.348446794914406316",
+      "volumeToken1": "4589936190.802676294",
+      "volumeUSD": "457726798.698786854389921092760916"
+    },
+    {
+      "address": "0x0c30062368eefb96bf3ade1218e685306b8e89fa",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x72e4f9f808c49a2a61de9c5896298920dc4eeea9",
+        "decimals": "8",
+        "name": "HarryPotterObamaSonic10Inu",
+        "symbol": "BITCOIN"
+      },
+      "token0Price": "35875.28028894436819051254622670907",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00002787434667954827139898597125376494",
+      "volumeToken0": "8341997069.84369316",
+      "volumeToken1": "270715.431893057624141823",
+      "volumeUSD": "625441125.5153998414594591152718832"
+    },
+    {
+      "address": "0x824a30f2984f9013f2c8d0a29c0a3cc5fd5c0673",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x5283d291dbcf85356a21ba090e6db59121208b44",
+        "decimals": "18",
+        "name": "Blur",
+        "symbol": "BLUR"
+      },
+      "token0Price": "34022.76725787980273845551262426159",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00002939208302547454260020410040568248",
+      "volumeToken0": "1868286380.474229024512408326",
+      "volumeToken1": "732282.518116197732752789",
+      "volumeUSD": "1295905859.338352340034302801936034"
+    },
+    {
+      "address": "0xd1d5a4c0ea98971894772dcd6d2f1dc71083c44e",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x6dea81c8171d0ba574754ef6f8b412f2ed88c54d",
+        "decimals": "18",
+        "name": "LQTY",
+        "symbol": "LQTY"
+      },
+      "token0Price": "2816.142602859656470782086413487176",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0003550956542415673178629177335913639",
+      "volumeToken0": "450622310.687480773906590691",
+      "volumeToken1": "368351.202301223880560364",
+      "volumeUSD": "845993279.9436947789125454437033211"
+    },
+    {
+      "address": "0x198063c23ac1317ff3cc57d9f54faac6b675d89f",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xb131f4a55907b10d1f0a50d8ab8fa09ec342cd74",
+        "decimals": "18",
+        "name": "Memecoin",
+        "symbol": "MEME"
+      },
+      "token0Price": "116240.5278043688698424300293376602",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000008602851508752485735741020848068518",
+      "volumeToken0": "11567797304.825781361588848553",
+      "volumeToken1": "132778.042670190788322992",
+      "volumeUSD": "308859713.3655497897981297171769412"
+    },
+    {
+      "address": "0xa06591252908576a0f64a8560ec0c8051782377c",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x423f4e6138e475d85cf7ea071ac92097ed631eea",
+        "decimals": "18",
+        "name": "Pond Coin",
+        "symbol": "PNDC"
+      },
+      "token0Price": "62713278071.94543566951201646262079",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00000000001594558649689445084460488280781373",
+      "volumeToken0": "180861737632092.512780125366085671",
+      "volumeToken1": "157575.925231328913237784",
+      "volumeUSD": "273046650.0319253534940463850609039"
+    },
+    {
+      "address": "0x57af956d3e2cca3b86f3d8c6772c03ddca3eaacb",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x808507121b80c02388fad14726482e061b8da827",
+        "decimals": "18",
+        "name": "Pendle",
+        "symbol": "PENDLE"
+      },
+      "token0Price": "658.6999505981079006434366319705228",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.001518141908302843093196175037158038",
+      "volumeToken0": "195587459.0972117754239926",
+      "volumeToken1": "211603.141705795402511377",
+      "volumeUSD": "577617551.6372758734489503764365088"
+    },
+    {
+      "address": "0x48da0965ab2d2cbf1c17c09cfb5cbe67ad5b1406",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "decimals": "18",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI"
+      },
+      "token0Price": "1.00037132294450496906624016619596",
+      "token1": {
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "decimals": "6",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.9996288148850448724871367067394524",
+      "volumeToken0": "5307741411.15770083860356901",
+      "volumeToken1": "5307122659.903163",
+      "volumeUSD": "5307507910.115248419348311415943499"
+    },
+    {
+      "address": "0x7b3ed3a3444144ff526554d5f4aa463d1759f51a",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.00003598715495007724524667257943550542",
+      "token1": {
+        "address": "0xdd66781d0e9a08d4fbb5ec7bac80b691be27f21d",
+        "decimals": "18",
+        "name": "AxonDAO Governance Token",
+        "symbol": "AXGT"
+      },
+      "token1Price": "27787.69261941484854248394773514373",
+      "volumeToken0": "67713.235601943343786972",
+      "volumeToken1": "1185496005.924519797706903455",
+      "volumeUSD": "217831623.0074747562324124957399531"
+    },
+    {
+      "address": "0xf359492d26764481002ed88bd2acae83ca50b5c9",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x467bccd9d29f223bce8043b84e8c8b282827790f",
+        "decimals": "2",
+        "name": "Telcoin",
+        "symbol": "TEL"
+      },
+      "token0Price": "669129.5046153743667147373262808331",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000001494479010568835902508246557514157",
+      "volumeToken0": "57078463995.87",
+      "volumeToken1": "123110.243831041070305291",
+      "volumeUSD": "344149078.8962172057571849989766619"
+    },
+    {
+      "address": "0xd34e4855146ac0c6d0e4a652bd5fb54830f91ba8",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x990f341946a3fdb507ae7e52d17851b87168017c",
+        "decimals": "18",
+        "name": "Strong",
+        "symbol": "STRONG"
+      },
+      "token0Price": "40.03745985697331016019570878948957",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.02497660949451642984899922349687529",
+      "volumeToken0": "2376716.180332587582077448",
+      "volumeToken1": "319673.043154179570949703",
+      "volumeUSD": "1094154249.618360924570436257820587"
+    },
+    {
+      "address": "0xe42318ea3b998e8355a3da364eb9d48ec725eb45",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.002403972156506865972490932340534741",
+      "token1": {
+        "address": "0xd33526068d116ce69f19a9ee46f0bd304f21a51f",
+        "decimals": "18",
+        "name": "Rocket Pool Protocol",
+        "symbol": "RPL"
+      },
+      "token1Price": "415.9781956264699795211629712864546",
+      "volumeToken0": "576271.466002594763711561",
+      "volumeToken1": "37260223.546577979918707919",
+      "volumeUSD": "1098514459.631978107356696887145032"
+    },
+    {
+      "address": "0xc2c390c6cd3c4e6c2b70727d35a45e8a072f18ca",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.0004518411533603009539807311381098356",
+      "token1": {
+        "address": "0xec53bf9167f50cdeb3ae105f56099aaab9061f83",
+        "decimals": "18",
+        "name": "Eigen",
+        "symbol": "EIGEN"
+      },
+      "token1Price": "2213.167155233852199935454244740532",
+      "volumeToken0": "382396.452548572097752615",
+      "volumeToken1": "373487664.704067042933509469",
+      "volumeUSD": "1088317386.396430348797147225727805"
+    },
+    {
+      "address": "0x95a45a87dd4d3a1803039072f37e075f37b23d75",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x44ff8620b8ca30902395a7bd3f2407e1a091bf73",
+        "decimals": "18",
+        "name": "Virtual Protocol",
+        "symbol": "VIRTUAL"
+      },
+      "token0Price": "1438.145736614277372900999522587484",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0006953398216471633588914183126329041",
+      "volumeToken0": "856755303.935866694710270298",
+      "volumeToken1": "162306.338024430549242451",
+      "volumeUSD": "490468275.0242124643877466857372471"
+    },
+    {
+      "address": "0x5b7e3e37a1aa6369386e5939053779abd3597508",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.0000000000000000000000000000000000000029389568075855848387034172747685",
+      "token1": {
+        "address": "0xf21661d0d1d76d3ecb8e1b9f1c923dbfffae4097",
+        "decimals": "18",
+        "name": "Realio Network",
+        "symbol": "RIO"
+      },
+      "token1Price": "340256786836388094070642339899681200000",
+      "volumeToken0": "123532.04792394747753583",
+      "volumeToken1": "448164251.531660006964639251",
+      "volumeUSD": "341606618.5115084102576516057540662"
+    },
+    {
+      "address": "0xe6ff8b9a37b0fab776134636d9981aa778c4e718",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "decimals": "8",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC"
+      },
+      "token0Price": "0.02413703378446615914200388473736917",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "41.43011145982522335225656994133479",
+      "volumeToken0": "35620.20560276",
+      "volumeToken1": "810850.785251456337060286",
+      "volumeUSD": "2166355688.273233050235694281438732"
+    },
+    {
+      "address": "0x6c063a6e8cd45869b5eb75291e65a3de298f3aa8",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.004445882942191487571528101294589098",
+      "token1": {
+        "address": "0xe28b3b32b6c345a34ff64674606124dd5aceca30",
+        "decimals": "18",
+        "name": "Injective Token",
+        "symbol": "INJ"
+      },
+      "token1Price": "224.9271996142738831415787221785748",
+      "volumeToken0": "295546.98657610843807109",
+      "volumeToken1": "32881626.448926692268951732",
+      "volumeUSD": "745330363.7239367317057485880967184"
+    },
+    {
+      "address": "0x465e56cd21ad47d4d4790f17de5e0458f20c3719",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.000005738878736986196032449695277175484",
+      "token1": {
+        "address": "0xd1d2eb1b1e90b638588728b4130137d262c87cae",
+        "decimals": "8",
+        "name": "Gala",
+        "symbol": "GALA"
+      },
+      "token1Price": "174250.0662289922405551367651646162",
+      "volumeToken0": "255484.476796264900231144",
+      "volumeToken1": "21404923210.42180168",
+      "volumeUSD": "697993301.4879097775940958002054334"
+    },
+    {
+      "address": "0xd31d41dffa3589bb0c0183e46a1eed983a5e5978",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xbe0ed4138121ecfc5c0e56b40517da27e6c5226b",
+        "decimals": "18",
+        "name": "Aethir Token",
+        "symbol": "ATH"
+      },
+      "token0Price": "70362.66215888686462014594238466579",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00001421208307528056116534690038175109",
+      "volumeToken0": "5579013291.347694551403504449",
+      "volumeToken1": "112729.494229772433550623",
+      "volumeUSD": "330634251.9650132758074844778967946"
+    },
+    {
+      "address": "0xf239009a101b6b930a527deaab6961b6e7dec8a6",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
+        "decimals": "18",
+        "name": "Pepe",
+        "symbol": "PEPE"
+      },
+      "token0Price": "244218760.3685256703256986716229071",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000000004094689525452515596496332621898593",
+      "volumeToken0": "744408882810046.894317416001612622",
+      "volumeToken1": "174199.104289891045864523",
+      "volumeUSD": "341742495.6763463911147886382275424"
+    },
+    {
+      "address": "0x4c54ff7f1c424ff5487a32aad0b48b19cbaf087f",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xb62132e35a6c13ee1ee0f84dc5d40bad8d815206",
+        "decimals": "18",
+        "name": "Nexo",
+        "symbol": "NEXO"
+      },
+      "token0Price": "2114.229352876548603948860641589352",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0004729855815498134039738613388923231",
+      "volumeToken0": "752459734.994174085267744182",
+      "volumeToken1": "420697.148034451749434646",
+      "volumeUSD": "1056912855.769115048754125668200538"
+    },
+    {
+      "address": "0x16b70f44719b227278a2dc1122e8106cc929ecd1",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.000000005300267851196742863454129184235413",
+      "token1": {
+        "address": "0xd2877702675e6ceb975b4a1dff9fb7baf4c91ea9",
+        "decimals": "18",
+        "name": "Wrapped LUNA Token",
+        "symbol": "LUNA"
+      },
+      "token1Price": "188669710.300435263974064271189021",
+      "volumeToken0": "221711.605640790815564193",
+      "volumeToken1": "869776447823.680036893533123397",
+      "volumeUSD": "568661649.7306623172995317187574329"
+    },
+    {
+      "address": "0xad9ef19e289dcbc9ab27b83d2df53cdeff60f02d",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x15e6e0d4ebeac120f9a97e71faa6a0235b85ed12",
+        "decimals": "18",
+        "name": "SatoshiVM",
+        "symbol": "SAVM"
+      },
+      "token0Price": "15168.12217553658460610336155469227",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00006592773900600679926512898201797302",
+      "volumeToken0": "95601593.536331320134988571",
+      "volumeToken1": "213314.337172289084592636",
+      "volumeUSD": "536133671.7024229841867768511995587"
+    },
+    {
+      "address": "0xe331de28cd81b768c19a366b0e4e4675c45ec2da",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x55296f69f40ea6d20e478533c15a6b08b654e758",
+        "decimals": "18",
+        "name": "XY Oracle",
+        "symbol": "XYO"
+      },
+      "token0Price": "257870.5599682055405675289391244924",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000003877914563505412162101643353664756",
+      "volumeToken0": "33447132551.446085707709783954",
+      "volumeToken1": "180458.017775016549740978",
+      "volumeUSD": "554444066.1116004115292002175198555"
+    },
+    {
+      "address": "0x4628a0a564debfc8798eb55db5c91f2200486c24",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x6de037ef9ad2725eb40118bb1702ebb27e4aeb24",
+        "decimals": "18",
+        "name": "Render Token",
+        "symbol": "RNDR"
+      },
+      "token0Price": "768.3197855563618103363537539618664",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.001301541387842657308678012050407575",
+      "volumeToken0": "113438477.699917561700199318",
+      "volumeToken1": "145278.944324592789324501",
+      "volumeUSD": "422286431.0945645893350980890083672"
+    },
+    {
+      "address": "0x5aaa28ca43c6646fd1403e508f0fca1d92357dde",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x037a54aab062628c9bbae1fdb1583c195585fe41",
+        "decimals": "18",
+        "name": "LCX",
+        "symbol": "LCX"
+      },
+      "token0Price": "24090.23912599222070492897333681667",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00004151058836610084229495463684964262",
+      "volumeToken0": "4084857399.527811554629368119",
+      "volumeToken1": "190207.68557655697817788",
+      "volumeUSD": "546083442.3616969451095378357576835"
+    },
+    {
+      "address": "0x6c6bc977e13df9b0de53b251522280bb72383700",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "decimals": "18",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI"
+      },
+      "token0Price": "0.9999760569380204000210781819398885",
+      "token1": {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "decimals": "6",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token1Price": "1.000023943635263543110870197233538",
+      "volumeToken0": "7587018063.21756863708283528",
+      "volumeToken1": "7595370035.006501",
+      "volumeUSD": "7591922236.261552129000829534366845"
+    },
+    {
+      "address": "0x840deeef2f115cf50da625f7368c24af6fe74410",
+      "feeTier": "500",
+      "token0": {
+        "address": "0xbe9895146f7af43049ca1c1ae358b0541ea49704",
+        "decimals": "18",
+        "name": "Coinbase Wrapped Staked ETH",
+        "symbol": "cbETH"
+      },
+      "token0Price": "0.9075364622801738098326906486419219",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "1.101884102251399055168927706733155",
+      "volumeToken0": "1352539.029354979349449134",
+      "volumeToken1": "1384044.08557459453039592",
+      "volumeUSD": "2655353045.72842165515086175092454"
+    },
+    {
+      "address": "0x3b685307c8611afb2a9e83ebc8743dc20480716e",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x4e15361fd6b4bb609fa63c81a2be19d873717870",
+        "decimals": "18",
+        "name": "Fantom Token",
+        "symbol": "FTM"
+      },
+      "token0Price": "7696.079660744555928854049221946319",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0001299362849764545145895113392905396",
+      "volumeToken0": "1345288181.9368665665269772",
+      "volumeToken1": "507538.883256333323962082",
+      "volumeUSD": "1594529806.156626750411281751461635"
+    },
+    {
+      "address": "0xe3fe800b0de664bf0bca8ad58ecbc73b259047b0",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x595832f8fc6bf59c85c527fec3740a1b7a361269",
+        "decimals": "6",
+        "name": "PowerLedger",
+        "symbol": "POWR"
+      },
+      "token0Price": "16380.80056059128203779046146088514",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00006104707741853515123090030907653432",
+      "volumeToken0": "1151410084.95293",
+      "volumeToken1": "143610.741228188694501832",
+      "volumeUSD": "329487043.4253522986289397055585319"
+    },
+    {
+      "address": "0x06f00544c0bc62e6db10f46d370dfccdc23d8189",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.0004094987943364843441116335074039931",
+      "token1": {
+        "address": "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
+        "decimals": "18",
+        "name": "ether.fi governance token",
+        "symbol": "ETHFI"
+      },
+      "token1Price": "2442.009631848395604098411575260688",
+      "volumeToken0": "83782.488453510004567226",
+      "volumeToken1": "121048386.296945434015128595",
+      "volumeUSD": "261125799.83540209715832713591917"
+    },
+    {
+      "address": "0xfad57d2039c21811c8f2b5d5b65308aa99d31559",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x514910771af9ca656af840dff83e8264ecf986ca",
+        "decimals": "18",
+        "name": "ChainLink Token",
+        "symbol": "LINK"
+      },
+      "token0Price": "0.07540884520056523266528670290458854",
+      "token1": {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "decimals": "6",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token1Price": "13.26104381177427744062293486766027",
+      "volumeToken0": "32197280.651149844202844407",
+      "volumeToken1": "372587272.468458",
+      "volumeUSD": "372174890.7316665535149993787880304"
+    },
+    {
+      "address": "0x7b12d855445073987d45ea97b1af3554f05e4ef4",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x8355dbe8b0e275abad27eb843f3eaf3fc855e525",
+        "decimals": "18",
+        "name": "WOOL",
+        "symbol": "WOOL"
+      },
+      "token0Price": "1981107.016546928113529982552062638",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0000005047682894702988784278038610619424",
+      "volumeToken0": "6262648867.478644913948895655",
+      "volumeToken1": "117696.851721364069310598",
+      "volumeUSD": "311038314.6037408027441205490519533"
+    },
+    {
+      "address": "0x4d1eff861316396dd1915f69b49f4c2d7b11590d",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x7420b4b9a0110cdc71fb720908340c03f9bc03ec",
+        "decimals": "18",
+        "name": "JasmyCoin",
+        "symbol": "JASMY"
+      },
+      "token0Price": "198866.7777650276891953133496600769",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000005028491994683779629867165639019111",
+      "volumeToken0": "18231122035.749736667416161481",
+      "volumeToken1": "99407.805552861845909723",
+      "volumeUSD": "282798049.1403512115171418214984752"
+    },
+    {
+      "address": "0xcd83055557536eff25fd0eafbc56e74a1b4260b3",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xbc396689893d065f41bc2c6ecbee5e0085233447",
+        "decimals": "18",
+        "name": "Perpetual",
+        "symbol": "PERP"
+      },
+      "token0Price": "11222.5824066822702554907799155773",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00008910605097491369597661310092127014",
+      "volumeToken0": "466180479.014309661578632096",
+      "volumeToken1": "352246.702976314240542492",
+      "volumeUSD": "883571061.2852225602154005825564293"
+    },
+    {
+      "address": "0x744159757cac173a7a3ecf5e97adb10d1a725377",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xaea46a60368a7bd060eec7df8cba43b7ef41ad85",
+        "decimals": "18",
+        "name": "Fetch",
+        "symbol": "FET"
+      },
+      "token0Price": "3774.012063204767117528101151693415",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0002649700062566394758201982479883674",
+      "volumeToken0": "295721112.186207321419547117",
+      "volumeToken1": "129875.160605203964043072",
+      "volumeUSD": "377632251.9801451086235851073944267"
+    },
+    {
+      "address": "0xd3b4f5b4cf06498e4fbdd71c9da4f5befe01a0ed",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x20561172f791f915323241e885b4f7d5187c36e1",
+        "decimals": "18",
+        "name": "Calcium",
+        "symbol": "CAL"
+      },
+      "token0Price": "2834751.021382006314780412274980587",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0000003527646669697563077749197385705842",
+      "volumeToken0": "7084331600.053676371963343637",
+      "volumeToken1": "70839.813930897481609341",
+      "volumeUSD": "121495093.9889091767559378431786087"
+    },
+    {
+      "address": "0x43e7ade137b86798654d8e78c36d5a556a647224",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x8143182a775c54578c8b7b3ef77982498866945d",
+        "decimals": "8",
+        "name": "Wrapped QUIL",
+        "symbol": "wQUIL"
+      },
+      "token0Price": "75700.35891326214276764326169065402",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00001320997699820426345551357066667134",
+      "volumeToken0": "3263402315.93278958",
+      "volumeToken1": "159518.686605215999038442",
+      "volumeUSD": "462759735.3382649149961084112725563"
+    },
+    {
+      "address": "0x15153da0e9e13cfc167b3d417d3721bf545479bb",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x812ba41e071c7b7fa4ebcfb62df5f45f6fa853ee",
+        "decimals": "9",
+        "name": "Neiro",
+        "symbol": "Neiro"
+      },
+      "token0Price": "6492915.517878750904606356178375737",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0000001540140168536648531550242599439186",
+      "volumeToken0": "335737637263.445223167",
+      "volumeToken1": "118463.349821982088398483",
+      "volumeUSD": "312633671.1511415903384877915262934"
+    },
+    {
+      "address": "0xe21876afd4c632b22870df250e5df1754c1875e8",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.000009051181590468524188397677576522083",
+      "token1": {
+        "address": "0xda31d0d1bc934fc34f7189e38a413ca0a5e8b44f",
+        "decimals": "18",
+        "name": "BSSB",
+        "symbol": "BSSB"
+      },
+      "token1Price": "110482.8126587432801541184907748451",
+      "volumeToken0": "141374.105694913167845331",
+      "volumeToken1": "176679838.876450372612138379",
+      "volumeUSD": "332511827.5989813540549433177651031"
+    },
+    {
+      "address": "0x82c427adfdf2d245ec51d8046b41c4ee87f0d29c",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.0325252499922471889518192411512939",
+      "token1": {
+        "address": "0xf1b99e3e573a1a9c5e6b2ce818b617f0e664e86b",
+        "decimals": "18",
+        "name": "Opyn Squeeth",
+        "symbol": "oSQTH"
+      },
+      "token1Price": "30.74534400929624961269752182345963",
+      "volumeToken0": "304813.512141692745765522",
+      "volumeToken1": "3861128.776798449272621053",
+      "volumeUSD": "544560108.8796058659177327243966892"
+    },
+    {
+      "address": "0x961ec3bb28c9e98a040c4bded38917aa96b791be",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.000000003606314456654140192117140416775877",
+      "token1": {
+        "address": "0xd29da236dd4aac627346e1bba06a619e8c22d7c5",
+        "decimals": "9",
+        "name": "MAGA",
+        "symbol": "MAGA"
+      },
+      "token1Price": "277291404.2908443887303529687115023",
+      "volumeToken0": "104756.175483742905867794",
+      "volumeToken1": "2000366953016.582823204",
+      "volumeUSD": "372915756.0355229300346689430761484"
+    },
+    {
+      "address": "0xbe24f9952bf2a15bc4d2661151049d9588d6c0cb",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.00004557724012594436830633839808194661",
+      "token1": {
+        "address": "0xf94e7d0710709388bce3161c32b4eea56d3f91cc",
+        "decimals": "18",
+        "name": "Destra Network",
+        "symbol": "DSync"
+      },
+      "token1Price": "21940.77564233119143624102698909546",
+      "volumeToken0": "57582.310747649754210131",
+      "volumeToken1": "666215293.923475236287536246",
+      "volumeUSD": "181712945.4236888347405452165874744"
+    },
+    {
+      "address": "0xa3c2076eb97d573cc8842f1db1ecdf7b6f77ba27",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.00000002814004272829982279780435708258832",
+      "token1": {
+        "address": "0xccb365d2e11ae4d6d74715c680f56cf58bf4bf10",
+        "decimals": "18",
+        "name": "Wall Street Pepe",
+        "symbol": "WEPE"
+      },
+      "token1Price": "35536548.74142468759552180398982618",
+      "volumeToken0": "24431.477946740287199323",
+      "volumeToken1": "768934131311.694375862497641281",
+      "volumeUSD": "61415208.83325405754266849779577341"
+    },
+    {
+      "address": "0x0e2c4be9f3408e5b1ff631576d946eb8c224b5ed",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.00003346131242938883123467504246137103",
+      "token1": {
+        "address": "0xc944e90c64b2c07662a292be6244bdf05cda44a7",
+        "decimals": "18",
+        "name": "Graph Token",
+        "symbol": "GRT"
+      },
+      "token1Price": "29885.25934570657057326103311805796",
+      "volumeToken0": "173178.209815231431355779",
+      "volumeToken1": "2249901803.853378430493037824",
+      "volumeUSD": "443955458.5521982609138868679551098"
+    },
+    {
+      "address": "0x2a0330c7e979a4d18e5b0c987b877da24dd37d04",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x626e8036deb333b408be468f951bdb42433cbf18",
+        "decimals": "18",
+        "name": "AIOZ Network",
+        "symbol": "AIOZ"
+      },
+      "token0Price": "7504.955369165289132020117106264727",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0001332452960491384370110401876553402",
+      "volumeToken0": "1083688128.646011757554243392",
+      "volumeToken1": "100649.225159446215284545",
+      "volumeUSD": "295005421.252603643899187724008865"
+    },
+    {
+      "address": "0x7832310cd0de39c4ce0a635f34d9a4b5b47fd434",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0xaaee1a9723aadb7afa2810263653a34ba2c21c7a",
+        "decimals": "18",
+        "name": "Mog Coin",
+        "symbol": "Mog"
+      },
+      "token0Price": "2769631291.658390099575424991217609",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0000000003610588900449718386109534202585505",
+      "volumeToken0": "1029747645457120.1719655042459569",
+      "volumeToken1": "94173.475277082775925736",
+      "volumeUSD": "259665066.5498772218172127960650806"
+    },
+    {
+      "address": "0x7f63306a62c345365881e0fff85cb2c8baaa13d5",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x40fd72257597aa14c7231a7b1aaa29fce868f677",
+        "decimals": "18",
+        "name": "Sora Token",
+        "symbol": "XOR"
+      },
+      "token0Price": "2551359873719436481.250903270913217",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0000000000000000003919478433052938521223497295496907",
+      "volumeToken0": "1577476861576659954303.560329267086",
+      "volumeToken1": "5698.537555213662329896",
+      "volumeUSD": "15421142.48130117156526566821244637"
+    },
+    {
+      "address": "0xe936f0073549ad8b1fa53583600d629ba9375161",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x6de037ef9ad2725eb40118bb1702ebb27e4aeb24",
+        "decimals": "18",
+        "name": "Render Token",
+        "symbol": "RNDR"
+      },
+      "token0Price": "767.5947134616463371553256141611881",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.001302770827446515540755819872761542",
+      "volumeToken0": "210915185.308393496375882808",
+      "volumeToken1": "273085.525946095103701173",
+      "volumeUSD": "704331446.8212736227474051616739276"
+    },
+    {
+      "address": "0x6c4c7f46d9d4ef6bc5c9e155f011ad19fc4ef321",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x955d5c14c8d4944da1ea7836bd44d54a8ec35ba1",
+        "decimals": "18",
+        "name": "REFUND",
+        "symbol": "RFD"
+      },
+      "token0Price": "814746474.6396805021828556301646458",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000000001227375669765551774817933200203993",
+      "volumeToken0": "27010664607564.734287919329667305",
+      "volumeToken1": "240622.032097949774144684",
+      "volumeUSD": "453227885.3970807409288589053157475"
+    },
+    {
+      "address": "0xe15e6583425700993bd08f51bf6e7b73cd5da91b",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "decimals": "8",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC"
+      },
+      "token0Price": "0.000008993390408866515715639846509447244",
+      "token1": {
+        "address": "0x3472a5a71965499acd81997a54bba8d852c6e53d",
+        "decimals": "18",
+        "name": "Badger",
+        "symbol": "BADGER"
+      },
+      "token1Price": "111192.7709725697606440134164456489",
+      "volumeToken0": "18192.76803572",
+      "volumeToken1": "208297804.118001792508138681",
+      "volumeUSD": "768980927.0390820021003750104595451"
+    },
+    {
+      "address": "0x959c7d5706ac0b5a29f506a1019ba7f2a1c70c70",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x243cacb4d5ff6814ad668c3e225246efa886ad5a",
+        "decimals": "18",
+        "name": "Shina Inu",
+        "symbol": "SHI"
+      },
+      "token0Price": "7910646912.203390685469838552884352",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0000000001264119118320583936841150278641168",
+      "volumeToken0": "361143297149670.390480560935521878",
+      "volumeToken1": "107236.209372702696480983",
+      "volumeUSD": "241169324.9426632582810566443257568"
+    },
+    {
+      "address": "0xcbbc981bd5b358d09a9346726115d3ac8822d00b",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x7d29a64504629172a429e64183d6673b9dacbfce",
+        "decimals": "18",
+        "name": "VectorspaceAI",
+        "symbol": "VXV"
+      },
+      "token0Price": "87654.61302343712010441643071876378",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0000114084126950924951487078956849895",
+      "volumeToken0": "132518672.349741936599223755",
+      "volumeToken1": "109947.949328182754466096",
+      "volumeUSD": "344396294.7545421668087315463787963"
+    },
+    {
+      "address": "0xd8de6af55f618a7bc69835d55ddc6582220c36c0",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x92d6c1e31e14520e676a687f0a93788b716beff5",
+        "decimals": "18",
+        "name": "dYdX",
+        "symbol": "DYDX"
+      },
+      "token0Price": "5131.113839286700614238787902899046",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000194889458959853155658576892805651",
+      "volumeToken0": "248041384.591445398115666559",
+      "volumeToken1": "578426.850562592603604144",
+      "volumeUSD": "1684514720.514854955587957644713962"
+    },
+    {
+      "address": "0x1df4c6e36d61416813b42fe32724ef11e363eddc",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x9e9fbde7c7a83c43913bddc8779158f1368f0413",
+        "decimals": "18",
+        "name": "Pandora",
+        "symbol": "PANDORA"
+      },
+      "token0Price": "2.96578687046417328045075132150226",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.337178645559075754487004878136505",
+      "volumeToken0": "115687.252514409602657746",
+      "volumeToken1": "382387.225582344518174711",
+      "volumeUSD": "1061659881.223680905332770896675253"
+    },
+    {
+      "address": "0x1aff94bb420361109097916970b8bfb7ab5ac3a6",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x960692640ac4986ffce41620b7e3aa03cf1a0e8f",
+        "decimals": "18",
+        "name": "MeTeorite",
+        "symbol": "MTT"
+      },
+      "token0Price": "155717.7824017317605191275443659123",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000006421874140360727689793488566296874",
+      "volumeToken0": "2588497934.302607061652735168",
+      "volumeToken1": "44431.595068962289286514",
+      "volumeUSD": "104292642.7049489720163160513890066"
+    },
+    {
+      "address": "0x498498fa386ef2860e7abf8c60254580c8c41ec5",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x7b4328c127b85369d9f82ca0503b000d09cf9180",
+        "decimals": "18",
+        "name": "Dogechain Token",
+        "symbol": "DC"
+      },
+      "token0Price": "32572023.29036683210887615899218767",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00000003070119381548366246202725338979584",
+      "volumeToken0": "129428194772.256457907405930547",
+      "volumeToken1": "135724.931509245413604378",
+      "volumeUSD": "212155148.1718419256592761790775755"
+    },
+    {
+      "address": "0x6a888fb73f13104473a4bdfb1beb220ac1eafda3",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x24fcfc492c1393274b6bcd568ac9e225bec93584",
+        "decimals": "18",
+        "name": "Heroes of Mavia",
+        "symbol": "MAVIA"
+      },
+      "token0Price": "16064.14604078191147792145036517365",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00006225043008581399040931249305780096",
+      "volumeToken0": "120089714.0281936606535438",
+      "volumeToken1": "109449.354232474180537954",
+      "volumeUSD": "335621151.0336084642575158330391923"
+    },
+    {
+      "address": "0x59354356ec5d56306791873f567d61ebf11dfbd5",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xb50721bcf8d664c30412cfbc6cf7a15145234ad1",
+        "decimals": "18",
+        "name": "Arbitrum",
+        "symbol": "ARB"
+      },
+      "token0Price": "8103.713464144070326121787464712921",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0001234002170023199243873186908825145",
+      "volumeToken0": "276640494.079543498158510298",
+      "volumeToken1": "119890.684527916168551458",
+      "volumeUSD": "317957716.261506668008435359561282"
+    },
+    {
+      "address": "0xeb5c52e8af57334fab0b5f3d888990c108545527",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.000003572044878352073721206565359139055",
+      "token1": {
+        "address": "0xd5d86fc8d5c0ea1ac1ac5dfab6e529c9967a45e9",
+        "decimals": "18",
+        "name": "NFT Worlds",
+        "symbol": "WRLD"
+      },
+      "token1Price": "279951.6898738796771601022533389293",
+      "volumeToken0": "163131.573785138473910552",
+      "volumeToken1": "3813307899.505228691256206361",
+      "volumeUSD": "450193845.3770940320627337408640765"
+    },
+    {
+      "address": "0xaf81e930620eb55a9a6927c4b2afcb4d61040c32",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x582d872a1b094fc48f5de31d3b73f2d9be47def1",
+        "decimals": "9",
+        "name": "Wrapped TON Coin",
+        "symbol": "TONCOIN"
+      },
+      "token0Price": "860.3623989438495910023206919498382",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00116230091090401507833170155082901",
+      "volumeToken0": "37266451.06820968",
+      "volumeToken1": "76274.234866889438632934",
+      "volumeUSD": "224933508.8928710460054532514031968"
+    },
+    {
+      "address": "0x553e9c493678d8606d6a5ba284643db2110df823",
+      "feeTier": "100",
+      "token0": {
+        "address": "0xae78736cd615f374d3085123a210448e74fc6393",
+        "decimals": "18",
+        "name": "Rocket Pool ETH",
+        "symbol": "rETH"
+      },
+      "token0Price": "0.8784873191928170495691514473757116",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "1.138320358361954257231741357337275",
+      "volumeToken0": "1149759.322732714341577229",
+      "volumeToken1": "1274969.367059730736991436",
+      "volumeUSD": "3615155776.496139623149280487955401"
+    },
+    {
+      "address": "0x948b54a93f5ad1df6b8bff6dc249d99ca2eca052",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0xaea46a60368a7bd060eec7df8cba43b7ef41ad85",
+        "decimals": "18",
+        "name": "Fetch",
+        "symbol": "FET"
+      },
+      "token0Price": "3748.252546151510136614567053538447",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0002667909879836518520870929572411764",
+      "volumeToken0": "533995262.144687877309119068",
+      "volumeToken1": "161468.491317135490457395",
+      "volumeUSD": "405133529.7246915867415958270950451"
+    },
+    {
+      "address": "0x403b1b747b1efb309070436c9ac99bf476f299ea",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x1151cb3d861920e07a38e03eead12c32178567f6",
+        "decimals": "5",
+        "name": "Bonk",
+        "symbol": "Bonk"
+      },
+      "token0Price": "175907319.8963259434497833590120078",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000000005684811755357124964454184750500834",
+      "volumeToken0": "7523329044610.1217",
+      "volumeToken1": "54948.44014739146319168",
+      "volumeUSD": "147746662.7464185850595368020517889"
+    },
+    {
+      "address": "0x177622e79acece98c39f6e12fa78ac7fc8a8bf62",
+      "feeTier": "100",
+      "token0": {
+        "address": "0xbe9895146f7af43049ca1c1ae358b0541ea49704",
+        "decimals": "18",
+        "name": "Coinbase Wrapped Staked ETH",
+        "symbol": "cbETH"
+      },
+      "token0Price": "0.9071207935057923404334390628374316",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "1.102389017161929479596383882161787",
+      "volumeToken0": "213309.119122521832992271",
+      "volumeToken1": "231057.579607251158164463",
+      "volumeUSD": "650689825.5165748419289822234521075"
+    },
+    {
+      "address": "0x7618c038113503d15029a41857e352f43b4dcc6e",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "37.55309644188568490566136052331789",
+      "token1": {
+        "address": "0xfa3e941d1f6b7b10ed84a0c211bfa8aee907965e",
+        "decimals": "18",
+        "name": "HayCoin",
+        "symbol": "HAY"
+      },
+      "token1Price": "0.02662896258228729346306761397155654",
+      "volumeToken0": "61979.240685725719831031",
+      "volumeToken1": "89.704561101953423847",
+      "volumeUSD": "104999042.9525491134351703696861735"
+    },
+    {
+      "address": "0x2cad29e9640b9bcfb1d8d25cf3e4bd05f55cce70",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x78a0a62fba6fb21a83fe8a3433d44c73a4017a6f",
+        "decimals": "18",
+        "name": "Open Exchange Token",
+        "symbol": "OX"
+      },
+      "token0Price": "340256786540325221128184995839410500000",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000000000000000000000000000000000000002938956810142818170490203137305544",
+      "volumeToken0": "18562762127.855624746643840246",
+      "volumeToken1": "188093.580929821547158834",
+      "volumeUSD": "362296206.0610696267973342445635885"
+    },
+    {
+      "address": "0x18bbe20f81bdcb340325e28a6ee6bb426b7ccbc1",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x8248270620aa532e4d64316017be5e873e37cc09",
+        "decimals": "18",
+        "name": "DevvE",
+        "symbol": "DEVVE"
+      },
+      "token0Price": "5260.616771273795123975472460706142",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0001900917788690891503523702772090541",
+      "volumeToken0": "224903772.569880365308304178",
+      "volumeToken1": "56975.911690151181626036",
+      "volumeUSD": "166766704.9427754970599739014737421"
+    },
+    {
+      "address": "0x6ce6d6d40a4c4088309293b0582372a2e6bb632e",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xaf5191b0de278c7286d6c7cc6ab6bb8a73ba2cd6",
+        "decimals": "18",
+        "name": "StargateToken",
+        "symbol": "STG"
+      },
+      "token0Price": "7232.767694486022931159437903906925",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0001382596596821933867768647307691724",
+      "volumeToken0": "82232200.577338162760538223",
+      "volumeToken1": "53094.704079943777868838",
+      "volumeUSD": "156387371.3601347570985817443301738"
+    },
+    {
+      "address": "0x80ed1b41476b95fb47830825b65fd3bf59f6a348",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x069d89974f4edabde69450f9cf5cf7d8cbd2568d",
+        "decimals": "18",
+        "name": "BVM",
+        "symbol": "BVM"
+      },
+      "token0Price": "89702.25311250977805532650593379467",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0000111479919991055508317954826826765",
+      "volumeToken0": "218556864.895038375151861978",
+      "volumeToken1": "160843.318802881782900373",
+      "volumeUSD": "567832273.8864802492239413483529994"
+    },
+    {
+      "address": "0x2322e5517a3cbc75a3f02d74c96f82dda120d841",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x046eee2cc3188071c02bfc1745a6b17c656e3f3d",
+        "decimals": "18",
+        "name": "Rollbit Coin",
+        "symbol": "RLB"
+      },
+      "token0Price": "21.31917397904828929745148173153033",
+      "token1": {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "decimals": "6",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token1Price": "0.04690613252571435079305457726924306",
+      "volumeToken0": "3680655152.29877111619582156",
+      "volumeToken1": "376992123.877501",
+      "volumeUSD": "376992123.877501"
+    },
+    {
+      "address": "0xe859041c9c6d70177f83de991b9d757e13cea26e",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x3819f64f282bf135d62168c1e513280daf905e06",
+        "decimals": "9",
+        "name": "Hedron",
+        "symbol": "HDRN"
+      },
+      "token0Price": "44577915.6424450946725066171566296",
+      "token1": {
+        "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "decimals": "6",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token1Price": "0.00000002243263251743077886405483132115757",
+      "volumeToken0": "173000705913062.515984997",
+      "volumeToken1": "384310741.457675",
+      "volumeUSD": "384310741.457675"
+    },
+    {
+      "address": "0x151ccb92bc1ed5c6d0f9adb5cec4763ceb66ac7f",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xaa6e8127831c9de45ae56bb1b0d4d4da6e5665bd",
+        "decimals": "18",
+        "name": "ETH 2x Flexible Leverage Index",
+        "symbol": "ETH2x-FLI"
+      },
+      "token0Price": "331.7407296231905830615636857982796",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.003014402244595817800859315024489441",
+      "volumeToken0": "34656675.32017404581214456",
+      "volumeToken1": "908398.359021340106022586",
+      "volumeUSD": "2799252973.721873918123212765369434"
+    },
+    {
+      "address": "0x42d403ab9b0603442ac991c0cfe124105dde0811",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x3007083eaa95497cd6b2b809fb97b6a30bdf53d3",
+        "decimals": "18",
+        "name": "Psyop",
+        "symbol": "PSYOP"
+      },
+      "token0Price": "121915648.0959965297844379110041979",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.000000008202392519888823312991305615834538",
+      "volumeToken0": "144485998050.337442946040395284",
+      "volumeToken1": "136988.826135715213774203",
+      "volumeUSD": "251718987.5683648657681073449642712"
+    },
+    {
+      "address": "0x757d8d585ee1488097305bcb0fcec1ac4a55e9d6",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x382ea807a61a418479318efd96f1efbc5c1f2c21",
+        "decimals": "18",
+        "name": "pepe in a memes world",
+        "symbol": "PEW"
+      },
+      "token0Price": "7398499532.828057517553787624969256",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0000000001351625414805902621276696974746579",
+      "volumeToken0": "22983879190554.786115506247615544",
+      "volumeToken1": "102486.93980643265425275",
+      "volumeUSD": "386485128.7144971887696859847847916"
+    },
+    {
+      "address": "0x30ea22c879628514f1494d4bbfef79d21a6b49a2",
+      "feeTier": "500",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "1.092562751656557465750274374006758",
+      "token1": {
+        "address": "0xf951e335afb289353dc249e82926178eac7ded78",
+        "decimals": "18",
+        "name": "swETH",
+        "symbol": "swETH"
+      },
+      "token1Price": "0.9152792354341087953945199064862319",
+      "volumeToken0": "203201.355314905975305295",
+      "volumeToken1": "192757.708542399458889188",
+      "volumeUSD": "556572526.7143179862608086552871283"
+    },
+    {
+      "address": "0xe8f7c89c5efa061e340f2d2f206ec78fd8f7e124",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "decimals": "8",
+        "name": "Wrapped BTC",
+        "symbol": "WBTC"
+      },
+      "token0Price": "1.000406442899142706175619091159322",
+      "token1": {
+        "address": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+        "decimals": "8",
+        "name": "Coinbase Wrapped BTC",
+        "symbol": "cbBTC"
+      },
+      "token1Price": "0.9995937222295721637489639340386821",
+      "volumeToken0": "113271.04729353",
+      "volumeToken1": "113075.65359284",
+      "volumeUSD": "10892203828.41616868612070583243154"
+    },
+    {
+      "address": "0xf935f557e06a7d040dea4691f90c9a755301818b",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x25722cd432d02895d9be45f5deb60fc479c8781e",
+        "decimals": "18",
+        "name": "SpongeBob",
+        "symbol": "SPONGE"
+      },
+      "token0Price": "68826377.98886079759029743119172969",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00000001452931316771957635558252343620051",
+      "volumeToken0": "562499650326.072109294470684306",
+      "volumeToken1": "165066.646896001256721397",
+      "volumeUSD": "312412281.7632943784190505975977963"
+    },
+    {
+      "address": "0x8661ae7918c0115af9e3691662f605e9c550ddc9",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x0f5d2fb29fb7d3cfee444a200298f468908cc942",
+        "decimals": "18",
+        "name": "Decentraland MANA",
+        "symbol": "MANA"
+      },
+      "token0Price": "9834.746674121516679126603850414517",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0001016803007881567471389684512747362",
+      "volumeToken0": "378504153.410108647244049855",
+      "volumeToken1": "181603.216840403795744633",
+      "volumeUSD": "503590580.2684120851664124090404702"
+    },
+    {
+      "address": "0xc48396f068c62e0192c9f2c1caa7e07bbd15dbc7",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x1294f4183763743c7c9519bec51773fb3acd78fd",
+        "decimals": "18",
+        "name": "Fideum",
+        "symbol": "FI"
+      },
+      "token0Price": "12771057.20399111353434293854089551",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00000007830205315245848369517777968247066",
+      "volumeToken0": "27078193220.565645144778833475",
+      "volumeToken1": "80841.601984905417654597",
+      "volumeUSD": "230391370.7412248996762527152410854"
+    },
+    {
+      "address": "0x6f48eca74b38d2936b02ab603ff4e36a6c0e3a77",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "decimals": "18",
+        "name": "Dai Stablecoin",
+        "symbol": "DAI"
+      },
+      "token0Price": "1.00051773185221152689557246981372",
+      "token1": {
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "decimals": "6",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.9994825360553549868501099685498563",
+      "volumeToken0": "2588759793.758957395854266435",
+      "volumeToken1": "2590613185.445116",
+      "volumeUSD": "2591960685.905528872568803435918411"
+    },
+    {
+      "address": "0x381fe4eb128db1621647ca00965da3f9e09f4fac",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x761d38e5ddf6ccf6cf7c55759d5210750b5d60f3",
+        "decimals": "18",
+        "name": "Dogelon",
+        "symbol": "ELON"
+      },
+      "token0Price": "21411003120.04487275737158705712424",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00000000004670495793183109020791524517105645",
+      "volumeToken0": "312516934925730.437810620033797548",
+      "volumeToken1": "56698.93355909631113613",
+      "volumeUSD": "197859755.6953783287891369156115515"
+    },
+    {
+      "address": "0x4b62fa30fea125e43780dc425c2be5acb4ba743b",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x582d872a1b094fc48f5de31d3b73f2d9be47def1",
+        "decimals": "9",
+        "name": "Wrapped TON Coin",
+        "symbol": "TONCOIN"
+      },
+      "token0Price": "866.2268974382542852786283697139507",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.001154431942666939900001375472015535",
+      "volumeToken0": "113037166.444094863",
+      "volumeToken1": "157944.059070449223911785",
+      "volumeUSD": "381814410.1731384220791404607247177"
+    },
+    {
+      "address": "0x33676385160f9d8f03a0db2821029882f7c79e93",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x046eee2cc3188071c02bfc1745a6b17c656e3f3d",
+        "decimals": "18",
+        "name": "Rollbit Coin",
+        "symbol": "RLB"
+      },
+      "token0Price": "21.36071381969095006958557683630653",
+      "token1": {
+        "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+        "decimals": "6",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.0468149149153512766923510261762611",
+      "volumeToken0": "3807658483.366377629470025594",
+      "volumeToken1": "347940713.687916",
+      "volumeUSD": "347940420.8142514190424571978258038"
+    },
+    {
+      "address": "0x32d9259e6792b2150fd50395d971864647fa27b2",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x320623b8e4ff03373931769a31fc52a4e78b5d70",
+        "decimals": "18",
+        "name": "Reserve Rights",
+        "symbol": "RSR"
+      },
+      "token0Price": "392495.7180654212571786364250638011",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00000254779849555790521868257250459362",
+      "volumeToken0": "29726145453.617471488710731119",
+      "volumeToken1": "70587.704585655342341168",
+      "volumeUSD": "203212948.9231075832198235686993676"
+    },
+    {
+      "address": "0xdd949d1fe117744a38319c7b7dcc045d630bcc8d",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token0Price": "0.00001567373475743458528738626079100645",
+      "token1": {
+        "address": "0xcb76314c2540199f4b844d4ebbc7998c604880ca",
+        "decimals": "18",
+        "name": "Strawberry AI",
+        "symbol": "BERRY"
+      },
+      "token1Price": "63801.00310971933482286316990903202",
+      "volumeToken0": "38417.378122573460549802",
+      "volumeToken1": "1466971807.921922812894412865",
+      "volumeUSD": "106622070.0598724889769571862705414"
+    },
+    {
+      "address": "0xe4e86c6805884736c0faea1e559c51f37da15812",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0x710287d1d39dcf62094a83ebb3e736e79400068a",
+        "decimals": "18",
+        "name": "enqAI",
+        "symbol": "ENQAI"
+      },
+      "token0Price": "1298300.463690562028996255414422484",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0000007702377284510781780652855295229374",
+      "volumeToken0": "7811744119.773748280212572504",
+      "volumeToken1": "73494.005870801051789937",
+      "volumeUSD": "226494280.9230606972381362137677973"
+    },
+    {
+      "address": "0x25215d9ba4403b3da77ce50606b54577a71b7895",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x96a5399d07896f757bd4c6ef56461f58db951862",
+        "decimals": "18",
+        "name": "DragonX",
+        "symbol": "DRAGONX"
+      },
+      "token0Price": "0.0893965556829036799976917948821421",
+      "token1": {
+        "address": "0xf19308f923582a6f7c465e5ce7a9dc1bec6665b1",
+        "decimals": "18",
+        "name": "TITAN X",
+        "symbol": "TITANX"
+      },
+      "token1Price": "11.18611329442126787065354526044154",
+      "volumeToken0": "31180042140479.74327471984736507",
+      "volumeToken1": "219068287742801.505328559703890437",
+      "volumeUSD": "0"
+    },
+    {
+      "address": "0x9e0fc414e8d5c45b0890c32ab9329ac90b3ab534",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x3ffeea07a27fab7ad1df5297fa75e77a43cb5790",
+        "decimals": "18",
+        "name": "PeiPei",
+        "symbol": "PEIPEI"
+      },
+      "token0Price": "83151410160.67982155584880119697192",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.00000000001202625425194381686146271717834288",
+      "volumeToken0": "932370849120805.130839297670201643",
+      "volumeToken1": "50068.869901825421515443",
+      "volumeUSD": "158695292.6786565295588570422018143"
+    },
+    {
+      "address": "0x80c7770b4399ae22149db17e97f9fc8a10ca5100",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xa8b919680258d369114910511cc87595aec0be6d",
+        "decimals": "18",
+        "name": "LUKSO Token",
+        "symbol": "LYXe"
+      },
+      "token0Price": "3208.271812338315955278312513605372",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.0003116942885432017906021214347576098",
+      "volumeToken0": "42640697.496533355888772352",
+      "volumeToken1": "197892.18933682074798409",
+      "volumeUSD": "516366288.9076979168260661183689413"
+    },
+    {
+      "address": "0xea4ba4ce14fdd287f380b55419b1c5b6c3f22ab6",
+      "feeTier": "3000",
+      "token0": {
+        "address": "0xc00e94cb662c3520282e6f5717214004a7f26888",
+        "decimals": "18",
+        "name": "Compound",
+        "symbol": "COMP"
+      },
+      "token0Price": "48.29698179336108377062366836601581",
+      "token1": {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "decimals": "18",
+        "name": "Wrapped Ether",
+        "symbol": "WETH"
+      },
+      "token1Price": "0.02070522759120861402333438313314075",
+      "volumeToken0": "6043104.681203542682107016",
+      "volumeToken1": "324941.508069144620819343",
+      "volumeUSD": "849665392.9092026733796720406831959"
+    }
+  ]
+}

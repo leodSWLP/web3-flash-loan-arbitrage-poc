@@ -1,0 +1,3154 @@
+{
+  "pools": [
+    {
+      "address": "0x5968feacba91d55010975e0cfe8acfc32664ad33",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "2.008799614629731688261043488229108",
+      "token1": {
+        "address": "0xc71b5f631354be6853efe9c3ab6b9590f8302e81",
+        "decimals": "18",
+        "name": "Polyhedra Network",
+        "symbol": "ZK"
+      },
+      "token1Price": "0.4978097330949175681917261192585387",
+      "volumeToken0": "75873551647.200225398187053826",
+      "volumeToken1": "37476740429.877013083767841364",
+      "volumeUSD": "75913897554.75473553083170388676036"
+    },
+    {
+      "address": "0x172fcd41e0913e95784454622d1c3724f546f849",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "647.02672368951898130085934874465",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.001545531217470791989778237636086568",
+      "volumeToken0": "79676361862.040497042069208985",
+      "volumeToken1": "159542615.058091142287328649",
+      "volumeUSD": "80671647095.17385730534304990836439"
+    },
+    {
+      "address": "0x36696169c63e42cd08ce11f5deebbcebae652050",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "646.7892968698811597415698745496675",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.001546098559205404648879087773860898",
+      "volumeToken0": "33357562931.860756836095394335",
+      "volumeToken1": "78996568.000551493866781243",
+      "volumeUSD": "33751453608.40059320333414004799262"
+    },
+    {
+      "address": "0x7d94b911a51670f78a44a7af3c2bf773c42f2497",
+      "feeTier": "100",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.003105023906162020648748914440696168",
+      "token1": {
+        "address": "0xc71b5f631354be6853efe9c3ab6b9590f8302e81",
+        "decimals": "18",
+        "name": "Polyhedra Network",
+        "symbol": "ZK"
+      },
+      "token1Price": "322.0587120168278145758642511387427",
+      "volumeToken0": "19939020.498528295920543176",
+      "volumeToken1": "6454879062.072517469316919287",
+      "volumeUSD": "13219444043.97841216907883142121186"
+    },
+    {
+      "address": "0xf2688fb5b81049dfb7703ada5e770543770612c4",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+        "decimals": "18",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token0Price": "647.5238424146054542615544122534929",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.001544344678137282044951293297428752",
+      "volumeToken0": "9285106419.494554675985165573",
+      "volumeToken1": "14626485.299361800692915407",
+      "volumeUSD": "9284811543.283978756022822766725828"
+    },
+    {
+      "address": "0x08a10ae012df633abbf710ef8bd3a9745a9e5816",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+        "decimals": "18",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token0Price": "2.010398930975289204351365671317766",
+      "token1": {
+        "address": "0xc71b5f631354be6853efe9c3ab6b9590f8302e81",
+        "decimals": "18",
+        "name": "Polyhedra Network",
+        "symbol": "ZK"
+      },
+      "token1Price": "0.4974137145580741898301739087620901",
+      "volumeToken0": "12427714462.672556464383236587",
+      "volumeToken1": "6139703419.110491306457100036",
+      "volumeUSD": "12427714462.672556464383236587"
+    },
+    {
+      "address": "0xc1a780989734a0e5df875cebe410748562e1c5e6",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x783c3f003f172c6ac5ac700218a357d2d66ee2a2",
+        "decimals": "18",
+        "name": "BSquared Token",
+        "symbol": "B2"
+      },
+      "token0Price": "1337.321077367613107666554528921717",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.0007477635826756002781318206996828385",
+      "volumeToken0": "12446599725.1097191450502953",
+      "volumeToken1": "12074604.438990109519570637",
+      "volumeUSD": "7902410685.554388952627008092007075"
+    },
+    {
+      "address": "0xea27b3e61144f0417f27aedaa1b9e46fa5a49ff1",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.4838563978346249454907884746587279",
+      "token1": {
+        "address": "0x783c3f003f172c6ac5ac700218a357d2d66ee2a2",
+        "decimals": "18",
+        "name": "BSquared Token",
+        "symbol": "B2"
+      },
+      "token1Price": "2.066728898233532098920665817476949",
+      "volumeToken0": "6007037131.220984767184315001",
+      "volumeToken1": "9376721772.684153640033124475",
+      "volumeUSD": "6009056385.271987738062506562649043"
+    },
+    {
+      "address": "0xcf59b8c8baa2dea520e3d549f97d4e49ade17057",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "63.48344963403326061398715629083733",
+      "token1": {
+        "address": "0xe6df05ce8c8301223373cf5b969afcb1498c5528",
+        "decimals": "18",
+        "name": "BNB48 Club Token",
+        "symbol": "KOGE"
+      },
+      "token1Price": "0.01575213706508953499018051297423934",
+      "volumeToken0": "7084452369.946209398953902345",
+      "volumeToken1": "118952683.494965841845321041",
+      "volumeUSD": "7088284602.805044906182387172051023"
+    },
+    {
+      "address": "0x85faac652b707fdf6907ef726751087f9e0b6687",
+      "feeTier": "500",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.001544996486434778536397212203544237",
+      "token1": {
+        "address": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+        "decimals": "18",
+        "name": "BUSD Token",
+        "symbol": "BUSD"
+      },
+      "token1Price": "647.2506628850606357357811741155795",
+      "volumeToken0": "6621107.264446829318764647",
+      "volumeToken1": "1962798763.395228187519159578",
+      "volumeUSD": "1997516760.219700694841639541496272"
+    },
+    {
+      "address": "0x4f3126d5de26413abdcf6948943fb9d0847d9818",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.9992453648727818108549567259508095",
+      "token1": {
+        "address": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+        "decimals": "18",
+        "name": "BUSD Token",
+        "symbol": "BUSD"
+      },
+      "token1Price": "1.000755205031463183180818902916774",
+      "volumeToken0": "4460963630.994077748735289896",
+      "volumeToken1": "4441772927.26522187230518703",
+      "volumeUSD": "4567333198.957273606156592719026743"
+    },
+    {
+      "address": "0x69b86059c5fb3a44355937e7b505a659443b9a22",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.0386606349991646832819910232387327",
+      "token1": {
+        "address": "0x92aa03137385f18539301349dcfc9ebc923ffb10",
+        "decimals": "18",
+        "name": "SKYAI",
+        "symbol": "SKYAI"
+      },
+      "token1Price": "25.86610385529379920893910193456952",
+      "volumeToken0": "3326142656.349208490343051116",
+      "volumeToken1": "56778255252.996392776093035225",
+      "volumeUSD": "3327300199.674244949677424824245808"
+    },
+    {
+      "address": "0x247f51881d1e3ae0f759afb801413a6c948ef442",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "104808.853998312876752451269365469",
+      "token1": {
+        "address": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+        "decimals": "18",
+        "name": "BTCB Token",
+        "symbol": "BTCB"
+      },
+      "token1Price": "0.00000954117864904903114681347638726097",
+      "volumeToken0": "5479677039.435919883275805067",
+      "volumeToken1": "66518.466402376601281382",
+      "volumeUSD": "5478027926.021385519815635773271755"
+    },
+    {
+      "address": "0x62fcb3c1794fb95bd8b1a97f6ad5d8a7e4943a1e",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+        "decimals": "18",
+        "name": "Ethereum Token",
+        "symbol": "ETH"
+      },
+      "token0Price": "0.2599834499057197032817875265203537",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "3.846398685618794617029208642488033",
+      "volumeToken0": "1407066.566045369643335365",
+      "volumeToken1": "6562159.121617353563563406",
+      "volumeUSD": "4076262545.370432228250369703677861"
+    },
+    {
+      "address": "0x92b7807bf19b7dddf89b706143896d05228f3121",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.9991341806941727847935111400127738",
+      "token1": {
+        "address": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+        "decimals": "18",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token1Price": "1.000866569598515452824434445034249",
+      "volumeToken0": "8778422312.539275879520894226",
+      "volumeToken1": "8778999632.282181610769630983",
+      "volumeUSD": "8886882392.654346915574275798889097"
+    },
+    {
+      "address": "0xafb2da14056725e3ba3a30dd846b6bbbd7886c56",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+        "decimals": "18",
+        "name": "PancakeSwap Token",
+        "symbol": "Cake"
+      },
+      "token0Price": "276.8213584689855223685017139039951",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.003612438019705903141709141991025558",
+      "volumeToken0": "714686670.260996099007123439",
+      "volumeToken1": "3749431.925123408875722767",
+      "volumeUSD": "1750829667.717257212854362793870407"
+    },
+    {
+      "address": "0xbdccafb234be6dc2545b0c25b0a5f5d9d1124228",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+        "decimals": "18",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token0Price": "0.1010560047438725325199097404094999",
+      "token1": {
+        "address": "0xa0c56a8c0692bd10b3fa8f8ba79cf5332b7107f9",
+        "decimals": "18",
+        "name": "MERL",
+        "symbol": "MERL"
+      },
+      "token1Price": "9.895503018692556940275967508203402",
+      "volumeToken0": "4443983305.471193199509132543",
+      "volumeToken1": "36087184258.886510159485784501",
+      "volumeUSD": "4443983305.471193199509132543"
+    },
+    {
+      "address": "0x099f84de4fb511e861ca8f635623eae409405873",
+      "feeTier": "100",
+      "token0": {
+        "address": "0xc71b5f631354be6853efe9c3ab6b9590f8302e81",
+        "decimals": "18",
+        "name": "Polyhedra Network",
+        "symbol": "ZK"
+      },
+      "token0Price": "31.60355164205086039529282570389852",
+      "token1": {
+        "address": "0xe6df05ce8c8301223373cf5b969afcb1498c5528",
+        "decimals": "18",
+        "name": "BNB48 Club Token",
+        "symbol": "KOGE"
+      },
+      "token1Price": "0.03164201325617549003380238764567702",
+      "volumeToken0": "1912475357.677989429244470242",
+      "volumeToken1": "60512487.074856605339040217",
+      "volumeUSD": "0"
+    },
+    {
+      "address": "0xb433ae7e7011a2fb9a4bbb86140e0f653dcfcfba",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55ad16bd573b3365f43a9daeb0cc66a73821b4a5",
+        "decimals": "18",
+        "name": "OKZOO",
+        "symbol": "AIOT"
+      },
+      "token0Price": "4331.00857952784405632352266519957",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.0002308931006802617670732199023931034",
+      "volumeToken0": "7103089849.897413143120809262",
+      "volumeToken1": "3690538.388380155030852156",
+      "volumeUSD": "2402889346.624407672214020992837099"
+    },
+    {
+      "address": "0x46cf1cf8c69595804ba91dfdd8d6b960c9b0a7c4",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "104786.3898035857198299133340806672",
+      "token1": {
+        "address": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+        "decimals": "18",
+        "name": "BTCB Token",
+        "symbol": "BTCB"
+      },
+      "token1Price": "0.000009543224094984334235754994409408468",
+      "volumeToken0": "13205754441.311080244741787294",
+      "volumeToken1": "216234.64284358703812493",
+      "volumeUSD": "13328205677.99060848079530972004733"
+    },
+    {
+      "address": "0xbe141893e4c6ad9272e8c04bab7e6a10604501a5",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+        "decimals": "18",
+        "name": "Ethereum Token",
+        "symbol": "ETH"
+      },
+      "token0Price": "0.0004017957994507675987541082782969655",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "2488.826417217263369633149753935987",
+      "volumeToken0": "1808123.528755625360450497",
+      "volumeToken1": "5045686470.482625591859536157",
+      "volumeUSD": "5067895907.544180513819586771345692"
+    },
+    {
+      "address": "0x588d7cf062f4edd7c7c7f2d66fd770e03b1ea735",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x6894cde390a3f51155ea41ed24a33a4827d3063d",
+        "decimals": "18",
+        "name": "Simons Cat",
+        "symbol": "CAT"
+      },
+      "token0Price": "94606369.97790775954126482903249956",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00000001057011277605849873665624312190461",
+      "volumeToken0": "76563772095391.331028678645481973",
+      "volumeToken1": "3496387.437648256303524641",
+      "volumeUSD": "2089242707.609864909080343261619993"
+    },
+    {
+      "address": "0x8f45b99bf65cdbf9bc0c0b4846d6a324d2de5314",
+      "feeTier": "100",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.001544827014195961724179510048888078",
+      "token1": {
+        "address": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+        "decimals": "18",
+        "name": "BUSD Token",
+        "symbol": "BUSD"
+      },
+      "token1Price": "647.3216682584175277694384488741871",
+      "volumeToken0": "544927.05176469934752573",
+      "volumeToken1": "350544796.248580011369302388",
+      "volumeUSD": "350273809.6378913416235365895206512"
+    },
+    {
+      "address": "0x62edaf2a56c9fb55be5f9b1399ac067f6a37013b",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+        "decimals": "18",
+        "name": "BTCB Token",
+        "symbol": "BTCB"
+      },
+      "token0Price": "0.006172000096220031870272438088158282",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "162.0220324708740881345073590691233",
+      "volumeToken0": "22101.123380905686444993",
+      "volumeToken1": "2694771.977395872371077003",
+      "volumeUSD": "1604848646.195975613898542569804596"
+    },
+    {
+      "address": "0xd0e226f674bbf064f54ab47f42473ff80db98cba",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+        "decimals": "18",
+        "name": "Ethereum Token",
+        "symbol": "ETH"
+      },
+      "token0Price": "0.2599463575918727371107855219517782",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "3.846947536653097361774288509032469",
+      "volumeToken0": "2116897.884051829893493926",
+      "volumeToken1": "12092013.689862517983425502",
+      "volumeUSD": "5666815860.77373160623288724927353"
+    },
+    {
+      "address": "0x6bbc40579ad1bbd243895ca0acb086bb6300d636",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+        "decimals": "18",
+        "name": "BTCB Token",
+        "symbol": "BTCB"
+      },
+      "token0Price": "0.006171316274449571888091635043826372",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "162.0399855603238165435991626065677",
+      "volumeToken0": "96861.102327562990389762",
+      "volumeToken1": "12679879.536120901544854606",
+      "volumeUSD": "6447326940.336226148168994291810535"
+    },
+    {
+      "address": "0x9f599f3d64a9d99ea21e68127bb6ce99f893da61",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+        "decimals": "18",
+        "name": "Ethereum Token",
+        "symbol": "ETH"
+      },
+      "token0Price": "0.0004017830183897730972699282361671818",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "2488.905588911404811533291315927323",
+      "volumeToken0": "391815.167315156670765007",
+      "volumeToken1": "1257148739.924145627064445255",
+      "volumeUSD": "1256234471.638523503413209862713006"
+    },
+    {
+      "address": "0xee6ff918a1f68b5d2fdecb14b367fa2eb5c6951c",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x3aee7602b612de36088f3ffed8c8f10e86ebf2bf",
+        "decimals": "18",
+        "name": "Lorenzo Governance Token",
+        "symbol": "BANK"
+      },
+      "token0Price": "11084.79572401404319844175593746808",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00009021366066616863815298467305097779",
+      "volumeToken0": "14859665000.453934655402097367",
+      "volumeToken1": "1542072.331542815963252072",
+      "volumeUSD": "1024463824.885931477037973010854862"
+    },
+    {
+      "address": "0x7ed1c4d5fef23980c20804b33ca6ad381e68e3f2",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x103071da56e7cd95b415320760d6a0ddc4da1ca5",
+        "decimals": "18",
+        "name": "Xterio",
+        "symbol": "XTER"
+      },
+      "token0Price": "3910.997110012444615430240419836491",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.0002556892710147817126238128370716873",
+      "volumeToken0": "6330697191.524777321879996122",
+      "volumeToken1": "2270153.432583745410166867",
+      "volumeUSD": "1509883172.223693374771668167643626"
+    },
+    {
+      "address": "0x1e8d7ab96323953fac85ab687f5d38b45344e62d",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.1043152536254215103390132399577003",
+      "token1": {
+        "address": "0x9840652dc04fb9db2c43853633f0f62be6f00f98",
+        "decimals": "18",
+        "name": "ChainGPT",
+        "symbol": "CGPT"
+      },
+      "token1Price": "9.586325731333898816383135672412845",
+      "volumeToken0": "1043726257.298379482321888424",
+      "volumeToken1": "5255556497.848128227207911425",
+      "volumeUSD": "1057705469.048773378152635791325339"
+    },
+    {
+      "address": "0x6ec31af1bb9a72aacec12e4ded508861b05f4503",
+      "feeTier": "100",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.0001237666910223526920355239971921241",
+      "token1": {
+        "address": "0xd82544bf0dfe8385ef8fa34d67e6e4940cc63e16",
+        "decimals": "18",
+        "name": "MYX",
+        "symbol": "MYX"
+      },
+      "token1Price": "8079.718313058854783589648934570266",
+      "volumeToken0": "1620335.725280624634115008",
+      "volumeToken1": "13279900209.516152478957816482",
+      "volumeUSD": "1050808671.081349382201027687408289"
+    },
+    {
+      "address": "0x7f51c8aaa6b0599abd16674e2b17fec7a9f674a1",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+        "decimals": "18",
+        "name": "PancakeSwap Token",
+        "symbol": "Cake"
+      },
+      "token0Price": "0.4279190511829711400301174123417991",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "2.336890580672970473400642141730097",
+      "volumeToken0": "1011234050.113577513321913959",
+      "volumeToken1": "2402273743.292935953880145941",
+      "volumeUSD": "2425340925.428982628512972964443582"
+    },
+    {
+      "address": "0x25611630efc511d0291f5d9dd5176846e3f4ca24",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.1009920761657910115482161755569936",
+      "token1": {
+        "address": "0xa0c56a8c0692bd10b3fa8f8ba79cf5332b7107f9",
+        "decimals": "18",
+        "name": "MERL",
+        "symbol": "MERL"
+      },
+      "token1Price": "9.901766930292392885478944507741683",
+      "volumeToken0": "1486635280.434767364496392344",
+      "volumeToken1": "11938329709.039185715156535828",
+      "volumeUSD": "1487483743.675574166886450313849064"
+    },
+    {
+      "address": "0x24814dfc62f1983bfbede97eb1e9d39800c9b819",
+      "feeTier": "100",
+      "token0": {
+        "address": "0xb4357054c3da8d46ed642383f03139ac7f090343",
+        "decimals": "18",
+        "name": "Port3 Network",
+        "symbol": "PORT3"
+      },
+      "token0Price": "12731.25580048088832384766459936035",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00007854684688388931266768572124823405",
+      "volumeToken0": "61609956575.978537215510697788",
+      "volumeToken1": "4249623.1518726112847567",
+      "volumeUSD": "2823457861.795746948275220797765217"
+    },
+    {
+      "address": "0x2bb75e055070aaa283b0f2070b0161b3f46f3c8c",
+      "feeTier": "100",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.0001084704821889133213097247279277006",
+      "token1": {
+        "address": "0xd55c9fb62e176a8eb6968f32958fefdd0962727e",
+        "decimals": "18",
+        "name": "MindNetwork FHE Token",
+        "symbol": "FHE"
+      },
+      "token1Price": "9219.097950153753228060509703666898",
+      "volumeToken0": "1830923.436438401140402903",
+      "volumeToken1": "13727585055.520511423149487678",
+      "volumeUSD": "1217771798.466446517841673919925463"
+    },
+    {
+      "address": "0x539e0ebfffd39e54a0f7e5f8fec40ade7933a664",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+        "decimals": "18",
+        "name": "Ethereum Token",
+        "symbol": "ETH"
+      },
+      "token0Price": "0.0004015745795842931804745870939120687",
+      "token1": {
+        "address": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+        "decimals": "18",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token1Price": "2490.197464777755773468049898101038",
+      "volumeToken0": "806258.312568268851832975",
+      "volumeToken1": "1729525862.619059155429084481",
+      "volumeUSD": "2457096857.518215531831561120535964"
+    },
+    {
+      "address": "0xbffec96e8f3b5058b1817c14e4380758fada01ef",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x570a5d26f7765ecb712c0924e4de545b89fd43df",
+        "decimals": "18",
+        "name": "SOLANA",
+        "symbol": "SOL"
+      },
+      "token0Price": "4.313730130902287014301310908007641",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.2318179324284325802012205447811498",
+      "volumeToken0": "3945933.816855617069322532",
+      "volumeToken1": "1091111.174946245102042473",
+      "volumeUSD": "691116677.648764171981576592719128"
+    },
+    {
+      "address": "0xd3cffc6b02a34dfc72f1350339031043a854599f",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x5dbde81fce337ff4bcaaee4ca3466c00aecae274",
+        "decimals": "18",
+        "name": "Alaya Governance Token",
+        "symbol": "AGT"
+      },
+      "token0Price": "23086.12585345562368067848731570167",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.0000433160594526654197894226648406544",
+      "volumeToken0": "20930229179.05534736004891484",
+      "volumeToken1": "952792.029596318329530775",
+      "volumeUSD": "633300047.0457469642040777784462313"
+    },
+    {
+      "address": "0xfab21cb9467e9badd22a2de57bcde5f53d925973",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "2.719774155716155184915554176943198",
+      "token1": {
+        "address": "0x5b1f874d0b0c5ee17a495cbb70ab8bf64107a3bd",
+        "decimals": "18",
+        "name": "BinaryX",
+        "symbol": "BNX"
+      },
+      "token1Price": "0.3676775874564062064064479538773092",
+      "volumeToken0": "2180912837.617217511323038562",
+      "volumeToken1": "3851243099.405153698813922976",
+      "volumeUSD": "2207916001.493607790111827372104358"
+    },
+    {
+      "address": "0x7f51bbf34156ba802deb0e38b7671dc4fa32041d",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x3d4f0513e8a29669b960f9dbca61861548a9a760",
+        "decimals": "18",
+        "name": "Banana For Scale",
+        "symbol": "$BANANA"
+      },
+      "token0Price": "112435.4677260973685607506408065439",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.000008893990661701941296996000922768581",
+      "volumeToken0": "242716040574.872437097488749112",
+      "volumeToken1": "1301643.072186365742703548",
+      "volumeUSD": "841810777.3938255793260889642127831"
+    },
+    {
+      "address": "0x4f31fa980a675570939b737ebdde0471a4be40eb",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.9994410456000051875151486365525458",
+      "token1": {
+        "address": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+        "decimals": "18",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token1Price": "1.000559267004747888236665896829556",
+      "volumeToken0": "528680597.276491215321369545",
+      "volumeToken1": "528650487.237763919741950341",
+      "volumeUSD": "533604818.6667337990469288216465431"
+    },
+    {
+      "address": "0x133b3d95bad5405d14d53473671200e9342896bf",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+        "decimals": "18",
+        "name": "PancakeSwap Token",
+        "symbol": "Cake"
+      },
+      "token0Price": "276.6350985796103717951076937859431",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.003614870293518516891817690995048495",
+      "volumeToken0": "878738604.847517408187962504",
+      "volumeToken1": "5569089.861786156391401306",
+      "volumeUSD": "2148813105.501974876511374708157935"
+    },
+    {
+      "address": "0x81a9b5f18179ce2bf8f001b8a634db80771f1824",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+        "decimals": "18",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token0Price": "647.2678136072124870251682052840249",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00154495554850320310775292198111479",
+      "volumeToken0": "282053809.620304536030394945",
+      "volumeToken1": "549993.117209638541354366",
+      "volumeUSD": "287258574.762930128143483718757482"
+    },
+    {
+      "address": "0x757651b39d4d13509b60b5784ba0e504a8ef6691",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x9c8b5ca345247396bdfac0395638ca9045c6586e",
+        "decimals": "18",
+        "name": "Allo",
+        "symbol": "RWA"
+      },
+      "token0Price": "109043.242385469848503605392019381",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.000009170673744870698001520355707441203",
+      "volumeToken0": "171932093297.710902382169187238",
+      "volumeToken1": "2324976.093000322463033953",
+      "volumeUSD": "1550631446.565393519003477156738427"
+    },
+    {
+      "address": "0xda7630a141dbb6382ddb6409aea7331da543b0bb",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x87d00066cf131ff54b72b134a217d5401e5392b6",
+        "decimals": "18",
+        "name": "PUFFER",
+        "symbol": "PUFFER"
+      },
+      "token0Price": "3270.014486741057229399125832118711",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.0003058090427595059889430231991223553",
+      "volumeToken0": "4534843752.783627950842676027",
+      "volumeToken1": "1437626.049818725621123069",
+      "volumeUSD": "956076341.9869824149688626929394486"
+    },
+    {
+      "address": "0x3f2e2487724e60963b8490fab1e5c3c78c3bbf22",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "2.008376396988256379757978088797992",
+      "token1": {
+        "address": "0xc71b5f631354be6853efe9c3ab6b9590f8302e81",
+        "decimals": "18",
+        "name": "Polyhedra Network",
+        "symbol": "ZK"
+      },
+      "token1Price": "0.4979146346768420622813114585111244",
+      "volumeToken0": "719713127.206796176895050515",
+      "volumeToken1": "341141022.448805069870166664",
+      "volumeUSD": "720022486.5552204732017487608596208"
+    },
+    {
+      "address": "0x1e213600fa9317feac4ef4087acdf5d0e25d7187",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+        "decimals": "18",
+        "name": "PancakeSwap Token",
+        "symbol": "Cake"
+      },
+      "token0Price": "276.7308506237901853856526491423674",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.003613619506989768642786452935572235",
+      "volumeToken0": "139289969.873783233061607102",
+      "volumeToken1": "490024.873722554107828395",
+      "volumeUSD": "296871256.2281065615067749629567253"
+    },
+    {
+      "address": "0xce6160bb594fc055c943f59de92cee30b8c6b32c",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0xba2ae424d960c26247dd6c32edc70b295c744c43",
+        "decimals": "8",
+        "name": "Dogecoin",
+        "symbol": "DOGE"
+      },
+      "token0Price": "3549.472049671550005328270122953124",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.000281732039583896677507345481008581",
+      "volumeToken0": "6325484625.31167942",
+      "volumeToken1": "2159082.274463067301836404",
+      "volumeUSD": "1152833611.111167576843153030117124"
+    },
+    {
+      "address": "0x4bba1018b967e59220b22ca03f68821a3276c9a6",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+        "decimals": "18",
+        "name": "Ethereum Token",
+        "symbol": "ETH"
+      },
+      "token0Price": "42.11839739897521165981650466929073",
+      "token1": {
+        "address": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+        "decimals": "18",
+        "name": "BTCB Token",
+        "symbol": "BTCB"
+      },
+      "token1Price": "0.02374259377742447373529026560283241",
+      "volumeToken0": "1053549.577405758159952114",
+      "volumeToken1": "48448.588455100697883383",
+      "volumeUSD": "3244219608.618753646465767803277482"
+    },
+    {
+      "address": "0x353d328efbef48b79a570cbc2fde20f40e9f2063",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+        "decimals": "18",
+        "name": "BTCB Token",
+        "symbol": "BTCB"
+      },
+      "token0Price": "0.000001738157339182245445292933578974029",
+      "token1": {
+        "address": "0xba2ae424d960c26247dd6c32edc70b295c744c43",
+        "decimals": "8",
+        "name": "Dogecoin",
+        "symbol": "DOGE"
+      },
+      "token1Price": "575321.9098510794840952019416556681",
+      "volumeToken0": "3993.519759154928216116",
+      "volumeToken1": "1298746295.37703055",
+      "volumeUSD": "387779071.2699258541940833146001449"
+    },
+    {
+      "address": "0xd15b00e81f98a7db25f1dc1ba6e983a4316c4cac",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe",
+        "decimals": "18",
+        "name": "XRP Token",
+        "symbol": "XRP"
+      },
+      "token0Price": "297.6447209599995440811431713327983",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.003359710183250284956625309747613254",
+      "volumeToken0": "838774338.647700537814196627",
+      "volumeToken1": "1867932.136852932487491144",
+      "volumeUSD": "871695840.8720546516070374356826155"
+    },
+    {
+      "address": "0x22536030b9ce783b6ddfb9a39ac7f439f568e5e6",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+        "decimals": "18",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token0Price": "0.9999913727929177245959428661353125",
+      "token1": {
+        "address": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+        "decimals": "18",
+        "name": "BUSD Token",
+        "symbol": "BUSD"
+      },
+      "token1Price": "1.000008627281511619561885071779652",
+      "volumeToken0": "999239319.071260954539183093",
+      "volumeToken1": "998738886.935962189726532758",
+      "volumeUSD": "1005134504.656094425840645477335118"
+    },
+    {
+      "address": "0x8e996aa3d1d18ace1daf350cbdce690509486483",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x74da4c5f8c254dd4fb39f9804c0924f52a808318",
+        "decimals": "18",
+        "name": "Caila",
+        "symbol": "CA"
+      },
+      "token0Price": "124.3570406414502894053418722359192",
+      "token1": {
+        "address": "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d",
+        "decimals": "18",
+        "name": "World Liberty Financial USD",
+        "symbol": "USD1"
+      },
+      "token1Price": "0.008041362152411040984272180518790196",
+      "volumeToken0": "33127856703.208221765860817754",
+      "volumeToken1": "333452383.979953805681556496",
+      "volumeUSD": "0"
+    },
+    {
+      "address": "0x38231d4ef9d33ebea944c75a21301ff6986499c3",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x0df0587216a4a1bb7d5082fdc491d93d2dd4b413",
+        "decimals": "18",
+        "name": "Cheems",
+        "symbol": "Cheems"
+      },
+      "token0Price": "457131871.8694905603177871260872833",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.000000002187552567512720399118159253115395",
+      "volumeToken0": "1623930223705169.787167538145472299",
+      "volumeToken1": "1189351.860856790897402649",
+      "volumeUSD": "756791512.8613282541064940556328401"
+    },
+    {
+      "address": "0x4a3218606af9b4728a9f187e1c1a8c07fbc172a9",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d",
+        "decimals": "18",
+        "name": "World Liberty Financial USD",
+        "symbol": "USD1"
+      },
+      "token0Price": "647.0654087397972145354198821423958",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.001545438817302204891974251782969748",
+      "volumeToken0": "486722340.63384229927616783",
+      "volumeToken1": "770162.498410966431824155",
+      "volumeUSD": "486964180.1846462075104206746331169"
+    },
+    {
+      "address": "0x0b2eb4332a15e5165477aad2c79721925920a383",
+      "feeTier": "100",
+      "token0": {
+        "address": "0xb9e1fd5a02d3a33b25a14d661414e6ed6954a721",
+        "decimals": "18",
+        "name": "SOON Token",
+        "symbol": "SOON"
+      },
+      "token0Price": "2318.357034546229289452034638332406",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.0004313399468239064541488992986948497",
+      "volumeToken0": "7363334448.663834083346162475",
+      "volumeToken1": "3954448.996135307298342594",
+      "volumeUSD": "2658034226.392547668030546880068698"
+    },
+    {
+      "address": "0x1936be860d93b0ff98f3a9b83254d61a78930b76",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x12bb890508c125661e03b09ec06e404bc9289040",
+        "decimals": "18",
+        "name": "Radio Caca V2",
+        "symbol": "RACA"
+      },
+      "token0Price": "13403.76286649003340820589623629242",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.00007460591551496645292470364693618074",
+      "volumeToken0": "1912385462325.464024429600274552",
+      "volumeToken1": "327717913.684350143239285211",
+      "volumeUSD": "327730048.342164536910823167496439"
+    },
+    {
+      "address": "0xcec31052610aaf0693d6b4d34e055687af3aeee6",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+        "decimals": "18",
+        "name": "Ethereum Token",
+        "symbol": "ETH"
+      },
+      "token0Price": "42.10654027873864040879824236766983",
+      "token1": {
+        "address": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+        "decimals": "18",
+        "name": "BTCB Token",
+        "symbol": "BTCB"
+      },
+      "token1Price": "0.02374927964587349330581133209134935",
+      "volumeToken0": "181626.350786028397955674",
+      "volumeToken1": "4948.115732435941086318",
+      "volumeUSD": "470958122.2685443545863377511880441"
+    },
+    {
+      "address": "0xf80e4c016e0f9f44c6b6830d6d9c48169645e2b5",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.4836908846190195845716759532663816",
+      "token1": {
+        "address": "0x783c3f003f172c6ac5ac700218a357d2d66ee2a2",
+        "decimals": "18",
+        "name": "BSquared Token",
+        "symbol": "B2"
+      },
+      "token1Price": "2.067436108058254327698466300659814",
+      "volumeToken0": "419148884.129361163515809245",
+      "volumeToken1": "648463616.043664123256837869",
+      "volumeUSD": "419302233.8241247016709943618377548"
+    },
+    {
+      "address": "0x0f0cf38f67ed6fb00881cdb815e25441f7f022e0",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x6bdcce4a559076e37755a78ce0c06214e59e4444",
+        "decimals": "18",
+        "name": "B",
+        "symbol": "B"
+      },
+      "token0Price": "2.647728541587189691027099161801691",
+      "token1": {
+        "address": "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d",
+        "decimals": "18",
+        "name": "World Liberty Financial USD",
+        "symbol": "USD1"
+      },
+      "token1Price": "0.3776822224383118482613431659957715",
+      "volumeToken0": "24127061099.257111838145730771",
+      "volumeToken1": "4914463230.850988644740319184",
+      "volumeUSD": "0"
+    },
+    {
+      "address": "0x23ab35fac8a7ff11f0fe197df68e8ee52e415f2a",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "10.27395968470156143009712015778206",
+      "token1": {
+        "address": "0x6e88056e8376ae7709496ba64d37fa2f8015ce3e",
+        "decimals": "18",
+        "name": "Dexe",
+        "symbol": "DEXE"
+      },
+      "token1Price": "0.09733345571611010826422385227573519",
+      "volumeToken0": "195935804.415120765198183581",
+      "volumeToken1": "15004922.909630007401878907",
+      "volumeUSD": "195890172.9498304012018506467468796"
+    },
+    {
+      "address": "0xbe77ac86750fb0359fa623e63e7f009979bb701c",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x30c60b20c25b2810ca524810467a0c342294fc61",
+        "decimals": "18",
+        "name": "Taiko Token",
+        "symbol": "TAIKO"
+      },
+      "token0Price": "1.947015471835630458846904939455012",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.5136066017273134856008575973858884",
+      "volumeToken0": "1119408404.604159400076714737",
+      "volumeToken1": "611002089.191392162016493045",
+      "volumeUSD": "611425836.0840056393472637679481579"
+    },
+    {
+      "address": "0x90a54475d512b8f3852351611c38fad30a513491",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x5c85d6c6825ab4032337f11ee92a72df936b46f6",
+        "decimals": "18",
+        "name": "mubarak",
+        "symbol": "mubarak"
+      },
+      "token0Price": "16592.87202407663690683996373885244",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00006026684220483211843690704319304098",
+      "volumeToken0": "27758091605.079629860888847677",
+      "volumeToken1": "1086309.376364743833150672",
+      "volumeUSD": "672386517.9317928060445606553076207"
+    },
+    {
+      "address": "0xb187e425f60e973a7c083a497536db249c2d7b18",
+      "feeTier": "100",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.00000000002301959544979706253895448813765156",
+      "token1": {
+        "address": "0xfebe8c1ed424dbf688551d4e2267e7a53698f0aa",
+        "decimals": "18",
+        "name": "Vita Inu",
+        "symbol": "VINU"
+      },
+      "token1Price": "43441249963.79186398657129115613926",
+      "volumeToken0": "245496.962247039780085318",
+      "volumeToken1": "5548853857951567.801104260577746644",
+      "volumeUSD": "168952388.3294451297138848199097956"
+    },
+    {
+      "address": "0xc773f8873fa213117b3b56fb970e30ab9d5feb9d",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x9840652dc04fb9db2c43853633f0f62be6f00f98",
+        "decimals": "18",
+        "name": "ChainGPT",
+        "symbol": "CGPT"
+      },
+      "token0Price": "9.570851617539059516189073614511985",
+      "token1": {
+        "address": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+        "decimals": "18",
+        "name": "BUSD Token",
+        "symbol": "BUSD"
+      },
+      "token1Price": "0.1044839101013174712947011037565784",
+      "volumeToken0": "1510762903.79939052187257819",
+      "volumeToken1": "236213115.770354952571647738",
+      "volumeUSD": "240676171.8783170980975822594591401"
+    },
+    {
+      "address": "0x9b6d825e16df17b5ea416319e1ac0b85ecd9be19",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.00852991305778679126757681244979644",
+      "token1": {
+        "address": "0x75ca521892de7f2ecfb070cab545c250d0ceb7e3",
+        "decimals": "9",
+        "name": "PVC META",
+        "symbol": "PVC"
+      },
+      "token1Price": "117.2344891706861541181680239771794",
+      "volumeToken0": "31416949.810264729301726996",
+      "volumeToken1": "886295993.369321937",
+      "volumeUSD": "31414868.43761858785998864985000443"
+    },
+    {
+      "address": "0x7eb6b5ab4a075071e339e09d4f665a91b6007745",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x12bb890508c125661e03b09ec06e404bc9289040",
+        "decimals": "18",
+        "name": "Radio Caca V2",
+        "symbol": "RACA"
+      },
+      "token0Price": "9183147.677989873509714635433168573",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.0000001088951234440882880692012035113356",
+      "volumeToken0": "1036222049483.317611200487770706",
+      "volumeToken1": "285149.504505490950648128",
+      "volumeUSD": "175331401.5285722591190674450863168"
+    },
+    {
+      "address": "0xeb606919ea12779ad5362baaae59f7c34930415a",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.01640570387886350375294515744515297",
+      "token1": {
+        "address": "0x90869b3a42e399951bd5f5ff278b8cc5ee1dc0fe",
+        "decimals": "18",
+        "name": "REX",
+        "symbol": "REX"
+      },
+      "token1Price": "60.95440996520500759927758657642372",
+      "volumeToken0": "253734928.614151722396907892",
+      "volumeToken1": "12929591464.11702611415732773",
+      "volumeUSD": "253860925.9088946047955515036562518"
+    },
+    {
+      "address": "0x673516e510d702ab5f2bbf0c6b545111a85f7ea7",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x3ee2200efb3400fabb9aacf31297cbdd1d435d47",
+        "decimals": "18",
+        "name": "Cardano Token",
+        "symbol": "ADA"
+      },
+      "token0Price": "981.3217929522615646037206771891301",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.001019033722864286858394050528977601",
+      "volumeToken0": "839314374.180389746681207187",
+      "volumeToken1": "1100381.539555557021785829",
+      "volumeUSD": "474000732.8212270047843953532033641"
+    },
+    {
+      "address": "0xd0e925a1c22e30a363283d79ebf5a901cf928b95",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.000007654448642921656845207434741587902",
+      "token1": {
+        "address": "0xc335df7c25b72eec661d5aa32a7c2b7b2a1d1874",
+        "decimals": "18",
+        "name": "Ice",
+        "symbol": "ICE"
+      },
+      "token1Price": "130642.9824863657372375281273445415",
+      "volumeToken0": "176602.709171534173705305",
+      "volumeToken1": "16668377650.070035314556125166",
+      "volumeUSD": "100148165.8883123265277536220318798"
+    },
+    {
+      "address": "0x71f5a8f7d448e59b1ede00a19fe59e05d125e742",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe",
+        "decimals": "18",
+        "name": "XRP Token",
+        "symbol": "XRP"
+      },
+      "token0Price": "0.4600681823617717252833239492792376",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "2.173590868350153111646583844494695",
+      "volumeToken0": "245421678.44833951440524975",
+      "volumeToken1": "541900433.244163449725402383",
+      "volumeUSD": "541915507.8690526468811321362053774"
+    },
+    {
+      "address": "0xd5825b9e771bac21eaa89e2138b70c9faea4be6b",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "1.248475087950644618600538940861534",
+      "token1": {
+        "address": "0xf2b51cc1850fed939658317a22d73d3482767591",
+        "decimals": "18",
+        "name": "NXPC",
+        "symbol": "NXPC"
+      },
+      "token1Price": "0.8009771357484487764381507502790146",
+      "volumeToken0": "451931444.102092310280491852",
+      "volumeToken1": "224182229.589153176252580439",
+      "volumeUSD": "452054720.1062618028130712464483289"
+    },
+    {
+      "address": "0x369482c78bad380a036cab827fe677c1903d1523",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+        "decimals": "18",
+        "name": "BTCB Token",
+        "symbol": "BTCB"
+      },
+      "token0Price": "0.000009538665892209012716500406319401209",
+      "token1": {
+        "address": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+        "decimals": "18",
+        "name": "BUSD Token",
+        "symbol": "BUSD"
+      },
+      "token1Price": "104836.4636418159435776501531699411",
+      "volumeToken0": "33212.665570986826940406",
+      "volumeToken1": "976732647.216855567965116898",
+      "volumeUSD": "979355605.6489727259457567822241188"
+    },
+    {
+      "address": "0x80968a476e0235a026fd1f33aaac5a3b7b76110f",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x33d08d8c7a168333a85285a68c0042b39fc3741d",
+        "decimals": "18",
+        "name": "AIOZ Network",
+        "symbol": "AIOZ"
+      },
+      "token0Price": "1938.60511863415485903232590846233",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.0005158348084340922748835492209966969",
+      "volumeToken0": "664904657.500726018363264203",
+      "volumeToken1": "596482.242882706804714218",
+      "volumeUSD": "347353237.5393956711680315933766123"
+    },
+    {
+      "address": "0x1e4600929edf7f36b4a7eac4c7571057d82a246c",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x570a5d26f7765ecb712c0924e4de545b89fd43df",
+        "decimals": "18",
+        "name": "SOLANA",
+        "symbol": "SOL"
+      },
+      "token0Price": "4.322701096054751695831397075055503",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.2313368372642469461764308273939885",
+      "volumeToken0": "4849896.896731345292658079",
+      "volumeToken1": "1338452.661136833679523362",
+      "volumeUSD": "663660292.6164669199982815383451656"
+    },
+    {
+      "address": "0x03f83fdfb168e7a2a621691e4b15297b1917ab91",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x87d00066cf131ff54b72b134a217d5401e5392b6",
+        "decimals": "18",
+        "name": "PUFFER",
+        "symbol": "PUFFER"
+      },
+      "token0Price": "5.053710058498744144751038733621273",
+      "token1": {
+        "address": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+        "decimals": "18",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token1Price": "0.197874430551930030483414576543343",
+      "volumeToken0": "1068589741.431419769354645496",
+      "volumeToken1": "232488456.696172416354380425",
+      "volumeUSD": "232488456.696172416354380425"
+    },
+    {
+      "address": "0x0e1893beeb4d0913d26b9614b18aea29c56d94b9",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.02135296558538496792632392086507231",
+      "token1": {
+        "address": "0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd",
+        "decimals": "18",
+        "name": "ChainLink Token",
+        "symbol": "LINK"
+      },
+      "token1Price": "46.83190238851177447124098596820541",
+      "volumeToken0": "826678.697550885595013019",
+      "volumeToken1": "24073851.103676198779034268",
+      "volumeUSD": "353170491.026848379406629489935789"
+    },
+    {
+      "address": "0x803036ac78752ef599ec75c500ac8b0ac0be67df",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x4268b8f0b87b6eae5d897996e6b845ddbd99adf3",
+        "decimals": "6",
+        "name": "Axelar Wrapped USDC",
+        "symbol": "axlUSDC"
+      },
+      "token0Price": "1.000717853381606944469808524233447",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.9992826615622163751480356878297687",
+      "volumeToken0": "1242181977.052984",
+      "volumeToken1": "1242597029.217277044627929541",
+      "volumeUSD": "1260074123.177174206658810414320137"
+    },
+    {
+      "address": "0x6a4116345bd9446af758000476b144cf5da626c0",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x4d2d32d8652058bf98c772953e1df5c5c85d9f45",
+        "decimals": "18",
+        "name": "DAO Maker",
+        "symbol": "DAO"
+      },
+      "token0Price": "2.808124475930723326392010142741273",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.3561095701317016997001152424329031",
+      "volumeToken0": "510906721.946832866515239926",
+      "volumeToken1": "508676987.519238015467391457",
+      "volumeUSD": "519180514.4167242798174706967698084"
+    },
+    {
+      "address": "0x9f5a0ad81fe7fd5dfb84ee7a0cfb83967359bd90",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "149.6638916789756710201909086644465",
+      "token1": {
+        "address": "0x570a5d26f7765ecb712c0924e4de545b89fd43df",
+        "decimals": "18",
+        "name": "SOLANA",
+        "symbol": "SOL"
+      },
+      "token1Price": "0.006681638361676231642718894604604658",
+      "volumeToken0": "507886277.124547614441129443",
+      "volumeToken1": "2959603.975625071139633656",
+      "volumeUSD": "508027617.7659468161925410943829143"
+    },
+    {
+      "address": "0xd919dc242bb1e8a823da9cdb9806e3d211265f47",
+      "feeTier": "100",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.00001492272575850897979151017552274913",
+      "token1": {
+        "address": "0xcef5b397051fc92026249670e918c0ad7b8585e4",
+        "decimals": "18",
+        "name": "Orbiter Token",
+        "symbol": "OBT"
+      },
+      "token1Price": "67011.88617835432744030714242078616",
+      "volumeToken0": "307465.828868111510055458",
+      "volumeToken1": "19849556858.2700828593008209",
+      "volumeUSD": "203048447.3993451483061866977841394"
+    },
+    {
+      "address": "0xc49d411be7da391a0abf5e1a2c2881ccf4c3d0ca",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.06974797688012684517364610455718336",
+      "token1": {
+        "address": "0xd82544bf0dfe8385ef8fa34d67e6e4940cc63e16",
+        "decimals": "18",
+        "name": "MYX",
+        "symbol": "MYX"
+      },
+      "token1Price": "14.33733342142183405582010981895844",
+      "volumeToken0": "337403302.351993128850061197",
+      "volumeToken1": "4502358872.598435870010281827",
+      "volumeUSD": "337483404.8405748842308452943073378"
+    },
+    {
+      "address": "0x5fd12bbb709a59c9f3bf9c690bff75edc6c4dcfd",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0xa18bbdcd86e4178d10ecd9316667cfe4c4aa8717",
+        "decimals": "18",
+        "name": "BNBXBT",
+        "symbol": "BNBXBT"
+      },
+      "token0Price": "229870.1001148893488943877540809816",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.000004350283048992447530126648748726429",
+      "volumeToken0": "43893619581.533502495253796546",
+      "volumeToken1": "203273.672066599682702049",
+      "volumeUSD": "131860829.1147189942184417070198715"
+    },
+    {
+      "address": "0x9c4ee895e4f6ce07ada631c508d1306db7502cce",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.99946611396253275400185299631565",
+      "token1": {
+        "address": "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d",
+        "decimals": "18",
+        "name": "World Liberty Financial USD",
+        "symbol": "USD1"
+      },
+      "token1Price": "1.000534171224025369931453917718818",
+      "volumeToken0": "953816770.621175934565664242",
+      "volumeToken1": "953584765.783652779310644455",
+      "volumeUSD": "953884934.4381203907089121915179801"
+    },
+    {
+      "address": "0x8063181179b613b7b28f2c208146b701a184f672",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x3d9be0ac1001cd81c32464276d863d2ffdca4967",
+        "decimals": "9",
+        "name": "Haedal",
+        "symbol": "HAEDAL"
+      },
+      "token0Price": "8.099285322602909774581656807262455",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.1234676838966607437334265346462363",
+      "volumeToken0": "1285311165.227020382",
+      "volumeToken1": "175032395.163144558329153578",
+      "volumeUSD": "175076084.9523060818273566773850451"
+    },
+    {
+      "address": "0x55458175c5f5d34b9bd01c81f172780ed4271b23",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x2d060ef4d6bf7f9e5edde373ab735513c0e4f944",
+        "decimals": "18",
+        "name": "AITECH",
+        "symbol": "AITECH"
+      },
+      "token0Price": "18.56614214036917401896447525057571",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.05386148573244283795215823628342109",
+      "volumeToken0": "1940208303.383449493827276619",
+      "volumeToken1": "187224940.901256766828144575",
+      "volumeUSD": "190170646.6831896918431835841799864"
+    },
+    {
+      "address": "0x6cd061334aafee6cdd5bc5c958e71f769d7ca8cc",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x9ec02756a559700d8d9e79ece56809f7bcc5dc27",
+        "decimals": "18",
+        "name": "why",
+        "symbol": "WHY"
+      },
+      "token0Price": "17988221411.15254318713921054067311",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00000000005559193302902134426904978780395675",
+      "volumeToken0": "5303525672299765.639549146649589312",
+      "volumeToken1": "659902.82093385111258161",
+      "volumeUSD": "408280506.3528477365300851377292971"
+    },
+    {
+      "address": "0xd4fb9d253739c5db6aad90ad2409757d224ccc0c",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.2139347980412102414723113184267175",
+      "token1": {
+        "address": "0xc0041ef357b183448b235a8ea73ce4e4ec8c265f",
+        "decimals": "18",
+        "name": "Cookie",
+        "symbol": "COOKIE"
+      },
+      "token1Price": "4.674321378083476103265785395201946",
+      "volumeToken0": "190097762.113471662301008017",
+      "volumeToken1": "966941220.204906017295421723",
+      "volumeUSD": "190019675.2791854418858062362939058"
+    },
+    {
+      "address": "0x8ba9ec5737fdcb0e472c207befe775ca94386e91",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x4d2d32d8652058bf98c772953e1df5c5c85d9f45",
+        "decimals": "18",
+        "name": "DAO Maker",
+        "symbol": "DAO"
+      },
+      "token0Price": "5170.813070578686010076160427341881",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.000193393183306099686635290735078376",
+      "volumeToken0": "322771087.617916504409405344",
+      "volumeToken1": "155583.025542938930834931",
+      "volumeUSD": "99006987.38299909369970213488352644"
+    },
+    {
+      "address": "0x62f0546cbcd684f7c394d8549119e072527c41bc",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x7083609fce4d1d8dc0c979aab8c869ea2c873402",
+        "decimals": "18",
+        "name": "Polkadot Token",
+        "symbol": "DOT"
+      },
+      "token0Price": "162.8418227085027138201427042240135",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.006140928561024915633394371236269516",
+      "volumeToken0": "37145745.922536113377260073",
+      "volumeToken1": "572447.046982695175282393",
+      "volumeUSD": "239597389.3948908066535926433076437"
+    },
+    {
+      "address": "0xb2af49dbf526054faf19602860a5e298a79f3d05",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x997a58129890bbda032231a52ed1ddc845fc18e1",
+        "decimals": "18",
+        "name": "SIREN",
+        "symbol": "SIREN"
+      },
+      "token0Price": "4244.908816962738672535738652520644",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.0002355763205098730125258528409615879",
+      "volumeToken0": "4007272378.71064698650269799",
+      "volumeToken1": "285264.993896139940614541",
+      "volumeUSD": "178742545.6661270411806287691805371"
+    },
+    {
+      "address": "0xe8df1539b380274f1f8205a8f45a7cc266793518",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x2859e4544c4bb03966803b044a93563bd2d0dd4d",
+        "decimals": "18",
+        "name": "SHIBA INU",
+        "symbol": "SHIB"
+      },
+      "token0Price": "51265690.30958161184880398755806994",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00000001950622324523930072249508646151984",
+      "volumeToken0": "6605484244711.398390720327773332",
+      "volumeToken1": "250387.786788955495536154",
+      "volumeUSD": "120550735.5367982860001808265611983"
+    },
+    {
+      "address": "0x77d5b2560e4b84b3fc58875cb0133f39560e8ae3",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.009116643172818524275794477127429921",
+      "token1": {
+        "address": "0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
+        "decimals": "18",
+        "name": "Venus",
+        "symbol": "XVS"
+      },
+      "token1Price": "109.689496566183744924233573428267",
+      "volumeToken0": "402331.105941269706526219",
+      "volumeToken1": "22152716.522065236251863739",
+      "volumeUSD": "195932594.822830743520721445775602"
+    },
+    {
+      "address": "0xd28c09cb3c31c8388dc32da6b5158ed79ecaa8c1",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x4fa7c69a7b69f8bc48233024d546bc299d6b03bf",
+        "decimals": "18",
+        "name": "quq",
+        "symbol": "quq"
+      },
+      "token0Price": "375378.6958241492462615895135636135",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.000002663976435328823946082272151612",
+      "volumeToken0": "43172338845.730578338909786386",
+      "volumeToken1": "124084.242298699663003783",
+      "volumeUSD": "79119409.78843351624862904543286394"
+    },
+    {
+      "address": "0x109fce880d60d16a8dd0b5f580d2432ccca0c385",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x55ad16bd573b3365f43a9daeb0cc66a73821b4a5",
+        "decimals": "18",
+        "name": "OKZOO",
+        "symbol": "AIOT"
+      },
+      "token0Price": "6.832986404999482887314706662406835",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.1463488935479706517679413266609935",
+      "volumeToken0": "882286560.130691778767113711",
+      "volumeToken1": "322923546.797998200275633324",
+      "volumeUSD": "323031856.0865281084096389561528788"
+    },
+    {
+      "address": "0xcf39e58ed4decc9ef7bdb2f9335602dc22be99b4",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.07131290086416703226480884237695846",
+      "token1": {
+        "address": "0xb994882a1b9bd98a71dd6ea5f61577c42848b0e8",
+        "decimals": "18",
+        "name": "World of Dypians",
+        "symbol": "WoD"
+      },
+      "token1Price": "14.02270820401411058899215204676889",
+      "volumeToken0": "247914538.883280859475134505",
+      "volumeToken1": "3184403444.985693696246658801",
+      "volumeUSD": "248023134.2012387032211658337885497"
+    },
+    {
+      "address": "0x647d99772863e09f47435782cbb6c96ec4a75f12",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.009452169515972564060452403510226718",
+      "token1": {
+        "address": "0xbf5140a22578168fd562dccf235e5d43a02ce9b1",
+        "decimals": "18",
+        "name": "Uniswap",
+        "symbol": "UNI"
+      },
+      "token1Price": "105.795817384587689577165228828074",
+      "volumeToken0": "322538.601904194785707101",
+      "volumeToken1": "17565890.07523511390999666",
+      "volumeUSD": "160934952.8895857654418467670772723"
+    },
+    {
+      "address": "0x0246913ec96765bca457b0a3608872bba37d1d15",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x1fa4a73a3f0133f0025378af00236f3abdee5d63",
+        "decimals": "18",
+        "name": "NEAR Protocol",
+        "symbol": "NEAR"
+      },
+      "token0Price": "271.3804161829695491825707357756821",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00368486427305713189399700582873411",
+      "volumeToken0": "32437606.522148912045980418",
+      "volumeToken1": "303432.206494938136451135",
+      "volumeUSD": "159559924.5667420968462312076056263"
+    },
+    {
+      "address": "0xd317b5480faf6ef228c502d9c4d0c04599c5b74b",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+        "decimals": "18",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token0Price": "63.53390323877560385349287523601339",
+      "token1": {
+        "address": "0xe6df05ce8c8301223373cf5b969afcb1498c5528",
+        "decimals": "18",
+        "name": "BNB48 Club Token",
+        "symbol": "KOGE"
+      },
+      "token1Price": "0.01573962796275495350512094480486901",
+      "volumeToken0": "467856933.614832061719986979",
+      "volumeToken1": "7369185.987818877331922288",
+      "volumeUSD": "467856933.614832061719986979"
+    },
+    {
+      "address": "0x6425bc30d0751af5181fc74a50e760b0e4a19811",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.1485156695710339071362323545444102",
+      "token1": {
+        "address": "0xbdeae1ca48894a1759a8374d63925f21f2ee2639",
+        "decimals": "18",
+        "name": "EDU Coin",
+        "symbol": "EDU"
+      },
+      "token1Price": "6.733296243341566459623528127429877",
+      "volumeToken0": "147415842.314669561024313552",
+      "volumeToken1": "195433333.807903426269103367",
+      "volumeUSD": "149019974.4756320248077906051945691"
+    },
+    {
+      "address": "0x660b571d34b91bc4c2fffbf8957ad50b5fac56f4",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.00000001761738932479217997011570120990127",
+      "token1": {
+        "address": "0xfebe8c1ed424dbf688551d4e2267e7a53698f0aa",
+        "decimals": "18",
+        "name": "Vita Inu",
+        "symbol": "VINU"
+      },
+      "token1Price": "56762099.17168282259926469870372602",
+      "volumeToken0": "74416038.88184394660407897",
+      "volumeToken1": "3241229585526793.410464913956160056",
+      "volumeUSD": "74768314.34752064036248315995013197"
+    },
+    {
+      "address": "0xbba8f85c3ceddf73db4de17d31608d640eaea416",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x25d887ce7a35172c62febfd67a1856f20faebb00",
+        "decimals": "18",
+        "name": "Pepe",
+        "symbol": "PEPE"
+      },
+      "token0Price": "87704.84084643506625342455408110466",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.00001140187919331532478244758394981374",
+      "volumeToken0": "14156516222988.684983779662843616",
+      "volumeToken1": "68681116.024305185456767755",
+      "volumeUSD": "68955661.16564564093767503721774173"
+    },
+    {
+      "address": "0xdb25c09d96c165b62f6e6f9d9b17174738d897ba",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x12b4356c65340fb02cdff01293f95febb1512f3b",
+        "decimals": "18",
+        "name": "Broccoli",
+        "symbol": "Broccoli"
+      },
+      "token0Price": "65335.06339451526784216021178062326",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00001530571714550364634721918182188915",
+      "volumeToken0": "26796737383.37259233492637827",
+      "volumeToken1": "714422.279193276484397649",
+      "volumeUSD": "451961253.0558269186808703116888458"
+    },
+    {
+      "address": "0x2c533e2c2b4fd1172b5a0a0178805be1526a15a7",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.2315191589330255208537032131109841",
+      "token1": {
+        "address": "0xfceb31a79f71ac9cbdcf853519c1b12d379edc46",
+        "decimals": "18",
+        "name": "Lista DAO",
+        "symbol": "LISTA"
+      },
+      "token1Price": "4.31929696275927930594713503258043",
+      "volumeToken0": "184237312.581387162054659055",
+      "volumeToken1": "465622140.618588534797488642",
+      "volumeUSD": "184237818.1504184709581861342596469"
+    },
+    {
+      "address": "0xc8255e3fa0f4c6e6678807d663f9e2263e23a8e8",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.000003333001452936274693116875220963942",
+      "token1": {
+        "address": "0xd5369a3cac0f4448a9a96bb98af9c887c92fc37b",
+        "decimals": "18",
+        "name": "Bubb",
+        "symbol": "BUBB"
+      },
+      "token1Price": "300029.8722099355459478951668808117",
+      "volumeToken0": "265382.334163822781285799",
+      "volumeToken1": "38421203440.945335337962837083",
+      "volumeUSD": "166854477.0796613407457224300513695"
+    },
+    {
+      "address": "0x028ca9e999d3ba038e81f1901c5af3e7a28e3fc6",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x997a58129890bbda032231a52ed1ddc845fc18e1",
+        "decimals": "18",
+        "name": "SIREN",
+        "symbol": "SIREN"
+      },
+      "token0Price": "4252.360207165103600666254038448052",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.0002351635212640333260210928555554789",
+      "volumeToken0": "880456333.621201759539137253",
+      "volumeToken1": "133475.504937422668168916",
+      "volumeUSD": "84185383.13449385348212161955902812"
+    },
+    {
+      "address": "0xc18caa1658b91076425c8d287ca1b8e238344bfe",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x23d3f4eaaa515403c6765bb623f287a8cca28f2b",
+        "decimals": "18",
+        "name": "Broccoli",
+        "symbol": "BROCCOLI"
+      },
+      "token0Price": "47608.39799793571880027873332981325",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00002100469753347633336085341196140472",
+      "volumeToken0": "10018582550.365432648249541486",
+      "volumeToken1": "613732.515650098779541561",
+      "volumeUSD": "401347935.2960487211571194624078924"
+    },
+    {
+      "address": "0x032ab93b734bef57d98552eb56839f0995d4fb28",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x4ea98c1999575aaadfb38237dd015c5e773f75a2",
+        "decimals": "9",
+        "name": "MAGA",
+        "symbol": "TRUMP"
+      },
+      "token0Price": "3879.094605927810075564830525267024",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.0002577921142917879103799065069879105",
+      "volumeToken0": "39579210.988970773",
+      "volumeToken1": "209601.245860977288088636",
+      "volumeUSD": "124297000.4584150758916433088375523"
+    },
+    {
+      "address": "0xcf4950dc5319ada8b89f88dd912afb6efc226878",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x3dc8e2d80b6215a1bccae4d38715c3520581e77c",
+        "decimals": "18",
+        "name": "Balance",
+        "symbol": "EPT"
+      },
+      "token0Price": "95227.80490019292110966779446582576",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00001050113463234910825350712566060838",
+      "volumeToken0": "12099244993.237802543120196035",
+      "volumeToken1": "205265.944717528554362025",
+      "volumeUSD": "130446900.3319257324767789346153551"
+    },
+    {
+      "address": "0xbf72b6485e4b31601afe7b0a1210be2004d2b1d6",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.9979051351705421323297842293309002",
+      "token1": {
+        "address": "0xc5f0f7b66764f6ec8c8dff7ba683102295e16409",
+        "decimals": "18",
+        "name": "First Digital USD",
+        "symbol": "FDUSD"
+      },
+      "token1Price": "1.002099262500638254524100597714496",
+      "volumeToken0": "1194168561.842819243145126404",
+      "volumeToken1": "1194216232.698537921637971858",
+      "volumeUSD": "1222954130.426763154751961188283098"
+    },
+    {
+      "address": "0x7d05c84581f0c41ad80ddf677a510360bae09a5a",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+        "decimals": "18",
+        "name": "Ethereum Token",
+        "symbol": "ETH"
+      },
+      "token0Price": "0.2600741515264615457250007599366273",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "3.845057242831200170054488657030734",
+      "volumeToken0": "330403.152501011936579915",
+      "volumeToken1": "2294862.973213187634699837",
+      "volumeUSD": "732814040.8728804075243852490051589"
+    },
+    {
+      "address": "0x95a13229c552f47ac395d47c03a1c49f9e1bc2ca",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x75ca521892de7f2ecfb070cab545c250d0ceb7e3",
+        "decimals": "9",
+        "name": "PVC META",
+        "symbol": "PVC"
+      },
+      "token0Price": "75759.59853515099359224787173154305",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00001319964756064565565478563494762154",
+      "volumeToken0": "838345481.156829915",
+      "volumeToken1": "29710.038035196679763892",
+      "volumeUSD": "15656031.08680968505332963250515208"
+    },
+    {
+      "address": "0x505d091fd01b3d4340827a3737c950f030cdd9a7",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x0d8ce2a99bb6e3b7db580ed848240e4a0f9ae153",
+        "decimals": "18",
+        "name": "Filecoin",
+        "symbol": "FIL"
+      },
+      "token0Price": "261.7837601386382916004281154645341",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00381994665929776973617536309298913",
+      "volumeToken0": "34768477.134715729391112005",
+      "volumeToken1": "464340.997267282705790138",
+      "volumeUSD": "183458472.85826364102839032640966"
+    },
+    {
+      "address": "0x6cfa5cf1408b1bb9db61b8285f6f2a0d616b00b0",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x795d2710e383f33fbebe980a155b29757b6703f3",
+        "decimals": "18",
+        "name": "GhibliCZ",
+        "symbol": "Ghibli"
+      },
+      "token0Price": "290381.0823971666981954782738154907",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.000003443750507935144967034723255660018",
+      "volumeToken0": "64580639556.581542947118523243",
+      "volumeToken1": "151888.21031635625805695",
+      "volumeUSD": "96534219.42959491849682712964190863"
+    },
+    {
+      "address": "0x3b649abb1050ed0294f14de88c47110e72aa24d5",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x031b41e504677879370e9dbcf937283a8691fa7f",
+        "decimals": "18",
+        "name": "Fetch",
+        "symbol": "FET"
+      },
+      "token0Price": "859.5943341357067574700138232293074",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.001163339450120348251838545339187667",
+      "volumeToken0": "72448594.172654699849087921",
+      "volumeToken1": "195662.162672589678148657",
+      "volumeUSD": "104948781.5602320220146279287988765"
+    },
+    {
+      "address": "0xa5067360b13fc7a2685dc82dcd1bf2b4b8d7868b",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x6d5ad1592ed9d6d1df9b93c793ab759573ed6714",
+        "decimals": "18",
+        "name": "CZ'S DOG",
+        "symbol": "Broccoli"
+      },
+      "token0Price": "26025.1753551289427009238391432008",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00003842433283750857796065501591921652",
+      "volumeToken0": "12701344514.697283507839240294",
+      "volumeToken1": "1333989.966590009899162364",
+      "volumeUSD": "878666857.5910993876956015588535164"
+    },
+    {
+      "address": "0xacb622435b634e75b61473be6f839c46e36bd754",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x3199a64bc8aabdfd9a3937a346cc59c3d81d8a9a",
+        "decimals": "18",
+        "name": "Mubarakah",
+        "symbol": "Mubarakah"
+      },
+      "token0Price": "306382.1246927014260416238213035551",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.000003263897986878285399036617779611388",
+      "volumeToken0": "51870107968.43066507399278389",
+      "volumeToken1": "193050.574840615927872925",
+      "volumeUSD": "121448099.8785180277531106555777761"
+    },
+    {
+      "address": "0xc7d4d8b8d88e70d0b91aa74a231af8fbdf8d2cb4",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0xad29abb318791d579433d831ed122afeaf29dcfe",
+        "decimals": "18",
+        "name": "Fantom",
+        "symbol": "FTM"
+      },
+      "token0Price": "1715.190960810505723658355492479073",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.0005830254606329399772014032372814836",
+      "volumeToken0": "120778640.017224002417445213",
+      "volumeToken1": "152435.449849806605548297",
+      "volumeUSD": "78308028.44110286825736510919623277"
+    },
+    {
+      "address": "0xe9691394a7a62f78ef4aa10b571140acfdd4c91f",
+      "feeTier": "100",
+      "token0": {
+        "address": "0xb994882a1b9bd98a71dd6ea5f61577c42848b0e8",
+        "decimals": "18",
+        "name": "World of Dypians",
+        "symbol": "WoD"
+      },
+      "token0Price": "9051.883454995346441714927493142135",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.0001104742460474502539143640853220292",
+      "volumeToken0": "2657143773.566759837635006652",
+      "volumeToken1": "387987.589272201565804951",
+      "volumeUSD": "242539079.215293383397106668065976"
+    },
+    {
+      "address": "0x2b90a064ec039b55fd68e59c20975558f01cd5d8",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x899357e54c2c4b014ea50a9a7bf140ba6df2ec73",
+        "decimals": "18",
+        "name": "Privasea AI",
+        "symbol": "PRAI"
+      },
+      "token0Price": "24158.25521317441668557361613146479",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00004139371784824352351829506799474198",
+      "volumeToken0": "1805038145.350746135885939607",
+      "volumeToken1": "177095.531936693189838396",
+      "volumeUSD": "116704406.1132300534935843033917501"
+    },
+    {
+      "address": "0x89a6be1ec107c911c3f2a1112f049f876ce033c9",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.1783146767518606790605318166079236",
+      "token1": {
+        "address": "0xb0d502e938ed5f4df2e681fe6e419ff29631d62b",
+        "decimals": "18",
+        "name": "StargateToken",
+        "symbol": "STG"
+      },
+      "token1Price": "5.608063330600548527145369938896665",
+      "volumeToken0": "227319891.62676227169310163",
+      "volumeToken1": "519519418.415425147559335319",
+      "volumeUSD": "233556182.7028338748334865446723703"
+    },
+    {
+      "address": "0xa06261529e36f7f702e2c9764905e27f93237286",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0xabd834a7823567673e1ac07635d5d9857b34a8d3",
+        "decimals": "18",
+        "name": "AIFlow Token",
+        "symbol": "AFT"
+      },
+      "token0Price": "13827.62282351226284039327604851081",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00007231901048816694775945585381473717",
+      "volumeToken0": "1817784293.404437948572856158",
+      "volumeToken1": "80327.00719828623473431",
+      "volumeUSD": "49336614.22088825768641943467310378"
+    },
+    {
+      "address": "0xb24cd29e32facddf9e73831d5cd1ffcd1e535423",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x003d87d02a2a01e9e8a20f507c83e15dd83a33d1",
+        "decimals": "18",
+        "name": "GT Protocol",
+        "symbol": "GTAI"
+      },
+      "token0Price": "7.257453526626766750792462232040294",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.1377893769944394956208883220361667",
+      "volumeToken0": "97220877.430822568781479046",
+      "volumeToken1": "104475053.858273746882832434",
+      "volumeUSD": "104489436.9630111193223484753219095"
+    },
+    {
+      "address": "0xe3cbe4dd1bd2f7101f17d586f44bab944091d383",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x4338665cbb7b2485a8855a139b75d5e34ab0db94",
+        "decimals": "18",
+        "name": "Litecoin Token",
+        "symbol": "LTC"
+      },
+      "token0Price": "7.376923150790461114084996668963853",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.1355578714267677810807892722624426",
+      "volumeToken0": "1711974.291036939758867643",
+      "volumeToken1": "344153.081228207156482598",
+      "volumeUSD": "160934138.9690209992104145060611558"
+    },
+    {
+      "address": "0x701232f46796855b0841df2cbf46595c00667dde",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x6952c5408b9822295ba4a7e694d0c5ffdb8fe320",
+        "decimals": "18",
+        "name": "Fair and Free",
+        "symbol": "FAIR3"
+      },
+      "token0Price": "35117.50185856362374263131148611336",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00002847582963126244440643766086468512",
+      "volumeToken0": "6347401659.824767593389953002",
+      "volumeToken1": "227017.128579457980554543",
+      "volumeUSD": "139830908.0570621975471198518839038"
+    },
+    {
+      "address": "0x9d920b757cc25adc47e5b1a5de67ff6ac87bdff1",
+      "feeTier": "100",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.00001244057653380008143446286170535587",
+      "token1": {
+        "address": "0xd86e6ef14b96d942ef0abf0720c549197ea8c528",
+        "decimals": "18",
+        "name": "RDO Token",
+        "symbol": "RDO"
+      },
+      "token1Price": "80382.12676744341947377562716030499",
+      "volumeToken0": "214617.014445274722946864",
+      "volumeToken1": "16059509145.661636531317286906",
+      "volumeUSD": "142132938.0881480244095591615001916"
+    },
+    {
+      "address": "0x0f3ada81a32d8a7233fe9b1d04f0a8231adb98f0",
+      "feeTier": "500",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.001543659208843213601161291097618584",
+      "token1": {
+        "address": "0xc5f0f7b66764f6ec8c8dff7ba683102295e16409",
+        "decimals": "18",
+        "name": "First Digital USD",
+        "symbol": "FDUSD"
+      },
+      "token1Price": "647.8113784903206658227095934508906",
+      "volumeToken0": "181586.693815704845440923",
+      "volumeToken1": "105251469.984446499478832975",
+      "volumeUSD": "105204005.7631941147902879557699727"
+    },
+    {
+      "address": "0x78fc96f3543337cd5393533ea66dc8fe42ad054d",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.000004778445116185579131853701775628224",
+      "token1": {
+        "address": "0xdc06717f367e57a16e06cce0c4761604460da8fc",
+        "decimals": "18",
+        "name": "BNB Card",
+        "symbol": "BNB Card"
+      },
+      "token1Price": "209273.0952612166155224050897046812",
+      "volumeToken0": "194525.921713151163098893",
+      "volumeToken1": "36610546510.889973614992863037",
+      "volumeUSD": "122601911.2178175513387709710684205"
+    },
+    {
+      "address": "0x8cb829111c90e0101492d5a1aa011f09614129e7",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.01922635317985162152537452251093329",
+      "token1": {
+        "address": "0xafcc12e4040615e7afe9fb4330eb3d9120acac05",
+        "decimals": "8",
+        "name": "PirateCash",
+        "symbol": "PIRATE"
+      },
+      "token1Price": "52.011943744378748215375135676819",
+      "volumeToken0": "22084677.330551921135982543",
+      "volumeToken1": "1046424765.6060853",
+      "volumeUSD": "22084383.79790760902406528381902947"
+    },
+    {
+      "address": "0x9f6eb6903c1277c8f02d71f8814dc9998199af1d",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+        "decimals": "18",
+        "name": "PancakeSwap Token",
+        "symbol": "Cake"
+      },
+      "token0Price": "0.4273359546328246817399817393004172",
+      "token1": {
+        "address": "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+        "decimals": "18",
+        "name": "BUSD Token",
+        "symbol": "BUSD"
+      },
+      "token1Price": "2.34007924949638123285811149538574",
+      "volumeToken0": "40359770.247249249703396553",
+      "volumeToken1": "84155188.064392616298741997",
+      "volumeUSD": "85246243.41851119489931778505213539"
+    },
+    {
+      "address": "0x4e1f9adf96dba6dc09c973228c286568f1315ea8",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x2dff88a56767223a5529ea5960da7a3f5f766406",
+        "decimals": "18",
+        "name": "SPACE ID",
+        "symbol": "ID"
+      },
+      "token0Price": "5.76271244203933702444137006352647",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.1735293943707722263564475786168588",
+      "volumeToken0": "244411397.045704674722076775",
+      "volumeToken1": "79353595.559266589873979063",
+      "volumeUSD": "79833314.34078837237046488772676831"
+    },
+    {
+      "address": "0xfc75f4e78bf71ed5066db9ca771d4ccb7c1264e0",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+        "decimals": "18",
+        "name": "BTCB Token",
+        "symbol": "BTCB"
+      },
+      "token0Price": "0.006165199550695385650984715432329763",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "162.2007514561646143081362127326386",
+      "volumeToken0": "25734.272246304288594167",
+      "volumeToken1": "2943918.332159736918533655",
+      "volumeUSD": "1039295991.863423216207706812749712"
+    },
+    {
+      "address": "0x0abd7643b61fbd919e8b3b92e19bda26f22c546c",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x2d060ef4d6bf7f9e5edde373ab735513c0e4f944",
+        "decimals": "18",
+        "name": "AITECH",
+        "symbol": "AITECH"
+      },
+      "token0Price": "18.61675860931230560718318175810732",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.05371504357905726394758409109130366",
+      "volumeToken0": "1284341115.477590896163918686",
+      "volumeToken1": "82561283.288563588747119907",
+      "volumeUSD": "82524685.17873048767182302782158029"
+    },
+    {
+      "address": "0x8a67c6dba75ae3f8edfe97d528d1fac33e87bc03",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x4a0385a06872814b2720df66136a6b0a3bcd0e89",
+        "decimals": "18",
+        "name": "MyToken2",
+        "symbol": "MTK2"
+      },
+      "token0Price": "0",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0",
+      "volumeToken0": "0",
+      "volumeToken1": "0",
+      "volumeUSD": "0"
+    },
+    {
+      "address": "0xd56f2ce8a39b407569836a595a77283fbb636af7",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.9950911269563755655776758461638127",
+      "token1": {
+        "address": "0x9356086146be5158e98ad827e21b5cf944699894",
+        "decimals": "18",
+        "name": "USDa",
+        "symbol": "USDa"
+      },
+      "token1Price": "1.004933088950997789007284001974535",
+      "volumeToken0": "31898864.008057727517157735",
+      "volumeToken1": "31892866.172576830731923907",
+      "volumeUSD": "31890125.40366798006592174354188193"
+    },
+    {
+      "address": "0x9474e972f49605315763c296b122cbb998b615cf",
+      "feeTier": "500",
+      "token0": {
+        "address": "0xb0b84d294e0c75a6abe60171b70edeb2efd14a1b",
+        "decimals": "18",
+        "name": "Synclub Staked BNB",
+        "symbol": "SnBNB"
+      },
+      "token0Price": "0.9722316744831334603800714348269348",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "1.028561428562414391989013814914235",
+      "volumeToken0": "811760.442601584242015826",
+      "volumeToken1": "814345.990266424247697145",
+      "volumeUSD": "409721112.6766936967301327902292216"
+    },
+    {
+      "address": "0x932661ce8670b63a7dc7d8ed60677b01535a15cf",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x08e8ac8c4bca64503f774d2c40c911e8a3ffcc12",
+        "decimals": "18",
+        "name": "TCC",
+        "symbol": "TCC"
+      },
+      "token0Price": "4016811.585397745066018425775502243",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.0000002489536735144075483671167397375418",
+      "volumeToken0": "36804860432.067507639258897703",
+      "volumeToken1": "175106.702766463420215629",
+      "volumeUSD": "109890852.3085082561939002577651002"
+    },
+    {
+      "address": "0x5c9c0920e5f37856ac44810154f77e99dd2b5d41",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x2940566eb50f15129238f4dc599adc4f742d7d8e",
+        "decimals": "18",
+        "name": "BlackCardCoin",
+        "symbol": "BCCoin"
+      },
+      "token0Price": "0.1496261798871236310582082018099826",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "6.683322402231943402092301547038035",
+      "volumeToken0": "29686906.916047748355791911",
+      "volumeToken1": "256951062.398443873984811011",
+      "volumeUSD": "256926982.6506931537376473976254173"
+    },
+    {
+      "address": "0x3bf6f934eeefd436fbd990bdbc3fd6e4c9ebac9a",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.04841199095921480947583288527535485",
+      "token1": {
+        "address": "0x9a70815dfb644a24b57358e1041f8d0324c8f6e1",
+        "decimals": "18",
+        "name": "BOOP",
+        "symbol": "BOOP"
+      },
+      "token1Price": "20.65603955107858523243696911294461",
+      "volumeToken0": "100663940.714250076682408347",
+      "volumeToken1": "678018620.184285786090658302",
+      "volumeUSD": "100694412.3938883458741182767995898"
+    },
+    {
+      "address": "0x1401ff943d08a7e098328c1d3a9d388923b115d2",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "646.0390532926759504534384439771713",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.001547894039692007041456562637453327",
+      "volumeToken0": "14937017.549950949099694391",
+      "volumeToken1": "35785.165348829415829068",
+      "volumeUSD": "14959927.09005777236579903836055637"
+    },
+    {
+      "address": "0x29c5ba7dbb67a4af999a28cc380ad234fe7c1b86",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x3ee2200efb3400fabb9aacf31297cbdd1d435d47",
+        "decimals": "18",
+        "name": "Cardano Token",
+        "symbol": "ADA"
+      },
+      "token0Price": "1.518670988802119404477762150004692",
+      "token1": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1Price": "0.6584704701501995497506204280893292",
+      "volumeToken0": "95729574.409292232347546754",
+      "volumeToken1": "84389951.000324849442890029",
+      "volumeUSD": "84446652.61684772839250603316047226"
+    },
+    {
+      "address": "0x9c56d383159ec6ddc59ffa4d1ac56aed05a01de2",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.0003328518057770658833083089060256142",
+      "token1": {
+        "address": "0xcc42724c6683b7e57334c4e856f4c9965ed682bd",
+        "decimals": "18",
+        "name": "Matic Token",
+        "symbol": "MATIC"
+      },
+      "token1Price": "3004.340017520499462296540139233417",
+      "volumeToken0": "308544.59936037471712166",
+      "volumeToken1": "148089548.019183168499630456",
+      "volumeUSD": "105629455.8143703544945392840466841"
+    },
+    {
+      "address": "0x33dcd5381c0fd234867d5d7a49a19c009f82af4e",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x0eb3a705fc54725037cc9e008bdede697f62f335",
+        "decimals": "18",
+        "name": "Cosmos Token",
+        "symbol": "ATOM"
+      },
+      "token0Price": "151.5736163766827278152907749557087",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.006597454252954240633545387221718169",
+      "volumeToken0": "4316752.165064975700406876",
+      "volumeToken1": "83276.877047624370664862",
+      "volumeUSD": "34990827.13137933656906237745789993"
+    },
+    {
+      "address": "0xd4dca84e1808da3354924cd243c66828cf775470",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+        "decimals": "18",
+        "name": "Ethereum Token",
+        "symbol": "ETH"
+      },
+      "token0Price": "42.13777663920426290538031417461343",
+      "token1": {
+        "address": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+        "decimals": "18",
+        "name": "BTCB Token",
+        "symbol": "BTCB"
+      },
+      "token1Price": "0.02373167451529982227674707996712743",
+      "volumeToken0": "647261.481260571762350374",
+      "volumeToken1": "33278.167993480528198999",
+      "volumeUSD": "1712625097.626269119244262649813151"
+    },
+    {
+      "address": "0xa51da87491f9bcd649ef8f89d07e07526a659509",
+      "feeTier": "10000",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.007652938167862287687667933895098398",
+      "token1": {
+        "address": "0x7f9ad7a5854658d984924e868187b2135514fb88",
+        "decimals": "18",
+        "name": "BVSD",
+        "symbol": "BVSD"
+      },
+      "token1Price": "130.6687677419628536786222460871928",
+      "volumeToken0": "57369837.612682680835504754",
+      "volumeToken1": "516939069.709343294100204602",
+      "volumeUSD": "58715184.16725469393862338179111734"
+    },
+    {
+      "address": "0xa2c1e0237bf4b58bc9808a579715df57522f41b2",
+      "feeTier": "500",
+      "token0": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token0Price": "0.0004150514232251173881924317629704032",
+      "token1": {
+        "address": "0xd98438889ae7364c7e2a3540547fad042fb24642",
+        "decimals": "18",
+        "name": "Cellframe ERC20 v2",
+        "symbol": "CELL"
+      },
+      "token1Price": "2409.340009557359522125812932263716",
+      "volumeToken0": "132792.724189997602610342",
+      "volumeToken1": "119925725.206884438859756695",
+      "volumeUSD": "69123486.44184746785595544403935585"
+    },
+    {
+      "address": "0xd15220032c999ae4e4861e0eefdc86f73cffacfe",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x55d398326f99059ff775485246999027b3197955",
+        "decimals": "18",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token0Price": "0.1521170345828315223708011772182063",
+      "token1": {
+        "address": "0x997a58129890bbda032231a52ed1ddc845fc18e1",
+        "decimals": "18",
+        "name": "SIREN",
+        "symbol": "SIREN"
+      },
+      "token1Price": "6.573885710712267656585473374473376",
+      "volumeToken0": "138151237.871339171411048284",
+      "volumeToken1": "902326331.853471947926293113",
+      "volumeUSD": "138224487.1656803370528258291311039"
+    },
+    {
+      "address": "0x6cb5392b9ca52d7a0e6940e82d29087361360ec3",
+      "feeTier": "100",
+      "token0": {
+        "address": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+        "decimals": "18",
+        "name": "Ethereum Token",
+        "symbol": "ETH"
+      },
+      "token0Price": "1.204645669478698442466302195242229",
+      "token1": {
+        "address": "0x26c5e01524d2e6280a48f2c50ff6de7e52e9611c",
+        "decimals": "18",
+        "name": "Wrapped liquid staked Ether 2.0",
+        "symbol": "wstETH"
+      },
+      "token1Price": "0.8301196155320449111946165980038738",
+      "volumeToken0": "265335.135422774990944381",
+      "volumeToken1": "223966.380847149517520821",
+      "volumeUSD": "784119887.2715787499227312048867399"
+    },
+    {
+      "address": "0x232565b67a9375aedecdb7650b281c058d2c3341",
+      "feeTier": "500",
+      "token0": {
+        "address": "0x7b4bf9feccff207ef2cb7101ceb15b8516021acd",
+        "decimals": "6",
+        "name": "MilkyWay",
+        "symbol": "MILK"
+      },
+      "token0Price": "10555.43182377038200632868366130443",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.00009473795261962117700709670583087517",
+      "volumeToken0": "979705240.279687",
+      "volumeToken1": "172639.611573654540407843",
+      "volumeUSD": "107234483.2733016052223083580623472"
+    },
+    {
+      "address": "0x91b3abdcb5226733338b1a1aeb4b546618eea4e1",
+      "feeTier": "2500",
+      "token0": {
+        "address": "0x9240c44ee90d058b0b17ababe0f74ab1a205ae04",
+        "decimals": "18",
+        "name": "Ents",
+        "symbol": "ENTS"
+      },
+      "token0Price": "4720951.110964907936111734556761727",
+      "token1": {
+        "address": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+        "decimals": "18",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1Price": "0.0000002118217233127863376951235671912603",
+      "volumeToken0": "153809317457.655484714256810555",
+      "volumeToken1": "693439.338552853740967332",
+      "volumeUSD": "384963232.2997275444570801397522807"
+    }
+  ]
+}

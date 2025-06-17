@@ -7,24 +7,22 @@ import '@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol';
 import '@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol';
 import '@openzeppelin/contracts/utils/math/SafeCast.sol';
 import '@uniswap/universal-router/contracts/interfaces/IUniversalRouter.sol';
-import 'forge-std/console2.sol';
 import './interfaces/IFlashLoan.sol';
 import './interfaces/IPermit2.sol';
 
 contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
     using SafeERC20 for IERC20;
 
-    error debugLog(address tokenIn, address tokenOut, uint256 amountIn, uint256 amountOut);
     constructor(
         address provider
     ) FlashLoanSimpleReceiverBase(IPoolAddressesProvider(provider)) {}
 
-    function flashLoanSimple(
+    function executeFlashLoan(
         address borrowToken,
         uint256 amountIn,
         SwapDetail[] calldata swapDetails
     ) external {
-        bytes memory params = abi.encode(msg.sender, swapDetails);
+        bytes memory params = abi.encode(swapDetails);
         uint16 referralCode = 0;
         POOL.flashLoanSimple(
             address(this),
@@ -43,30 +41,48 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
         uint24 fee,
         uint256 amountIn,
         uint256 amountOutMinimum
-    ) internal returns (uint256 amountOut){
+    ) internal returns (uint256 amountOut) {
         // Approve Permit2 to spend tokenIn
-        console2.log('_swap amountIn: ', amountIn);
-        // IERC20(tokenIn).approve(permist2Address, amountIn);
+        try IERC20(tokenIn).approve(permist2Address, amountIn) {} catch {
+            revert OperationStepFailed(0);
+        }
 
-        // // Approve Universal Router via Permit2
-        // IPermit2(permist2Address).approve(tokenIn, routerAddress, SafeCast.toUint160(amountIn), uint48(block.timestamp + 2 * 60));
-    
-        // Approve Universal Router to spend tokenIn
-        IERC20(tokenIn).approve(routerAddress, amountIn + 1000);
+        // Approve Universal Router via Permit2
+        try
+            IPermit2(permist2Address).approve(
+                tokenIn,
+                routerAddress,
+                SafeCast.toUint160(amountIn),
+                uint48(block.timestamp + 2 * 60)
+            )
+        {} catch {
+            revert OperationStepFailed(1);
+        }
 
         //  SWAP_EXACT_IN command == (0x00)
         bytes memory commands = abi.encodePacked(bytes1(0x00));
 
         bytes memory path = abi.encodePacked(tokenIn, fee, tokenOut);
         bytes[] memory inputs = new bytes[](1);
-        inputs[0] = abi.encode(address(this), amountIn, amountOutMinimum, path, true);
+        inputs[0] = abi.encode(
+            address(this),
+            amountIn,
+            amountOutMinimum,
+            path,
+            true
+        );
 
-        IUniversalRouter(routerAddress).execute(commands, inputs, block.timestamp + 10);
+        try
+            IUniversalRouter(routerAddress).execute(
+                commands,
+                inputs,
+                block.timestamp + 10
+            )
+        {} catch {
+            revert OperationStepFailed(2);
+        }
 
         amountOut = IERC20(tokenOut).balanceOf(address(this));
-                
-        // Optional: For Debug only
-        emit SwapExecuted(tokenIn, tokenOut, fee, amountIn, amountOut);
     }
 
     function executeOperation(
@@ -76,12 +92,22 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
         address initiator,
         bytes calldata params
     ) external override returns (bool) {
-        (address recipient, SwapDetail[] memory swapDetails) = abi.decode(params, (address, SwapDetail[]));
+        SwapDetail[] memory swapDetails = abi.decode(params, (SwapDetail[]));
         uint256 repayAmount = amount + permium;
         uint256 currentAmount = amount;
         for (uint8 i = 0; i < swapDetails.length; i++) {
             SwapDetail memory detail = swapDetails[i];
-            currentAmount = _swap(detail.routerAddress, detail.permit2Address, detail.tokenIn, detail.tokenOut, detail.fee, currentAmount, 0);
+            uint256 swapAmountOut = _swap(
+                detail.routerAddress,
+                detail.permit2Address,
+                detail.tokenIn,
+                detail.tokenOut,
+                detail.fee,
+                currentAmount,
+                0
+            );
+
+            currentAmount = swapAmountOut;
         }
 
         if (currentAmount <= repayAmount) {
@@ -90,7 +116,15 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
 
         emit ArbitrageProfitable(repayAmount, currentAmount);
 
-        IERC20(asset).transfer(recipient, currentAmount - repayAmount);
-        IERC20(asset).transfer(msg.sender, repayAmount);
+        try
+            IERC20(asset).transfer(initiator, currentAmount - repayAmount)
+        {} catch {
+            revert OperationStepFailed(3);
+        }
+        try IERC20(asset).transfer(msg.sender, repayAmount) {} catch {
+            revert OperationStepFailed(4);
+        }
+
+        return true;
     }
 }

@@ -1,4 +1,5 @@
 import * as dotenv from 'dotenv';
+import { ethers } from 'ethers';
 import {
   ContractFunctionRevertedError,
   createPublicClient,
@@ -6,27 +7,22 @@ import {
   defineChain,
   http,
 } from 'viem';
-import { bsc } from 'viem/chains';
-import { ShareContentLocalStore } from './async-local-store/share-content-local-store';
-import {
-  SubgraphEndpoint,
-  SubgraphUtil,
-} from './subgraph-arbitrage/subgraph.util';
 import { privateKeyToAccount } from 'viem/accounts';
-import { AaveFlashLoanTest__factory } from '../typechain-types/factories/contracts/AaveFlashLoanTest__factory';
-import { ethers } from 'ethers';
+import { bsc } from 'viem/chains';
+import { FlashArbitrage__factory } from '../../typechain-types/factories/contracts/FlashArbitrage__factory';
+import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
 dotenv.config();
 
 const deploy = async () => {
   const hash =
     await ShareContentLocalStore.getStore().viemWalletClient!.deployContract({
-      abi: AaveFlashLoanTest__factory.abi,
-      bytecode: AaveFlashLoanTest__factory.bytecode,
+      abi: FlashArbitrage__factory.abi,
+      bytecode: FlashArbitrage__factory.bytecode,
       account: privateKeyToAccount(
         process.env.WALLET_PRIVATE_KEY as `0x${string}`,
       ),
       chain: localhostChain,
-      args: ['0xCa20a50ea454Bd9F37a895182ff3309F251Fd7cE']
+      args: ['0xCa20a50ea454Bd9F37a895182ff3309F251Fd7cE'],
     });
 
   console.log('Transacion hash:', hash);
@@ -54,35 +50,35 @@ const callFlashSwap = async () => {
   try {
     const hash =
       await ShareContentLocalStore.getStore().viemWalletClient!.writeContract({
-        address: '0xc6def9de37012f688f8c114dceff8e2ea58ea076',
-        abi: AaveFlashLoanTest__factory.abi,
-        functionName: 'flashLoanSimple',
+        address: '0x20b77bAcd7f60EE58128D2981C3BD6fa42bafa44',
+        abi: FlashArbitrage__factory.abi,
+        functionName: 'executeFlashLoan',
         args: [
-          '0x5c229a1ea3f7993856096c606e34885b869594ff',
+          '0x55d398326f99059fF775485246999027B3197955',
           ethers.parseUnits('100', 18),
           // 100000000000000n,
           [
             {
-              "routerAddress": "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
-              "permit2Address": "0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768",
-              "tokenIn": "0x55d398326f99059fF775485246999027B3197955",
-              "tokenOut": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
-              "fee": 100
+              routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+              tokenIn: '0x55d398326f99059fF775485246999027B3197955',
+              tokenOut: '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56',
+              fee: 100,
             },
             {
-              "routerAddress": "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
-              "permit2Address": "0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768",
-              "tokenIn": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
-              "tokenOut": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
-              "fee": 500
+              routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+              tokenIn: '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56',
+              tokenOut: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
+              fee: 500,
             },
             {
-              "routerAddress": "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
-              "permit2Address": "0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768",
-              "tokenIn": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
-              "tokenOut": "0x55d398326f99059fF775485246999027B3197955",
-              "fee": 100
-            }
+              routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+              tokenIn: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
+              tokenOut: '0x55d398326f99059fF775485246999027B3197955',
+              fee: 100,
+            },
           ],
         ],
         account: account,
@@ -96,11 +92,9 @@ const callFlashSwap = async () => {
       );
     console.log('Transaction confirmed in block:', receipt.blockNumber);
   } catch (error) {
-    // Log detailed error information
     console.error('Transaction failed with error:');
 
     if (error instanceof ContractFunctionRevertedError) {
-      // Handle revert with a specific reason
       const { reason, data } = error;
       console.error('Revert reason:', reason || 'No reason provided');
       console.error('Error data:', data);
@@ -116,12 +110,12 @@ const callFlashSwap = async () => {
 const exec = async () => {
   const start = performance.now();
 
-    // await deploy();
+  // await deploy();
   await callFlashSwap();
 
   const end = performance.now();
-  const ms = end - start; // Time in milliseconds
-  const s = ms / 1000; // Time in seconds
+  const ms = end - start;
+  const s = ms / 1000;
 
   console.log(`Execution time: ${ms.toFixed(2)} ms`);
   console.log(`Execution time: ${s.toFixed(2)} s`);
@@ -131,7 +125,7 @@ export const account = privateKeyToAccount(
   process.env.WALLET_PRIVATE_KEY as `0x${string}`,
 );
 
-export const localhostChain = /*#__PURE__*/ defineChain({
+export const localhostChain = defineChain({
   id: 56,
   name: 'Local Hardhat',
   network: 'hardhat',

@@ -1,4 +1,5 @@
 import * as dotenv from 'dotenv';
+import { ethers } from 'ethers';
 import {
   ContractFunctionRevertedError,
   createPublicClient,
@@ -6,15 +7,10 @@ import {
   defineChain,
   http,
 } from 'viem';
-import { bsc } from 'viem/chains';
-import { ShareContentLocalStore } from './async-local-store/share-content-local-store';
-import {
-  SubgraphEndpoint,
-  SubgraphUtil,
-} from './subgraph-arbitrage/subgraph.util';
 import { privateKeyToAccount } from 'viem/accounts';
+import { bsc } from 'viem/chains';
+import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
 import { FlashLoanTest__factory } from '../typechain-types/factories/contracts/FlashLoanTest__factory';
-import { ethers } from 'ethers';
 dotenv.config();
 
 const deploy = async () => {
