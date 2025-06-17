@@ -44,6 +44,7 @@ export enum RouterType {
 export class SwapDetail {
   routerType: RouterType;
   routerAddress: string;
+  permit2Address: string;
   tokenIn: string;
   tokenOut: string;
   fee: bigint;
@@ -56,6 +57,7 @@ export class ArbitrageResult {
   finalAmount: bigint;
   netProfit: bigint;
   readableNetProfit: string;
+  profitRate: string;
   path: string[];
   SwapPath: SwapDetail[];
 }
@@ -67,7 +69,7 @@ export class Ratio {
 }
 
 export class SubgraphArbitrageUtil {
-  static BORROW_COST = 3000n; //todo this is not a fix amount for v3
+  static AAVE_BORROW_COST = 500n; //todo this is not a fix amount for v3
   static BASIS_POINTS = 1000000n; // 100% = 10000 basis points
 
   static async calculateArbitrage(tokenAmounts: TokenAmount[]) {
@@ -75,7 +77,10 @@ export class SubgraphArbitrageUtil {
   }
 
   //Entry Point
-  static async calculateAllPaths(tokenAmounts: TokenAmount[], pathLength: number | undefined = 3,) {
+  static async calculateAllPaths(
+    tokenAmounts: TokenAmount[],
+    pathLength: number | undefined = 3,
+  ) {
     const [uniswapPools, pancakeswapPools] = await Promise.all([
       SubgraphUtil.fetchSymbolToDetailMap(SubgraphEndpoint.UNISWAP_V3),
       SubgraphUtil.fetchSymbolToDetailMap(SubgraphEndpoint.PANCAKESWAP_V3),
@@ -106,11 +111,11 @@ export class SubgraphArbitrageUtil {
         });
         tokenAmountPaths[0].amount = element.amount;
 
-        const arbitrageResult = this.calculatePairProfit(tokenAmountPaths, poolDetailMap);
-        if (arbitrageResult)
-        arbitrageResults.push(
-          arbitrageResult
+        const arbitrageResult = this.calculatePairProfit(
+          tokenAmountPaths,
+          poolDetailMap,
         );
+        if (arbitrageResult) arbitrageResults.push(arbitrageResult);
       });
     }
 
@@ -138,13 +143,14 @@ export class SubgraphArbitrageUtil {
 
     const arbitrageResult: ArbitrageResult = new ArbitrageResult();
 
-    const repayAmount = ethers.parseUnits(
+    const initialAmount = ethers.parseUnits(
       tokenAmount[0].amount!,
       tokenAmount[0].currency.decimals,
     );
-    const initialAmount =
-      (repayAmount * (this.BASIS_POINTS - this.BORROW_COST)) /
-      this.BASIS_POINTS; //todo roughly 0.3% fee
+
+    const repayAmount =
+      (initialAmount * (this.BASIS_POINTS + this.AAVE_BORROW_COST)) /
+      this.BASIS_POINTS;
 
     console.log(
       `-------------Start Calculate Path: ${symbols.join(' -> ')}-------------`,
@@ -162,9 +168,7 @@ export class SubgraphArbitrageUtil {
 
       if (!uniswapRatio) {
         console.log(
-          `Not Found Uniswap token pair: ${
-            tokenIn.symbol
-          }/${tokenOut.symbol}`,
+          `Not Found Uniswap token pair: ${tokenIn.symbol}/${tokenOut.symbol}`,
         );
       }
       const uniswapTokenOut = uniswapRatio
@@ -179,9 +183,7 @@ export class SubgraphArbitrageUtil {
 
       if (!pancakeRatio) {
         console.log(
-          `Not Found Pancakeswap token pair: ${
-            tokenIn.symbol
-          }/${tokenOut.symbol}`,
+          `Not Found Pancakeswap token pair: ${tokenIn.symbol}/${tokenOut.symbol}`,
         );
       }
 
@@ -190,21 +192,15 @@ export class SubgraphArbitrageUtil {
         : 0n;
 
       console.log(
-        `${tokenIn.symbol} -> ${
-          tokenOut.symbol
-        } -- uniswapTokenOut: ${uniswapTokenOut}`,
+        `${tokenIn.symbol} -> ${tokenOut.symbol} -- uniswapTokenOut: ${uniswapTokenOut}`,
       );
       console.log(
-        `${tokenIn.symbol} -> ${
-          tokenOut.symbol
-        } -- pancakeTokenOut: ${pancakeTokenOut}`,
+        `${tokenIn.symbol} -> ${tokenOut.symbol} -- pancakeTokenOut: ${pancakeTokenOut}`,
       );
 
       if (uniswapTokenOut === 0n && pancakeTokenOut === 0n) {
         console.log(
-          `Not Found Any avaliable token pair: ${tokenIn.symbol}/${
-            tokenOut.symbol
-          }`,
+          `Not Found Any avaliable token pair: ${tokenIn.symbol}/${tokenOut.symbol}`,
         );
 
         console.log(
@@ -220,7 +216,8 @@ export class SubgraphArbitrageUtil {
           ...(arbitrageResult.SwapPath ?? []),
           {
             routerType: RouterType.UNISWAP_V3,
-            routerAddress: 'todo UNISWAP_V3',
+            routerAddress: '0x5Dc88340E1c5c6366864Ee415d6034cadd1A9897',
+            permit2Address: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
             tokenIn: tokenIn.address,
             tokenOut: tokenOut.address,
             fee: uniswapRatio!.feeTier,
@@ -232,7 +229,8 @@ export class SubgraphArbitrageUtil {
           ...(arbitrageResult.SwapPath ?? []),
           {
             routerType: RouterType.PANCAKESWAP_V3,
-            routerAddress: 'todo PANCAKESWAP_V3',
+            routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+            permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
             tokenIn: tokenIn.address,
             tokenOut: tokenOut.address,
             fee: pancakeRatio!.feeTier,
@@ -256,6 +254,10 @@ export class SubgraphArbitrageUtil {
       arbitrageResult.netProfit,
       tokenAmount[0].currency.decimals,
     );
+    arbitrageResult.profitRate = ethers.formatUnits(
+      (arbitrageResult.netProfit * 100000n) / repayAmount,
+      3,
+    ) + '%';
     arbitrageResult.path = symbols;
     arbitrageResult.isProfitable = arbitrageResult.netProfit > 0;
 

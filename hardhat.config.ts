@@ -5,15 +5,10 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.21",
+  solidity: { compilers: [{ version: "0.8.21" }, { version: "0.8.24" }] },
   networks: {
-    hardhat: {
-      forking: {
-        url: process.env.BSC_RPC_URL!,
-        blockNumber: process.env.BLOCK_NUMBER
-          ? parseInt(process.env.BLOCK_NUMBER)
-          : undefined, // Use block number if provided
-      },
+    bscFork: {
+      url: "http://127.0.0.1:8545", // Hardhat node URL (set when forking)
       chainId: 56, // BSC mainnet chain ID
     },
   },
