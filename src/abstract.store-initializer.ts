@@ -10,6 +10,7 @@ import {
 import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { ShareContentLocalStore } from './async-local-store/share-content-local-store';
+import TradeHistoryUtil from './trade-history/trade-history-util';
 
 dotenv.config();
 
@@ -46,6 +47,7 @@ export abstract class AbstractStoreInitializer {
         this.getViemChainClient();
       ShareContentLocalStore.getStore().viemWalletClient =
         this.getViemWalletClient();
+      TradeHistoryUtil.connectToMongoDB(process.env.MONGO_URI!);
     }, this.execute());
   }
 }

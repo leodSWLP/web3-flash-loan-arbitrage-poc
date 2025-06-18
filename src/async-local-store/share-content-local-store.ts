@@ -20,9 +20,9 @@ export class ShareContentLocalStore {
   public static asyncLocalStore = new AsyncLocalStorage<ShareContentStore>();
 
   static initAsyncLocalStore(setStoreValueFn: () => any, run: () => any) {
-    this.asyncLocalStore.run(new ShareContentStore(), () => {
-      setStoreValueFn();
-      run();
+    this.asyncLocalStore.run(new ShareContentStore(), async () => {
+      await setStoreValueFn();
+      await run();
     });
   }
 
