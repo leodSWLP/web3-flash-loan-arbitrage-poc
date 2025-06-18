@@ -12,11 +12,18 @@ import './interfaces/IFlashLoan.sol';
 contract AaveFlashLoanTest is IFlashLoan, FlashLoanSimpleReceiverBase {
     using SafeERC20 for IERC20;
 
+    error DebugLog(
+        uint256 borrowAmount,
+        uint256 receivedAount,
+        uint256 premium,
+        uint256 repayAmount
+    );
+
     constructor(
         address provider
     ) FlashLoanSimpleReceiverBase(IPoolAddressesProvider(provider)) {}
 
-    function flashLoanSimple(address borrowToken, uint256 amountIn, SwapDetail[] calldata swapDetails) external {
+    function executeFlashLoan(address borrowToken, uint256 amountIn, SwapDetail[] calldata swapDetails) external {
         BorrowDetail memory borrowDetail = BorrowDetail({
             caller: msg.sender,
             borrowToken: borrowToken,
@@ -34,16 +41,16 @@ contract AaveFlashLoanTest is IFlashLoan, FlashLoanSimpleReceiverBase {
         uint256 premium,
         address initiator,
         bytes calldata params
-    ) external override returns (bool) {
+    ) external override view returns (bool) {
         (BorrowDetail memory borrowDetail, SwapDetail[] memory swapDetails) = abi.decode(params, (BorrowDetail, SwapDetail[]));
 
 
         uint256 totalDebt = amount + premium;
 
-        // console2.log("Trade - asset: %s, amount: %s", asset, amount);
-        // console2.log("Trade - premium: %s, totalDebt: %s", premium, totalDebt);
+        console2.log("Trade - asset: %s, amount: %s", asset, amount);
+        console2.log("Trade - premium: %s, totalDebt: %s", premium, totalDebt);
 
-        // revert DebugLog(borrowDetail.amountIn, amount, premium, totalDebt);
+        revert DebugLog(borrowDetail.amountIn, amount, premium, totalDebt);
         // IERC20(asset).approve(address(POOL), totalDebt);
 
         return true;

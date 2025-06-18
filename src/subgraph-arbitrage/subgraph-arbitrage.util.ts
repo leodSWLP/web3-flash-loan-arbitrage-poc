@@ -2,6 +2,7 @@ import { Currency, Token } from '@uniswap/sdk-core';
 import { PoolDetail, SubgraphEndpoint, SubgraphUtil } from './subgraph.util';
 import { ethers } from 'ethers';
 import { RouterUtil } from '../common/router.util';
+import { LogUtil } from '../log/log.util';
 
 export class TokenAmount {
   currency: Token;
@@ -75,7 +76,6 @@ export class SubgraphArbitrageUtil {
   static async calculateArbitrage(tokenAmounts: TokenAmount[]) {
     tokenAmounts.forEach((tokenAmount) => tokenAmount.validate());
   }
-
   //Entry Point
   static async calculateAllPaths(
     tokenAmounts: TokenAmount[],
@@ -97,7 +97,7 @@ export class SubgraphArbitrageUtil {
     for (const element of tokenAmounts) {
       const tokenKey = `${element.currency.symbol}-${element.currency.address}`;
       if (!element.amount) {
-        console.log(`Skip token: ${tokenKey}, reason: Missing AmountIn`);
+        LogUtil.debug(`Skip token: ${tokenKey}, reason: Missing AmountIn`);
         continue;
       }
       const combinations = pathCombinations[tokenKey];
@@ -119,7 +119,7 @@ export class SubgraphArbitrageUtil {
       });
     }
 
-    arbitrageResults.sort((a, b) => Number(a.netProfit - b.netProfit));
+    arbitrageResults.sort((a, b) => Number(ethers.parseUnits(a.profitRate.slice(0, -1), 5) - ethers.parseUnits(b.profitRate.slice(0, -1), 5)));
     return arbitrageResults;
   }
 
@@ -136,7 +136,7 @@ export class SubgraphArbitrageUtil {
     const symbols = tokenAmount.map((item) => item.currency.symbol!);
 
     if (!tokenAmount[0].amount) {
-      console.log(
+      LogUtil.debug(
         `Trading Path: [${symbols.join(' -> ')}] missing initialAmount`,
       );
     }
@@ -152,7 +152,7 @@ export class SubgraphArbitrageUtil {
       (initialAmount * (this.BASIS_POINTS + this.AAVE_BORROW_COST)) /
       this.BASIS_POINTS;
 
-    console.log(
+    LogUtil.debug(
       `-------------Start Calculate Path: ${symbols.join(' -> ')}-------------`,
     );
     let currentAmount = initialAmount;
@@ -167,7 +167,7 @@ export class SubgraphArbitrageUtil {
       );
 
       if (!uniswapRatio) {
-        console.log(
+        LogUtil.debug(
           `Not Found Uniswap token pair: ${tokenIn.symbol}/${tokenOut.symbol}`,
         );
       }
@@ -182,7 +182,7 @@ export class SubgraphArbitrageUtil {
       );
 
       if (!pancakeRatio) {
-        console.log(
+        LogUtil.debug(
           `Not Found Pancakeswap token pair: ${tokenIn.symbol}/${tokenOut.symbol}`,
         );
       }
@@ -191,19 +191,19 @@ export class SubgraphArbitrageUtil {
         ? this.swap(currentAmount, pancakeRatio)
         : 0n;
 
-      console.log(
+      LogUtil.debug(
         `${tokenIn.symbol} -> ${tokenOut.symbol} -- uniswapTokenOut: ${uniswapTokenOut}`,
       );
-      console.log(
+      LogUtil.debug(
         `${tokenIn.symbol} -> ${tokenOut.symbol} -- pancakeTokenOut: ${pancakeTokenOut}`,
       );
 
       if (uniswapTokenOut === 0n && pancakeTokenOut === 0n) {
-        console.log(
+        LogUtil.debug(
           `Not Found Any avaliable token pair: ${tokenIn.symbol}/${tokenOut.symbol}`,
         );
 
-        console.log(
+        LogUtil.debug(
           `-------------End Calculate Path: ${symbols.join(
             ' -> ',
           )}-------------\n\n`,
@@ -240,7 +240,7 @@ export class SubgraphArbitrageUtil {
       }
     }
 
-    console.log(
+    LogUtil.debug(
       `-------------End Calculate Path: ${symbols.join(
         ' -> ',
       )}-------------\n\n`,
@@ -273,29 +273,24 @@ export class SubgraphArbitrageUtil {
     tokenOut: Token,
     poolDetailMap: Map<string, PoolDetail[]>,
   ): Ratio | undefined {
-    const token0 = tokenIn.address < tokenOut.address ? tokenIn : tokenOut;
-    const token1 = tokenIn.address > tokenOut.address ? tokenIn : tokenOut;
-    const symbol = `${token0.symbol}/${token1.symbol}`;
+    const key = SubgraphUtil.getDetailMapKey(tokenIn, tokenOut);
 
-    const targetPoolDetail = poolDetailMap.get(symbol)?.[0]; //todo check price other then only check fee tier
+    const targetPoolDetail = poolDetailMap.get(key)?.[0];
 
     if (!targetPoolDetail) {
       return undefined;
     }
     const feeTier = targetPoolDetail.feeTier;
-    const ratio = targetPoolDetail.swapRate;
-    if (tokenIn === token0) {
+    const ratio = targetPoolDetail.netSwapRate;
+
+    if (!ratio) {
+      throw new Error(`Not Found After Fee Swap Rate of Detail Map Key: ${key} `)
+    }
+
       return {
         numerator: ratio.numerator * (this.BASIS_POINTS - feeTier),
         denominator: ratio.denominator * this.BASIS_POINTS,
         feeTier: feeTier,
       };
-    }
-
-    return {
-      numerator: ratio.denominator * (this.BASIS_POINTS - feeTier),
-      denominator: ratio.numerator * this.BASIS_POINTS,
-      feeTier: feeTier,
-    };
   }
 }

@@ -1,13 +1,17 @@
 import * as dotenv from 'dotenv';
-import * as JSONbig from 'json-bigint';
 import { createPublicClient, http } from 'viem';
 import { bsc } from 'viem/chains';
-import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
-import { BscTokenConstant } from '../common/bsc-token.constant';
+import { ShareContentLocalStore } from './async-local-store/share-content-local-store';
+import {
+  SubgraphEndpoint,
+  SubgraphUtil,
+} from './subgraph-arbitrage/subgraph.util';
 import {
   SubgraphArbitrageUtil,
   TokenAmount,
-} from '../subgraph-arbitrage/subgraph-arbitrage.util';
+} from './subgraph-arbitrage/subgraph-arbitrage.util';
+import { BscTokenConstant } from './common/bsc-token.constant';
+import * as JSONbig from 'json-bigint';
 
 dotenv.config();
 
@@ -24,27 +28,13 @@ const exec = async () => {
     new TokenAmount(BscTokenConstant.usdc, '1000'),
     new TokenAmount(BscTokenConstant.b2, '2000'),
     new TokenAmount(BscTokenConstant.busd),
-    new TokenAmount(BscTokenConstant.koge),
-    new TokenAmount(BscTokenConstant.cake),
-    new TokenAmount(BscTokenConstant.rlb),
-    new TokenAmount(BscTokenConstant.turbo),
-    new TokenAmount(BscTokenConstant.pndc),
-    new TokenAmount(BscTokenConstant.shib),
   ];
   const arbitrageResults = await SubgraphArbitrageUtil.calculateAllPaths(
     tokenAmounts,
+    3
   );
   console.log('ArbitrageResult: ' + JSONbig.stringify(arbitrageResults));
 
-  const profitableResults = arbitrageResults.filter(result => result.isProfitable);
-  console.log(`
-    Arbitrage Summary:
-      Total Opportunities: ${arbitrageResults.length}
-      Profitable: ${profitableResults.length}
-      Non-Profitable: ${arbitrageResults.length - profitableResults.length}
-    `);
-  console.log(`ProfitableArbitrage: ${JSONbig.stringify(profitableResults)}`)
-  // console.log('ArbitrageResult: ' + JSONbig.stringify(arbitrageResults, null, 4));
   const end = performance.now();
   const ms = end - start; // Time in milliseconds
   const s = ms / 1000; // Time in seconds

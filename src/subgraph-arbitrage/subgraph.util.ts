@@ -19,14 +19,20 @@ export class PoolDetail {
     numerator: bigint;
     denominator: bigint;
   };
+  netSwapRate?: {
+    numerator: bigint;
+    denominator: bigint;
+  };
 }
 
 export enum SubgraphEndpoint {
-  UNISWAP_V3 = 'https://gateway.thegraph.com/api/subgraphs/id/5zvR82QoaXYFyDEKLZ9t6v9adgnptxYpKpSbxtgVENFV',
-  PANCAKESWAP_V3 = 'https://gateway.thegraph.com/api/subgraphs/id/A1fvJWQLBeUAggX2WQTMm3FKjXTekNXo77ZySun4YN2m',
+  UNISWAP_V3 = 'https://gateway.thegraph.com/api/subgraphs/id/G5MUbSBM7Nsrm9tH2tGQUiAF4SZDGf2qeo1xPLYjKr7K',
+  PANCAKESWAP_V3 = 'r',
 }
 
 export class SubgraphUtil {
+  static BASIS_POINTS = 1000000n;
+
   private static POOL_SIZE = 150;
   private static DIGITAL_PLACE = 24;
   private static LIST_TOP_POOLS_QUERY = `query {
@@ -76,18 +82,55 @@ export class SubgraphUtil {
 
   // ------------------ todo remove mock end ---------------------
 
+  static getDetailMapKey(tokenIn: Token, TokenOut: Token): string {
+    return `${tokenIn.symbol}-${tokenIn.address}/${TokenOut.symbol}-${TokenOut.address}`;
+  }
+
   static async fetchSymbolToDetailMap(
     endpoint: SubgraphEndpoint,
   ): Promise<Map<string, PoolDetail[]>> {
     const poolDetails = await this.fetchData(endpoint);
     const map = new Map<string, PoolDetail[]>();
     for (const pool of poolDetails) {
-      if (!map.get(pool.symbol)) {
-        map.set(pool.symbol, []);
+      const pair1key = this.getDetailMapKey(pool.token0, pool.token1);
+
+      if (!map.get(pair1key)) {
+        map.set(pair1key, []);
       }
-      map.get(pool.symbol)!.push(pool);
-      map.get(pool.symbol)!.sort((a, b) => Number(a.feeTier - b.feeTier));
+      const pair1Pool = { ...pool };
+      pair1Pool.netSwapRate = {
+        numerator: pool.swapRate.numerator * (this.BASIS_POINTS - pool.feeTier),
+        denominator: pool.swapRate.denominator * this.BASIS_POINTS,
+      };
+      map.get(pair1key)!.push(pair1Pool);
+
+      const pair2key = this.getDetailMapKey(pool.token1, pool.token0);
+      if (!map.get(pair2key)) {
+        map.set(pair2key, []);
+      }
+      const pair2Pool = { ...pool };
+      pair2Pool.netSwapRate = {
+        numerator:
+          pool.swapRate.denominator * (this.BASIS_POINTS - pool.feeTier),
+        denominator: pool.swapRate.numerator * this.BASIS_POINTS,
+      };
+      map.get(pair2key)!.push(pair2Pool);
     }
+
+    [...map.keys()].forEach((key) => {
+      const sortedValue = map.get(key)!.sort((a, b) => {
+        const base = 1000n;
+        const aAmountOut =
+          (base * a.netSwapRate!.numerator) /
+          (base * a.netSwapRate!.denominator);
+        const bAmountOut =
+          (base * b.netSwapRate!.numerator) /
+          (base * b.netSwapRate!.denominator);
+        return Number(aAmountOut - bAmountOut);
+      });
+
+      map.set(key, sortedValue);
+    });
     return map;
   }
 

@@ -10,18 +10,19 @@ import {
 import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
-import { FlashLoanTest__factory } from '../typechain-types/factories/contracts/FlashLoanTest__factory';
+import { AaveFlashLoanTest__factory } from '../../typechain-types/factories/contracts/AaveFlashLoanTest__factory';
 dotenv.config();
 
 const deploy = async () => {
   const hash =
     await ShareContentLocalStore.getStore().viemWalletClient!.deployContract({
-      abi: FlashLoanTest__factory.abi,
-      bytecode: FlashLoanTest__factory.bytecode,
+      abi: AaveFlashLoanTest__factory.abi,
+      bytecode: AaveFlashLoanTest__factory.bytecode,
       account: privateKeyToAccount(
         process.env.WALLET_PRIVATE_KEY as `0x${string}`,
       ),
       chain: localhostChain,
+      args: ['0xff75B6da14FfbbfD355Daf7a2731456b3562Ba6D'],
     });
 
   console.log('Transacion hash:', hash);
@@ -49,20 +50,34 @@ const callFlashSwap = async () => {
   try {
     const hash =
       await ShareContentLocalStore.getStore().viemWalletClient!.writeContract({
-        address: '0xA3ed6D233A2DFF2C472442d06261Bfc558dC8549',
-        abi: FlashLoanTest__factory.abi,
-        functionName: 'flashArbitrage',
+        address: '0x0ced7bc8e0e5ec747b591480de6efe084ddb7bb5',
+        abi: AaveFlashLoanTest__factory.abi,
+        functionName: 'executeFlashLoan',
         args: [
-          '0x70c132a2ddeccf0d76cc9b64a749ffe375a79a21',
-          '0x55d398326f99059ff775485246999027b3197955',
-          ethers.parseUnits('500', 18),
-          false,
+          '0x2170Ed0880ac9A755fd29B2688956BD959F933F8',
+          ethers.parseUnits('3', 18),
+          // 100000000000000n,
           [
             {
-              routerAddress: '0x70c132a2ddeccf0d76cc9b64a749ffe375a79a21',
-              tokenIn: '0x70c132a2ddeccf0d76cc9b64a749ffe375a79a21',
-              tokenOut: '0x70c132a2ddeccf0d76cc9b64a749ffe375a79a21',
+              routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+              tokenIn: '0x55d398326f99059fF775485246999027B3197955',
+              tokenOut: '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56',
+              fee: 100,
+            },
+            {
+              routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+              tokenIn: '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56',
+              tokenOut: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
               fee: 500,
+            },
+            {
+              routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+              tokenIn: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
+              tokenOut: '0x55d398326f99059fF775485246999027B3197955',
+              fee: 100,
             },
           ],
         ],
@@ -94,10 +109,11 @@ const callFlashSwap = async () => {
   }
 };
 
+
 const exec = async () => {
   const start = performance.now();
 
-  //   await deploy();
+  // await deploy();
   await callFlashSwap();
 
   const end = performance.now();

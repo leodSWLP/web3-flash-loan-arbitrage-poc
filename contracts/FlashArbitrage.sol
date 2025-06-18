@@ -24,13 +24,15 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
     ) external {
         bytes memory params = abi.encode(swapDetails);
         uint16 referralCode = 0;
-        POOL.flashLoanSimple(
+        try POOL.flashLoanSimple(
             address(this),
             borrowToken,
             amountIn,
             params,
             referralCode
-        );
+        ) {} catch {
+            revert OperationStepFailed(0);
+        }
     }
 
     function _swap(
@@ -44,7 +46,7 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
     ) internal returns (uint256 amountOut) {
         // Approve Permit2 to spend tokenIn
         try IERC20(tokenIn).approve(permist2Address, amountIn) {} catch {
-            revert OperationStepFailed(0);
+            revert OperationStepFailed(1);
         }
 
         // Approve Universal Router via Permit2
@@ -56,7 +58,7 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
                 uint48(block.timestamp + 2 * 60)
             )
         {} catch {
-            revert OperationStepFailed(1);
+            revert OperationStepFailed(2);
         }
 
         //  SWAP_EXACT_IN command == (0x00)
@@ -79,7 +81,7 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
                 block.timestamp + 10
             )
         {} catch {
-            revert OperationStepFailed(2);
+            revert OperationStepFailed(3);
         }
 
         amountOut = IERC20(tokenOut).balanceOf(address(this));
@@ -119,10 +121,10 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
         try
             IERC20(asset).transfer(initiator, currentAmount - repayAmount)
         {} catch {
-            revert OperationStepFailed(3);
+            revert OperationStepFailed(4);
         }
         try IERC20(asset).transfer(msg.sender, repayAmount) {} catch {
-            revert OperationStepFailed(4);
+            revert OperationStepFailed(5);
         }
 
         return true;
