@@ -4,8 +4,8 @@ pragma solidity ^0.8.24;
 import './interfaces/IQuoterV2.sol';
 
 contract ArbitrageQuote {
-
     struct QuoterDetail {
+        //todo add enum or string to indicate it is belong to which DEX
         address quoterAddress;
         address routerAddress;
         uint24 fee;

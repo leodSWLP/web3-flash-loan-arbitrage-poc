@@ -11,7 +11,11 @@ import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { ArbitrageQuote__factory } from '../../typechain-types/factories/contracts/ArbitrageQuote__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
-import { SubgraphEndpoint, SubgraphUtil } from '../subgraph-arbitrage/subgraph.util';
+import {
+  SubgraphEndpoint,
+  SubgraphUtil,
+} from '../subgraph-arbitrage/subgraph.util';
+import { BscContractConstant } from '../common/bsc-contract.constant';
 dotenv.config();
 
 const deploy = async () => {
@@ -46,13 +50,46 @@ const deploy = async () => {
   console.log('Contract deployed to:', contractAddress);
 };
 
+const prepareQuoteSwapPath = async () => {}; //todo
+
+const prepareDexFeeTierDetail = async () => {
+  //todo
+  const feeTierMaps = await fetchDexFeeTierDetail();
+
+  const quoteDetailMaps = {
+    uniswapV3: {},
+    pancakeswapV3: {},
+  };
+  [...feeTierMaps.pancakeSwapFeeTierMap.entries()].forEach(([key, value]) => {
+    const uniswapV3 = quoteDetailMaps.uniswapV3;
+    uniswapV3[key] = value.map((element) => {
+      feeTier: element.feeTier;
+      quoterAddress: BscContractConstant.uniswap.quoterV2;
+      routerAddress: BscContractConstant.uniswap.quoterV2;
+    });
+  });
+
+  [...feeTierMaps.uniswapFeeTierMap.entries()].forEach(([key, value]) => {
+    const pancakeswapV3 = quoteDetailMaps.pancakeswapV3;
+    pancakeswapV3[key] = value.map((element) => {
+      feeTier: element.feeTier;
+      quoterAddress: BscContractConstant.pancakeswap.quoterV2;
+      routerAddress: BscContractConstant.pancakeswap.quoterV2;
+    });
+  });
+
+  return quoteDetailMaps;
+};
+
 const fetchDexFeeTierDetail = async () => {
-  const [pancakeSwapFeeTierMap, uniswapFeeTierMap] = await Promise.all([SubgraphUtil.fetchSymbolToFeeTierMap(SubgraphEndpoint.PANCAKESWAP_V3),
-    SubgraphUtil.fetchSymbolToFeeTierMap(SubgraphEndpoint.UNISWAP_V3)
+  const [pancakeSwapFeeTierMap, uniswapFeeTierMap] = await Promise.all([
+    SubgraphUtil.fetchSymbolToFeeTierMap(SubgraphEndpoint.PANCAKESWAP_V3),
+    SubgraphUtil.fetchSymbolToFeeTierMap(SubgraphEndpoint.UNISWAP_V3),
   ]);
 
   console.log('done');
-}
+  return { pancakeSwapFeeTierMap, uniswapFeeTierMap };
+};
 const callFlashSwap = async () => {
   try {
     const hash =
@@ -64,26 +101,26 @@ const callFlashSwap = async () => {
           ethers.parseUnits('1', 18),
           [
             {
-              "routerAddress": "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
-              "permit2Address": "0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768",
-              "tokenIn": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
-              "tokenOut": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-              "fee": 100
+              routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+              tokenIn: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
+              tokenOut: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+              fee: 100,
             },
             {
-              "routerAddress": "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
-              "permit2Address": "0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768",
-              "tokenIn": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-              "tokenOut": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
-              "fee": 100
+              routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+              tokenIn: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+              tokenOut: '0x2170Ed0880ac9A755fd29B2688956BD959F933F8',
+              fee: 100,
             },
             {
-              "routerAddress": "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
-              "permit2Address": "0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768",
-              "tokenIn": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
-              "tokenOut": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
-              "fee": 100
-            }
+              routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+              tokenIn: '0x2170Ed0880ac9A755fd29B2688956BD959F933F8',
+              tokenOut: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
+              fee: 100,
+            },
           ],
         ],
         account: account,
