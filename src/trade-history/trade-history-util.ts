@@ -81,7 +81,6 @@ export class TradeHistoryUtil {
   static async disconnectFromMongoDB(): Promise<void> {
     try {
       if (mongoose.connection.readyState !== 0) {
-        // Check if connected
         await mongoose.disconnect();
         console.log('Disconnected from MongoDB');
       }

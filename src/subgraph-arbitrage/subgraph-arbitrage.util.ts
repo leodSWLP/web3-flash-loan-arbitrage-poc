@@ -3,6 +3,7 @@ import { PoolDetail, SubgraphEndpoint, SubgraphUtil } from './subgraph.util';
 import { ethers } from 'ethers';
 import { RouterUtil } from '../common/router.util';
 import { LogUtil } from '../log/log.util';
+import { BscContractConstant } from '../common/bsc-contract.constant';
 
 export class TokenAmount {
   currency: Token;
@@ -82,8 +83,8 @@ export class SubgraphArbitrageUtil {
     pathLength: number | undefined = 3,
   ) {
     const [uniswapPools, pancakeswapPools] = await Promise.all([
-      SubgraphUtil.fetchSymbolToDetailMap(SubgraphEndpoint.UNISWAP_V3),
-      SubgraphUtil.fetchSymbolToDetailMap(SubgraphEndpoint.PANCAKESWAP_V3),
+      SubgraphUtil.fetchSymbolToPriceDetailMap(SubgraphEndpoint.UNISWAP_V3),
+      SubgraphUtil.fetchSymbolToPriceDetailMap(SubgraphEndpoint.PANCAKESWAP_V3),
     ]);
     const poolDetailMap = {
       uniswapPools,
@@ -216,8 +217,8 @@ export class SubgraphArbitrageUtil {
           ...(arbitrageResult.SwapPath ?? []),
           {
             routerType: RouterType.UNISWAP_V3,
-            routerAddress: '0x5Dc88340E1c5c6366864Ee415d6034cadd1A9897',
-            permit2Address: '0x000000000022D473030F116dDEE9F6B43aC78BA3',
+            routerAddress: BscContractConstant.uniswap.universalRouter,
+            permit2Address: BscContractConstant.uniswap.permit2,
             tokenIn: tokenIn.address,
             tokenOut: tokenOut.address,
             fee: uniswapRatio!.feeTier,
@@ -229,8 +230,8 @@ export class SubgraphArbitrageUtil {
           ...(arbitrageResult.SwapPath ?? []),
           {
             routerType: RouterType.PANCAKESWAP_V3,
-            routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
-            permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+            routerAddress: BscContractConstant.pancakeswap.universalRouter,
+            permit2Address: BscContractConstant.pancakeswap.permit2,
             tokenIn: tokenIn.address,
             tokenOut: tokenOut.address,
             fee: pancakeRatio!.feeTier,

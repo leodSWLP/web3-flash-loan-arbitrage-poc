@@ -3,6 +3,16 @@ import * as fs from 'fs';
 import { plainToInstance } from 'class-transformer';
 import { Token } from '@uniswap/sdk-core';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
+import { RedisUtil } from '../redis/redis.util';
+import { BscContractConstant } from '../common/bsc-contract.constant';
+
+export class BasicPoolDetail {
+  address: string;
+  token0: Token;
+  token1: Token;
+  feeTier: bigint;
+  symbol: string;
+}
 
 export class PoolDetail {
   address: string;
@@ -26,17 +36,18 @@ export class PoolDetail {
 }
 
 export enum SubgraphEndpoint {
-  UNISWAP_V3 = 'https://gateway.thegraph.com/api/subgraphs/id/G5MUbSBM7Nsrm9tH2tGQUiAF4SZDGf2qeo1xPLYjKr7K',
-  PANCAKESWAP_V3 = 'r',
+  UNISWAP_V3 = 'uniswap_v3',
+  PANCAKESWAP_V3 = 'pancakeswap_v3',
 }
 
 export class SubgraphUtil {
+  
   static BASIS_POINTS = 1000000n;
-
-  private static POOL_SIZE = 150;
+  static REDIS_GROUP_PREFIX = 'v3-pairs';
   private static DIGITAL_PLACE = 24;
-  private static LIST_TOP_POOLS_QUERY = `query {
- pools(first: ${this.POOL_SIZE}, orderBy: txCount, orderDirection: desc) {
+  private static LIST_TOP_POOL_QUERY = `
+  query {
+ pools(first: {{poolSize}}, orderBy: {{orderBy}}, orderDirection: desc) {
     address: id
     token0 {
       symbol
@@ -61,7 +72,10 @@ export class SubgraphUtil {
 
   // ------------------ todo remove mock ---------------------
 
-  static getMockPoolsData(endpoint: SubgraphEndpoint) {
+  static getMockPricesData(
+    endpoint: SubgraphEndpoint,
+    isIncludePriceData: boolean | undefined = true,
+  ) {
     const pancakeswapSnapshots = fs.readFileSync(
       './snapshots/pancakeswap-v3-pools.json',
       'utf8',
@@ -74,8 +88,11 @@ export class SubgraphUtil {
       endpoint === SubgraphEndpoint.PANCAKESWAP_V3
         ? pancakeswapSnapshots
         : uniswapSnapshots;
+
     let data = JSON.parse(mockData).pools.map((pool) =>
-      this.parsePoolDetail(pool),
+      isIncludePriceData
+        ? this.parsePoolDetail(pool)
+        : this.parseBasicPoolDetail(pool),
     );
     return data;
   }
@@ -86,10 +103,69 @@ export class SubgraphUtil {
     return `${tokenIn.symbol}-${tokenIn.address}/${TokenOut.symbol}-${TokenOut.address}`;
   }
 
-  static async fetchSymbolToDetailMap(
+  static async fetchSymbolToFeeTierMap(
+    endpoint: SubgraphEndpoint,
+  ): Promise<Map<string, BasicPoolDetail[]>> {
+    const poolSize = 300;
+
+    const cacheKey = `${
+      this.REDIS_GROUP_PREFIX
+    }:${endpoint.toString()}-${poolSize}`;
+
+    const cachedValue = await RedisUtil.get(cacheKey);
+    if (cachedValue) {
+      const cachedResult = new Map<string, BasicPoolDetail[]>();
+      const parsedObject = JSON.parse(cachedValue);
+      Object.entries(parsedObject).forEach(([key, value]) => {
+        cachedResult.set(
+          key,
+          (value as any[]).map((element) => this.parseBasicPoolDetail(element)),
+        );
+      });
+
+      return cachedResult;
+    }
+
+    console.log('Cache Missed - retrieve new pools');
+
+    const poolDetails = (await this.fetchPriceData(
+      endpoint,
+      poolSize,
+      false,
+    )) as BasicPoolDetail[];
+    const map = new Map<string, BasicPoolDetail[]>();
+
+    for (const pool of poolDetails) {
+      const pair1key = this.getDetailMapKey(pool.token0, pool.token1);
+      if (!map.get(pair1key)) {
+        map.set(pair1key, []);
+      }
+      map.get(pair1key)!.push(pool);
+
+      const pair2key = this.getDetailMapKey(pool.token1, pool.token0);
+      if (!map.get(pair2key)) {
+        map.set(pair2key, []);
+      }
+      map.get(pair2key)!.push(pool);
+    }
+
+    [...map.keys()].forEach((key) => {
+      map.set(
+        key,
+        map.get(key)!.sort((a, b) => Number(a.feeTier - b.feeTier)),
+      );
+    });
+
+    await RedisUtil.write(cacheKey, JSON.stringify(map));
+    return map;
+  }
+
+  static async fetchSymbolToPriceDetailMap(
     endpoint: SubgraphEndpoint,
   ): Promise<Map<string, PoolDetail[]>> {
-    const poolDetails = await this.fetchData(endpoint);
+    const poolDetails: PoolDetail[] = (await this.fetchPriceData(
+      endpoint,
+    )) as PoolDetail[];
     const map = new Map<string, PoolDetail[]>();
     for (const pool of poolDetails) {
       const pair1key = this.getDetailMapKey(pool.token0, pool.token1);
@@ -134,24 +210,29 @@ export class SubgraphUtil {
     return map;
   }
 
-  static async fetchData(endpoint: SubgraphEndpoint): Promise<PoolDetail[]> {
+  static async fetchPriceData(
+    endpoint: SubgraphEndpoint,
+    poolSize: number | undefined = 150,
+    isIncludePriceData: boolean | undefined = true,
+  ): Promise<PoolDetail[] | BasicPoolDetail[]> {
     const headers = {
       Authorization: `Bearer ${process.env.SUBGRAPH_API_KEY ?? ''}`,
     };
 
-    return this.getMockPoolsData(endpoint);
+    const listTopPoolsQuery = this.generateQuery(poolSize, 'txCount');
+
+    return this.getMockPricesData(endpoint, isIncludePriceData);
 
     //todo enable later
     const subgraphUri = this.getSubgraphEndpoint(endpoint);
     try {
-      const data = await request(
-        subgraphUri,
-        this.LIST_TOP_POOLS_QUERY,
-        {},
-        headers,
-      );
+      const data = await request(subgraphUri, listTopPoolsQuery, {}, headers);
 
-      return data.pools.map((pool) => this.parsePoolDetail(pool));
+      return data.pools.map((pool) =>
+        isIncludePriceData
+          ? this.parsePoolDetail(pool)
+          : this.parseBasicPoolDetail(pool),
+      );
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -159,6 +240,29 @@ export class SubgraphUtil {
     throw new Error('Not found Subgraph PoolDetail');
   }
 
+  private static parseBasicPoolDetail(pool: any) {
+    const basicPoolDetail = new BasicPoolDetail();
+    const chainId = ShareContentLocalStore.getStore().viemChain.id;
+
+    basicPoolDetail.address = pool.address;
+    basicPoolDetail.feeTier = BigInt(pool.feeTier);
+
+    basicPoolDetail.token0 = new Token(
+      chainId,
+      pool.token0.address,
+      +pool.token0.decimals,
+      pool.token0.symbol,
+    );
+
+    basicPoolDetail.token1 = new Token(
+      chainId,
+      pool.token1.address,
+      +pool.token1.decimals,
+      pool.token1.symbol,
+    );
+    basicPoolDetail.symbol = `${basicPoolDetail.token0.symbol}/${basicPoolDetail.token1.symbol}`;
+    return basicPoolDetail;
+  }
   private static parsePoolDetail(pool: any) {
     const poolDetail = plainToInstance(PoolDetail, pool);
     if (
@@ -193,6 +297,16 @@ export class SubgraphUtil {
     return poolDetail;
   }
 
+  private static generateQuery(
+    poolSize: number,
+    orderBy: 'txCount' | 'liquidity',
+  ) {
+    return this.LIST_TOP_POOL_QUERY.replace(
+      '{{poolSize}}',
+      `${poolSize}`,
+    ).replace('{{orderBy}}', orderBy);
+  }
+
   private static stringPriceToBigInt(priceInString: string) {
     const [integerPart, fractionalPart = ''] = priceInString.split('.');
     const combined =
@@ -206,10 +320,10 @@ export class SubgraphUtil {
 
   private static getSubgraphEndpoint(endpoint: SubgraphEndpoint) {
     switch (endpoint) {
-      case SubgraphEndpoint.PANCAKESWAP_V3:
-        return 'https://gateway.thegraph.com/api/subgraphs/id/A1fvJWQLBeUAggX2WQTMm3FKjXTekNXo77ZySun4YN2m';
       case SubgraphEndpoint.UNISWAP_V3:
-        return 'https://gateway.thegraph.com/api/subgraphs/id/5zvR82QoaXYFyDEKLZ9t6v9adgnptxYpKpSbxtgVENFV';
+        return BscContractConstant.subgraph.uniswapV3;
+      case SubgraphEndpoint.PANCAKESWAP_V3:
+        return BscContractConstant.subgraph.pancakeswapV3;
       default:
         throw new Error('Invalid subgraph endpoint');
     }
