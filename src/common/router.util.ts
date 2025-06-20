@@ -16,6 +16,9 @@ export class RouterUtil {
     return symbol;
   }
 
+  static getCombinationKey(token: Token) {
+    return `${token.symbol}-${token.address}`
+  }
   static async getAllRoute(
     tokens: Token[],
     pathLength: number | undefined = 3,
@@ -34,7 +37,7 @@ export class RouterUtil {
 
     const pathArrays = this.generatePermutations(tokens, pathLength);
     pathArrays.forEach((path) => {
-      const key = `${path[0].symbol}-${path[0].address}`;
+      const key = this.getCombinationKey(path[0]);
       pathCombinations[key] = [...(pathCombinations[key] ?? []), path];
     });
 

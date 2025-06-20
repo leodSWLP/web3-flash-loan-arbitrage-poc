@@ -5,6 +5,7 @@ import { Token } from '@uniswap/sdk-core';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
 import { RedisUtil } from '../redis/redis.util';
 import { BscContractConstant } from '../common/bsc-contract.constant';
+import * as JSONbig from 'json-bigint';
 
 export class BasicPoolDetail {
   address: string;
@@ -115,10 +116,10 @@ export class SubgraphUtil {
     const cachedValue = await RedisUtil.get(cacheKey);
     if (cachedValue) {
       const cachedResult = new Map<string, BasicPoolDetail[]>();
-      const parsedObject = JSON.parse(cachedValue);
-      Object.entries(parsedObject).forEach(([key, value]) => {
+      const parsedObject = new Map(JSONbig.parse(cachedValue));
+      [...parsedObject.entries()].forEach(([key, value]) => {
         cachedResult.set(
-          key,
+          key as string,
           (value as any[]).map((element) => this.parseBasicPoolDetail(element)),
         );
       });
@@ -155,8 +156,8 @@ export class SubgraphUtil {
         map.get(key)!.sort((a, b) => Number(a.feeTier - b.feeTier)),
       );
     });
-
-    await RedisUtil.write(cacheKey, JSON.stringify(map));
+    console.log('map: ' + [...map]);
+    await RedisUtil.write(cacheKey, JSONbig.stringify([...map]));
     return map;
   }
 

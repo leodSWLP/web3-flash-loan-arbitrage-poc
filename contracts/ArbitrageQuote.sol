@@ -14,7 +14,7 @@ contract ArbitrageQuote {
     struct SwapPath {
         address tokenIn;
         address tokenOut;
-        QuoterDetail[] quoterDetails;
+        bytes quoterDetails; 
     }
 
     struct OutputPath {
@@ -60,8 +60,10 @@ contract ArbitrageQuote {
         SwapPath memory swapPath
     ) internal view returns (OutputPath memory bestPath) {
         uint256 bestAmountOut = 0;
-        for (uint8 i = 0; i < swapPath.quoterDetails.length; i++) {
-            QuoterDetail memory quoter = swapPath.quoterDetails[i];
+        QuoterDetail[] memory quoterDetails = abi.decode(swapPath.quoterDetails, (QuoterDetail[]));
+
+        for (uint8 i = 0; i < quoterDetails.length; i++) {
+            QuoterDetail memory quoter = quoterDetails[i];
             (
                 uint256 amountOut,
                 uint160 sqrtPriceX96,
