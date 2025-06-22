@@ -35,7 +35,7 @@ const deploy = async () => {
       account: privateKeyToAccount(
         process.env.WALLET_PRIVATE_KEY as `0x${string}`,
       ),
-      chain: localhostChain,
+      chain: bsc,
     });
 
   console.log('Transacion hash:', hash);
@@ -175,16 +175,16 @@ const callFlashSwap = async () => {
   try {
     const swapPaths = [
       {
-        tokenIn: '0x55d398326f99059fF775485246999027B3197955' as `0x${string}`,
-        tokenOut: '0x783c3f003f172c6Ac5AC700218a357d2D66Ee2a2' as `0x${string}`,
+        tokenIn: '0x221c5b1a293aac1187ed3a7d7d2d9ad7fe1f3fb0' as `0x${string}`,
+        tokenOut: '0xae13d989dac2f0debff460ac112a837c89baa7cd' as `0x${string}`,
         quoterDetails: encodeAbiParameters(
           [{ type: 'tuple[]', components: quoterDetailType.components }],
           [
             [
               {
                 fee: 100,
-                dexName: 'uniswap',
-                quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+                dexName: 'pancakeswap',
+                quoterAddress: '0xbC203d7f83677c7ed3F7acEc959963E7F4ECC5C2',
                 routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
               },
               // {
@@ -197,51 +197,51 @@ const callFlashSwap = async () => {
           ],
         ),
       },
-      {
-        tokenIn: '0x783c3f003f172c6Ac5AC700218a357d2D66Ee2a2' as `0x${string}`,
-        tokenOut: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c' as `0x${string}`,
-        quoterDetails: encodeAbiParameters(
-          [{ type: 'tuple[]', components: quoterDetailType.components }],
-          [
-            [
-              {
-                fee: 100,
-                dexName: 'uniswap',
-                quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              },
-            ],
-          ],
-        ),
-      },
-      {
-        tokenIn: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c' as `0x${string}`,
-        tokenOut: '0x55d398326f99059fF775485246999027B3197955' as `0x${string}`,
-        quoterDetails: encodeAbiParameters(
-          [{ type: 'tuple[]', components: quoterDetailType.components }],
-          [
-            [
-              {
-                fee: 100,
-                dexName: 'uniswap',
-                quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
-                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              },
-              // {
-              //   fee: 100,
-              //   dexName: 'pancakeswap',
-              //   quoterAddress: '0xB048Bbc1Ee6b733FFfCFb9e9CeF7375518e25997',
-              //   routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
-              // },
-            ],
-          ],
-        ),
-      },
+      // {
+      //   tokenIn: '0x783c3f003f172c6Ac5AC700218a357d2D66Ee2a2' as `0x${string}`,
+      //   tokenOut: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c' as `0x${string}`,
+      //   quoterDetails: encodeAbiParameters(
+      //     [{ type: 'tuple[]', components: quoterDetailType.components }],
+      //     [
+      //       [
+      //         {
+      //           fee: 100,
+      //           dexName: 'uniswap',
+      //           quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+      //           routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+      //         },
+      //       ],
+      //     ],
+      //   ),
+      // },
+      // {
+      //   tokenIn: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c' as `0x${string}`,
+      //   tokenOut: '0x55d398326f99059fF775485246999027B3197955' as `0x${string}`,
+      //   quoterDetails: encodeAbiParameters(
+      //     [{ type: 'tuple[]', components: quoterDetailType.components }],
+      //     [
+      //       [
+      //         {
+      //           fee: 100,
+      //           dexName: 'uniswap',
+      //           quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
+      //           routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+      //         },
+      //         // {
+      //         //   fee: 100,
+      //         //   dexName: 'pancakeswap',
+      //         //   quoterAddress: '0xB048Bbc1Ee6b733FFfCFb9e9CeF7375518e25997',
+      //         //   routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+      //         // },
+      //       ],
+      //     ],
+      //   ),
+      // },
     ];
 
     const data =
       await ShareContentLocalStore.getStore().viemChainClient.readContract({
-        address: '0x7a4a47d49f568c18543e93d4fa6880126114cb73',
+        address: '0x7A4a47d49F568c18543E93d4FA6880126114cb73',
         abi: ArbitrageQuoter__factory.abi,
         functionName: 'quoteBestRoute',
         args: [ethers.parseUnits('10', 18), swapPaths],
@@ -267,24 +267,24 @@ const exec = async () => {
   const start = performance.now();
 
   // await deploy();
-  // await callFlashSwap();
+  await callFlashSwap();
 
-  await prepareQuoteSwapPath([
-    new TokenAmount(BscTokenConstant.usdt, '1000'),
-    new TokenAmount(BscTokenConstant.eth, '0.5'),
-    new TokenAmount(BscTokenConstant.btcb, '0.0001'),
-    new TokenAmount(BscTokenConstant.wbnb, '2'),
-    // new TokenAmount(BscTokenConstant.zk),
-    new TokenAmount(BscTokenConstant.usdc),
-    // new TokenAmount(BscTokenConstant.b2, '2000'),
-    // new TokenAmount(BscTokenConstant.busd),
-    // new TokenAmount(BscTokenConstant.koge),
-    // new TokenAmount(BscTokenConstant.cake),
-    // new TokenAmount(BscTokenConstant.rlb),
-    // new TokenAmount(BscTokenConstant.turbo),
-    // new TokenAmount(BscTokenConstant.pndc),
-    // new TokenAmount(BscTokenConstant.shib),
-  ]);
+  // await prepareQuoteSwapPath([
+  //   new TokenAmount(BscTokenConstant.usdt, '1000'),
+  //   new TokenAmount(BscTokenConstant.eth, '0.5'),
+  //   new TokenAmount(BscTokenConstant.btcb, '0.0001'),
+  //   new TokenAmount(BscTokenConstant.wbnb, '2'),
+  //   new TokenAmount(BscTokenConstant.zk),
+  //   new TokenAmount(BscTokenConstant.usdc),
+  //   new TokenAmount(BscTokenConstant.b2, '2000'),
+  //   new TokenAmount(BscTokenConstant.busd),
+  //   new TokenAmount(BscTokenConstant.koge),
+  //   new TokenAmount(BscTokenConstant.cake),
+  //   new TokenAmount(BscTokenConstant.rlb),
+  //   new TokenAmount(BscTokenConstant.turbo),
+  //   new TokenAmount(BscTokenConstant.pndc),
+  //   new TokenAmount(BscTokenConstant.shib),
+  // ]);
 
   const end = performance.now();
   const ms = end - start;
@@ -298,39 +298,19 @@ export const account = privateKeyToAccount(
   process.env.WALLET_PRIVATE_KEY as `0x${string}`,
 );
 
-export const localhostChain = defineChain({
-  id: 56,
-  name: 'Local Hardhat',
-  network: 'hardhat',
-  nativeCurrency: {
-    decimals: 18,
-    name: 'Binance Coin',
-    symbol: 'BNB',
-  },
-  rpcUrls: {
-    default: {
-      http: ['http://127.0.0.1:8545'],
-    },
-    public: {
-      http: ['http://127.0.0.1:8545'],
-    },
-  },
-  contracts: {
-    multicall3: {
-      address: '0xca11bde05977b3631167028862be2a173976ca11',
-      blockCreated: 15921452,
-    },
-  },
-});
-
 const viemChainClient = createPublicClient({
   chain: bsc,
-  transport: http('http://127.0.0.1:8545', { timeout: 600_000 }),
+  transport: http(
+    'https://api.zan.top/node/v1/bsc/testnet/0ef6d89279034303b4eef3984df0f249',
+    { timeout: 600_000 },
+  ),
 });
 
 const viemWalletClient = createWalletClient({
-  chain: localhostChain,
-  transport: http('http://127.0.0.1:8545'),
+  chain: bsc,
+  transport: http(
+    'https://api.zan.top/node/v1/bsc/testnet/0ef6d89279034303b4eef3984df0f249',
+  ),
   account,
 });
 

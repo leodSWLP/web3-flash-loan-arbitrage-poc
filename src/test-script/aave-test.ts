@@ -50,7 +50,7 @@ const callFlashSwap = async () => {
   try {
     const hash =
       await ShareContentLocalStore.getStore().viemWalletClient!.writeContract({
-        address: '0x5c229a1ea3f7993856096c606e34885b869594ff',
+        address: '0x59cb0733c591012b24e657e339bba61c7dac73ee',
         abi: FlashArbitrage__factory.abi,
         functionName: 'executeFlashLoan',
         args: [
@@ -59,26 +59,26 @@ const callFlashSwap = async () => {
           // 100000000000000n,
           [
             {
-              "routerAddress": "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
-              "permit2Address": "0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768",
-              "tokenIn": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
-              "tokenOut": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-              "fee": 100
+              routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+              tokenIn: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
+              tokenOut: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+              fee: 100,
             },
             {
-              "routerAddress": "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
-              "permit2Address": "0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768",
-              "tokenIn": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-              "tokenOut": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
-              "fee": 100
+              routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+              tokenIn: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+              tokenOut: '0x2170Ed0880ac9A755fd29B2688956BD959F933F8',
+              fee: 100,
             },
             {
-              "routerAddress": "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
-              "permit2Address": "0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768",
-              "tokenIn": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
-              "tokenOut": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
-              "fee": 100
-            }
+              routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+              tokenIn: '0x2170Ed0880ac9A755fd29B2688956BD959F933F8',
+              tokenOut: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
+              fee: 100,
+            },
           ],
         ],
         account: account,

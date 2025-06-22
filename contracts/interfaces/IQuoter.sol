@@ -1,8 +1,7 @@
-
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-interface IQuoterV2 {
+interface IQuoter {
     struct QuoteExactInputSingleParams {
         address tokenIn;
         address tokenOut;
@@ -18,7 +17,7 @@ interface IQuoterV2 {
         view
         returns (
             uint256 amountOut,
-            uint160 sqrtPriceX96,
+            uint160 sqrtPriceX96After,
             uint32 initializedTicksCrossed,
             uint256 gasEstimate
         );

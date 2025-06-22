@@ -42,7 +42,6 @@ export enum SubgraphEndpoint {
 }
 
 export class SubgraphUtil {
-  
   static BASIS_POINTS = 1000000n;
   static REDIS_GROUP_PREFIX = 'v3-pairs';
   private static DIGITAL_PLACE = 24;
@@ -106,9 +105,9 @@ export class SubgraphUtil {
 
   static async fetchSymbolToFeeTierMap(
     endpoint: SubgraphEndpoint,
+    poolSize: number | undefined = 400,
+    orderBy: 'txCount' | 'liquidity' | 'volumeUSD' | undefined = 'txCount',
   ): Promise<Map<string, BasicPoolDetail[]>> {
-    const poolSize = 300;
-
     const cacheKey = `${
       this.REDIS_GROUP_PREFIX
     }:${endpoint.toString()}-${poolSize}`;
@@ -132,6 +131,7 @@ export class SubgraphUtil {
     const poolDetails = (await this.fetchPriceData(
       endpoint,
       poolSize,
+      orderBy,
       false,
     )) as BasicPoolDetail[];
     const map = new Map<string, BasicPoolDetail[]>();
@@ -156,7 +156,6 @@ export class SubgraphUtil {
         map.get(key)!.sort((a, b) => Number(a.feeTier - b.feeTier)),
       );
     });
-    console.log('map: ' + [...map]);
     await RedisUtil.write(cacheKey, JSONbig.stringify([...map]));
     return map;
   }
@@ -214,15 +213,16 @@ export class SubgraphUtil {
   static async fetchPriceData(
     endpoint: SubgraphEndpoint,
     poolSize: number | undefined = 150,
+    orderBy: 'txCount' | 'liquidity' | 'volumeUSD' | undefined = 'volumeUSD',
     isIncludePriceData: boolean | undefined = true,
   ): Promise<PoolDetail[] | BasicPoolDetail[]> {
     const headers = {
       Authorization: `Bearer ${process.env.SUBGRAPH_API_KEY ?? ''}`,
     };
 
-    const listTopPoolsQuery = this.generateQuery(poolSize, 'txCount');
+    const listTopPoolsQuery = this.generateQuery(poolSize, orderBy);
 
-    return this.getMockPricesData(endpoint, isIncludePriceData);
+    // return this.getMockPricesData(endpoint, isIncludePriceData);
 
     //todo enable later
     const subgraphUri = this.getSubgraphEndpoint(endpoint);
@@ -300,7 +300,7 @@ export class SubgraphUtil {
 
   private static generateQuery(
     poolSize: number,
-    orderBy: 'txCount' | 'liquidity',
+    orderBy: 'txCount' | 'liquidity' | 'volumeUSD',
   ) {
     return this.LIST_TOP_POOL_QUERY.replace(
       '{{poolSize}}',
