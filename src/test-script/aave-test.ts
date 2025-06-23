@@ -50,7 +50,7 @@ const callFlashSwap = async () => {
   try {
     const hash =
       await ShareContentLocalStore.getStore().viemWalletClient!.writeContract({
-        address: '0x59cb0733c591012b24e657e339bba61c7dac73ee',
+        address: '0x6e31bf2599a7652a85185d88a9f1fa6521b0f5e8',
         abi: FlashArbitrage__factory.abi,
         functionName: 'executeFlashLoan',
         args: [
@@ -157,7 +157,7 @@ const viemChainClient = createPublicClient({
 
 const viemWalletClient = createWalletClient({
   chain: localhostChain,
-  transport: http('http://127.0.0.1:8545'),
+  transport: http('http://127.0.0.1:8545', {timeout: 60000}),
   account,
 });
 

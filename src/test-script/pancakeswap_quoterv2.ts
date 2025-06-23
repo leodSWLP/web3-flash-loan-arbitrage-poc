@@ -4,7 +4,7 @@ import { parseEther } from 'viem';
 
 // Define the ABI for the quoteExactOutputSingle function
 const quoterAbi = parseAbi([
-  'function quoteExactInputSingle((address tokenIn, address tokenOut, uint256 amount, uint24 fee, uint160 sqrtPriceLimitX96)) external view returns (uint256 amountIn, uint160 sqrtPriceX96After, uint32 initializedTicksCrossed, uint256 gasEstimate)',
+  'function quoteExactInputSingle((address tokenIn, address tokenOut, uint256 amountIn, uint24 fee, uint160 sqrtPriceLimitX96)) external view returns (uint256 amountIn, uint160 sqrtPriceX96After, uint32 initializedTicksCrossed, uint256 gasEstimate)',
 ]);
 
 // BSC mainnet Quoter contract address
@@ -42,7 +42,7 @@ async function getQuoteExactOutputSingle() {
           {
             tokenIn: params.tokenIn,
             tokenOut: params.tokenOut,
-            amount: params.amount,
+            amountIn: params.amount,
             fee: params.fee,
             sqrtPriceLimitX96: params.sqrtPriceLimitX96,
           },

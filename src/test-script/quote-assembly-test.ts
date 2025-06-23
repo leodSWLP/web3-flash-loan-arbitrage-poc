@@ -11,7 +11,7 @@ import {
 } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
-import { ArbitrageQuote__factory } from '../../typechain-types/factories/contracts/ArbitrageQuote__factory';
+import { ArbitrageQuoterWithAssembly__factory } from '../../typechain-types/factories/contracts/ArbitrageQuoterWithAssembly__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
 import {
   SubgraphEndpoint,
@@ -30,8 +30,8 @@ dotenv.config();
 const deploy = async () => {
   const hash =
     await ShareContentLocalStore.getStore().viemWalletClient!.deployContract({
-      abi: ArbitrageQuote__factory.abi,
-      bytecode: ArbitrageQuote__factory.bytecode,
+      abi: ArbitrageQuoterWithAssembly__factory.abi,
+      bytecode: ArbitrageQuoterWithAssembly__factory.bytecode,
       account: privateKeyToAccount(
         process.env.WALLET_PRIVATE_KEY as `0x${string}`,
       ),
@@ -157,46 +157,73 @@ const prepareDexV3FeeTierDetail = async () => {
 const quoterDetailType = {
   type: 'tuple',
   components: [
+    { name: 'dexName', type: 'string' },
     { name: 'quoterAddress', type: 'address' },
     { name: 'routerAddress', type: 'address' },
     { name: 'fee', type: 'uint24' },
   ],
 } as const;
 
+
 const callFlashSwap = async () => {
   try {
-    const swapPaths = [
+const swapPaths = [
       {
         tokenIn: '0x55d398326f99059fF775485246999027B3197955' as `0x${string}`,
-        tokenOut: '0x783c3f003f172c6Ac5AC700218a357d2D66Ee2a2' as `0x${string}`,
+        tokenOut: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c' as `0x${string}`,
         quoterDetails: encodeAbiParameters(
           [{ type: 'tuple[]', components: quoterDetailType.components }],
-          [[
-            // {
-            //   quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
-            //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            //   fee: 100,
-            // },
-            {
-              quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              fee: 500,
-            },
-          ]]
+          [
+            [
+              // {
+              //   fee: 100,
+              //   dexName: 'uniswap',
+              //   quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+              // },
+              {
+                fee: 500,
+                dexName: 'pancakeswap',
+                quoterAddress: '0xB048Bbc1Ee6b733FFfCFb9e9CeF7375518e25997',
+                routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              },
+              // {
+              //   fee: 2500,
+              //   dexName: 'pancakeswap',
+              //   quoterAddress: '0xB048Bbc1Ee6b733FFfCFb9e9CeF7375518e25997',
+              //   routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              // },
+            ],
+          ],
         ),
       },
       {
-        tokenIn: '0x783c3f003f172c6Ac5AC700218a357d2D66Ee2a2' as `0x${string}`,
+        tokenIn: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c' as `0x${string}`,
         tokenOut: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c' as `0x${string}`,
         quoterDetails: encodeAbiParameters(
           [{ type: 'tuple[]', components: quoterDetailType.components }],
-          [[
-            {
-              quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              fee: 100,
-            },
-          ]]
+          [
+            [
+              {
+                fee: 100,
+                dexName: 'pancakeswap',
+                quoterAddress: '0xB048Bbc1Ee6b733FFfCFb9e9CeF7375518e25997',
+                routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              },
+              // {
+              //   fee: 500,
+              //   dexName: 'pancakeswap',
+              //   quoterAddress: '0xB048Bbc1Ee6b733FFfCFb9e9CeF7375518e25997',
+              //   routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              // },
+              // {
+              //   fee: 2500,
+              //   dexName: 'pancakeswap',
+              //   quoterAddress: '0xB048Bbc1Ee6b733FFfCFb9e9CeF7375518e25997',
+              //   routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              // },
+            ],
+          ],
         ),
       },
       {
@@ -204,31 +231,30 @@ const callFlashSwap = async () => {
         tokenOut: '0x55d398326f99059fF775485246999027B3197955' as `0x${string}`,
         quoterDetails: encodeAbiParameters(
           [{ type: 'tuple[]', components: quoterDetailType.components }],
-          [[
-            {
-              quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              fee: 100,
-            },
-            {
-              quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              fee: 500,
-            },
-            {
-              quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              fee: 2500,
-            },
-          ]]
+          [
+            [
+              {
+                fee: 100,
+                dexName: 'pancakeswap',
+                quoterAddress: '0xB048Bbc1Ee6b733FFfCFb9e9CeF7375518e25997',
+                routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              },
+              // {
+              //   fee: 500,
+              //   dexName: 'pancakeswap',
+              //   quoterAddress: '0xB048Bbc1Ee6b733FFfCFb9e9CeF7375518e25997',
+              //   routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+              // },
+            ],
+          ],
         ),
       },
     ];
 
     const data =
       await ShareContentLocalStore.getStore().viemChainClient.readContract({
-        address: '0xfedea3213842366372c122ea64a5a08d1a9ca458',
-        abi: ArbitrageQuote__factory.abi,
+        address: '0x67e6ed2d9a30c2db30394ccea6b11c5280a42029',
+        abi: ArbitrageQuoterWithAssembly__factory.abi,
         functionName: 'quoteBestRoute',
         args: [
           ethers.parseUnits('1000', 18),
