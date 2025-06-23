@@ -4,6 +4,8 @@ export const BscContractConstant = {
       'https://gateway.thegraph.com/api/subgraphs/id/G5MUbSBM7Nsrm9tH2tGQUiAF4SZDGf2qeo1xPLYjKr7K',
     pancakeswapV3:
       'https://gateway.thegraph.com/api/subgraphs/id/A1fvJWQLBeUAggX2WQTMm3FKjXTekNXo77ZySun4YN2m',
+    uniswapV4:
+      'https://gateway.thegraph.com/api/subgraphs/id/2qQpC8inZPZL4tYfRQPFGZhsE8mYzE67n5z3Yf5uuKMu',
   },
   uniswap: {
     universalRouter: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',

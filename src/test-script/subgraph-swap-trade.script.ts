@@ -37,7 +37,6 @@ const exec = async () => {
   );
   console.log('ArbitrageResult: ' + JSONbig.stringify(arbitrageResults));
 
-  // console.log('ArbitrageResult: ' + JSONbig.stringify(arbitrageResults, null, 4));
   const end = performance.now();
   const ms = end - start; // Time in milliseconds
   const s = ms / 1000; // Time in seconds

@@ -82,23 +82,28 @@ const prepareQuoteSwapPath = async (
     for (let tokens of combinations) {
       const swapPath = formSwapPath(tokens, dexV3QuoteDetail);
       if (swapPath) {
-        swapPathCombinations.push(swapPath)
+        swapPathCombinations.push(swapPath);
       }
     }
   }
 
-  console.log('swapPathCombinations: ' + JSONbig.stringify(swapPathCombinations));
+  console.log(
+    'swapPathCombinations: ' + JSONbig.stringify(swapPathCombinations),
+  );
   return swapPathCombinations;
 };
 
-const formSwapPath = (tokens: Token[], QuoteDetail: {
-  uniswapV3: any,
-  pancakeswapV3: any
-}) => {
+const formSwapPath = (
+  tokens: Token[],
+  QuoteDetail: {
+    uniswapV3: any;
+    pancakeswapV3: any;
+  },
+) => {
   const swapPath: any[] = [];
   for (let i = 0; i < tokens.length; i++) {
     const tokenIn = tokens[i];
-    const tokenOut = tokens[(i + 1) % tokens.length]
+    const tokenOut = tokens[(i + 1) % tokens.length];
     const detailMapKey = SubgraphUtil.getDetailMapKey(tokenIn, tokenOut);
     const quoterDetails: any[] = [];
     for (let key of Object.keys(QuoteDetail)) {
@@ -114,10 +119,10 @@ const formSwapPath = (tokens: Token[], QuoteDetail: {
       tokenIn: tokenIn.address,
       tokenOut: tokenOut.address,
       quoterDetails,
-    })
+    });
   }
   return swapPath;
-}
+};
 
 const prepareDexV3FeeTierDetail = async () => {
   const [pancakeSwapFeeTierMap, uniswapFeeTierMap] = await Promise.all([
@@ -136,7 +141,7 @@ const prepareDexV3FeeTierDetail = async () => {
         feeTier: element.feeTier,
         quoterAddress: BscContractConstant.uniswap.quoter,
         routerAddress: BscContractConstant.uniswap.universalRouter,
-      }
+      };
     });
   });
 
@@ -147,7 +152,7 @@ const prepareDexV3FeeTierDetail = async () => {
         feeTier: element.feeTier,
         quoterAddress: BscContractConstant.pancakeswap.quoter,
         routerAddress: BscContractConstant.pancakeswap.universalRouter,
-      }
+      };
     });
   });
 
@@ -165,24 +170,164 @@ const quoterDetailType = {
 
 const callFlashSwap = async () => {
   try {
+    const rawdata = {
+      routingSymbol: 'USDT -> BTCB -> ETH',
+      initialAmount: 1000000000000000000000n,
+      swapPaths: [
+        {
+          tokenIn: '0x55d398326f99059fF775485246999027B3197955',
+          tokenOut: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
+          quoterDetails: [
+            {
+              fee: 100n,
+              dexName: 'uniswap-v3',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+            {
+              fee: 500n,
+              dexName: 'uniswap-v3',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+            {
+              fee: 3000n,
+              dexName: 'uniswap-v3',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+            {
+              fee: 100n,
+              dexName: 'uniswap-v4',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+            {
+              fee: 500n,
+              dexName: 'uniswap-v4',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+            {
+              fee: 1350n,
+              dexName: 'uniswap-v4',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+            {
+              fee: 3000n,
+              dexName: 'uniswap-v4',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+            {
+              fee: 10000n,
+              dexName: 'uniswap-v4',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+          ],
+        },
+        {
+          tokenIn: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
+          tokenOut: '0x2170Ed0880ac9A755fd29B2688956BD959F933F8',
+          quoterDetails: [
+            {
+              fee: 500n,
+              dexName: 'uniswap-v3',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+            {
+              fee: 3000n,
+              dexName: 'uniswap-v3',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+            {
+              fee: 3000n,
+              dexName: 'uniswap-v4',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+          ],
+        },
+        {
+          tokenIn: '0x2170Ed0880ac9A755fd29B2688956BD959F933F8',
+          tokenOut: '0x55d398326f99059fF775485246999027B3197955',
+          quoterDetails: [
+            {
+              fee: 100n,
+              dexName: 'uniswap-v3',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+            {
+              fee: 500n,
+              dexName: 'uniswap-v3',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+            {
+              fee: 3000n,
+              dexName: 'uniswap-v3',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+            {
+              fee: 10000n,
+              dexName: 'uniswap-v3',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+            {
+              fee: 80n,
+              dexName: 'uniswap-v4',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+            {
+              fee: 90n,
+              dexName: 'uniswap-v4',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+            {
+              fee: 500n,
+              dexName: 'uniswap-v4',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+            {
+              fee: 3000n,
+              dexName: 'uniswap-v4',
+              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+            },
+          ],
+        },
+      ],
+    };
     const swapPaths = [
       {
         tokenIn: '0x55d398326f99059fF775485246999027B3197955' as `0x${string}`,
-        tokenOut: '0x783c3f003f172c6Ac5AC700218a357d2D66Ee2a2' as `0x${string}`,
+        tokenOut: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c' as `0x${string}`,
         quoterDetails: encodeAbiParameters(
           [{ type: 'tuple[]', components: quoterDetailType.components }],
-          [[
-            // {
-            //   quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
-            //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            //   fee: 100,
-            // },
-            {
-              quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              fee: 500,
-            },
-          ]]
+          [
+            [
+              // {
+              //   quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
+              //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+              //   fee: 100,
+              // },
+              {
+                quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
+                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+                fee: 500,
+              },
+            ],
+          ],
         ),
       },
       {
@@ -190,13 +335,15 @@ const callFlashSwap = async () => {
         tokenOut: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c' as `0x${string}`,
         quoterDetails: encodeAbiParameters(
           [{ type: 'tuple[]', components: quoterDetailType.components }],
-          [[
-            {
-              quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              fee: 100,
-            },
-          ]]
+          [
+            [
+              {
+                quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
+                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+                fee: 100,
+              },
+            ],
+          ],
         ),
       },
       {
@@ -204,23 +351,25 @@ const callFlashSwap = async () => {
         tokenOut: '0x55d398326f99059fF775485246999027B3197955' as `0x${string}`,
         quoterDetails: encodeAbiParameters(
           [{ type: 'tuple[]', components: quoterDetailType.components }],
-          [[
-            {
-              quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              fee: 100,
-            },
-            {
-              quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              fee: 500,
-            },
-            {
-              quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              fee: 2500,
-            },
-          ]]
+          [
+            [
+              {
+                quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
+                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+                fee: 100,
+              },
+              {
+                quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
+                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+                fee: 500,
+              },
+              {
+                quoterAddress: '0x78D78E420Da98ad378D7799bE8f4AF69033EB077',
+                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+                fee: 2500,
+              },
+            ],
+          ],
         ),
       },
     ];
@@ -230,13 +379,9 @@ const callFlashSwap = async () => {
         address: '0xfedea3213842366372c122ea64a5a08d1a9ca458',
         abi: ArbitrageQuote__factory.abi,
         functionName: 'quoteBestRoute',
-        args: [
-          ethers.parseUnits('1000', 18),
-          swapPaths
-        ],
+        args: [ethers.parseUnits('1000', 18), swapPaths],
       });
     console.log('Read Data:', data);
-
   } catch (error) {
     console.error('Transaction failed with error:');
 
@@ -274,7 +419,7 @@ const exec = async () => {
   //     new TokenAmount(BscTokenConstant.pndc),
   //     new TokenAmount(BscTokenConstant.shib),
   // ]);
-  
+
   const end = performance.now();
   const ms = end - start;
   const s = ms / 1000;

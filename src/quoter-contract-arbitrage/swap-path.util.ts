@@ -29,8 +29,9 @@ export interface QuoterDetail {
   routerAddress: Address;
 }
 
-interface DexV3RouteDetail {
+interface DexRouteDetail {
   uniswapV3: { [key: string]: QuoterDetail[] };
+  uniswapV4: { [key: string]: QuoterDetail[] };
   pancakeswapV3: { [key: string]: QuoterDetail[] };
 }
 
@@ -39,7 +40,7 @@ export class SwapPathUtil {
     tokenAmounts: TokenAmount[],
     pathLength: number = 3,
   ): Promise<RouteDetail[]> {
-    const dexV3RouteDetail = await this.prepareDexV3FeeTierDetail();
+    const dexV3RouteDetail = await this.prepareDexFeeTierDetail();
     const tokens = tokenAmounts.map((token) => token.currency);
     const pathCombinations = await RouterUtil.getAllRoute(tokens, pathLength);
     const RouteDetailCombinations: RouteDetail[] = [];
@@ -67,28 +68,31 @@ export class SwapPathUtil {
 
       for (const tokenPath of combinations) {
         const swapPaths = this.formSwapPath(tokenPath, dexV3RouteDetail);
+        const routingSymbol = tokenPath
+          .map((token) => token.symbol!)
+          .join(' -> ');
         if (swapPaths) {
+          LogUtil.debug(`${routingSymbol} - Found`);
           RouteDetailCombinations.push({
-            routingSymbol: tokenPath.map((token) => token.symbol!).join(' -> '),
+            routingSymbol,
             initialAmount: ethers.parseUnits(
               tokenAmount.amount,
               tokenAmount.currency.decimals,
             ),
             swapPaths,
           });
+        } else {
+          LogUtil.debug(`${routingSymbol} - Not Found`);
         }
       }
     }
 
-    console.log(
-      'RouteDetailCombinations: ' + JSONbig.stringify(RouteDetailCombinations),
-    );
     return RouteDetailCombinations;
   }
 
   static formSwapPath(
     tokens: Token[],
-    RouteDetail: DexV3RouteDetail,
+    RouteDetail: DexRouteDetail,
   ): SwapPath[] | undefined {
     const swapPath: SwapPath[] = [];
 
@@ -96,7 +100,10 @@ export class SwapPathUtil {
       const tokenIn = tokens[i];
       const tokenOut = tokens[(i + 1) % tokens.length];
       const detailMapKey = SubgraphUtil.getDetailMapKey(tokenIn, tokenOut);
-      const quoterDetails = RouteDetail.uniswapV3[detailMapKey]; //only uniswap have a view quoteExactInputSingle
+      const quoterDetails = [
+        ...(RouteDetail.uniswapV3[detailMapKey] ?? []),
+        ...(RouteDetail.uniswapV4[detailMapKey] ?? []),
+      ]; //only uniswap have a view quoteExactInputSingle
 
       if (!quoterDetails?.length) {
         return undefined;
@@ -112,30 +119,42 @@ export class SwapPathUtil {
     return swapPath;
   }
 
-  static async prepareDexV3FeeTierDetail(): Promise<DexV3RouteDetail> {
-    const [pancakeSwapFeeTierMap, uniswapFeeTierMap] = await Promise.all([
-      SubgraphUtil.fetchSymbolToFeeTierMap(SubgraphEndpoint.PANCAKESWAP_V3),
-      SubgraphUtil.fetchSymbolToFeeTierMap(SubgraphEndpoint.UNISWAP_V3),
-    ]);
+  static async prepareDexFeeTierDetail(): Promise<DexRouteDetail> {
+    const [pancakeSwapV3FeeTierMap, uniswapV3FeeTierMap, uniswapV4FeeTierMap] =
+      await Promise.all([
+        SubgraphUtil.fetchSymbolToFeeTierMap(SubgraphEndpoint.PANCAKESWAP_V3),
+        SubgraphUtil.fetchSymbolToFeeTierMap(SubgraphEndpoint.UNISWAP_V3),
+        SubgraphUtil.fetchSymbolToFeeTierMap(SubgraphEndpoint.UNISWAP_V4),
+      ]);
 
-    const RouteDetailMaps: DexV3RouteDetail = {
+    const RouteDetailMaps: DexRouteDetail = {
       uniswapV3: {},
+      uniswapV4: {},
       pancakeswapV3: {},
     };
 
-    for (const [key, value] of uniswapFeeTierMap) {
+    for (const [key, value] of uniswapV3FeeTierMap) {
       RouteDetailMaps.uniswapV3[key] = value.map((element) => ({
         fee: element.feeTier,
-        dexName: 'uniswap',
+        dexName: 'uniswap-v3',
         quoterAddress: BscContractConstant.uniswap.quoter as Address,
         routerAddress: BscContractConstant.uniswap.universalRouter as Address,
       }));
     }
 
-    for (const [key, value] of pancakeSwapFeeTierMap) {
+    for (const [key, value] of uniswapV4FeeTierMap) {
+      RouteDetailMaps.uniswapV4[key] = value.map((element) => ({
+        fee: element.feeTier,
+        dexName: 'uniswap-v4',
+        quoterAddress: BscContractConstant.uniswap.quoter as Address,
+        routerAddress: BscContractConstant.uniswap.universalRouter as Address,
+      }));
+    }
+
+    for (const [key, value] of pancakeSwapV3FeeTierMap) {
       RouteDetailMaps.pancakeswapV3[key] = value.map((element) => ({
         fee: element.feeTier,
-        dexName: 'pancakeswap',
+        dexName: 'pancakeswap-v3',
         quoterAddress: BscContractConstant.pancakeswap.quoter as Address,
         routerAddress: BscContractConstant.pancakeswap
           .universalRouter as Address,

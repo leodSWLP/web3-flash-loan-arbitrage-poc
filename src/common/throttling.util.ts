@@ -1,5 +1,14 @@
+import { LogUtil } from '../log/log.util';
+
 export class ThrottlingUtil {
-  static async throttleAsyncFunctions(functions, callsPerSecond) {
+  static async throttleAsyncFunctions(
+    functions: (() => Promise<any>)[],
+    callsPerSecond: number = 18,
+  ): Promise<{ result?: any; error?: Error }[]> {
+    LogUtil.debug(
+      `throttleAsyncFunctions(): functions length: ${functions.length}`,
+    );
+
     if (
       !Array.isArray(functions) ||
       functions.length === 0 ||
@@ -10,16 +19,17 @@ export class ThrottlingUtil {
       );
     }
 
-    const batchSize = 18;
-    const delayMs = 1000 / callsPerSecond;
-    const results: any[] = [];
+    const batchSize = callsPerSecond;
+    const delayMs = 1000;
+    const results: { result?: any; error?: Error }[] = [];
 
-    // Process functions in batches
     for (let i = 0; i < functions.length; i += batchSize) {
+      LogUtil.debug(`throttleAsyncFunctions(): execute batch ${i}`);
       const batch = functions.slice(
         i,
         Math.min(i + batchSize, functions.length),
       );
+
       const batchPromises = batch.map(async (func, index) => {
         if (typeof func !== 'function') {
           return {
@@ -30,17 +40,18 @@ export class ThrottlingUtil {
           const result = await func();
           return { result };
         } catch (error) {
-          return { error };
+          return { error: error as Error };
         }
       });
 
-      // Execute batch concurrently
       const batchResults = await Promise.all(batchPromises);
       results.push(...batchResults);
 
-      // Wait for the delay to respect the callsPerSecond limit, unless it's the last batch
       if (i + batchSize < functions.length) {
-        await new Promise((resolve) => setTimeout(resolve, delayMs));
+        const now = Date.now();
+        const nextSecond = Math.ceil(now / delayMs) * delayMs;
+        const waitTime = nextSecond - now;
+        await new Promise((resolve) => setTimeout(resolve, waitTime));
       }
     }
 

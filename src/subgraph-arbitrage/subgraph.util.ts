@@ -39,6 +39,7 @@ export class PoolDetail {
 export enum SubgraphEndpoint {
   UNISWAP_V3 = 'uniswap_v3',
   PANCAKESWAP_V3 = 'pancakeswap_v3',
+  UNISWAP_V4 = 'uniswap_v4',
 }
 
 export class SubgraphUtil {
@@ -47,7 +48,7 @@ export class SubgraphUtil {
   private static DIGITAL_PLACE = 24;
   private static LIST_TOP_POOL_QUERY = `
   query {
- pools(first: {{poolSize}}, orderBy: {{orderBy}}, orderDirection: desc) {
+ pools(first: {{poolSize}}, orderBy: {{orderBy}}, orderDirection: desc, skip: {{skip}}) {
     address: id
     token0 {
       symbol
@@ -301,11 +302,11 @@ export class SubgraphUtil {
   private static generateQuery(
     poolSize: number,
     orderBy: 'txCount' | 'liquidity' | 'volumeUSD',
+    skip: number = 0,
   ) {
-    return this.LIST_TOP_POOL_QUERY.replace(
-      '{{poolSize}}',
-      `${poolSize}`,
-    ).replace('{{orderBy}}', orderBy);
+    return this.LIST_TOP_POOL_QUERY.replace('{{poolSize}}', `${poolSize}`)
+      .replace('{{orderBy}}', orderBy)
+      .replace('{{skip}}', `${skip}`);
   }
 
   private static stringPriceToBigInt(priceInString: string) {
@@ -325,6 +326,8 @@ export class SubgraphUtil {
         return BscContractConstant.subgraph.uniswapV3;
       case SubgraphEndpoint.PANCAKESWAP_V3:
         return BscContractConstant.subgraph.pancakeswapV3;
+      case SubgraphEndpoint.UNISWAP_V4:
+        return BscContractConstant.subgraph.uniswapV4;
       default:
         throw new Error('Invalid subgraph endpoint');
     }

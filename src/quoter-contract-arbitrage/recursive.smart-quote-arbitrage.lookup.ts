@@ -14,10 +14,7 @@ import { bsc } from 'viem/chains';
 import { ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/ArbitrageQuoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
 import { BscTokenConstant } from '../common/bsc-token.constant';
-import {
-  RouteDetail,
-  SwapPathUtil,
-} from '../quoter-contract-arbitrage/swap-path.util';
+import { RouteDetail, SwapPathUtil } from './swap-path.util';
 import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
 import * as JSONbig from 'json-bigint';
 import * as fs from 'fs/promises';
@@ -105,11 +102,19 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
           //   &&
           //   result.result[-1].amountOut > result.result[0].amountIn
         ) {
-          const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
           const netProfit =
             quoteResults[j].result![quoteResults[j].result!.length - 1]
               .amountOut - quoteResults[j].result![0].amountIn;
           const isProfitable = netProfit > 0n;
+          if (!isProfitable) {
+            continue;
+          }
+          console.log(
+            `!!!!!Profitable Tarde Found: ${
+              quoteCalls[i + j].routingSymbol
+            }!!!!!`,
+          );
+          const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
           const filePath = path.join(
             dirPath,
             `${quoteCalls[i + j].routingSymbol}-${timestamp}${
@@ -179,7 +184,14 @@ const exec = async () => {
     new TokenAmount(BscTokenConstant.xter),
     new TokenAmount(BscTokenConstant.xrp),
   ]);
-  await quoteBestRoute(RouteDetails);
+
+  let counter = 0;
+  setInterval(async () => {
+    console.log(
+      `${new Date().toISOString()}: Start quoteBestRoute - ${counter++}`,
+    );
+    await quoteBestRoute(RouteDetails);
+  }, 5000);
 
   const end = performance.now();
   const ms = end - start;
