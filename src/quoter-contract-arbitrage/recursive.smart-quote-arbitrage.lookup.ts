@@ -20,6 +20,7 @@ import * as JSONbig from 'json-bigint';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import { ThrottlingUtil } from '../common/throttling.util';
+import { LogUtil } from '../log/log.util';
 dotenv.config();
 
 export const account = privateKeyToAccount(
@@ -72,7 +73,8 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
   });
 
   const batchFunctions: (() => Promise<void>)[] = [];
-  const batchSize = 4;
+  const batchSize = 10;
+  const callsPerSecond = 10;
 
   for (let i = 0; i < quoteCalls.length; i += batchSize) {
     const batchCalls = quoteCalls.slice(
@@ -96,12 +98,14 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
       const dirPath = './profitable-arbitrages';
       await fs.mkdir(dirPath, { recursive: true });
 
+      let successCounter = 0;
       for (let j = 0; j < quoteResults.length; j++) {
         if (
           quoteResults[j].status === 'success'
           //   &&
           //   result.result[-1].amountOut > result.result[0].amountIn
         ) {
+          successCounter++;
           const netProfit =
             quoteResults[j].result![quoteResults[j].result!.length - 1]
               .amountOut - quoteResults[j].result![0].amountIn;
@@ -117,7 +121,7 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
           const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
           const filePath = path.join(
             dirPath,
-            `${quoteCalls[i + j].routingSymbol}-${timestamp}${
+            `${timestamp}-${quoteCalls[i + j].routingSymbol}${
               isProfitable ? '-profitable' : ''
             }.json`,
           );
@@ -143,11 +147,13 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
           );
         }
       }
-      //   console.log('Read Data:', JSONbig.stringify(quoteResults));
+      // LogUtil.debug(
+      //   `quoteBestRoute(): success: ${successCounter}, total: ${quoteResults.length}`,
+      // );
     });
   }
 
-  ThrottlingUtil.throttleAsyncFunctions(batchFunctions, 18);
+  ThrottlingUtil.throttleAsyncFunctions(batchFunctions, callsPerSecond);
   //   return batchFunctions;
 };
 
