@@ -14,15 +14,13 @@ import { bsc } from 'viem/chains';
 import { ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/ArbitrageQuoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
 import { BscTokenConstant } from '../common/bsc-token.constant';
-import {
-  RouteDetail,
-  SwapPathUtil,
-} from '../quoter-contract-arbitrage/swap-path.util';
+import { RouteDetail, SwapPathUtil } from './swap-path.util';
 import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
 import * as JSONbig from 'json-bigint';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import { ThrottlingUtil } from '../common/throttling.util';
+import { LogUtil } from '../log/log.util';
 dotenv.config();
 
 export const account = privateKeyToAccount(
@@ -75,7 +73,8 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
   });
 
   const batchFunctions: (() => Promise<void>)[] = [];
-  const batchSize = 4;
+  const batchSize = 10;
+  const callsPerSecond = 10;
 
   for (let i = 0; i < quoteCalls.length; i += batchSize) {
     const batchCalls = quoteCalls.slice(
@@ -99,20 +98,30 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
       const dirPath = './profitable-arbitrages';
       await fs.mkdir(dirPath, { recursive: true });
 
+      let successCounter = 0;
       for (let j = 0; j < quoteResults.length; j++) {
         if (
           quoteResults[j].status === 'success'
           //   &&
           //   result.result[-1].amountOut > result.result[0].amountIn
         ) {
-          const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+          successCounter++;
           const netProfit =
             quoteResults[j].result![quoteResults[j].result!.length - 1]
               .amountOut - quoteResults[j].result![0].amountIn;
           const isProfitable = netProfit > 0n;
+          if (!isProfitable) {
+            continue;
+          }
+          console.log(
+            `!!!!!Profitable Tarde Found: ${
+              quoteCalls[i + j].routingSymbol
+            }!!!!!`,
+          );
+          const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
           const filePath = path.join(
             dirPath,
-            `${quoteCalls[i + j].routingSymbol}-${timestamp}${
+            `${timestamp}-${quoteCalls[i + j].routingSymbol}${
               isProfitable ? '-profitable' : ''
             }.json`,
           );
@@ -136,13 +145,17 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
               2,
             ),
           );
+        } else {
+          LogUtil.debug(`Error`);
         }
       }
-      //   console.log('Read Data:', JSONbig.stringify(quoteResults));
+      // LogUtil.debug(
+      //   `quoteBestRoute(): success: ${successCounter}, total: ${quoteResults.length}`,
+      // );
     });
   }
 
-  ThrottlingUtil.throttleAsyncFunctions(batchFunctions, 18);
+  ThrottlingUtil.throttleAsyncFunctions(batchFunctions, callsPerSecond);
   //   return batchFunctions;
 };
 
@@ -179,6 +192,12 @@ const exec = async () => {
     new TokenAmount(BscTokenConstant.xter),
     new TokenAmount(BscTokenConstant.xrp),
   ]);
+
+  let counter = 0;
+
+  console.log(
+    `${new Date().toISOString()}: Start quoteBestRoute - ${counter++}`,
+  );
   await quoteBestRoute(RouteDetails);
 
   const end = performance.now();
