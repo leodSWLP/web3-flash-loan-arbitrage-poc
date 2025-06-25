@@ -1,29 +1,26 @@
 import * as dotenv from 'dotenv';
 import { ethers } from 'ethers';
-import { encodeAbiParameters, parseUnits } from 'viem';
 
+import { Token } from '@uniswap/sdk-core';
+import * as JSONbig from 'json-bigint';
 import {
   ContractFunctionRevertedError,
   createPublicClient,
   createWalletClient,
-  defineChain,
   http,
 } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/ArbitrageQuoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
+import { BscContractConstant } from '../common/bsc-contract.constant';
+import { RouterUtil } from '../common/router.util';
+import { LogUtil } from '../log/log.util';
+import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
 import {
   SubgraphEndpoint,
   SubgraphUtil,
 } from '../subgraph-arbitrage/subgraph.util';
-import { BscContractConstant } from '../common/bsc-contract.constant';
-import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
-import { RouterUtil } from '../common/router.util';
-import { LogUtil } from '../log/log.util';
-import { Token } from '@uniswap/sdk-core';
-import { BscTokenConstant } from '../common/bsc-token.constant';
-import * as JSONbig from 'json-bigint';
 
 dotenv.config();
 
@@ -197,10 +194,12 @@ const callFlashSwap = async () => {
       //     ],
       //   ),
       // },
-      {       tokenIn: "0x55d398326f99059fF775485246999027B3197955" as `0x${string}`,
-      tokenOut: "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c" as `0x${string}`,
-        quoterDetails: "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000012000000000000000000000000000000000000000000000000000000000000001e000000000000000000000000000000000000000000000000000000000000000800000000000000000000000005e55c9e631fae526cd4b0526c4818d6e0a9ef0e30000000000000000000000001906c1d672b88cd1b9ac7593301ca990f94eae0700000000000000000000000000000000000000000000000000000000000000640000000000000000000000000000000000000000000000000000000000000007756e69737761700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000005e55c9e631fae526cd4b0526c4818d6e0a9ef0e30000000000000000000000001906c1d672b88cd1b9ac7593301ca990f94eae0700000000000000000000000000000000000000000000000000000000000001f40000000000000000000000000000000000000000000000000000000000000007756e69737761700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000005e55c9e631fae526cd4b0526c4818d6e0a9ef0e30000000000000000000000001906c1d672b88cd1b9ac7593301ca990f94eae070000000000000000000000000000000000000000000000000000000000000bb80000000000000000000000000000000000000000000000000000000000000007756e697377617000000000000000000000000000000000000000000000000000" as `0x${string}`
-      }
+      {
+        tokenIn: '0x55d398326f99059fF775485246999027B3197955' as `0x${string}`,
+        tokenOut: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c' as `0x${string}`,
+        quoterDetails:
+          '0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000030000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000012000000000000000000000000000000000000000000000000000000000000001e000000000000000000000000000000000000000000000000000000000000000800000000000000000000000005e55c9e631fae526cd4b0526c4818d6e0a9ef0e30000000000000000000000001906c1d672b88cd1b9ac7593301ca990f94eae0700000000000000000000000000000000000000000000000000000000000000640000000000000000000000000000000000000000000000000000000000000007756e69737761700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000005e55c9e631fae526cd4b0526c4818d6e0a9ef0e30000000000000000000000001906c1d672b88cd1b9ac7593301ca990f94eae0700000000000000000000000000000000000000000000000000000000000001f40000000000000000000000000000000000000000000000000000000000000007756e69737761700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000005e55c9e631fae526cd4b0526c4818d6e0a9ef0e30000000000000000000000001906c1d672b88cd1b9ac7593301ca990f94eae070000000000000000000000000000000000000000000000000000000000000bb80000000000000000000000000000000000000000000000000000000000000007756e697377617000000000000000000000000000000000000000000000000000' as `0x${string}`,
+      },
       // {
       //   tokenIn: '0x783c3f003f172c6Ac5AC700218a357d2D66Ee2a2' as `0x${string}`,
       //   tokenOut: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c' as `0x${string}`,
@@ -258,9 +257,8 @@ const callFlashSwap = async () => {
             functionName: 'quoteBestRoute',
             args: [ethers.parseUnits('10', 18), swapPaths],
           },
-      ]}
-
-        );
+        ],
+      });
     console.log('Read Data:', data);
   } catch (error) {
     console.error('Transaction failed with error:');
@@ -285,20 +283,20 @@ const exec = async () => {
   await callFlashSwap();
 
   // await prepareQuoteSwapPath([
-  //   new TokenAmount(BscTokenConstant.usdt, '1000'),
-  //   new TokenAmount(BscTokenConstant.eth, '0.5'),
-  //   new TokenAmount(BscTokenConstant.btcb, '0.0001'),
-  //   new TokenAmount(BscTokenConstant.wbnb, '2'),
-  //   new TokenAmount(BscTokenConstant.zk),
-  //   new TokenAmount(BscTokenConstant.usdc),
-  //   new TokenAmount(BscTokenConstant.b2, '2000'),
-  //   new TokenAmount(BscTokenConstant.busd),
-  //   new TokenAmount(BscTokenConstant.koge),
-  //   new TokenAmount(BscTokenConstant.cake),
-  //   new TokenAmount(BscTokenConstant.rlb),
-  //   new TokenAmount(BscTokenConstant.turbo),
-  //   new TokenAmount(BscTokenConstant.pndc),
-  //   new TokenAmount(BscTokenConstant.shib),
+  //   new TokenAmount(BscTxTokenConstant.usdt, '1000'),
+  //   new TokenAmount(BscTxTokenConstant.eth, '0.5'),
+  //   new TokenAmount(BscTxTokenConstant.btcb, '0.0001'),
+  //   new TokenAmount(BscTxTokenConstant.wbnb, '2'),
+  //   new TokenAmount(BscTxTokenConstant.zk),
+  //   new TokenAmount(BscTxTokenConstant.usdc),
+  //   new TokenAmount(BscTxTokenConstant.b2, '2000'),
+  //   new TokenAmount(BscTxTokenConstant.busd),
+  //   new TokenAmount(BscTxTokenConstant.koge),
+  //   new TokenAmount(BscTxTokenConstant.cake),
+  //   new TokenAmount(BscTxTokenConstant.rlb),
+  //   new TokenAmount(BscTxTokenConstant.turbo),
+  //   new TokenAmount(BscTxTokenConstant.pndc),
+  //   new TokenAmount(BscTxTokenConstant.shib),
   // ]);
 
   const end = performance.now();

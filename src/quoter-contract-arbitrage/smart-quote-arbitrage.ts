@@ -1,26 +1,19 @@
 import * as dotenv from 'dotenv';
 import { ethers } from 'ethers';
-import { Address, encodeAbiParameters, encodeDeployData } from 'viem';
 
-import {
-  ContractFunctionRevertedError,
-  createPublicClient,
-  createWalletClient,
-  defineChain,
-  http,
-} from 'viem';
+import * as fs from 'fs/promises';
+import * as JSONbig from 'json-bigint';
+import * as path from 'path';
+import { createPublicClient, createWalletClient, http } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/ArbitrageQuoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
-import { BscTokenConstant } from '../common/bsc-token.constant';
-import { RouteDetail, SwapPathUtil } from './swap-path.util';
-import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
-import * as JSONbig from 'json-bigint';
-import * as fs from 'fs/promises';
-import * as path from 'path';
+import { BscTxTokenConstant } from '../common/bsc-token.constant';
 import { ThrottlingUtil } from '../common/throttling.util';
 import { LogUtil } from '../log/log.util';
+import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
+import { RouteDetail, SwapPathUtil } from './swap-path.util';
 dotenv.config();
 
 export const account = privateKeyToAccount(
@@ -73,13 +66,14 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
   });
 
   const batchFunctions: (() => Promise<void>)[] = [];
-  const batchSize = 10;
-  const callsPerSecond = 10;
+  const functionBatchSize = 4;
+  const callsPerSecond = 1;
+  const batchSize = 10240;
 
-  for (let i = 0; i < quoteCalls.length; i += batchSize) {
+  for (let i = 0; i < quoteCalls.length; i += functionBatchSize) {
     const batchCalls = quoteCalls.slice(
       i,
-      Math.min(i + batchSize, quoteCalls.length),
+      Math.min(i + functionBatchSize, quoteCalls.length),
     );
     batchFunctions.push(async () => {
       const contracts = batchCalls.map((call) => ({
@@ -93,6 +87,7 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
         await ShareContentLocalStore.getStore().viemChainClient.multicall({
           allowFailure: true,
           contracts,
+          batchSize,
         });
 
       const dirPath = './profitable-arbitrages';
@@ -149,9 +144,9 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
           LogUtil.debug(`Error`);
         }
       }
-      // LogUtil.debug(
-      //   `quoteBestRoute(): success: ${successCounter}, total: ${quoteResults.length}`,
-      // );
+      LogUtil.debug(
+        `quoteBestRoute(): success: ${successCounter}, total: ${quoteResults.length}`,
+      );
     });
   }
 
@@ -166,31 +161,31 @@ const exec = async () => {
   // await deploy();
 
   const RouteDetails = await SwapPathUtil.prepareQuoteSwapPath([
-    new TokenAmount(BscTokenConstant.usdt, '1000'),
-    new TokenAmount(BscTokenConstant.eth, '0.5'),
-    new TokenAmount(BscTokenConstant.btcb, '0.001'),
-    new TokenAmount(BscTokenConstant.wbnb, '2'),
-    new TokenAmount(BscTokenConstant.zk),
-    new TokenAmount(BscTokenConstant.usdc, '1000'),
-    new TokenAmount(BscTokenConstant.b2),
-    new TokenAmount(BscTokenConstant.busd, '1000'),
-    new TokenAmount(BscTokenConstant.koge),
-    new TokenAmount(BscTokenConstant.cake),
-    new TokenAmount(BscTokenConstant.rlb),
-    new TokenAmount(BscTokenConstant.turbo),
-    new TokenAmount(BscTokenConstant.pndc),
-    new TokenAmount(BscTokenConstant.shib),
-    new TokenAmount(BscTokenConstant.usd1),
-    new TokenAmount(BscTokenConstant.fdusd),
-    new TokenAmount(BscTokenConstant.skyai),
-    new TokenAmount(BscTokenConstant.aiot),
-    new TokenAmount(BscTokenConstant.sol),
-    new TokenAmount(BscTokenConstant.siren),
-    new TokenAmount(BscTokenConstant.pirate),
-    new TokenAmount(BscTokenConstant.myx),
-    new TokenAmount(BscTokenConstant.bank),
-    new TokenAmount(BscTokenConstant.xter),
-    new TokenAmount(BscTokenConstant.xrp),
+    new TokenAmount(BscTxTokenConstant.usdt, '1000'),
+    new TokenAmount(BscTxTokenConstant.eth, '0.5'),
+    new TokenAmount(BscTxTokenConstant.btcb, '0.001'),
+    new TokenAmount(BscTxTokenConstant.wbnb, '2'),
+    new TokenAmount(BscTxTokenConstant.zk),
+    new TokenAmount(BscTxTokenConstant.usdc, '1000'),
+    new TokenAmount(BscTxTokenConstant.b2),
+    new TokenAmount(BscTxTokenConstant.busd, '1000'),
+    new TokenAmount(BscTxTokenConstant.koge),
+    new TokenAmount(BscTxTokenConstant.cake),
+    new TokenAmount(BscTxTokenConstant.rlb),
+    new TokenAmount(BscTxTokenConstant.turbo),
+    new TokenAmount(BscTxTokenConstant.pndc),
+    new TokenAmount(BscTxTokenConstant.shib),
+    new TokenAmount(BscTxTokenConstant.usd1),
+    new TokenAmount(BscTxTokenConstant.fdusd),
+    new TokenAmount(BscTxTokenConstant.skyai),
+    new TokenAmount(BscTxTokenConstant.aiot),
+    new TokenAmount(BscTxTokenConstant.sol),
+    new TokenAmount(BscTxTokenConstant.siren),
+    new TokenAmount(BscTxTokenConstant.pirate),
+    new TokenAmount(BscTxTokenConstant.myx),
+    new TokenAmount(BscTxTokenConstant.bank),
+    new TokenAmount(BscTxTokenConstant.xter),
+    new TokenAmount(BscTxTokenConstant.xrp),
   ]);
 
   let counter = 0;

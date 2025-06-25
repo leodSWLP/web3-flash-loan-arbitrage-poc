@@ -151,9 +151,9 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
           );
         }
       }
-      // LogUtil.debug(
-      //   `quoteBestRoute(): success: ${successCounter}, total: ${quoteResults.length}`,
-      // );
+      LogUtil.debug(
+        `quoteBestRoute(): success: ${successCounter}, total: ${quoteResults.length}`,
+      );
     });
   }
 
@@ -179,12 +179,6 @@ const exec = async () => {
     new TokenAmount(BscTxTokenConstant.rlb),
     new TokenAmount(BscTxTokenConstant.turbo),
     new TokenAmount(BscTxTokenConstant.pndc),
-    new TokenAmount(BscTxTokenConstant.shib),
-    new TokenAmount(BscTxTokenConstant.usd1),
-    new TokenAmount(BscTxTokenConstant.fdusd),
-    new TokenAmount(BscTxTokenConstant.skyai),
-    new TokenAmount(BscTxTokenConstant.aiot),
-    new TokenAmount(BscTxTokenConstant.sol),
     new TokenAmount(BscUSDTokenConstant.usdz, '1000'),
     new TokenAmount(BscUSDTokenConstant.aicell),
     new TokenAmount(BscUSDTokenConstant.obt),

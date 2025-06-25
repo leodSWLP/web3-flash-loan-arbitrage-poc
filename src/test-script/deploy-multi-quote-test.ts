@@ -1,9 +1,6 @@
 import * as dotenv from 'dotenv';
-import { ethers } from 'ethers';
-import { Address, encodeAbiParameters, parseUnits } from 'viem';
 
 import {
-  ContractFunctionRevertedError,
   createPublicClient,
   createWalletClient,
   defineChain,
@@ -13,17 +10,6 @@ import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { MultiQuote__factory } from '../../typechain-types/factories/contracts/MultiQuote.sol/MultiQuote__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
-import {
-  SubgraphEndpoint,
-  SubgraphUtil,
-} from '../subgraph-arbitrage/subgraph.util';
-import { BscContractConstant } from '../common/bsc-contract.constant';
-import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
-import { RouterUtil } from '../common/router.util';
-import { LogUtil } from '../log/log.util';
-import { Token } from '@uniswap/sdk-core';
-import { BscTokenConstant } from '../common/bsc-token.constant';
-import * as JSONbig from 'json-bigint';
 
 dotenv.config();
 

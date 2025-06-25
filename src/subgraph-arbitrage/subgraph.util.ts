@@ -244,7 +244,7 @@ export class SubgraphUtil {
 
   private static parseBasicPoolDetail(pool: any) {
     const basicPoolDetail = new BasicPoolDetail();
-    const chainId = ShareContentLocalStore.getStore().viemChain.id;
+    const chainId = 56;
 
     basicPoolDetail.address = pool.address;
     basicPoolDetail.feeTier = BigInt(pool.feeTier);

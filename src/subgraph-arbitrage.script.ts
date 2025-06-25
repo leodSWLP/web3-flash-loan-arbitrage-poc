@@ -1,17 +1,13 @@
 import * as dotenv from 'dotenv';
+import * as JSONbig from 'json-bigint';
 import { createPublicClient, http } from 'viem';
 import { bsc } from 'viem/chains';
 import { ShareContentLocalStore } from './async-local-store/share-content-local-store';
-import {
-  SubgraphEndpoint,
-  SubgraphUtil,
-} from './subgraph-arbitrage/subgraph.util';
+import { BscTxTokenConstant } from './common/bsc-token.constant';
 import {
   SubgraphArbitrageUtil,
   TokenAmount,
 } from './subgraph-arbitrage/subgraph-arbitrage.util';
-import { BscTokenConstant } from './common/bsc-token.constant';
-import * as JSONbig from 'json-bigint';
 
 dotenv.config();
 
@@ -20,18 +16,18 @@ const exec = async () => {
 
   //   await SubgraphUtil.fetchData(SubgraphEndpoint.UNISWAP_V3);
   const tokenAmounts: TokenAmount[] = [
-    new TokenAmount(BscTokenConstant.usdt, '1000'),
-    new TokenAmount(BscTokenConstant.eth, '0.5'),
-    new TokenAmount(BscTokenConstant.btcb, '0.0001'),
-    new TokenAmount(BscTokenConstant.wbnb, '2'),
-    new TokenAmount(BscTokenConstant.zk, '2000'),
-    new TokenAmount(BscTokenConstant.usdc, '1000'),
-    new TokenAmount(BscTokenConstant.b2, '2000'),
-    new TokenAmount(BscTokenConstant.busd),
+    new TokenAmount(BscTxTokenConstant.usdt, '1000'),
+    new TokenAmount(BscTxTokenConstant.eth, '0.5'),
+    new TokenAmount(BscTxTokenConstant.btcb, '0.0001'),
+    new TokenAmount(BscTxTokenConstant.wbnb, '2'),
+    new TokenAmount(BscTxTokenConstant.zk, '2000'),
+    new TokenAmount(BscTxTokenConstant.usdc, '1000'),
+    new TokenAmount(BscTxTokenConstant.b2, '2000'),
+    new TokenAmount(BscTxTokenConstant.busd),
   ];
   const arbitrageResults = await SubgraphArbitrageUtil.calculateAllPaths(
     tokenAmounts,
-    3
+    3,
   );
   console.log('ArbitrageResult: ' + JSONbig.stringify(arbitrageResults));
 

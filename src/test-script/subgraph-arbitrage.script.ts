@@ -3,7 +3,7 @@ import * as JSONbig from 'json-bigint';
 import { createPublicClient, http } from 'viem';
 import { bsc } from 'viem/chains';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
-import { BscTokenConstant } from '../common/bsc-token.constant';
+import { BscTxTokenConstant } from '../common/bsc-token.constant';
 import {
   SubgraphArbitrageUtil,
   TokenAmount,
@@ -16,34 +16,36 @@ const exec = async () => {
 
   //   await SubgraphUtil.fetchData(SubgraphEndpoint.UNISWAP_V3);
   const tokenAmounts: TokenAmount[] = [
-    new TokenAmount(BscTokenConstant.usdt, '1000'),
-    new TokenAmount(BscTokenConstant.eth, '0.5'),
-    new TokenAmount(BscTokenConstant.btcb, '0.0001'),
-    new TokenAmount(BscTokenConstant.wbnb, '2'),
-    new TokenAmount(BscTokenConstant.zk, '2000'),
-    new TokenAmount(BscTokenConstant.usdc, '1000'),
-    new TokenAmount(BscTokenConstant.b2, '2000'),
-    new TokenAmount(BscTokenConstant.busd),
-    new TokenAmount(BscTokenConstant.koge),
-    new TokenAmount(BscTokenConstant.cake),
-    new TokenAmount(BscTokenConstant.rlb),
-    new TokenAmount(BscTokenConstant.turbo),
-    new TokenAmount(BscTokenConstant.pndc),
-    new TokenAmount(BscTokenConstant.shib),
+    new TokenAmount(BscTxTokenConstant.usdt, '1000'),
+    new TokenAmount(BscTxTokenConstant.eth, '0.5'),
+    new TokenAmount(BscTxTokenConstant.btcb, '0.0001'),
+    new TokenAmount(BscTxTokenConstant.wbnb, '2'),
+    new TokenAmount(BscTxTokenConstant.zk, '2000'),
+    new TokenAmount(BscTxTokenConstant.usdc, '1000'),
+    new TokenAmount(BscTxTokenConstant.b2, '2000'),
+    new TokenAmount(BscTxTokenConstant.busd),
+    new TokenAmount(BscTxTokenConstant.koge),
+    new TokenAmount(BscTxTokenConstant.cake),
+    new TokenAmount(BscTxTokenConstant.rlb),
+    new TokenAmount(BscTxTokenConstant.turbo),
+    new TokenAmount(BscTxTokenConstant.pndc),
+    new TokenAmount(BscTxTokenConstant.shib),
   ];
   const arbitrageResults = await SubgraphArbitrageUtil.calculateAllPaths(
     tokenAmounts,
   );
   console.log('ArbitrageResult: ' + JSONbig.stringify(arbitrageResults));
 
-  const profitableResults = arbitrageResults.filter(result => result.isProfitable);
+  const profitableResults = arbitrageResults.filter(
+    (result) => result.isProfitable,
+  );
   console.log(`
     Arbitrage Summary:
       Total Opportunities: ${arbitrageResults.length}
       Profitable: ${profitableResults.length}
       Non-Profitable: ${arbitrageResults.length - profitableResults.length}
     `);
-  console.log(`ProfitableArbitrage: ${JSONbig.stringify(profitableResults)}`)
+  console.log(`ProfitableArbitrage: ${JSONbig.stringify(profitableResults)}`);
   // console.log('ArbitrageResult: ' + JSONbig.stringify(arbitrageResults, null, 4));
   const end = performance.now();
   const ms = end - start; // Time in milliseconds

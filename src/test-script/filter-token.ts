@@ -20230,6 +20230,7 @@ const pairs = pools
   .flatMap((arr) => arr[1] as any)
   .forEach((pair) => {
     const contractKey = pair.address;
+
     const token0Key = pair.token0.symbol + '-' + pair.token0.address;
     if (!map.has(token0Key)) {
       map.set(token0Key, { token: pair.token0, pairIdSet: new Set<string>() });

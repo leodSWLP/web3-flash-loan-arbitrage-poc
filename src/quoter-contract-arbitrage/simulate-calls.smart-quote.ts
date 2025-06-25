@@ -1,28 +1,16 @@
 import * as dotenv from 'dotenv';
-import { ethers } from 'ethers';
-import { Address, encodeAbiParameters, encodeDeployData } from 'viem';
+import { Address, encodeAbiParameters } from 'viem';
 
-import {
-  ContractFunctionRevertedError,
-  createPublicClient,
-  createWalletClient,
-  defineChain,
-  http,
-} from 'viem';
+import * as fs from 'fs/promises';
+import { createPublicClient, createWalletClient, http } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/ArbitrageQuoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
-import { BscTokenConstant } from '../common/bsc-token.constant';
-import {
-  RouteDetail,
-  SwapPathUtil,
-} from './swap-path.util';
-import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
-import * as JSONbig from 'json-bigint';
-import * as fs from 'fs/promises';
-import * as path from 'path';
+import { BscTxTokenConstant } from '../common/bsc-token.constant';
 import { ThrottlingUtil } from '../common/throttling.util';
+import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
+import { RouteDetail, SwapPathUtil } from './swap-path.util';
 dotenv.config();
 
 export const account = privateKeyToAccount(
@@ -137,31 +125,31 @@ const exec = async () => {
   // await deploy();
 
   const RouteDetails = await SwapPathUtil.prepareQuoteSwapPath([
-    new TokenAmount(BscTokenConstant.usdt, '1000'),
-    new TokenAmount(BscTokenConstant.eth),
-    new TokenAmount(BscTokenConstant.btcb),
-    new TokenAmount(BscTokenConstant.wbnb),
-    new TokenAmount(BscTokenConstant.zk),
-    new TokenAmount(BscTokenConstant.usdc),
-    new TokenAmount(BscTokenConstant.b2),
-    new TokenAmount(BscTokenConstant.busd),
-    new TokenAmount(BscTokenConstant.koge),
-    new TokenAmount(BscTokenConstant.cake),
-    new TokenAmount(BscTokenConstant.rlb),
-    new TokenAmount(BscTokenConstant.turbo),
-    new TokenAmount(BscTokenConstant.pndc),
-    new TokenAmount(BscTokenConstant.shib),
-    new TokenAmount(BscTokenConstant.usd1),
-    new TokenAmount(BscTokenConstant.fdusd),
-    new TokenAmount(BscTokenConstant.skyai),
-    new TokenAmount(BscTokenConstant.aiot),
-    new TokenAmount(BscTokenConstant.sol),
-    new TokenAmount(BscTokenConstant.siren),
-    new TokenAmount(BscTokenConstant.pirate),
-    new TokenAmount(BscTokenConstant.myx),
-    new TokenAmount(BscTokenConstant.bank),
-    new TokenAmount(BscTokenConstant.xter),
-    new TokenAmount(BscTokenConstant.xrp),
+    new TokenAmount(BscTxTokenConstant.usdt, '1000'),
+    new TokenAmount(BscTxTokenConstant.eth),
+    new TokenAmount(BscTxTokenConstant.btcb),
+    new TokenAmount(BscTxTokenConstant.wbnb),
+    new TokenAmount(BscTxTokenConstant.zk),
+    new TokenAmount(BscTxTokenConstant.usdc),
+    new TokenAmount(BscTxTokenConstant.b2),
+    new TokenAmount(BscTxTokenConstant.busd),
+    new TokenAmount(BscTxTokenConstant.koge),
+    new TokenAmount(BscTxTokenConstant.cake),
+    new TokenAmount(BscTxTokenConstant.rlb),
+    new TokenAmount(BscTxTokenConstant.turbo),
+    new TokenAmount(BscTxTokenConstant.pndc),
+    new TokenAmount(BscTxTokenConstant.shib),
+    new TokenAmount(BscTxTokenConstant.usd1),
+    new TokenAmount(BscTxTokenConstant.fdusd),
+    new TokenAmount(BscTxTokenConstant.skyai),
+    new TokenAmount(BscTxTokenConstant.aiot),
+    new TokenAmount(BscTxTokenConstant.sol),
+    new TokenAmount(BscTxTokenConstant.siren),
+    new TokenAmount(BscTxTokenConstant.pirate),
+    new TokenAmount(BscTxTokenConstant.myx),
+    new TokenAmount(BscTxTokenConstant.bank),
+    new TokenAmount(BscTxTokenConstant.xter),
+    new TokenAmount(BscTxTokenConstant.xrp),
   ]);
   await quoteBestRoute(RouteDetails);
 

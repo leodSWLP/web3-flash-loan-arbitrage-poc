@@ -1,21 +1,16 @@
 import * as dotenv from 'dotenv';
 import { ethers } from 'ethers';
-import { encodeAbiParameters, encodeDeployData } from 'viem';
 
 import {
   ContractFunctionRevertedError,
   createPublicClient,
   createWalletClient,
-  defineChain,
   http,
 } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/ArbitrageQuoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
-import { BscTokenConstant } from '../common/bsc-token.constant';
-import { SwapPathUtil } from '../quoter-contract-arbitrage/swap-path.util';
-import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
 
 dotenv.config();
 
@@ -51,42 +46,42 @@ const callFlashSwap = async () => {
                 quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
                 routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
               },
-              {
-                fee: 3000,
-                dexName: 'uniswap-v3',
-                quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              },
-              {
-                fee: 100,
-                dexName: 'uniswap-v4',
-                quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              },
-              {
-                fee: 500,
-                dexName: 'uniswap-v4',
-                quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              },
-              {
-                fee: 1350,
-                dexName: 'uniswap-v4',
-                quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              },
-              {
-                fee: 3000,
-                dexName: 'uniswap-v4',
-                quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              },
-              {
-                fee: 10000,
-                dexName: 'uniswap-v4',
-                quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              },
+              // {
+              //   fee: 3000,
+              //   dexName: 'uniswap-v3',
+              //   quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+              // },
+              // {
+              //   fee: 100,
+              //   dexName: 'uniswap-v4',
+              //   quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+              // },
+              // {
+              //   fee: 500,
+              //   dexName: 'uniswap-v4',
+              //   quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+              // },
+              // {
+              //   fee: 1350,
+              //   dexName: 'uniswap-v4',
+              //   quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+              // },
+              // {
+              //   fee: 3000,
+              //   dexName: 'uniswap-v4',
+              //   quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+              // },
+              // {
+              //   fee: 10000,
+              //   dexName: 'uniswap-v4',
+              //   quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+              // },
             ],
           ],
         ),
@@ -104,18 +99,18 @@ const callFlashSwap = async () => {
                 quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
                 routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
               },
-              {
-                fee: 3000,
-                dexName: 'uniswap-v3',
-                quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              },
-              {
-                fee: 3000,
-                dexName: 'uniswap-v4',
-                quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              },
+              // {
+              //   fee: 3000,
+              //   dexName: 'uniswap-v3',
+              //   quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+              // },
+              // {
+              //   fee: 3000,
+              //   dexName: 'uniswap-v4',
+              //   quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+              // },
             ],
           ],
         ),
@@ -139,42 +134,42 @@ const callFlashSwap = async () => {
                 quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
                 routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
               },
-              {
-                fee: 3000,
-                dexName: 'uniswap-v3',
-                quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              },
-              {
-                fee: 10000,
-                dexName: 'uniswap-v3',
-                quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              },
-              {
-                fee: 80,
-                dexName: 'uniswap-v4',
-                quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              },
-              {
-                fee: 90,
-                dexName: 'uniswap-v4',
-                quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              },
-              {
-                fee: 500,
-                dexName: 'uniswap-v4',
-                quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              },
-              {
-                fee: 3000,
-                dexName: 'uniswap-v4',
-                quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-              },
+              // {
+              //   fee: 3000,
+              //   dexName: 'uniswap-v3',
+              //   quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+              // },
+              // {
+              //   fee: 10000,
+              //   dexName: 'uniswap-v3',
+              //   quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+              // },
+              // {
+              //   fee: 80,
+              //   dexName: 'uniswap-v4',
+              //   quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+              // },
+              // {
+              //   fee: 90,
+              //   dexName: 'uniswap-v4',
+              //   quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+              // },
+              // {
+              //   fee: 500,
+              //   dexName: 'uniswap-v4',
+              //   quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+              // },
+              // {
+              //   fee: 3000,
+              //   dexName: 'uniswap-v4',
+              //   quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
+              //   routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
+              // },
             ],
           ],
         ),
@@ -183,7 +178,7 @@ const callFlashSwap = async () => {
 
     const data =
       await ShareContentLocalStore.getStore().viemChainClient.readContract({
-        address: '0x7A4a47d49F568c18543E93d4FA6880126114cb73',
+        address: process.env.QUOTE_ADDRESS as Address,
         abi: ArbitrageQuoter__factory.abi,
         functionName: 'quoteBestRoute',
         args: [ethers.parseUnits('10', 18), swapPaths],
@@ -210,24 +205,24 @@ const exec = async () => {
 
   // await estimateDeploymentGas();
   // await deploy();
-  // await callFlashSwap();
+  await callFlashSwap();
 
-  await SwapPathUtil.prepareQuoteSwapPath([
-    new TokenAmount(BscTokenConstant.usdt, '1000'),
-    new TokenAmount(BscTokenConstant.eth),
-    new TokenAmount(BscTokenConstant.btcb),
-    new TokenAmount(BscTokenConstant.wbnb),
-    new TokenAmount(BscTokenConstant.zk),
-    new TokenAmount(BscTokenConstant.usdc),
-    new TokenAmount(BscTokenConstant.b2),
-    new TokenAmount(BscTokenConstant.busd),
-    new TokenAmount(BscTokenConstant.koge),
-    new TokenAmount(BscTokenConstant.cake),
-    new TokenAmount(BscTokenConstant.rlb),
-    new TokenAmount(BscTokenConstant.turbo),
-    new TokenAmount(BscTokenConstant.pndc),
-    new TokenAmount(BscTokenConstant.shib),
-  ]);
+  // await SwapPathUtil.prepareQuoteSwapPath([
+  //   new TokenAmount(BscTxTokenConstant.usdt, '1000'),
+  //   new TokenAmount(BscTxTokenConstant.eth),
+  //   new TokenAmount(BscTxTokenConstant.btcb),
+  //   new TokenAmount(BscTxTokenConstant.wbnb),
+  //   new TokenAmount(BscTxTokenConstant.zk),
+  //   new TokenAmount(BscTxTokenConstant.usdc),
+  //   new TokenAmount(BscTxTokenConstant.b2),
+  //   new TokenAmount(BscTxTokenConstant.busd),
+  //   new TokenAmount(BscTxTokenConstant.koge),
+  //   new TokenAmount(BscTxTokenConstant.cake),
+  //   new TokenAmount(BscTxTokenConstant.rlb),
+  //   new TokenAmount(BscTxTokenConstant.turbo),
+  //   new TokenAmount(BscTxTokenConstant.pndc),
+  //   new TokenAmount(BscTxTokenConstant.shib),
+  // ]);
 
   const end = performance.now();
   const ms = end - start;
@@ -240,31 +235,6 @@ const exec = async () => {
 export const account = privateKeyToAccount(
   process.env.WALLET_PRIVATE_KEY as `0x${string}`,
 );
-
-export const localhostChain = defineChain({
-  id: 56,
-  name: 'Local Hardhat',
-  network: 'hardhat',
-  nativeCurrency: {
-    decimals: 18,
-    name: 'Binance Coin',
-    symbol: 'BNB',
-  },
-  rpcUrls: {
-    default: {
-      http: ['http://127.0.0.1:8545'],
-    },
-    public: {
-      http: ['http://127.0.0.1:8545'],
-    },
-  },
-  contracts: {
-    multicall3: {
-      address: '0xca11bde05977b3631167028862be2a173976ca11',
-      blockCreated: 15921452,
-    },
-  },
-});
 
 const viemChainClient = createPublicClient({
   chain: bsc,

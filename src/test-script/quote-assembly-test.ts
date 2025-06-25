@@ -1,7 +1,9 @@
 import * as dotenv from 'dotenv';
 import { ethers } from 'ethers';
-import { encodeAbiParameters, parseUnits } from 'viem';
+import { encodeAbiParameters } from 'viem';
 
+import { Token } from '@uniswap/sdk-core';
+import * as JSONbig from 'json-bigint';
 import {
   ContractFunctionRevertedError,
   createPublicClient,
@@ -13,17 +15,14 @@ import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { ArbitrageQuoterWithAssembly__factory } from '../../typechain-types/factories/contracts/ArbitrageQuoterWithAssembly__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
+import { BscContractConstant } from '../common/bsc-contract.constant';
+import { RouterUtil } from '../common/router.util';
+import { LogUtil } from '../log/log.util';
+import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
 import {
   SubgraphEndpoint,
   SubgraphUtil,
 } from '../subgraph-arbitrage/subgraph.util';
-import { BscContractConstant } from '../common/bsc-contract.constant';
-import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
-import { RouterUtil } from '../common/router.util';
-import { LogUtil } from '../log/log.util';
-import { Token } from '@uniswap/sdk-core';
-import { BscTokenConstant } from '../common/bsc-token.constant';
-import * as JSONbig from 'json-bigint';
 
 dotenv.config();
 
@@ -82,23 +81,28 @@ const prepareQuoteSwapPath = async (
     for (let tokens of combinations) {
       const swapPath = formSwapPath(tokens, dexV3QuoteDetail);
       if (swapPath) {
-        swapPathCombinations.push(swapPath)
+        swapPathCombinations.push(swapPath);
       }
     }
   }
 
-  console.log('swapPathCombinations: ' + JSONbig.stringify(swapPathCombinations));
+  console.log(
+    'swapPathCombinations: ' + JSONbig.stringify(swapPathCombinations),
+  );
   return swapPathCombinations;
 };
 
-const formSwapPath = (tokens: Token[], QuoteDetail: {
-  uniswapV3: any,
-  pancakeswapV3: any
-}) => {
+const formSwapPath = (
+  tokens: Token[],
+  QuoteDetail: {
+    uniswapV3: any;
+    pancakeswapV3: any;
+  },
+) => {
   const swapPath: any[] = [];
   for (let i = 0; i < tokens.length; i++) {
     const tokenIn = tokens[i];
-    const tokenOut = tokens[(i + 1) % tokens.length]
+    const tokenOut = tokens[(i + 1) % tokens.length];
     const detailMapKey = SubgraphUtil.getDetailMapKey(tokenIn, tokenOut);
     const quoterDetails: any[] = [];
     for (let key of Object.keys(QuoteDetail)) {
@@ -114,10 +118,10 @@ const formSwapPath = (tokens: Token[], QuoteDetail: {
       tokenIn: tokenIn.address,
       tokenOut: tokenOut.address,
       quoterDetails,
-    })
+    });
   }
   return swapPath;
-}
+};
 
 const prepareDexV3FeeTierDetail = async () => {
   const [pancakeSwapFeeTierMap, uniswapFeeTierMap] = await Promise.all([
@@ -136,7 +140,7 @@ const prepareDexV3FeeTierDetail = async () => {
         feeTier: element.feeTier,
         quoterAddress: BscContractConstant.uniswap.quoter,
         routerAddress: BscContractConstant.uniswap.universalRouter,
-      }
+      };
     });
   });
 
@@ -147,7 +151,7 @@ const prepareDexV3FeeTierDetail = async () => {
         feeTier: element.feeTier,
         quoterAddress: BscContractConstant.pancakeswap.quoter,
         routerAddress: BscContractConstant.pancakeswap.universalRouter,
-      }
+      };
     });
   });
 
@@ -164,10 +168,9 @@ const quoterDetailType = {
   ],
 } as const;
 
-
 const callFlashSwap = async () => {
   try {
-const swapPaths = [
+    const swapPaths = [
       {
         tokenIn: '0x55d398326f99059fF775485246999027B3197955' as `0x${string}`,
         tokenOut: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c' as `0x${string}`,
@@ -256,13 +259,9 @@ const swapPaths = [
         address: '0x67e6ed2d9a30c2db30394ccea6b11c5280a42029',
         abi: ArbitrageQuoterWithAssembly__factory.abi,
         functionName: 'quoteBestRoute',
-        args: [
-          ethers.parseUnits('1000', 18),
-          swapPaths
-        ],
+        args: [ethers.parseUnits('1000', 18), swapPaths],
       });
     console.log('Read Data:', data);
-
   } catch (error) {
     console.error('Transaction failed with error:');
 
@@ -285,22 +284,22 @@ const exec = async () => {
   // await deploy();
   await callFlashSwap();
   // await prepareQuoteSwapPath([
-  //     new TokenAmount(BscTokenConstant.usdt, '1000'),
-  //     new TokenAmount(BscTokenConstant.eth, '0.5'),
-  //     new TokenAmount(BscTokenConstant.btcb, '0.0001'),
-  //     new TokenAmount(BscTokenConstant.wbnb, '2'),
-  //     new TokenAmount(BscTokenConstant.zk, '2000'),
-  //     new TokenAmount(BscTokenConstant.usdc, '1000'),
-  //     new TokenAmount(BscTokenConstant.b2, '2000'),
-  //     new TokenAmount(BscTokenConstant.busd),
-  //     new TokenAmount(BscTokenConstant.koge),
-  //     new TokenAmount(BscTokenConstant.cake),
-  //     new TokenAmount(BscTokenConstant.rlb),
-  //     new TokenAmount(BscTokenConstant.turbo),
-  //     new TokenAmount(BscTokenConstant.pndc),
-  //     new TokenAmount(BscTokenConstant.shib),
+  //     new TokenAmount(BscTxTokenConstant.usdt, '1000'),
+  //     new TokenAmount(BscTxTokenConstant.eth, '0.5'),
+  //     new TokenAmount(BscTxTokenConstant.btcb, '0.0001'),
+  //     new TokenAmount(BscTxTokenConstant.wbnb, '2'),
+  //     new TokenAmount(BscTxTokenConstant.zk, '2000'),
+  //     new TokenAmount(BscTxTokenConstant.usdc, '1000'),
+  //     new TokenAmount(BscTxTokenConstant.b2, '2000'),
+  //     new TokenAmount(BscTxTokenConstant.busd),
+  //     new TokenAmount(BscTxTokenConstant.koge),
+  //     new TokenAmount(BscTxTokenConstant.cake),
+  //     new TokenAmount(BscTxTokenConstant.rlb),
+  //     new TokenAmount(BscTxTokenConstant.turbo),
+  //     new TokenAmount(BscTxTokenConstant.pndc),
+  //     new TokenAmount(BscTxTokenConstant.shib),
   // ]);
-  
+
   const end = performance.now();
   const ms = end - start;
   const s = ms / 1000;

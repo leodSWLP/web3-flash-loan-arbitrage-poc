@@ -7,6 +7,7 @@ import { RouterUtil } from '../common/router.util';
 import { LogUtil } from '../log/log.util';
 import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
 import {
+  BasicPoolDetail,
   SubgraphEndpoint,
   SubgraphUtil,
 } from '../subgraph-arbitrage/subgraph.util';
@@ -31,7 +32,7 @@ export interface QuoterDetail {
 
 interface DexRouteDetail {
   uniswapV3: { [key: string]: QuoterDetail[] };
-  uniswapV4: { [key: string]: QuoterDetail[] };
+  // uniswapV4: { [key: string]: QuoterDetail[] };
   pancakeswapV3: { [key: string]: QuoterDetail[] };
 }
 
@@ -102,7 +103,7 @@ export class SwapPathUtil {
       const detailMapKey = SubgraphUtil.getDetailMapKey(tokenIn, tokenOut);
       const quoterDetails = [
         ...(RouteDetail.uniswapV3[detailMapKey] ?? []),
-        ...(RouteDetail.uniswapV4[detailMapKey] ?? []),
+        // ...(RouteDetail.uniswapV4[detailMapKey] ?? []),
       ]; //only uniswap have a view quoteExactInputSingle
 
       if (!quoterDetails?.length) {
@@ -119,17 +120,53 @@ export class SwapPathUtil {
     return swapPath;
   }
 
+  static async fetchUniswapV3FeeTierMap(): Promise<
+    Map<string, BasicPoolDetail[]>
+  > {
+    const [txCountFeeTierMap, volumeUSDFeeTierMap] = await Promise.all([
+      SubgraphUtil.fetchSymbolToFeeTierMap(
+        SubgraphEndpoint.UNISWAP_V3,
+        500,
+        'txCount',
+      ),
+      SubgraphUtil.fetchSymbolToFeeTierMap(
+        SubgraphEndpoint.UNISWAP_V3,
+        500,
+        'volumeUSD',
+      ),
+    ]);
+
+    const result = txCountFeeTierMap;
+    [...volumeUSDFeeTierMap.entries()].forEach(([key, value]) => {
+      if (!result.has(key)) {
+        result.set(key, value);
+      } else {
+        const addressSet = new Set(
+          result.get(key)?.map((detail) => detail.address),
+        );
+        value.forEach((detail) => {
+          if (!addressSet.has(detail.address)) {
+            result.get(key)?.push(detail);
+          }
+        });
+      }
+    });
+
+    return result;
+  }
   static async prepareDexFeeTierDetail(): Promise<DexRouteDetail> {
-    const [pancakeSwapV3FeeTierMap, uniswapV3FeeTierMap, uniswapV4FeeTierMap] =
-      await Promise.all([
-        SubgraphUtil.fetchSymbolToFeeTierMap(SubgraphEndpoint.PANCAKESWAP_V3),
-        SubgraphUtil.fetchSymbolToFeeTierMap(SubgraphEndpoint.UNISWAP_V3),
-        SubgraphUtil.fetchSymbolToFeeTierMap(SubgraphEndpoint.UNISWAP_V4),
-      ]);
+    const [
+      pancakeSwapV3FeeTierMap,
+      uniswapV3FeeTierMap /* uniswapV4FeeTierMap */,
+    ] = await Promise.all([
+      SubgraphUtil.fetchSymbolToFeeTierMap(SubgraphEndpoint.PANCAKESWAP_V3),
+      this.fetchUniswapV3FeeTierMap(),
+      // SubgraphUtil.fetchSymbolToFeeTierMap(SubgraphEndpoint.UNISWAP_V4),
+    ]);
 
     const RouteDetailMaps: DexRouteDetail = {
       uniswapV3: {},
-      uniswapV4: {},
+      // uniswapV4: {}, IQuoter don't support v4
       pancakeswapV3: {},
     };
 
@@ -142,14 +179,14 @@ export class SwapPathUtil {
       }));
     }
 
-    for (const [key, value] of uniswapV4FeeTierMap) {
-      RouteDetailMaps.uniswapV4[key] = value.map((element) => ({
-        fee: element.feeTier,
-        dexName: 'uniswap-v4',
-        quoterAddress: BscContractConstant.uniswap.quoter as Address,
-        routerAddress: BscContractConstant.uniswap.universalRouter as Address,
-      }));
-    }
+    // for (const [key, value] of uniswapV4FeeTierMap) {
+    //   RouteDetailMaps.uniswapV4[key] = value.map((element) => ({
+    //     fee: element.feeTier,
+    //     dexName: 'uniswap-v4',
+    //     quoterAddress: BscContractConstant.uniswap.quoter as Address,
+    //     routerAddress: BscContractConstant.uniswap.universalRouter as Address,
+    //   }));
+    // }
 
     for (const [key, value] of pancakeSwapV3FeeTierMap) {
       RouteDetailMaps.pancakeswapV3[key] = value.map((element) => ({

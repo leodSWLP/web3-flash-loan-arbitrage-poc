@@ -1,7 +1,9 @@
 import * as dotenv from 'dotenv';
 import { ethers } from 'ethers';
-import { encodeAbiParameters, parseUnits } from 'viem';
+import { encodeAbiParameters } from 'viem';
 
+import { Token } from '@uniswap/sdk-core';
+import * as JSONbig from 'json-bigint';
 import {
   ContractFunctionRevertedError,
   createPublicClient,
@@ -13,85 +15,16 @@ import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { ArbitrageQuote__factory } from '../../typechain-types/factories/contracts/ArbitrageQuote__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
+import { BscContractConstant } from '../common/bsc-contract.constant';
+import { RouterUtil } from '../common/router.util';
+import { LogUtil } from '../log/log.util';
+import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
 import {
   SubgraphEndpoint,
   SubgraphUtil,
 } from '../subgraph-arbitrage/subgraph.util';
-import { BscContractConstant } from '../common/bsc-contract.constant';
-import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
-import { RouterUtil } from '../common/router.util';
-import { LogUtil } from '../log/log.util';
-import { Token } from '@uniswap/sdk-core';
-import { BscTokenConstant } from '../common/bsc-token.constant';
-import * as JSONbig from 'json-bigint';
 
 dotenv.config();
-
-const deploy = async () => {
-  const hash =
-    await ShareContentLocalStore.getStore().viemWalletClient!.deployContract({
-      abi: ArbitrageQuote__factory.abi,
-      bytecode: ArbitrageQuote__factory.bytecode,
-      account: privateKeyToAccount(
-        process.env.WALLET_PRIVATE_KEY as `0x${string}`,
-      ),
-      chain: localhostChain,
-    });
-
-  console.log('Transacion hash:', hash);
-
-  // Wait for the transaction to be mined
-  const receipt =
-    await ShareContentLocalStore.getStore().viemChainClient.waitForTransactionReceipt(
-      {
-        hash,
-        timeout: 60000, // 60 seconds
-        pollingInterval: 1000,
-      },
-    );
-  const contractAddress = receipt.contractAddress;
-
-  if (!contractAddress) {
-    throw new Error(
-      'Contract deployment failed: No contract address in receipt',
-    );
-  }
-  console.log('Contract deployed to:', contractAddress);
-};
-
-const prepareQuoteSwapPath = async (
-  tokenAmounts: TokenAmount[],
-  pathLength: number | undefined = 3,
-) => {
-  const dexV3QuoteDetail = await prepareDexV3FeeTierDetail();
-  const tokens = tokenAmounts.map((token) => token.currency);
-  const pathCombinations = await RouterUtil.getAllRoute(tokens, pathLength);
-  const swapPathCombinations: any[][] = [];
-  for (const tokenAmount of tokenAmounts) {
-    const combinationsKey = RouterUtil.getCombinationKey(tokenAmount.currency);
-    if (!tokenAmount.amount) {
-      LogUtil.debug(`Skip token: ${combinationsKey}, reason: Missing AmountIn`);
-      continue;
-    }
-
-    const combinations = pathCombinations[combinationsKey];
-    if (!combinations || combinations.length == 0) {
-      LogUtil.debug(`Token combinations not found, key: ${combinationsKey}`);
-      continue;
-    }
-    for (let tokens of combinations) {
-      const swapPath = formSwapPath(tokens, dexV3QuoteDetail);
-      if (swapPath) {
-        swapPathCombinations.push(swapPath);
-      }
-    }
-  }
-
-  console.log(
-    'swapPathCombinations: ' + JSONbig.stringify(swapPathCombinations),
-  );
-  return swapPathCombinations;
-};
 
 const formSwapPath = (
   tokens: Token[],
@@ -170,144 +103,6 @@ const quoterDetailType = {
 
 const callFlashSwap = async () => {
   try {
-    const rawdata = {
-      routingSymbol: 'USDT -> BTCB -> ETH',
-      initialAmount: 1000000000000000000000n,
-      swapPaths: [
-        {
-          tokenIn: '0x55d398326f99059fF775485246999027B3197955',
-          tokenOut: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
-          quoterDetails: [
-            {
-              fee: 100n,
-              dexName: 'uniswap-v3',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-            {
-              fee: 500n,
-              dexName: 'uniswap-v3',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-            {
-              fee: 3000n,
-              dexName: 'uniswap-v3',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-            {
-              fee: 100n,
-              dexName: 'uniswap-v4',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-            {
-              fee: 500n,
-              dexName: 'uniswap-v4',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-            {
-              fee: 1350n,
-              dexName: 'uniswap-v4',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-            {
-              fee: 3000n,
-              dexName: 'uniswap-v4',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-            {
-              fee: 10000n,
-              dexName: 'uniswap-v4',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-          ],
-        },
-        {
-          tokenIn: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
-          tokenOut: '0x2170Ed0880ac9A755fd29B2688956BD959F933F8',
-          quoterDetails: [
-            {
-              fee: 500n,
-              dexName: 'uniswap-v3',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-            {
-              fee: 3000n,
-              dexName: 'uniswap-v3',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-            {
-              fee: 3000n,
-              dexName: 'uniswap-v4',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-          ],
-        },
-        {
-          tokenIn: '0x2170Ed0880ac9A755fd29B2688956BD959F933F8',
-          tokenOut: '0x55d398326f99059fF775485246999027B3197955',
-          quoterDetails: [
-            {
-              fee: 100n,
-              dexName: 'uniswap-v3',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-            {
-              fee: 500n,
-              dexName: 'uniswap-v3',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-            {
-              fee: 3000n,
-              dexName: 'uniswap-v3',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-            {
-              fee: 10000n,
-              dexName: 'uniswap-v3',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-            {
-              fee: 80n,
-              dexName: 'uniswap-v4',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-            {
-              fee: 90n,
-              dexName: 'uniswap-v4',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-            {
-              fee: 500n,
-              dexName: 'uniswap-v4',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-            {
-              fee: 3000n,
-              dexName: 'uniswap-v4',
-              quoterAddress: '0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3',
-              routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
-            },
-          ],
-        },
-      ],
-    };
     const swapPaths = [
       {
         tokenIn: '0x55d398326f99059fF775485246999027B3197955' as `0x${string}`,
@@ -404,20 +199,20 @@ const exec = async () => {
   // await deploy();
   await callFlashSwap();
   // await prepareQuoteSwapPath([
-  //     new TokenAmount(BscTokenConstant.usdt, '1000'),
-  //     new TokenAmount(BscTokenConstant.eth, '0.5'),
-  //     new TokenAmount(BscTokenConstant.btcb, '0.0001'),
-  //     new TokenAmount(BscTokenConstant.wbnb, '2'),
-  //     new TokenAmount(BscTokenConstant.zk, '2000'),
-  //     new TokenAmount(BscTokenConstant.usdc, '1000'),
-  //     new TokenAmount(BscTokenConstant.b2, '2000'),
-  //     new TokenAmount(BscTokenConstant.busd),
-  //     new TokenAmount(BscTokenConstant.koge),
-  //     new TokenAmount(BscTokenConstant.cake),
-  //     new TokenAmount(BscTokenConstant.rlb),
-  //     new TokenAmount(BscTokenConstant.turbo),
-  //     new TokenAmount(BscTokenConstant.pndc),
-  //     new TokenAmount(BscTokenConstant.shib),
+  //     new TokenAmount(BscTxTokenConstant.usdt, '1000'),
+  //     new TokenAmount(BscTxTokenConstant.eth, '0.5'),
+  //     new TokenAmount(BscTxTokenConstant.btcb, '0.0001'),
+  //     new TokenAmount(BscTxTokenConstant.wbnb, '2'),
+  //     new TokenAmount(BscTxTokenConstant.zk, '2000'),
+  //     new TokenAmount(BscTxTokenConstant.usdc, '1000'),
+  //     new TokenAmount(BscTxTokenConstant.b2, '2000'),
+  //     new TokenAmount(BscTxTokenConstant.busd),
+  //     new TokenAmount(BscTxTokenConstant.koge),
+  //     new TokenAmount(BscTxTokenConstant.cake),
+  //     new TokenAmount(BscTxTokenConstant.rlb),
+  //     new TokenAmount(BscTxTokenConstant.turbo),
+  //     new TokenAmount(BscTxTokenConstant.pndc),
+  //     new TokenAmount(BscTxTokenConstant.shib),
   // ]);
 
   const end = performance.now();
