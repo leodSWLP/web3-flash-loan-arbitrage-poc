@@ -4,16 +4,25 @@ import { ethers } from 'ethers';
 import * as fs from 'fs/promises';
 import * as JSONbig from 'json-bigint';
 import * as path from 'path';
-import { Address, createPublicClient, createWalletClient, encodeAbiParameters, http } from 'viem';
+import {
+  Address,
+  createPublicClient,
+  createWalletClient,
+  encodeAbiParameters,
+  http,
+} from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/ArbitrageQuoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
-import { BscTxTokenConstant } from '../common/bsc-token.constant';
 import { ThrottlingUtil } from '../common/throttling.util';
-import { LogUtil } from '../log/log.util';
 import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
-import { RouteDetail, SwapPathUtil } from './swap-path.util';
+import { RouteDetail, SmartQuoterSwapPathUtil } from './smart-quoter.swap-path.util';
+import {
+  BscUSDTokenConstant,
+  BscTxTokenConstant,
+} from '../common/bsc-token.constant';
+import { LogUtil } from '../log/log.util';
 dotenv.config();
 
 export const account = privateKeyToAccount(
@@ -24,7 +33,8 @@ const quoterDetailType = {
   type: 'tuple',
   components: [
     { name: 'dexName', type: 'string' },
-    { name: 'quoterAddress', type: 'address' },
+    { name: 'version', type: 'string' },
+    { name: 'factoryAddress', type: 'address' },
     { name: 'routerAddress', type: 'address' },
     { name: 'fee', type: 'uint24' },
   ],
@@ -54,7 +64,8 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
                 return {
                   fee: Number(item.fee),
                   dexName: item.dexName,
-                  quoterAddress: item.quoterAddress,
+                  version: item.version,
+                  factoryAddress: item.factoryAddress,
                   routerAddress: item.routerAddress,
                 };
               }),
@@ -67,7 +78,7 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
 
   const batchFunctions: (() => Promise<void>)[] = [];
   const functionBatchSize = 4;
-  const callsPerSecond = 1;
+  const callsPerSecond = 10;
   const batchSize = 10240;
 
   for (let i = 0; i < quoteCalls.length; i += functionBatchSize) {
@@ -140,8 +151,6 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
               2,
             ),
           );
-        } else {
-          LogUtil.debug(`Error`);
         }
       }
       LogUtil.debug(
@@ -150,17 +159,13 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
     });
   }
 
-  ThrottlingUtil.throttleAsyncFunctions(batchFunctions, callsPerSecond);
+  await ThrottlingUtil.throttleAsyncFunctions(batchFunctions, callsPerSecond);
   //   return batchFunctions;
 };
 
 const exec = async () => {
-  const start = performance.now();
 
-  // await estimateDeploymentGas();
-  // await deploy();
-
-  const RouteDetails = await SwapPathUtil.prepareQuoteSwapPath([
+  const tokenAmounts = [
     new TokenAmount(BscTxTokenConstant.usdt, '1000'),
     new TokenAmount(BscTxTokenConstant.eth, '0.5'),
     new TokenAmount(BscTxTokenConstant.btcb, '0.001'),
@@ -170,37 +175,35 @@ const exec = async () => {
     new TokenAmount(BscTxTokenConstant.b2),
     new TokenAmount(BscTxTokenConstant.busd, '1000'),
     new TokenAmount(BscTxTokenConstant.koge),
-    new TokenAmount(BscTxTokenConstant.cake),
+    new TokenAmount(BscTxTokenConstant.cake, '500'),
     new TokenAmount(BscTxTokenConstant.rlb),
     new TokenAmount(BscTxTokenConstant.turbo),
     new TokenAmount(BscTxTokenConstant.pndc),
-    new TokenAmount(BscTxTokenConstant.shib),
-    new TokenAmount(BscTxTokenConstant.usd1),
-    new TokenAmount(BscTxTokenConstant.fdusd),
-    new TokenAmount(BscTxTokenConstant.skyai),
-    new TokenAmount(BscTxTokenConstant.aiot),
-    new TokenAmount(BscTxTokenConstant.sol),
-    new TokenAmount(BscTxTokenConstant.siren),
-    new TokenAmount(BscTxTokenConstant.pirate),
-    new TokenAmount(BscTxTokenConstant.myx),
-    new TokenAmount(BscTxTokenConstant.bank),
-    new TokenAmount(BscTxTokenConstant.xter),
-    new TokenAmount(BscTxTokenConstant.xrp),
-  ]);
+    new TokenAmount(BscUSDTokenConstant.usdz, '1000'),
+    new TokenAmount(BscUSDTokenConstant.aicell),
+    new TokenAmount(BscUSDTokenConstant.obt),
+    new TokenAmount(BscUSDTokenConstant.htp),
+    new TokenAmount(BscUSDTokenConstant.skyai),
+    new TokenAmount(BscUSDTokenConstant.fhe),
+    new TokenAmount(BscUSDTokenConstant.wsm),
+    new TokenAmount(BscUSDTokenConstant.cat),
+    new TokenAmount(BscUSDTokenConstant._1inch),
+    new TokenAmount(BscUSDTokenConstant.pundiai),
+    new TokenAmount(BscUSDTokenConstant.gfal),
+    new TokenAmount(BscUSDTokenConstant.resolv),
+    new TokenAmount(BscUSDTokenConstant.soph),
+    new TokenAmount(BscUSDTokenConstant.abra),
+  ];
+
+  const RouteDetails = await SmartQuoterSwapPathUtil.prepareQuoteSwapPath(tokenAmounts);
 
   let counter = 0;
-
-  console.log(
-    `${new Date().toISOString()}: Start quoteBestRoute - ${counter++}`,
-  );
-  await quoteBestRoute(RouteDetails);
-
-  const end = performance.now();
-  const ms = end - start;
-  const s = ms / 1000;
-
-  console.log(`Execution time: ${ms.toFixed(2)} ms`);
-  console.log(`Execution time: ${s.toFixed(2)} s`);
+  while (true) {
+    console.log(
+      `${new Date().toISOString()}: Start quoteBestRoute - ${counter++}`,
+    );
+    await quoteBestRoute(RouteDetails);
+  }
 };
 
 const viemChainClient = createPublicClient({

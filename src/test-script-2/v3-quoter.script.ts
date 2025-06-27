@@ -168,8 +168,8 @@ const callQuote = async () => {
 const exec = async () => {
   const start = performance.now();
 
-  // await deploy();
-  await callQuote();
+  await deploy();
+  // await callQuote();
   // await prepareQuoteSwapPath([
   //     new TokenAmount(BscTxTokenConstant.usdt, '1000'),
   //     new TokenAmount(BscTxTokenConstant.eth, '0.5'),

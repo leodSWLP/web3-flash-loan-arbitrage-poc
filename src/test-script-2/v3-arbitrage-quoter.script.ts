@@ -23,7 +23,7 @@ import {
   SubgraphEndpoint,
   SubgraphUtil,
 } from '../subgraph-arbitrage/subgraph.util';
-import { SmartRouterSwapPathUtil } from '../quoter-contract-arbitrage/smart-router.swap-path.util';
+import { SmartQuoterSwapPathUtil } from '../smart-quoter-arbitrage/smart-quoter.swap-path.util';
 import { BscTxTokenConstant, BscUSDTokenConstant } from '../common/bsc-token.constant';
 
 dotenv.config();
@@ -336,8 +336,8 @@ const callFlashSwap = async () => {
 const exec = async () => {
   const start = performance.now();
 
-//   await deploy();
-    await callFlashSwap();
+  await deploy();
+    // await callFlashSwap();
   // const tokenAmounts = [
   //     new TokenAmount(BscTxTokenConstant.usdt, '1000'),
   //     new TokenAmount(BscTxTokenConstant.eth, '0.5'),
@@ -374,7 +374,7 @@ const exec = async () => {
   //     new TokenAmount(BscUSDTokenConstant.abra),
   //   ];
   
-  //   const RouteDetails = await SmartRouterSwapPathUtil.prepareQuoteSwapPath(tokenAmounts);
+  //   const RouteDetails = await SmartQuoterSwapPathUtil.prepareQuoteSwapPath(tokenAmounts);
   
 
   const end = performance.now();

@@ -37,7 +37,7 @@ interface DexRouteDetail {
   pancakeswapV3: { [key: string]: QuoterDetail[] };
 }
 
-export class SmartRouterSwapPathUtil {
+export class SmartQuoterSwapPathUtil {
   static async prepareQuoteSwapPath(
     tokenAmounts: TokenAmount[],
     pathLength: number = 3,
