@@ -124,17 +124,23 @@ const prepareDexV3FeeTierDetail = async () => {
 
   return quoteDetailMaps;
 };
+enum Dex {
+  Uniswap,
+  PancakeSwap
+}
 
 const callQuote = async () => {
   try {
     const data =
       await ShareContentLocalStore.getStore().viemChainClient.readContract({
-        address: '0xfc1300910e4942a54adb4767e99fd30cb16d0cef',
+        address: '0x495735f4becb8336055fe5de5533b85fcb946403',
         abi: V3Quoter__factory.abi,
         functionName: 'quoteExactInputSingle',
         args: [{
-          // factory: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7' as Address,
-          factory: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865' as Address,
+          dex: Dex.Uniswap,
+          factory: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7' as Address,
+          // dex: Dex.PancakeSwap,
+          // factory: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865' as Address,
           tokenIn: '0x55d398326f99059fF775485246999027B3197955' as Address,
           tokenOut: '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c' as Address,
           amountIn: ethers.parseUnits('1000', 18),

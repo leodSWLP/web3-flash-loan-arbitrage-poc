@@ -111,7 +111,7 @@ export class SubgraphUtil {
   ): Promise<Map<string, BasicPoolDetail[]>> {
     const cacheKey = `${
       this.REDIS_GROUP_PREFIX
-    }:${endpoint.toString()}-${poolSize}`;
+    }:${endpoint.toString()}-${orderBy}-${poolSize}`;
 
     const cachedValue = await RedisUtil.get(cacheKey);
     if (cachedValue) {

@@ -3,6 +3,7 @@ pragma solidity ^0.7.6;
 pragma abicoder v2;
 
 import {IUniswapV3Pool} from '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
+import {IPancakeV3Pool} from '../interfaces/IPancakeV3Pool.sol';
 import {SwapMath} from '@uniswap/v3-core/contracts/libraries/SwapMath.sol';
 import {FullMath} from '@uniswap/v3-core/contracts/libraries/FullMath.sol';
 import {TickMath} from '@uniswap/v3-core/contracts/libraries/TickMath.sol';
@@ -12,7 +13,7 @@ import '@uniswap/v3-periphery/contracts/libraries/Path.sol';
 import {SqrtPriceMath} from '@uniswap/v3-core/contracts/libraries/SqrtPriceMath.sol';
 import {LiquidityMath} from '@uniswap/v3-core/contracts/libraries/LiquidityMath.sol';
 import {PoolTickBitmap} from './PoolTickBitmap.sol';
-import {PoolAddress} from './PoolAddress.sol';
+import './Dex.sol';
 
 library QuoterMath {
     using LowGasSafeMath for uint256;
@@ -38,12 +39,74 @@ library QuoterMath {
     }
 
     function fillSlot0(
-        IUniswapV3Pool pool
+        Dex dex,
+        address pool
     ) private view returns (Slot0 memory slot0) {
-        (slot0.sqrtPriceX96, slot0.tick, , , , , ) = pool.slot0();
-        slot0.tickSpacing = pool.tickSpacing();
-
+        if (dex == Dex.PancakeSwap) {
+            IPancakeV3Pool pancakeV3pool = IPancakeV3Pool(pool);
+            (slot0.sqrtPriceX96, slot0.tick, , , , , ) = pancakeV3pool.slot0();
+            slot0.tickSpacing = pancakeV3pool.tickSpacing();
+        } else if (dex == Dex.Uniswap) {
+            IUniswapV3Pool uniswapPool = IUniswapV3Pool(pool);
+            (slot0.sqrtPriceX96, slot0.tick, , , , , ) = uniswapPool.slot0();
+            slot0.tickSpacing = uniswapPool.tickSpacing();
+        }
         return slot0;
+    }
+
+    function getLiquidity(
+        Dex dex,
+        address pool
+    ) private view returns (uint128 liquidity) {
+        if (dex == Dex.PancakeSwap) {
+            liquidity = IPancakeV3Pool(pool).liquidity();
+        } else if (dex == Dex.Uniswap) {
+            liquidity = IUniswapV3Pool(pool).liquidity();
+        }
+        return liquidity;
+    }
+
+    function getTicks(
+        Dex dex,
+        address pool,
+        int24 tickNext
+    )
+        private
+        view
+        returns (
+            uint128 liquidityGross,
+            int128 liquidityNet,
+            uint256 feeGrowthOutside0X128,
+            uint256 feeGrowthOutside1X128,
+            int56 tickCumulativeOutside,
+            uint160 secondsPerLiquidityOutsideX128,
+            uint32 secondsOutside,
+            bool initialized
+        )
+    {
+        if (dex == Dex.PancakeSwap) {
+            (
+                liquidityGross,
+                liquidityNet,
+                feeGrowthOutside0X128,
+                feeGrowthOutside1X128,
+                tickCumulativeOutside,
+                secondsPerLiquidityOutsideX128,
+                secondsOutside,
+                initialized
+            ) = IPancakeV3Pool(pool).ticks(tickNext);
+        } else if (dex == Dex.Uniswap) {
+            (
+                liquidityGross,
+                liquidityNet,
+                feeGrowthOutside0X128,
+                feeGrowthOutside1X128,
+                tickCumulativeOutside,
+                secondsPerLiquidityOutsideX128,
+                secondsOutside,
+                initialized
+            ) = IUniswapV3Pool(pool).ticks(tickNext);
+        }
     }
 
     struct SwapCache {
@@ -98,7 +161,8 @@ library QuoterMath {
 
     /// @notice Utility function called by the quote functions to
     /// calculate the amounts in/out for a v3 swap
-    /// @param pool the Uniswap v3 pool interface
+    /// @param dex the Dex enum
+    /// @param poolAddress the Uniswap v3 /PancakeSwap v3 pool addess
     /// @param amount the input amount calculated
     /// @param quoteParams a packed dataset of flags/inputs used to get around stack limit
     /// @return amount0 the amount of token0 sent in or out of the pool
@@ -106,7 +170,8 @@ library QuoterMath {
     /// @return sqrtPriceAfterX96 the price of the pool after the swap
     /// @return initializedTicksCrossed the number of initialized ticks LOADED IN
     function quote(
-        IUniswapV3Pool pool,
+        Dex dex,
+        address poolAddress,
         int256 amount,
         QuoteParams memory quoteParams
     )
@@ -121,8 +186,9 @@ library QuoterMath {
     {
         quoteParams.exactInput = amount > 0;
         initializedTicksCrossed = 1;
-
-        Slot0 memory slot0 = fillSlot0(pool);
+        
+        Slot0 memory slot0 = fillSlot0(dex, poolAddress);
+        IUniswapV3Pool pool = IUniswapV3Pool(poolAddress);
 
         SwapState memory state = SwapState({
             amountSpecifiedRemaining: amount,
@@ -131,7 +197,7 @@ library QuoterMath {
             tick: slot0.tick,
             feeGrowthGlobalX128: 0,
             protocolFee: 0,
-            liquidity: pool.liquidity()
+            liquidity: getLiquidity(dex, poolAddress)
         });
 
         while (
@@ -197,7 +263,9 @@ library QuoterMath {
             if (state.sqrtPriceX96 == step.sqrtPriceNextX96) {
                 // if the tick is initialized, run the tick transition
                 if (step.initialized) {
-                    (, int128 liquidityNet, , , , , , ) = pool.ticks(
+                    (, int128 liquidityNet, , , , , , ) = getTicks(
+                        dex,
+                        poolAddress,
                         step.tickNext
                     );
 

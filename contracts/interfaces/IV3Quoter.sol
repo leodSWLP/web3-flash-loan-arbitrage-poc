@@ -1,9 +1,12 @@
 //SPDX-License-Identifier: MIT
-pragma solidity ^0.7.6;
+pragma solidity >=0.7.6 <=0.9.0;
 pragma abicoder v2;
+
+import '../libraries/Dex.sol';
 
 interface IV3Quoter {
     struct QuoteExactInputSingleParams {
+        Dex dex;
         address factory;
         address tokenIn;
         address tokenOut;
@@ -28,6 +31,7 @@ interface IV3Quoter {
         address tokenIn;
         address tokenOut;
         uint256 amountIn;
+        Dex dex;
         address pool;
         uint24 fee;
         uint160 sqrtPriceLimitX96;

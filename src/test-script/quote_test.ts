@@ -13,7 +13,7 @@ import {
 } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
-import { ArbitrageQuote__factory } from '../../typechain-types/factories/contracts/ArbitrageQuote__factory';
+import { ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/ArbitrageQuoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
 import { BscContractConstant } from '../common/bsc-contract.constant';
 import { RouterUtil } from '../common/router.util';
@@ -172,7 +172,7 @@ const callFlashSwap = async () => {
     const data =
       await ShareContentLocalStore.getStore().viemChainClient.readContract({
         address: '0xfedea3213842366372c122ea64a5a08d1a9ca458',
-        abi: ArbitrageQuote__factory.abi,
+        abi: ArbitrageQuoter__factory.abi,
         functionName: 'quoteBestRoute',
         args: [ethers.parseUnits('1000', 18), swapPaths],
       });

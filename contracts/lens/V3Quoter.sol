@@ -15,6 +15,8 @@ import {PoolTickBitmap} from '../libraries/PoolTickBitmap.sol';
 import {IV3Quoter} from '../interfaces/IV3Quoter.sol';
 import {PoolAddress} from '../libraries/PoolAddress.sol';
 import {QuoterMath} from '../libraries/QuoterMath.sol';
+import {IPancakeV3Factory} from '../interfaces/IPancakeV3Factory.sol';
+import '../libraries/Dex.sol';
 
 contract V3Quoter is IV3Quoter {
     using QuoterMath for *;
@@ -27,15 +29,21 @@ contract V3Quoter is IV3Quoter {
     constructor() {}
 
     function getPool(
+        Dex dex,
         address factory,
         address tokenA,
         address tokenB,
         uint24 fee
     ) private view returns (address pool) {
+        if (dex == Dex.Uniswap) {
         pool = PoolAddress.computeAddress(
             factory,
             PoolAddress.getPoolKey(tokenA, tokenB, fee)
         );
+        } else if (dex == Dex.PancakeSwap) {
+
+            pool = IPancakeV3Factory(factory).getPool(tokenA, tokenB, fee);
+        }
     }
 
     function quoteExactInputSingleWithPool(
@@ -55,7 +63,7 @@ contract V3Quoter is IV3Quoter {
         int256 amount1;
 
         bool zeroForOne = params.tokenIn < params.tokenOut;
-        IUniswapV3Pool pool = IUniswapV3Pool(params.pool);
+        // IUniswapV3Pool pool = IUniswapV3Pool(params.pool);
 
         // we need to pack a few variables to get under the stack limit
         QuoterMath.QuoteParams memory quoteParams = QuoterMath.QuoteParams({
@@ -76,7 +84,7 @@ contract V3Quoter is IV3Quoter {
             amount1,
             sqrtPriceX96After,
             initializedTicksCrossed
-        ) = QuoterMath.quote(pool, params.amountIn.toInt256(), quoteParams);
+        ) = QuoterMath.quote(params.dex, params.pool, params.amountIn.toInt256(), quoteParams);
 
         amountReceived = amount0 > 0 ? uint256(-amount1) : uint256(-amount0);
     }
@@ -95,6 +103,7 @@ contract V3Quoter is IV3Quoter {
         )
     {
         address pool = getPool(
+            params.dex,
             params.factory,
             params.tokenIn,
             params.tokenOut,
@@ -106,6 +115,7 @@ contract V3Quoter is IV3Quoter {
                 tokenIn: params.tokenIn,
                 tokenOut: params.tokenOut,
                 amountIn: params.amountIn,
+                dex: params.dex,
                 fee: params.fee,
                 pool: pool,
                 sqrtPriceLimitX96: 0
@@ -115,7 +125,7 @@ contract V3Quoter is IV3Quoter {
             amountReceived,
             sqrtPriceX96After,
             initializedTicksCrossed,
-
+            gasEstimate
         ) = quoteExactInputSingleWithPool(poolParams);
     }
 }
