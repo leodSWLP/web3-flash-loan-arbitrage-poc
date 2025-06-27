@@ -8,10 +8,12 @@ async function estimateDeploymentCost() {
   const provider = new ethers.JsonRpcProvider(process.env.BSC_RPC_URL);
   const wallet = new ethers.Wallet(process.env.WALLET_PRIVATE_KEY!, provider);
   const contractFactory = new V3ArbitrageQuoter__factory(wallet);
-  const v3Quoter = process.env.V3_QUOTER_ADDRESS!
+  const v3QuoterAddress = process.env.V3_QUOTER_ADDRESS!;
 
   try {
-    const deployTx = await contractFactory.getDeployTransaction(v3Quoter);
+    const deployTx = await contractFactory.getDeployTransaction(
+      v3QuoterAddress,
+    );
     const estimatedGas = await provider.estimateGas(deployTx);
     console.log(`Estimated gas: ${estimatedGas.toString()}`);
 
@@ -46,10 +48,11 @@ async function deployContract(gasLimit: bigint) {
   const provider = new ethers.JsonRpcProvider(process.env.BSC_RPC_URL);
   const wallet = new ethers.Wallet(process.env.WALLET_PRIVATE_KEY!, provider);
   const contractFactory = new V3ArbitrageQuoter__factory(wallet);
+  const v3QuoterAddress = process.env.V3_QUOTER_ADDRESS!;
 
   try {
     console.log('Deploying contract...');
-    const deployTransaction = await contractFactory.deploy({
+    const deployTransaction = await contractFactory.deploy(v3QuoterAddress, {
       gasPrice: ethers.parseUnits('0.11', 9),
       gasLimit,
     });
