@@ -17,16 +17,20 @@ import { ArbitrageQuoter__factory } from '../../typechain-types/factories/contra
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
 import { ThrottlingUtil } from '../common/throttling.util';
 import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
-import { RouteDetail, SmartQuoterSwapPathUtil } from './smart-quoter.swap-path.util';
+import {
+  RouteDetail,
+  SmartQuoterSwapPathUtil,
+} from './smart-quoter.swap-path.util';
 import {
   BscUSDTokenConstant,
   BscTxTokenConstant,
 } from '../common/bsc-token.constant';
 import { LogUtil } from '../log/log.util';
+import { ConfigUtil } from '../config/config.util';
 dotenv.config();
 
 export const account = privateKeyToAccount(
-  process.env.WALLET_PRIVATE_KEY as `0x${string}`,
+  ConfigUtil.getConfig().WALLET_PRIVATE_KEY as `0x${string}`,
 );
 
 const quoterDetailType = {
@@ -41,6 +45,12 @@ const quoterDetailType = {
 } as const;
 
 const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
+  if (!ConfigUtil.getConfig().V3_ARBITRAGE_QUOTER_ADDRESS) {
+    throw new Error(
+      '.env missing contract address - V3_ARBITRAGE_QUOTER_ADDRESS',
+    );
+  }
+
   const quoteCalls: {
     routingSymbol: string;
     initialAmount: bigint;
@@ -78,7 +88,7 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
 
   const batchFunctions: (() => Promise<void>)[] = [];
   const functionBatchSize = 4;
-  const callsPerSecond = 10;
+  const callsPerSecond = 8;
   const batchSize = 10240;
 
   for (let i = 0; i < quoteCalls.length; i += functionBatchSize) {
@@ -88,7 +98,7 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
     );
     batchFunctions.push(async () => {
       const contracts = batchCalls.map((call) => ({
-        address: process.env.QUOTE_ADDRESS as Address,
+        address: ConfigUtil.getConfig().V3_ARBITRAGE_QUOTER_ADDRESS as Address,
         abi: ArbitrageQuoter__factory.abi,
         functionName: 'quoteBestRoute' as const,
         args: [call.initialAmount, call.swapPaths],
@@ -164,7 +174,6 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
 };
 
 const exec = async () => {
-
   const tokenAmounts = [
     new TokenAmount(BscTxTokenConstant.usdt, '1000'),
     new TokenAmount(BscTxTokenConstant.eth, '0.5'),
@@ -176,9 +185,9 @@ const exec = async () => {
     new TokenAmount(BscTxTokenConstant.busd, '1000'),
     new TokenAmount(BscTxTokenConstant.koge),
     new TokenAmount(BscTxTokenConstant.cake, '500'),
-    new TokenAmount(BscTxTokenConstant.rlb),
-    new TokenAmount(BscTxTokenConstant.turbo),
-    new TokenAmount(BscTxTokenConstant.pndc),
+    // new TokenAmount(BscTxTokenConstant.rlb),
+    // new TokenAmount(BscTxTokenConstant.turbo),
+    // new TokenAmount(BscTxTokenConstant.pndc),
     new TokenAmount(BscUSDTokenConstant.usdz, '1000'),
     new TokenAmount(BscUSDTokenConstant.aicell),
     new TokenAmount(BscUSDTokenConstant.obt),
@@ -187,15 +196,17 @@ const exec = async () => {
     new TokenAmount(BscUSDTokenConstant.fhe),
     new TokenAmount(BscUSDTokenConstant.wsm),
     new TokenAmount(BscUSDTokenConstant.cat),
-    new TokenAmount(BscUSDTokenConstant._1inch),
-    new TokenAmount(BscUSDTokenConstant.pundiai),
-    new TokenAmount(BscUSDTokenConstant.gfal),
-    new TokenAmount(BscUSDTokenConstant.resolv),
-    new TokenAmount(BscUSDTokenConstant.soph),
-    new TokenAmount(BscUSDTokenConstant.abra),
+    // new TokenAmount(BscUSDTokenConstant._1inch),
+    // new TokenAmount(BscUSDTokenConstant.pundiai),
+    // new TokenAmount(BscUSDTokenConstant.gfal),
+    // new TokenAmount(BscUSDTokenConstant.resolv),
+    // new TokenAmount(BscUSDTokenConstant.soph),
+    // new TokenAmount(BscUSDTokenConstant.abra),
   ];
 
-  const RouteDetails = await SmartQuoterSwapPathUtil.prepareQuoteSwapPath(tokenAmounts);
+  const RouteDetails = await SmartQuoterSwapPathUtil.prepareQuoteSwapPath(
+    tokenAmounts,
+  );
 
   let counter = 0;
   while (true) {
@@ -208,12 +219,12 @@ const exec = async () => {
 
 const viemChainClient = createPublicClient({
   chain: bsc,
-  transport: http(process.env.BSC_RPC_URL, { timeout: 600_000 }),
+  transport: http(ConfigUtil.getConfig().BSC_RPC_URL, { timeout: 600_000 }),
 });
 
 const viemWalletClient = createWalletClient({
   chain: bsc,
-  transport: http(process.env.BSC_RPC_URL),
+  transport: http(ConfigUtil.getConfig().BSC_RPC_URL),
   account,
 });
 

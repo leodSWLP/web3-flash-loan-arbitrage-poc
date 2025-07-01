@@ -1,14 +1,21 @@
 import { ethers } from 'ethers';
 import { V3ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/V3ArbitrageQuoter__factory';
-import * as dotenv from 'dotenv';
-
-dotenv.config();
+import { ConfigUtil } from '../config/config.util';
 
 async function estimateDeploymentCost() {
-  const provider = new ethers.JsonRpcProvider(process.env.BSC_RPC_URL);
-  const wallet = new ethers.Wallet(process.env.WALLET_PRIVATE_KEY!, provider);
+  const provider = new ethers.JsonRpcProvider(
+    ConfigUtil.getConfig().BSC_RPC_URL,
+  );
+  const wallet = new ethers.Wallet(
+    ConfigUtil.getConfig().WALLET_PRIVATE_KEY,
+    provider,
+  );
   const contractFactory = new V3ArbitrageQuoter__factory(wallet);
-  const v3QuoterAddress = process.env.V3_QUOTER_ADDRESS!;
+  const v3QuoterAddress = ConfigUtil.getConfig().V3_QUOTER_ADDRESS;
+
+  if (!v3QuoterAddress) {
+    throw new Error('.env missing contract address - V3_QUOTER_ADDRESS');
+  }
 
   try {
     const deployTx = await contractFactory.getDeployTransaction(
@@ -26,12 +33,12 @@ async function estimateDeploymentCost() {
     if (feeData.maxFeePerGas && feeData.maxPriorityFeePerGas) {
       estimatedCost = gasLimit * feeData.maxFeePerGas;
       console.log(
-        `Estimated cost (EIP-1559): ${ethers.formatEther(estimatedCost)} ETH`,
+        `Estimated cost (EIP-1559): ${ethers.formatEther(estimatedCost)} BNB`,
       );
     } else if (feeData.gasPrice) {
       estimatedCost = gasLimit * feeData.gasPrice;
       console.log(
-        `Estimated cost (legacy): ${ethers.formatEther(estimatedCost)} ETH`,
+        `Estimated cost (legacy): ${ethers.formatEther(estimatedCost)} BNB`,
       );
     } else {
       throw new Error('Unable to fetch gas price or fee data');
@@ -45,10 +52,24 @@ async function estimateDeploymentCost() {
 }
 
 async function deployContract(gasLimit: bigint) {
-  const provider = new ethers.JsonRpcProvider(process.env.BSC_RPC_URL);
-  const wallet = new ethers.Wallet(process.env.WALLET_PRIVATE_KEY!, provider);
+  if (ConfigUtil.getConfig().V3_ARBITRAGE_QUOTER_ADDRESS) {
+    throw new Error(
+      'Contract already deployed- please check V3_ARBITRAGE_QUOTER_ADDRESS',
+    );
+  }
+  const provider = new ethers.JsonRpcProvider(
+    ConfigUtil.getConfig().BSC_RPC_URL,
+  );
+  const wallet = new ethers.Wallet(
+    ConfigUtil.getConfig().WALLET_PRIVATE_KEY,
+    provider,
+  );
   const contractFactory = new V3ArbitrageQuoter__factory(wallet);
-  const v3QuoterAddress = process.env.V3_QUOTER_ADDRESS!;
+  const v3QuoterAddress = ConfigUtil.getConfig().V3_QUOTER_ADDRESS;
+
+  if (!v3QuoterAddress) {
+    throw new Error('.env missing contract address - V3_QUOTER_ADDRESS');
+  }
 
   try {
     console.log('Deploying contract...');
@@ -88,8 +109,8 @@ async function deployContract(gasLimit: bigint) {
 
 async function main() {
   try {
-    const { gasLimit } = await estimateDeploymentCost();
-    await deployContract(gasLimit);
+    // const { gasLimit } = await estimateDeploymentCost();
+    await deployContract(1824889n);
   } catch (error) {
     console.error('Error in deployment process:', error);
   }

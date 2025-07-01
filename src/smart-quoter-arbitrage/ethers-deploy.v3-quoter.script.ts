@@ -1,12 +1,18 @@
 import { ethers } from 'ethers';
 import { V3Quoter__factory } from '../../typechain-types/factories/contracts/lens/V3Quoter__factory';
 import * as dotenv from 'dotenv';
+import { ConfigUtil } from '../config/config.util';
 
 dotenv.config();
 
 async function estimateDeploymentCost() {
-  const provider = new ethers.JsonRpcProvider(process.env.BSC_RPC_URL);
-  const wallet = new ethers.Wallet(process.env.WALLET_PRIVATE_KEY!, provider);
+  const provider = new ethers.JsonRpcProvider(
+    ConfigUtil.getConfig().BSC_RPC_URL,
+  );
+  const wallet = new ethers.Wallet(
+    ConfigUtil.getConfig().WALLET_PRIVATE_KEY,
+    provider,
+  );
   const contractFactory = new V3Quoter__factory(wallet);
 
   try {
@@ -23,12 +29,12 @@ async function estimateDeploymentCost() {
     if (feeData.maxFeePerGas && feeData.maxPriorityFeePerGas) {
       estimatedCost = gasLimit * feeData.maxFeePerGas;
       console.log(
-        `Estimated cost (EIP-1559): ${ethers.formatEther(estimatedCost)} ETH`,
+        `Estimated cost (EIP-1559): ${ethers.formatEther(estimatedCost)} BNB`,
       );
     } else if (feeData.gasPrice) {
       estimatedCost = gasLimit * feeData.gasPrice;
       console.log(
-        `Estimated cost (legacy): ${ethers.formatEther(estimatedCost)} ETH`,
+        `Estimated cost (legacy): ${ethers.formatEther(estimatedCost)} BNB`,
       );
     } else {
       throw new Error('Unable to fetch gas price or fee data');
@@ -42,8 +48,18 @@ async function estimateDeploymentCost() {
 }
 
 async function deployContract(gasLimit: bigint) {
-  const provider = new ethers.JsonRpcProvider(process.env.BSC_RPC_URL);
-  const wallet = new ethers.Wallet(process.env.WALLET_PRIVATE_KEY!, provider);
+  if (ConfigUtil.getConfig().V3_QUOTER_ADDRESS) {
+    throw new Error(
+      'Contract already deployed- please check V3_QUOTER_ADDRESS',
+    );
+  }
+  const provider = new ethers.JsonRpcProvider(
+    ConfigUtil.getConfig().BSC_RPC_URL,
+  );
+  const wallet = new ethers.Wallet(
+    ConfigUtil.getConfig().WALLET_PRIVATE_KEY,
+    provider,
+  );
   const contractFactory = new V3Quoter__factory(wallet);
 
   try {
