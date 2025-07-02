@@ -126,7 +126,7 @@ const prepareDexV3FeeTierDetail = async () => {
 };
 enum Dex {
   Uniswap,
-  PancakeSwap
+  PancakeSwap,
 }
 
 const callQuote = async () => {
@@ -136,17 +136,19 @@ const callQuote = async () => {
         address: '0x495735f4becb8336055fe5de5533b85fcb946403',
         abi: V3Quoter__factory.abi,
         functionName: 'quoteExactInputSingle',
-        args: [{
-          dex: Dex.Uniswap,
-          factory: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7' as Address,
-          // dex: Dex.PancakeSwap,
-          // factory: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865' as Address,
-          tokenIn: '0x55d398326f99059fF775485246999027B3197955' as Address,
-          tokenOut: '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c' as Address,
-          amountIn: ethers.parseUnits('1000', 18),
-          fee: 500,
-          sqrtPriceLimitX96: 0n,
-        }],
+        args: [
+          {
+            dex: Dex.Uniswap,
+            factory: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7' as Address,
+            // dex: Dex.PancakeSwap,
+            // factory: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865' as Address,
+            tokenIn: '0x55d398326f99059fF775485246999027B3197955' as Address,
+            tokenOut: '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c' as Address,
+            amountIn: ethers.parseUnits('1000', 18),
+            fee: 500,
+            sqrtPriceLimitX96: 0n,
+          },
+        ],
       });
     console.log('Read Data:', data);
   } catch (error) {
@@ -226,7 +228,7 @@ export const localhostChain = defineChain({
 
 const viemChainClient = createPublicClient({
   chain: bsc,
-  transport: http('http://127.0.0.1:8545', {timeout: 180000}),
+  transport: http('http://127.0.0.1:8545', { timeout: 180000 }),
 });
 
 const viemWalletClient = createWalletClient({

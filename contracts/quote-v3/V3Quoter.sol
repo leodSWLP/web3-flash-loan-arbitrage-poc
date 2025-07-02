@@ -2,20 +2,26 @@
 pragma solidity ^0.7.6;
 pragma abicoder v2;
 
-import {IUniswapV3Pool} from '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
+import {
+    IUniswapV3Pool
+} from '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
 import {SwapMath} from '@uniswap/v3-core/contracts/libraries/SwapMath.sol';
 import {FullMath} from '@uniswap/v3-core/contracts/libraries/FullMath.sol';
 import {TickMath} from '@uniswap/v3-core/contracts/libraries/TickMath.sol';
 import '@uniswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
 import '@uniswap/v3-core/contracts/libraries/SafeCast.sol';
 import '@uniswap/v3-periphery/contracts/libraries/Path.sol';
-import {SqrtPriceMath} from '@uniswap/v3-core/contracts/libraries/SqrtPriceMath.sol';
-import {LiquidityMath} from '@uniswap/v3-core/contracts/libraries/LiquidityMath.sol';
+import {
+    SqrtPriceMath
+} from '@uniswap/v3-core/contracts/libraries/SqrtPriceMath.sol';
+import {
+    LiquidityMath
+} from '@uniswap/v3-core/contracts/libraries/LiquidityMath.sol';
 import {PoolTickBitmap} from '../libraries/PoolTickBitmap.sol';
-import {IV3Quoter} from '../interfaces/IV3Quoter.sol';
+import {IV3Quoter} from './interfaces/IV3Quoter.sol';
 import {PoolAddress} from '../libraries/PoolAddress.sol';
-import {QuoterMath} from '../libraries/QuoterMath.sol';
-import {IPancakeV3Factory} from '../interfaces/IPancakeV3Factory.sol';
+import {QuoterMath} from './libraries/QuoterMath.sol';
+import {IPancakeV3Factory} from './interfaces/IPancakeV3Factory.sol';
 import '../libraries/Dex.sol';
 
 contract V3Quoter is IV3Quoter {
@@ -36,12 +42,11 @@ contract V3Quoter is IV3Quoter {
         uint24 fee
     ) private view returns (address pool) {
         if (dex == Dex.Uniswap) {
-        pool = PoolAddress.computeAddress(
-            factory,
-            PoolAddress.getPoolKey(tokenA, tokenB, fee)
-        );
+            pool = PoolAddress.computeAddress(
+                factory,
+                PoolAddress.getPoolKey(tokenA, tokenB, fee)
+            );
         } else if (dex == Dex.PancakeSwap) {
-
             pool = IPancakeV3Factory(factory).getPool(tokenA, tokenB, fee);
         }
     }
@@ -84,7 +89,12 @@ contract V3Quoter is IV3Quoter {
             amount1,
             sqrtPriceX96After,
             initializedTicksCrossed
-        ) = QuoterMath.quote(params.dex, params.pool, params.amountIn.toInt256(), quoteParams);
+        ) = QuoterMath.quote(
+                params.dex,
+                params.pool,
+                params.amountIn.toInt256(),
+                quoteParams
+            );
 
         amountReceived = amount0 > 0 ? uint256(-amount1) : uint256(-amount0);
     }

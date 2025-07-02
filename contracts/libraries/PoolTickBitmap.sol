@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: BUSL-1.1
 pragma solidity ^0.7.6;
 
-import {IUniswapV3Pool} from '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
+import {
+    IUniswapV3Pool
+} from '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
 import {BitMath} from '@uniswap/v3-core/contracts/libraries/BitMath.sol';
 
 /// @title Packed tick initialized state library

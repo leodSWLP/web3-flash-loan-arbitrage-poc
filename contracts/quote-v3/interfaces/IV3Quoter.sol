@@ -2,7 +2,7 @@
 pragma solidity >=0.7.6 <=0.9.0;
 pragma abicoder v2;
 
-import '../libraries/Dex.sol';
+import '../../libraries/Dex.sol';
 
 interface IV3Quoter {
     struct QuoteExactInputSingleParams {

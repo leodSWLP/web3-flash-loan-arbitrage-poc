@@ -2,7 +2,9 @@
 pragma solidity ^0.7.6;
 pragma abicoder v2;
 
-import {IUniswapV3Pool} from '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
+import {
+    IUniswapV3Pool
+} from '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
 import {IPancakeV3Pool} from '../interfaces/IPancakeV3Pool.sol';
 import {SwapMath} from '@uniswap/v3-core/contracts/libraries/SwapMath.sol';
 import {FullMath} from '@uniswap/v3-core/contracts/libraries/FullMath.sol';
@@ -10,10 +12,14 @@ import {TickMath} from '@uniswap/v3-core/contracts/libraries/TickMath.sol';
 import '@uniswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
 import '@uniswap/v3-core/contracts/libraries/SafeCast.sol';
 import '@uniswap/v3-periphery/contracts/libraries/Path.sol';
-import {SqrtPriceMath} from '@uniswap/v3-core/contracts/libraries/SqrtPriceMath.sol';
-import {LiquidityMath} from '@uniswap/v3-core/contracts/libraries/LiquidityMath.sol';
-import {PoolTickBitmap} from './PoolTickBitmap.sol';
-import './Dex.sol';
+import {
+    SqrtPriceMath
+} from '@uniswap/v3-core/contracts/libraries/SqrtPriceMath.sol';
+import {
+    LiquidityMath
+} from '@uniswap/v3-core/contracts/libraries/LiquidityMath.sol';
+import {PoolTickBitmap} from '../../libraries/PoolTickBitmap.sol';
+import '../../libraries/Dex.sol';
 
 library QuoterMath {
     using LowGasSafeMath for uint256;
@@ -162,7 +168,7 @@ library QuoterMath {
     /// @notice Utility function called by the quote functions to
     /// calculate the amounts in/out for a v3 swap
     /// @param dex the Dex enum
-    /// @param poolAddress the Uniswap v3 /PancakeSwap v3 pool addess
+    /// @param poolAddress the Uniswap v3 / PancakeSwap v3 pool address
     /// @param amount the input amount calculated
     /// @param quoteParams a packed dataset of flags/inputs used to get around stack limit
     /// @return amount0 the amount of token0 sent in or out of the pool
@@ -186,7 +192,7 @@ library QuoterMath {
     {
         quoteParams.exactInput = amount > 0;
         initializedTicksCrossed = 1;
-        
+
         Slot0 memory slot0 = fillSlot0(dex, poolAddress);
         IUniswapV3Pool pool = IUniswapV3Pool(poolAddress);
 

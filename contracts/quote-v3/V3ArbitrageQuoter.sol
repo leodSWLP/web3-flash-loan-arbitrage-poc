@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import './interfaces/IV3Quoter.sol';
-import './libraries/Dex.sol';
+import '../libraries/Dex.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
 
 contract V3ArbitrageQuoter is Ownable {
@@ -35,7 +35,7 @@ contract V3ArbitrageQuoter is Ownable {
         string dexName;
         string version;
         address tokenIn;
-        address tokenOut;       
+        address tokenOut;
         uint256 amountIn;
         uint256 amountOut;
         address factoryAddress;
@@ -76,13 +76,10 @@ contract V3ArbitrageQuoter is Ownable {
         uint256 initialAmount,
         SwapPath[] calldata swapPaths
     ) external view returns (OutputPath[] memory outputPaths) {
-        
-
         outputPaths = new OutputPath[](swapPaths.length);
         uint256 currentAmount = initialAmount;
 
         for (uint256 i; i < swapPaths.length; ++i) {
-            
             outputPaths[i] = _findBestQuote(currentAmount, swapPaths[i]);
             currentAmount = outputPaths[i].amountOut;
         }
@@ -102,7 +99,6 @@ contract V3ArbitrageQuoter is Ownable {
 
         for (uint256 i; i < quoters.length; ++i) {
             QuoterDetail memory quoter = quoters[i];
-            
 
             QuotePriceParams memory params = QuotePriceParams({
                 dexName: quoter.dexName,
@@ -181,8 +177,6 @@ contract V3ArbitrageQuoter is Ownable {
                 fee: _params.fee,
                 sqrtPriceLimitX96: 0
             });
-
-        
 
         try v3Quoter.quoteExactInputSingle(params) returns (
             uint256 _amountOut,
