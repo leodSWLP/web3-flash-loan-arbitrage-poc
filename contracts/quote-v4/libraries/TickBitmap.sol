@@ -94,7 +94,7 @@ library TickBitmap {
     /// @return initialized Whether the next tick is initialized, as the function only searches within up to 256 ticks
     function nextInitializedTickWithinOneWord(
         ICommonPoolManager poolManager,
-        PoolId poolId,
+        bytes32 poolId,
         int24 tick,
         int24 tickSpacing,
         bool lte

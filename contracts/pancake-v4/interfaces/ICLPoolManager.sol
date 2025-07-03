@@ -8,7 +8,7 @@ import '../types/Currency.sol';
 // This is for Pancakeswap V4 Quote
 interface ICLPoolManager {
     function poolIdToPoolKey(
-        PoolId id
+        bytes32 poolId
     )
         external
         view
@@ -33,7 +33,7 @@ interface ICLPoolManager {
     }
 
     function getSlot0(
-        PoolId id
+        bytes32 poolId
     )
         external
         view
@@ -45,9 +45,11 @@ interface ICLPoolManager {
         );
 
     function getPoolTickInfo(
-        PoolId id,
+        bytes32 poolId,
         int24 tick
     ) external view returns (TickInfo memory);
 
-    function getLiquidity(PoolId id) external view returns (uint128 liquidity);
+    function getLiquidity(
+        bytes32 poolId
+    ) external view returns (uint128 liquidity);
 }

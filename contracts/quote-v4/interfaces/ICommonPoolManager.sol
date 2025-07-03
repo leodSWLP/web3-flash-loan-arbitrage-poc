@@ -6,7 +6,7 @@ import '@uniswap/v4-core/src/types/PoolId.sol';
 // This is for Pancakewap V4 Quote
 interface ICommonPoolManager {
     function getTickBitmap(
-        PoolId poolId,
+        bytes32 poolId,
         int16 tick
     ) external view returns (uint256 tickBitmap);
 }

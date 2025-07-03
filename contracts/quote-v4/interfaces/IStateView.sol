@@ -2,12 +2,11 @@
 pragma solidity ^0.8.24;
 
 import '@uniswap/v4-core/src/types/PoolId.sol';
-import '@uniswap/v4-core/src/interfaces/IPoolManager.sol';
 
 // This is for Uniswap V4 Quote
 interface IStateView {
     function getSlot0(
-        PoolId poolId
+        bytes32 poolId
     )
         external
         view
@@ -19,7 +18,7 @@ interface IStateView {
         );
 
     function getTickInfo(
-        PoolId poolId,
+        bytes32 poolId,
         int24 tick
     )
         external
@@ -32,13 +31,13 @@ interface IStateView {
         );
 
     function getTickLiquidity(
-        PoolId poolId,
+        bytes32 poolId,
         int24 tick
     ) external view returns (uint128 liquidityGross, int128 liquidityNet);
 
     function getLiquidity(
-        PoolId poolId
+        bytes32 poolId
     ) external view returns (uint128 liquidity);
 
-    function poolManager() external view returns (IPoolManager);
+    function poolManager() external view returns (address);
 }

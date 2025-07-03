@@ -14,6 +14,7 @@ import {ICLPoolManager} from '../../pancake-v4/interfaces/ICLPoolManager.sol';
 import {IStateView} from '../interfaces/IStateView.sol';
 import {IPositionManager} from '../interfaces/IPositionManager.sol';
 import {ICommonPoolManager} from '../interfaces/ICommonPoolManager.sol';
+import {PoolKey} from '@uniswap/v4-core/src/types/PoolKey.sol';
 
 library V4QuoterMath {
     using SafeCast for uint256;
@@ -61,12 +62,13 @@ library V4QuoterMath {
         Dex dex,
         address stateView,
         address positionManager,
-        PoolId poolId
+        bytes32 poolId
     ) private view returns (Slot0 memory slot0) {
         if (dex == Dex.PancakeSwap) {
             ICLPoolManager pancakePoolManager = ICLPoolManager(stateView);
-            (slot0.sqrtPriceX96, slot0.tick, , , ) = pancakePoolManager
-                .getSlot0(poolId);
+            (slot0.sqrtPriceX96, slot0.tick, , ) = pancakePoolManager.getSlot0(
+                poolId
+            );
 
             (, , , , , bytes32 parameters) = pancakePoolManager.poolIdToPoolKey(
                 poolId
@@ -77,9 +79,11 @@ library V4QuoterMath {
             (slot0.sqrtPriceX96, slot0.tick, , ) = uniswapStateView.getSlot0(
                 poolId
             );
-            slot0.tickSpacing = IPositionManager(positionManager).poolKeys(
-                poolId
+            PoolKey memory poolKey = IPositionManager(positionManager).poolKeys(
+                toBytes25(poolId)
             );
+
+            slot0.tickSpacing = poolKey.tickSpacing;
         }
         return slot0;
     }
@@ -87,7 +91,7 @@ library V4QuoterMath {
     function getLiquidity(
         Dex dex,
         address stateView,
-        PoolId poolId
+        bytes32 poolId
     ) private view returns (uint128 liquidity) {
         if (dex == Dex.PancakeSwap) {
             liquidity = ICLPoolManager(stateView).getLiquidity(poolId);
@@ -100,7 +104,7 @@ library V4QuoterMath {
     function getTicks(
         Dex dex,
         address stateView,
-        PoolId poolId,
+        bytes32 poolId,
         int24 tickNext
     )
         private
@@ -124,8 +128,7 @@ library V4QuoterMath {
                 liquidityGross,
                 liquidityNet,
                 feeGrowthOutside0X128,
-                feeGrowthOutside1X128,
-
+                feeGrowthOutside1X128
             ) = IStateView(stateView).getTickInfo(poolId, tickNext);
         }
     }
@@ -192,8 +195,9 @@ library V4QuoterMath {
     /// @return initializedTicksCrossed the number of initialized ticks LOADED IN
     function quote(
         Dex dex,
-        address poolManager,
-        PoolId poolId,
+        address stateView,
+        address positionManager,
+        bytes32 poolId,
         int256 amount,
         QuoteParams memory quoteParams
     )
@@ -209,8 +213,15 @@ library V4QuoterMath {
         quoteParams.exactInput = amount > 0;
         initializedTicksCrossed = 1;
 
-        Slot0 memory slot0 = fillSlot0(dex, poolId);
-        ICommonPoolManager iPoolManager = ICommonPoolManager(poolId);
+        Slot0 memory slot0 = fillSlot0(dex, stateView, positionManager, poolId);
+        ICommonPoolManager iPoolManager;
+        if (dex == Dex.Uniswap) {
+            iPoolManager = ICommonPoolManager(
+                IStateView(stateView).poolManager()
+            );
+        } else if (dex == Dex.PancakeSwap) {
+            iPoolManager = ICommonPoolManager(stateView);
+        }
 
         SwapState memory state = SwapState({
             amountSpecifiedRemaining: amount,
@@ -219,7 +230,7 @@ library V4QuoterMath {
             tick: slot0.tick,
             feeGrowthGlobalX128: 0,
             protocolFee: 0,
-            liquidity: getLiquidity(dex, poolId)
+            liquidity: getLiquidity(dex, stateView, poolId)
         });
 
         while (
@@ -247,7 +258,7 @@ library V4QuoterMath {
             }
 
             // get the price for the next tick
-            step.sqrtPriceNextX96 = TickMath.getSqrtRatioAtTick(step.tickNext);
+            step.sqrtPriceNextX96 = TickMath.getSqrtPriceAtTick(step.tickNext);
 
             // compute values to swap to the target tick, price limit, or point where input/output amount is exhausted
             (
@@ -272,14 +283,11 @@ library V4QuoterMath {
             if (quoteParams.exactInput) {
                 state.amountSpecifiedRemaining -= (step.amountIn +
                     step.feeAmount).toInt256();
-                state.amountCalculated = state.amountCalculated.sub(
-                    step.amountOut.toInt256()
-                );
+                state.amountCalculated -= step.amountOut.toInt256();
             } else {
                 state.amountSpecifiedRemaining += step.amountOut.toInt256();
-                state.amountCalculated = state.amountCalculated.add(
-                    (step.amountIn + step.feeAmount).toInt256()
-                );
+                state.amountCalculated += (step.amountIn + step.feeAmount)
+                    .toInt256();
             }
 
             // shift tick if we reached the next price
@@ -288,6 +296,7 @@ library V4QuoterMath {
                 if (step.initialized) {
                     (, int128 liquidityNet, , ) = getTicks(
                         dex,
+                        stateView,
                         poolId,
                         step.tickNext
                     );
@@ -309,7 +318,7 @@ library V4QuoterMath {
                     : step.tickNext;
             } else if (state.sqrtPriceX96 != step.sqrtPriceStartX96) {
                 // recompute unless we're on a lower tick boundary (i.e. already transitioned ticks), and haven't moved
-                state.tick = TickMath.getTickAtSqrtRatio(state.sqrtPriceX96);
+                state.tick = TickMath.getTickAtSqrtPrice(state.sqrtPriceX96);
             }
         }
 
