@@ -1,25 +1,21 @@
-// SPDX-License-Identifier: GPL-2.0-or-later
-pragma solidity ^0.7.6;
-pragma abicoder v2;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
-import {IUniswapV3Pool} from '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
-import {SwapMath} from '@uniswap/v3-core/contracts/libraries/SwapMath.sol';
-import {FullMath} from '@uniswap/v3-core/contracts/libraries/FullMath.sol';
-import {TickMath} from '@uniswap/v3-core/contracts/libraries/TickMath.sol';
-import '@uniswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
-import '@uniswap/v3-core/contracts/libraries/SafeCast.sol';
-import '@uniswap/v3-periphery/contracts/libraries/Path.sol';
-import {SqrtPriceMath} from '@uniswap/v3-core/contracts/libraries/SqrtPriceMath.sol';
-import {LiquidityMath} from '@uniswap/v3-core/contracts/libraries/LiquidityMath.sol';
-import {PoolTickBitmap} from '../../libraries/PoolTickBitmap.sol';
-import '../../libraries/Dex.sol';
-import '@uniswap/v4-core/src/types/PoolId.sol';
-import '../interfaces/ICLPoolManager.sol';
-import '../interfaces/IStateView.sol';
+import {SwapMath} from '@uniswap/v4-core/src/libraries/SwapMath.sol';
+import {FullMath} from '@uniswap/v4-core/src/libraries/FullMath.sol';
+import {TickMath} from '@uniswap/v4-core/src/libraries/TickMath.sol';
+import {SafeCast} from '@uniswap/v4-core/src/libraries/SafeCast.sol';
+import {SqrtPriceMath} from '@uniswap/v4-core/src/libraries/SqrtPriceMath.sol';
+import {LiquidityMath} from '@uniswap/v4-core/src/libraries/LiquidityMath.sol';
+import {PoolId} from '@uniswap/v4-core/src/types/PoolId.sol';
+import {TickBitmap} from './TickBitmap.sol';
+import {Dex} from '../../libraries/Dex.sol';
+import {ICLPoolManager} from '../../pancake-v4/interfaces/ICLPoolManager.sol';
+import {IStateView} from '../interfaces/IStateView.sol';
+import {IPositionManager} from '../interfaces/IPositionManager.sol';
+import {ICommonPoolManager} from '../interfaces/ICommonPoolManager.sol';
 
-library QuoterMath {
-    using LowGasSafeMath for uint256;
-    using LowGasSafeMath for int256;
+library V4QuoterMath {
     using SafeCast for uint256;
     using SafeCast for int256;
 
@@ -51,43 +47,60 @@ library QuoterMath {
         return result;
     }
 
+    function getPancakeTickSpacing(
+        bytes32 params
+    ) internal pure returns (int24 tickSpacing) {
+        uint32 offsetTickSpacing = 16;
+        uint256 maskUint24 = 0xffffff;
+        assembly ('memory-safe') {
+            tickSpacing := and(shr(offsetTickSpacing, params), maskUint24)
+        }
+    }
+
     function fillSlot0(
         Dex dex,
-        address poolMangerAddress,
+        address stateView,
+        address positionManager,
         PoolId poolId
     ) private view returns (Slot0 memory slot0) {
         if (dex == Dex.PancakeSwap) {
-            ICLPoolManager pancakeV3pool = ICLPoolManager(poolMangerAddress);
-            (slot0.sqrtPriceX96, slot0.tick, , , ) = pancakeV3pool.getSlot0(
+            ICLPoolManager pancakePoolManager = ICLPoolManager(stateView);
+            (slot0.sqrtPriceX96, slot0.tick, , , ) = pancakePoolManager
+                .getSlot0(poolId);
+
+            (, , , , , bytes32 parameters) = pancakePoolManager.poolIdToPoolKey(
                 poolId
             );
-            slot0.tickSpacing = pancakeV3pool.getPoolTickInfo(
-                poolId,
-                slot0.tick
-            );
+            slot0.tickSpacing = getPancakeTickSpacing(parameters);
         } else if (dex == Dex.Uniswap) {
-            IStateView uniswapPool = IStateView(poolMangerAddress);
-            (slot0.sqrtPriceX96, slot0.tick, , ) = uniswapPool.getSlot0(poolId);
-            slot0.tickSpacing = uniswapPool.poolManager().;
+            IStateView uniswapStateView = IStateView(stateView);
+            (slot0.sqrtPriceX96, slot0.tick, , ) = uniswapStateView.getSlot0(
+                poolId
+            );
+            slot0.tickSpacing = IPositionManager(positionManager).poolKeys(
+                poolId
+            );
         }
         return slot0;
     }
 
     function getLiquidity(
         Dex dex,
-        address pool
+        address stateView,
+        PoolId poolId
     ) private view returns (uint128 liquidity) {
         if (dex == Dex.PancakeSwap) {
-            liquidity = IPancakeV3Pool(pool).liquidity();
+            liquidity = ICLPoolManager(stateView).getLiquidity(poolId);
         } else if (dex == Dex.Uniswap) {
-            liquidity = IUniswapV3Pool(pool).liquidity();
+            liquidity = IStateView(stateView).getLiquidity(poolId);
         }
         return liquidity;
     }
 
     function getTicks(
         Dex dex,
-        address pool,
+        address stateView,
+        PoolId poolId,
         int24 tickNext
     )
         private
@@ -96,35 +109,24 @@ library QuoterMath {
             uint128 liquidityGross,
             int128 liquidityNet,
             uint256 feeGrowthOutside0X128,
-            uint256 feeGrowthOutside1X128,
-            int56 tickCumulativeOutside,
-            uint160 secondsPerLiquidityOutsideX128,
-            uint32 secondsOutside,
-            bool initialized
+            uint256 feeGrowthOutside1X128
         )
     {
         if (dex == Dex.PancakeSwap) {
-            (
-                liquidityGross,
-                liquidityNet,
-                feeGrowthOutside0X128,
-                feeGrowthOutside1X128,
-                tickCumulativeOutside,
-                secondsPerLiquidityOutsideX128,
-                secondsOutside,
-                initialized
-            ) = IPancakeV3Pool(pool).ticks(tickNext);
+            ICLPoolManager.TickInfo memory tickInfo = ICLPoolManager(stateView)
+                .getPoolTickInfo(poolId, tickNext);
+            liquidityGross = tickInfo.liquidityGross;
+            liquidityNet = tickInfo.liquidityNet;
+            feeGrowthOutside0X128 = tickInfo.feeGrowthOutside0X128;
+            feeGrowthOutside1X128 = tickInfo.feeGrowthOutside1X128;
         } else if (dex == Dex.Uniswap) {
             (
                 liquidityGross,
                 liquidityNet,
                 feeGrowthOutside0X128,
                 feeGrowthOutside1X128,
-                tickCumulativeOutside,
-                secondsPerLiquidityOutsideX128,
-                secondsOutside,
-                initialized
-            ) = IUniswapV3Pool(pool).ticks(tickNext);
+
+            ) = IStateView(stateView).getTickInfo(poolId, tickNext);
         }
     }
 
@@ -190,6 +192,7 @@ library QuoterMath {
     /// @return initializedTicksCrossed the number of initialized ticks LOADED IN
     function quote(
         Dex dex,
+        address poolManager,
         PoolId poolId,
         int256 amount,
         QuoteParams memory quoteParams
@@ -207,7 +210,7 @@ library QuoterMath {
         initializedTicksCrossed = 1;
 
         Slot0 memory slot0 = fillSlot0(dex, poolId);
-        IUniswapV3Pool pool = IUniswapV3Pool(poolId);
+        ICommonPoolManager iPoolManager = ICommonPoolManager(poolId);
 
         SwapState memory state = SwapState({
             amountSpecifiedRemaining: amount,
@@ -227,9 +230,10 @@ library QuoterMath {
 
             step.sqrtPriceStartX96 = state.sqrtPriceX96;
 
-            (step.tickNext, step.initialized) = PoolTickBitmap
+            (step.tickNext, step.initialized) = TickBitmap
                 .nextInitializedTickWithinOneWord(
-                    pool,
+                    iPoolManager,
+                    poolId,
                     slot0.tickSpacing,
                     state.tick,
                     quoteParams.zeroForOne
@@ -282,7 +286,7 @@ library QuoterMath {
             if (state.sqrtPriceX96 == step.sqrtPriceNextX96) {
                 // if the tick is initialized, run the tick transition
                 if (step.initialized) {
-                    (, int128 liquidityNet, , , , , , ) = getTicks(
+                    (, int128 liquidityNet, , ) = getTicks(
                         dex,
                         poolId,
                         step.tickNext

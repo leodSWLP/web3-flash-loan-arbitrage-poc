@@ -1,10 +1,26 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import '@uniswap/v4-core/src/types/PoolId.sol';
+import './IHooks.sol';
+import './IPoolManager.sol';
+import '../types/Currency.sol';
 
-// This is for Pancakewap V4 Quote
+// This is for Pancakeswap V4 Quote
 interface ICLPoolManager {
+    function poolIdToPoolKey(
+        PoolId id
+    )
+        external
+        view
+        returns (
+            Currency currency0,
+            Currency currency1,
+            IHooks hooks,
+            IPoolManager poolManager,
+            uint24 fee,
+            bytes32 parameters
+        );
+
     struct TickInfo {
         // the total position liquidity that references this tick
         uint128 liquidityGross;
