@@ -245,8 +245,8 @@ library V4QuoterMath {
                 .nextInitializedTickWithinOneWord(
                     iPoolManager,
                     poolId,
-                    slot0.tickSpacing,
                     state.tick,
+                    slot0.tickSpacing,
                     quoteParams.zeroForOne
                 );
 
