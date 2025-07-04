@@ -214,14 +214,6 @@ library V4QuoterMath {
         initializedTicksCrossed = 1;
 
         Slot0 memory slot0 = fillSlot0(dex, stateView, positionManager, poolId);
-        ICommonPoolManager iPoolManager;
-        if (dex == Dex.Uniswap) {
-            iPoolManager = ICommonPoolManager(
-                IStateView(stateView).poolManager()
-            );
-        } else if (dex == Dex.PancakeSwap) {
-            iPoolManager = ICommonPoolManager(stateView);
-        }
 
         SwapState memory state = SwapState({
             amountSpecifiedRemaining: amount,
@@ -243,7 +235,8 @@ library V4QuoterMath {
 
             (step.tickNext, step.initialized) = TickBitmap
                 .nextInitializedTickWithinOneWord(
-                    iPoolManager,
+                    dex,
+                    stateView,
                     poolId,
                     state.tick,
                     slot0.tickSpacing,

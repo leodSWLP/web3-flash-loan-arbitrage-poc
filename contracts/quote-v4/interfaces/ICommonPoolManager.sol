@@ -9,4 +9,9 @@ interface ICommonPoolManager {
         bytes32 poolId,
         int16 tick
     ) external view returns (uint256 tickBitmap);
+
+    function getPoolBitmapInfo(
+        bytes32 poolId,
+        int16 word
+    ) external view returns (uint256 tickBitmap);
 }

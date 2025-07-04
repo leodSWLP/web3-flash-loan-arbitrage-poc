@@ -93,12 +93,14 @@ library TickBitmap {
     /// @return next The next initialized or uninitialized tick up to 256 ticks away from the current tick
     /// @return initialized Whether the next tick is initialized, as the function only searches within up to 256 ticks
     function nextInitializedTickWithinOneWord(
-        ICommonPoolManager poolManager,
+        Dex dex,
+        address poolManager,
         bytes32 poolId,
         int24 tick,
         int24 tickSpacing,
         bool lte
     ) internal view returns (int24 next, bool initialized) {
+        ICommonPoolManager iPoolManager = ICommonPoolManager(poolManager);
         unchecked {
             int24 compressed = compress(tick, tickSpacing);
 
@@ -107,8 +109,13 @@ library TickBitmap {
                 // all the 1s at or to the right of the current bitPos
                 uint256 mask = type(uint256).max >>
                     (uint256(type(uint8).max) - bitPos);
-                uint256 masked = poolManager.getTickBitmap(poolId, wordPos) &
-                    mask;
+                uint256 bitmap;
+                if (dex == Dex.Uniswap) {
+                    iPoolManager.getTickBitmap(poolId, wordPos);
+                } else if (dex == Dex.PancakeSwap) {
+                    iPoolManager.getPoolBitmapInfo(poolId, wordPos);
+                }
+                uint256 masked = bitmap & mask;
 
                 // if there are no initialized ticks to the right of or at the current tick, return rightmost in the word
                 initialized = masked != 0;
@@ -124,8 +131,13 @@ library TickBitmap {
                 (int16 wordPos, uint8 bitPos) = position(++compressed);
                 // all the 1s at or to the left of the bitPos
                 uint256 mask = ~((1 << bitPos) - 1);
-                uint256 masked = poolManager.getTickBitmap(poolId, wordPos) &
-                    mask;
+                uint256 bitmap;
+                if (dex == Dex.Uniswap) {
+                    iPoolManager.getTickBitmap(poolId, wordPos);
+                } else if (dex == Dex.PancakeSwap) {
+                    iPoolManager.getPoolBitmapInfo(poolId, wordPos);
+                }
+                uint256 masked = bitmap & mask;
 
                 // if there are no initialized ticks to the left of the current tick, return leftmost in the word
                 initialized = masked != 0;
