@@ -81,20 +81,20 @@ const quoteDetail = {
           factoryAddress:
             '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7' as Address,
         },
-        {
-          fee: 3000,
-          dexName: 'uniswap',
-          version: 'v3',
-          factoryAddress:
-            '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7' as Address,
-        },
-        {
-          fee: 10000,
-          dexName: 'uniswap',
-          version: 'v3',
-          factoryAddress:
-            '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7' as Address,
-        },
+        // {
+        //   fee: 3000,
+        //   dexName: 'uniswap',
+        //   version: 'v3',
+        //   factoryAddress:
+        //     '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7' as Address,
+        // },
+        // {
+        //   fee: 10000,
+        //   dexName: 'uniswap',
+        //   version: 'v3',
+        //   factoryAddress:
+        //     '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7' as Address,
+        // },
         {
           fee: 100,
           dexName: 'pancakeswap',
@@ -109,13 +109,13 @@ const quoteDetail = {
           factoryAddress:
             '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865' as Address,
         },
-        {
-          fee: 2500,
-          dexName: 'pancakeswap',
-          version: 'v3',
-          factoryAddress:
-            '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865' as Address,
-        },
+        // {
+        //   fee: 2500,
+        //   dexName: 'pancakeswap',
+        //   version: 'v3',
+        //   factoryAddress:
+        //     '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865' as Address,
+        // },
       ],
     },
     {
@@ -150,13 +150,13 @@ const quoteDetail = {
           factoryAddress:
             '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865' as Address,
         },
-        {
-          fee: 2500,
-          dexName: 'pancakeswap',
-          version: 'v3',
-          factoryAddress:
-            '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865' as Address,
-        },
+        // {
+        //   fee: 2500,
+        //   dexName: 'pancakeswap',
+        //   version: 'v3',
+        //   factoryAddress:
+        //     '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865' as Address,
+        // },
       ],
     },
   ],
@@ -292,12 +292,12 @@ const exec = async () => {
 
 const viemChainClient = createPublicClient({
   chain: bsc,
-  transport: http('http://127.0.0.1:8545', { timeout: 60000 }),
+  transport: http('http://127.0.0.1:8545', { timeout: 180000 }),
 });
 
 const viemWalletClient = createWalletClient({
   chain: bsc,
-  transport: http('http://127.0.0.1:8545', { timeout: 60000 }),
+  transport: http('http://127.0.0.1:8545', { timeout: 180000 }),
   account: localAccount,
 });
 
