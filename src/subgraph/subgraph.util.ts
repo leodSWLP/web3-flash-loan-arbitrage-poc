@@ -71,35 +71,6 @@ export class SubgraphUtil {
   }
 }`;
 
-  // ------------------ todo remove mock ---------------------
-
-  static getMockPricesData(
-    endpoint: SubgraphEndpoint,
-    isIncludePriceData: boolean | undefined = true,
-  ) {
-    const pancakeswapSnapshots = fs.readFileSync(
-      './snapshots/pancakeswap-v3-pools.json',
-      'utf8',
-    );
-    const uniswapSnapshots = fs.readFileSync(
-      './snapshots/uniswap-v3-pools.json',
-      'utf8',
-    );
-    const mockData =
-      endpoint === SubgraphEndpoint.PANCAKESWAP_V3
-        ? pancakeswapSnapshots
-        : uniswapSnapshots;
-
-    let data = JSON.parse(mockData).pools.map((pool) =>
-      isIncludePriceData
-        ? this.parsePoolDetail(pool)
-        : this.parseBasicPoolDetail(pool),
-    );
-    return data;
-  }
-
-  // ------------------ todo remove mock end ---------------------
-
   static getDetailMapKey(tokenIn: Token, TokenOut: Token): string {
     return `${tokenIn.symbol}-${tokenIn.address}/${TokenOut.symbol}-${TokenOut.address}`;
   }
@@ -223,9 +194,6 @@ export class SubgraphUtil {
 
     const listTopPoolsQuery = this.generateQuery(poolSize, orderBy);
 
-    // return this.getMockPricesData(endpoint, isIncludePriceData);
-
-    //todo enable later
     const subgraphUri = this.getSubgraphEndpoint(endpoint);
     try {
       const data = await request(subgraphUri, listTopPoolsQuery, {}, headers);
