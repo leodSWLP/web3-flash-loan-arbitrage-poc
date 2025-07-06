@@ -1,0 +1,48 @@
+{
+  "isProfitable": true,
+  "netProfit": 35643798128,
+  "readableNetProfit": "0.000000035643798128",
+  "profitRatio": "0.003%",
+  "result": [
+    {
+      "dexName": "uniswap-v3",
+      "tokenIn": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+      "tokenOut": "0x55d398326f99059fF775485246999027B3197955",
+      "amountIn": 1000000000000000,
+      "amountOut": 105868065698481930199,
+      "quoterAddress": "0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3",
+      "routerAddress": "0x1906c1d672b88cD1B9aC7593301cA990F94Eae07",
+      "fee": 500,
+      "sqrtPriceX96": 243438545781378437591306738,
+      "initializedTicksCrossed": 1,
+      "gasEstimate": 0
+    },
+    {
+      "dexName": "uniswap-v3",
+      "tokenIn": "0x55d398326f99059fF775485246999027B3197955",
+      "tokenOut": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+      "amountIn": 105868065698481930199,
+      "amountOut": 43283840223299015,
+      "quoterAddress": "0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3",
+      "routerAddress": "0x1906c1d672b88cD1B9aC7593301cA990F94Eae07",
+      "fee": 500,
+      "sqrtPriceX96": 3917530865589386559469422735973,
+      "initializedTicksCrossed": 1,
+      "gasEstimate": 0
+    },
+    {
+      "dexName": "uniswap-v3",
+      "tokenIn": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+      "tokenOut": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+      "amountIn": 43283840223299015,
+      "amountOut": 1000035643798128,
+      "quoterAddress": "0x5e55C9e631FAE526cd4B0526C4818D6e0a9eF0e3",
+      "routerAddress": "0x1906c1d672b88cD1B9aC7593301cA990F94Eae07",
+      "fee": 3000,
+      "sqrtPriceX96": 12060743068653951427485001204,
+      "initializedTicksCrossed": 1,
+      "gasEstimate": 0
+    }
+  ],
+  "status": "success"
+}

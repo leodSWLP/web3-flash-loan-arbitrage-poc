@@ -1,0 +1,51 @@
+{
+  "isProfitable": true,
+  "netProfit": 754607306939662,
+  "readableNetProfit": "0.000754607306939662",
+  "profitRatio": "0.075%",
+  "result": [
+    {
+      "dexName": "pancakeswap",
+      "version": "v3",
+      "tokenIn": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+      "tokenOut": "0x55d398326f99059fF775485246999027B3197955",
+      "amountIn": 1000000000000000000,
+      "amountOut": 2514755762269125993114,
+      "factoryAddress": "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
+      "routerAddress": "0xd9C500DfF816a1Da21A48A732d3498Bf09dc9AEB",
+      "fee": 500,
+      "sqrtPriceX96": 3973956845271129216612325546400,
+      "initializedTicksCrossed": 1,
+      "gasEstimate": 0
+    },
+    {
+      "dexName": "pancakeswap",
+      "version": "v3",
+      "tokenIn": "0x55d398326f99059fF775485246999027B3197955",
+      "tokenOut": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "amountIn": 2514755762269125993114,
+      "amountOut": 3845424566075471061,
+      "factoryAddress": "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
+      "routerAddress": "0xd9C500DfF816a1Da21A48A732d3498Bf09dc9AEB",
+      "fee": 100,
+      "sqrtPriceX96": 3098296878734909578260486222,
+      "initializedTicksCrossed": 1,
+      "gasEstimate": 0
+    },
+    {
+      "dexName": "pancakeswap",
+      "version": "v3",
+      "tokenIn": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "tokenOut": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+      "amountIn": 3845424566075471061,
+      "amountOut": 1000754607306939662,
+      "factoryAddress": "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
+      "routerAddress": "0xd9C500DfF816a1Da21A48A732d3498Bf09dc9AEB",
+      "fee": 500,
+      "sqrtPriceX96": 155270344575818339555752300465,
+      "initializedTicksCrossed": 1,
+      "gasEstimate": 0
+    }
+  ],
+  "status": "success"
+}
