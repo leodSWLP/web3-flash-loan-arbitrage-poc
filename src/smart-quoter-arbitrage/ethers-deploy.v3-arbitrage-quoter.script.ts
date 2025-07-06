@@ -1,5 +1,5 @@
 import { ethers } from 'ethers';
-import { V3ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/V3ArbitrageQuoter__factory';
+import { V3ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/quote-v3/V3ArbitrageQuoter__factory';
 import { ConfigUtil } from '../config/config.util';
 
 async function estimateDeploymentCost() {
@@ -18,9 +18,8 @@ async function estimateDeploymentCost() {
   }
 
   try {
-    const deployTx = await contractFactory.getDeployTransaction(
-      v3QuoterAddress,
-    );
+    const deployTx =
+      await contractFactory.getDeployTransaction(v3QuoterAddress);
     const estimatedGas = await provider.estimateGas(deployTx);
     console.log(`Estimated gas: ${estimatedGas.toString()}`);
 
@@ -54,7 +53,7 @@ async function estimateDeploymentCost() {
 async function deployContract(gasLimit: bigint) {
   if (ConfigUtil.getConfig().V3_ARBITRAGE_QUOTER_ADDRESS) {
     throw new Error(
-      'Contract already deployed- please check V3_ARBITRAGE_QUOTER_ADDRESS',
+      'Contract already deployed - please check V3_ARBITRAGE_QUOTER_ADDRESS',
     );
   }
   const provider = new ethers.JsonRpcProvider(
@@ -87,7 +86,7 @@ async function deployContract(gasLimit: bigint) {
     const receipt = await txResponse.wait();
     console.log(`Contract deployed at address: ${receipt!.contractAddress}`);
     console.log(`Gas used: ${receipt!.gasUsed.toString()}`);
-    console.log(`Transaction fee: ${ethers.formatEther(receipt!.fee)} ETH`);
+    console.log(`Transaction fee: ${ethers.formatEther(receipt!.fee)} BNB`);
 
     const deployedContract = V3ArbitrageQuoter__factory.connect(
       receipt!.contractAddress!,
