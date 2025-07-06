@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 import {BitMath} from '@uniswap/v4-core/src/libraries/BitMath.sol';
 import {ICommonPoolManager} from '../interfaces/ICommonPoolManager.sol';
 import {PoolId} from '@uniswap/v4-core/src/types/PoolId.sol';
+import {Dex} from '../../libraries/Dex.sol';
 
 /// @title Packed tick initialized state library
 /// @notice Stores a packed mapping of tick index to its initialized state

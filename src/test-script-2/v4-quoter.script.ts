@@ -1,9 +1,8 @@
 import * as dotenv from 'dotenv';
 import { ethers } from 'ethers';
-import { Address, encodeAbiParameters } from 'viem';
+import { Address } from 'viem';
 
 import { Token } from '@uniswap/sdk-core';
-import * as JSONbig from 'json-bigint';
 import {
   ContractFunctionRevertedError,
   createPublicClient,
@@ -16,13 +15,7 @@ import { bsc } from 'viem/chains';
 import { V4Quoter__factory } from '../../typechain-types/factories/contracts/quote-v4/V4Quoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
 import { BscContractConstant } from '../common/bsc-contract.constant';
-import { RouterUtil } from '../common/router.util';
-import { LogUtil } from '../log/log.util';
-import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
-import {
-  SubgraphEndpoint,
-  SubgraphUtil,
-} from '../subgraph-arbitrage/subgraph.util';
+import { SubgraphEndpoint, SubgraphUtil } from '../subgraph/subgraph.util';
 
 dotenv.config();
 
@@ -38,7 +31,7 @@ const deploy = async () => {
       args: [],
     });
 
-  console.log('Transacion hash:', hash);
+  console.log('Transaction hash:', hash);
 
   // Wait for the transaction to be mined
   const receipt =
@@ -106,7 +99,6 @@ const prepareDexV3FeeTierDetail = async () => {
       return {
         feeTier: element.feeTier,
         quoterAddress: BscContractConstant.uniswap.quoter,
-        routerAddress: BscContractConstant.uniswap.universalRouter,
       };
     });
   });
@@ -117,7 +109,6 @@ const prepareDexV3FeeTierDetail = async () => {
       return {
         feeTier: element.feeTier,
         quoterAddress: BscContractConstant.pancakeswap.quoter,
-        routerAddress: BscContractConstant.pancakeswap.universalRouter,
       };
     });
   });
@@ -142,7 +133,8 @@ const callQuote = async () => {
             stateView: '0xd13dd3d6e93f276fafc9db9e6bb47c1180aee0c4' as Address,
             positionManager:
               '0x7a4a5c919ae2541aed11041a1aeee68f1287f95b' as Address,
-            poolId: '0x755c716d1ea331a4a7e99bdee09e5ee8ffd76c860e8e4bbd41facaa6b2a50c87',
+            poolId:
+              '0x755c716d1ea331a4a7e99bdee09e5ee8ffd76c860e8e4bbd41facaa6b2a50c87',
             // dex: Dex.PancakeSwap,
             // stateView: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7' as Address,
             // positionManager: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7' as Address,
@@ -175,7 +167,7 @@ const callQuote = async () => {
 const exec = async () => {
   const start = performance.now();
 
-//   await deploy();
+  //   await deploy();
   await callQuote();
   // await prepareQuoteSwapPath([
   //     new TokenAmount(BscTxTokenConstant.usdt, '1000'),

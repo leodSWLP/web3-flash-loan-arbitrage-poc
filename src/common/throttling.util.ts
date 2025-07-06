@@ -24,6 +24,7 @@ export class ThrottlingUtil {
     const results: { result?: any; error?: Error }[] = [];
 
     for (let i = 0; i < functions.length; i += batchSize) {
+      const startTime = performance.now();
       LogUtil.debug(`throttleAsyncFunctions(): execute batch ${i}`);
       const batch = functions.slice(
         i,
@@ -47,10 +48,8 @@ export class ThrottlingUtil {
       const batchResults = await Promise.all(batchPromises);
       results.push(...batchResults);
 
-      if (i + batchSize < functions.length) {
-        const now = Date.now();
-        const nextSecond = Math.ceil(now / delayMs) * delayMs;
-        const waitTime = nextSecond - now;
+      const waitTime = performance.now() - (startTime + delayMs);
+      if (waitTime > 0) {
         await new Promise((resolve) => setTimeout(resolve, waitTime));
       }
     }

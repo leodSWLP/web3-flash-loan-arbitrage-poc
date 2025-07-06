@@ -12,17 +12,14 @@ import {
 } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
-import { V3Quoter__factory } from '../../typechain-types/factories/contracts/lens/V3Quoter__factory';
+import { V3Quoter__factory } from '../../typechain-types/factories/contracts/quote-v3/V3Quoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
 import { BscContractConstant } from '../common/bsc-contract.constant';
 import { RouterUtil } from '../common/router.util';
 import { LogUtil } from '../log/log.util';
 import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
-import {
-  SubgraphEndpoint,
-  SubgraphUtil,
-} from '../subgraph-arbitrage/subgraph.util';
 import { ConfigUtil } from '../config/config.util';
+import { SubgraphEndpoint, SubgraphUtil } from '../subgraph/subgraph.util';
 
 const deploy = async () => {
   const hash =

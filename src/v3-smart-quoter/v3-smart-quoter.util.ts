@@ -1,6 +1,7 @@
 import { ethers } from 'ethers';
 import * as fs from 'fs/promises';
 import * as JSONbig from 'json-bigint';
+import * as path from 'path';
 import { Address, encodeAbiParameters } from 'viem';
 import { V3ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/quote-v3/V3ArbitrageQuoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
@@ -26,7 +27,6 @@ export class V3SmartQuoterUtil {
       { name: 'dexName', type: 'string' },
       { name: 'version', type: 'string' },
       { name: 'factoryAddress', type: 'address' },
-      { name: 'routerAddress', type: 'address' },
       { name: 'fee', type: 'uint24' },
     ],
   } as const;
@@ -46,7 +46,6 @@ export class V3SmartQuoterUtil {
                 dexName: item.dexName,
                 version: item.version,
                 factoryAddress: item.factoryAddress,
-                routerAddress: item.routerAddress,
               };
             }),
           ],

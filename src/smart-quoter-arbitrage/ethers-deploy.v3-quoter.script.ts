@@ -1,6 +1,6 @@
-import { ethers } from 'ethers';
-import { V3Quoter__factory } from '../../typechain-types/factories/contracts/lens/V3Quoter__factory';
 import * as dotenv from 'dotenv';
+import { ethers } from 'ethers';
+import { V3Quoter__factory } from '../../typechain-types/factories/contracts/quote-v3/V3Quoter__factory';
 import { ConfigUtil } from '../config/config.util';
 
 dotenv.config();

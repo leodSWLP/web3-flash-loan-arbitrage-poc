@@ -13,18 +13,10 @@ import {
 } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
-import { V3ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/V3ArbitrageQuoter__factory';
+import { V3ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/quote-v3/V3ArbitrageQuoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
 import { BscContractConstant } from '../common/bsc-contract.constant';
-import { RouterUtil } from '../common/router.util';
-import { LogUtil } from '../log/log.util';
-import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
-import {
-  SubgraphEndpoint,
-  SubgraphUtil,
-} from '../subgraph-arbitrage/subgraph.util';
-import { SmartQuoterSwapPathUtil } from '../smart-quoter-arbitrage/smart-quoter.swap-path.util';
-import { BscTxTokenConstant, BscUSDTokenConstant } from '../common/bsc-token.constant';
+import { SubgraphEndpoint, SubgraphUtil } from '../subgraph/subgraph.util';
 
 dotenv.config();
 
@@ -142,166 +134,166 @@ const callFlashSwap = async () => {
   try {
     const swapPaths = [
       {
-        tokenIn: "0x55d398326f99059fF775485246999027B3197955" as Address,
-        tokenOut: "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c" as Address,
+        tokenIn: '0x55d398326f99059fF775485246999027B3197955' as Address,
+        tokenOut: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c' as Address,
         quoterDetails: encodeAbiParameters(
           [{ type: 'tuple[]', components: quoterDetailType.components }],
           [
             [
               {
                 fee: 100,
-                dexName: "uniswap",
-                version: "v3",
-                factoryAddress: "0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7",
-                routerAddress: "0x1906c1d672b88cd1b9ac7593301ca990f94eae07",
+                dexName: 'uniswap',
+                version: 'v3',
+                factoryAddress: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7',
+                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
               },
               {
                 fee: 500,
-                dexName: "uniswap",
-                version: "v3",
-                factoryAddress: "0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7",
-                routerAddress: "0x1906c1d672b88cd1b9ac7593301ca990f94eae07",
+                dexName: 'uniswap',
+                version: 'v3',
+                factoryAddress: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7',
+                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
               },
               {
                 fee: 3000,
-                dexName: "uniswap",
-                version: "v3",
-                factoryAddress: "0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7",
-                routerAddress: "0x1906c1d672b88cd1b9ac7593301ca990f94eae07",
+                dexName: 'uniswap',
+                version: 'v3',
+                factoryAddress: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7',
+                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
               },
               {
                 fee: 10000,
-                dexName: "uniswap",
-                version: "v3",
-                factoryAddress: "0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7",
-                routerAddress: "0x1906c1d672b88cd1b9ac7593301ca990f94eae07",
+                dexName: 'uniswap',
+                version: 'v3',
+                factoryAddress: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7',
+                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
               },
               {
                 fee: 100,
-                dexName: "pancakeswap",
-                version: "v3",
-                factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
-                routerAddress: "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
+                dexName: 'pancakeswap',
+                version: 'v3',
+                factoryAddress: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865',
+                routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
               },
               {
                 fee: 500,
-                dexName: "pancakeswap",
-                version: "v3",
-                factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
-                routerAddress: "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
+                dexName: 'pancakeswap',
+                version: 'v3',
+                factoryAddress: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865',
+                routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
               },
               {
                 fee: 2500,
-                dexName: "pancakeswap",
-                version: "v3",
-                factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
-                routerAddress: "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
+                dexName: 'pancakeswap',
+                version: 'v3',
+                factoryAddress: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865',
+                routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
               },
             ],
           ],
         ),
       },
       {
-        tokenIn: "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c" as Address,
-        tokenOut: "0x2170Ed0880ac9A755fd29B2688956BD959F933F8" as Address,
+        tokenIn: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c' as Address,
+        tokenOut: '0x2170Ed0880ac9A755fd29B2688956BD959F933F8' as Address,
         quoterDetails: encodeAbiParameters(
           [{ type: 'tuple[]', components: quoterDetailType.components }],
           [
             [
               {
                 fee: 500,
-                dexName: "uniswap",
-                version: "v3",
-                factoryAddress: "0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7",
-                routerAddress: "0x1906c1d672b88cd1b9ac7593301ca990f94eae07",
+                dexName: 'uniswap',
+                version: 'v3',
+                factoryAddress: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7',
+                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
               },
               {
                 fee: 3000,
-                dexName: "uniswap",
-                version: "v3",
-                factoryAddress: "0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7",
-                routerAddress: "0x1906c1d672b88cd1b9ac7593301ca990f94eae07",
+                dexName: 'uniswap',
+                version: 'v3',
+                factoryAddress: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7',
+                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
               },
               {
                 fee: 100,
-                dexName: "pancakeswap",
-                version: "v3",
-                factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
-                routerAddress: "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
+                dexName: 'pancakeswap',
+                version: 'v3',
+                factoryAddress: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865',
+                routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
               },
               {
                 fee: 500,
-                dexName: "pancakeswap",
-                version: "v3",
-                factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
-                routerAddress: "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
+                dexName: 'pancakeswap',
+                version: 'v3',
+                factoryAddress: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865',
+                routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
               },
               {
                 fee: 2500,
-                dexName: "pancakeswap",
-                version: "v3",
-                factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
-                routerAddress: "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
+                dexName: 'pancakeswap',
+                version: 'v3',
+                factoryAddress: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865',
+                routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
               },
             ],
           ],
         ),
       },
       {
-        tokenIn: "0x2170Ed0880ac9A755fd29B2688956BD959F933F8" as Address,
-        tokenOut: "0x55d398326f99059fF775485246999027B3197955" as Address,
+        tokenIn: '0x2170Ed0880ac9A755fd29B2688956BD959F933F8' as Address,
+        tokenOut: '0x55d398326f99059fF775485246999027B3197955' as Address,
         quoterDetails: encodeAbiParameters(
           [{ type: 'tuple[]', components: quoterDetailType.components }],
           [
             [
               {
                 fee: 100,
-                dexName: "uniswap",
-                version: "v3",
-                factoryAddress: "0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7",
-                routerAddress: "0x1906c1d672b88cd1b9ac7593301ca990f94eae07",
+                dexName: 'uniswap',
+                version: 'v3',
+                factoryAddress: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7',
+                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
               },
               {
                 fee: 500,
-                dexName: "uniswap",
-                version: "v3",
-                factoryAddress: "0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7",
-                routerAddress: "0x1906c1d672b88cd1b9ac7593301ca990f94eae07",
+                dexName: 'uniswap',
+                version: 'v3',
+                factoryAddress: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7',
+                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
               },
               {
                 fee: 3000,
-                dexName: "uniswap",
-                version: "v3",
-                factoryAddress: "0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7",
-                routerAddress: "0x1906c1d672b88cd1b9ac7593301ca990f94eae07",
+                dexName: 'uniswap',
+                version: 'v3',
+                factoryAddress: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7',
+                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
               },
               {
                 fee: 10000,
-                dexName: "uniswap",
-                version: "v3",
-                factoryAddress: "0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7",
-                routerAddress: "0x1906c1d672b88cd1b9ac7593301ca990f94eae07",
+                dexName: 'uniswap',
+                version: 'v3',
+                factoryAddress: '0xdB1d10011AD0Ff90774D0C6Bb92e5C5c8b4461F7',
+                routerAddress: '0x1906c1d672b88cd1b9ac7593301ca990f94eae07',
               },
               {
                 fee: 100,
-                dexName: "pancakeswap",
-                version: "v3",
-                factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
-                routerAddress: "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
+                dexName: 'pancakeswap',
+                version: 'v3',
+                factoryAddress: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865',
+                routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
               },
               {
                 fee: 500,
-                dexName: "pancakeswap",
-                version: "v3",
-                factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
-                routerAddress: "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
+                dexName: 'pancakeswap',
+                version: 'v3',
+                factoryAddress: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865',
+                routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
               },
               {
                 fee: 2500,
-                dexName: "pancakeswap",
-                version: "v3",
-                factoryAddress: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
-                routerAddress: "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb",
+                dexName: 'pancakeswap',
+                version: 'v3',
+                factoryAddress: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865',
+                routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
               },
             ],
           ],
@@ -337,7 +329,7 @@ const exec = async () => {
   const start = performance.now();
 
   await deploy();
-    // await callFlashSwap();
+  // await callFlashSwap();
   // const tokenAmounts = [
   //     new TokenAmount(BscTxTokenConstant.usdt, '1000'),
   //     new TokenAmount(BscTxTokenConstant.eth, '0.5'),
@@ -373,9 +365,8 @@ const exec = async () => {
   //     new TokenAmount(BscUSDTokenConstant.soph),
   //     new TokenAmount(BscUSDTokenConstant.abra),
   //   ];
-  
+
   //   const RouteDetails = await SmartQuoterSwapPathUtil.prepareQuoteSwapPath(tokenAmounts);
-  
 
   const end = performance.now();
   const ms = end - start;
@@ -416,7 +407,7 @@ export const localhostChain = defineChain({
 
 const viemChainClient = createPublicClient({
   chain: bsc,
-  transport: http('http://127.0.0.1:8545', {timeout: 120_000}),
+  transport: http('http://127.0.0.1:8545', { timeout: 120_000 }),
 });
 
 const viemWalletClient = createWalletClient({

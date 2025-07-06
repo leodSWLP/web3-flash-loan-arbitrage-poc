@@ -15,18 +15,18 @@ import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { V3ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/quote-v3/V3ArbitrageQuoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
+import {
+  BscTxTokenConstant,
+  BscUSDTokenConstant,
+} from '../common/bsc-token.constant';
 import { ThrottlingUtil } from '../common/throttling.util';
-import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
+import { ConfigUtil } from '../config/config.util';
+import { LogUtil } from '../log/log.util';
+import { TokenAmount } from '../subgraph/subgraph-arbitrage.util';
 import {
   RouteDetail,
   SmartQuoterSwapPathUtil,
-} from './smart-quoter.swap-path.util';
-import {
-  BscUSDTokenConstant,
-  BscTxTokenConstant,
-} from '../common/bsc-token.constant';
-import { LogUtil } from '../log/log.util';
-import { ConfigUtil } from '../config/config.util';
+} from '../v3-smart-quoter/smart-quoter.swap-path.util';
 dotenv.config();
 
 export const account = privateKeyToAccount(
@@ -39,12 +39,11 @@ const quoterDetailType = {
     { name: 'dexName', type: 'string' },
     { name: 'version', type: 'string' },
     { name: 'factoryAddress', type: 'address' },
-    { name: 'routerAddress', type: 'address' },
     { name: 'fee', type: 'uint24' },
   ],
 } as const;
 
-const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
+const quoteBestRoute = async (routeDetails: RouteDetail[]) => {
   if (!ConfigUtil.getConfig().V3_ARBITRAGE_QUOTER_ADDRESS) {
     throw new Error(
       '.env missing contract address - V3_ARBITRAGE_QUOTER_ADDRESS',
@@ -59,7 +58,7 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
       tokenOut: `0x${string}`;
       quoterDetails: `0x${string}`;
     }[];
-  }[] = RouteDetails.map((quote) => {
+  }[] = routeDetails.map((quote) => {
     return {
       routingSymbol: quote.routingSymbol,
       initialAmount: quote.initialAmount,
@@ -76,7 +75,6 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
                   dexName: item.dexName,
                   version: item.version,
                   factoryAddress: item.factoryAddress,
-                  routerAddress: item.routerAddress,
                 };
               }),
             ],
@@ -88,7 +86,7 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
 
   const batchFunctions: (() => Promise<void>)[] = [];
   const functionBatchSize = 4;
-  const callsPerSecond = 8;
+  const callsPerSecond = 6;
   const batchSize = 10240;
 
   for (let i = 0; i < quoteCalls.length; i += functionBatchSize) {
@@ -99,7 +97,7 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
     batchFunctions.push(async () => {
       const contracts = batchCalls.map((call) => ({
         address: ConfigUtil.getConfig().V3_ARBITRAGE_QUOTER_ADDRESS as Address,
-        abi: ArbitrageQuoter__factory.abi,
+        abi: V3ArbitrageQuoter__factory.abi,
         functionName: 'quoteBestRoute' as const,
         args: [call.initialAmount, call.swapPaths],
       }));
@@ -153,7 +151,7 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
                   ethers.formatUnits(
                     (netProfit * ethers.parseUnits('1', 5)) /
                       quoteResults[j].result![0].amountIn,
-                    5,
+                    3,
                   ) + '%',
                 ...quoteResults[j],
               },
@@ -175,27 +173,27 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
 
 const exec = async () => {
   const tokenAmounts = [
-    new TokenAmount(BscTxTokenConstant.usdt, '1000'),
-    new TokenAmount(BscTxTokenConstant.eth, '0.5'),
-    new TokenAmount(BscTxTokenConstant.btcb, '0.001'),
-    new TokenAmount(BscTxTokenConstant.wbnb, '2'),
+    new TokenAmount(BscTxTokenConstant.usdt, '10000'),
+    new TokenAmount(BscTxTokenConstant.eth, '10'),
+    new TokenAmount(BscTxTokenConstant.btcb),
+    new TokenAmount(BscTxTokenConstant.wbnb, '20'),
     new TokenAmount(BscTxTokenConstant.zk),
-    new TokenAmount(BscTxTokenConstant.usdc, '1000'),
+    new TokenAmount(BscTxTokenConstant.usdc),
     new TokenAmount(BscTxTokenConstant.b2),
-    new TokenAmount(BscTxTokenConstant.busd, '1000'),
+    new TokenAmount(BscTxTokenConstant.busd),
     new TokenAmount(BscTxTokenConstant.koge),
-    new TokenAmount(BscTxTokenConstant.cake, '500'),
+    new TokenAmount(BscTxTokenConstant.cake),
     // new TokenAmount(BscTxTokenConstant.rlb),
     // new TokenAmount(BscTxTokenConstant.turbo),
     // new TokenAmount(BscTxTokenConstant.pndc),
-    new TokenAmount(BscUSDTokenConstant.usdz, '1000'),
-    new TokenAmount(BscUSDTokenConstant.aicell),
-    new TokenAmount(BscUSDTokenConstant.obt),
-    new TokenAmount(BscUSDTokenConstant.htp),
-    new TokenAmount(BscUSDTokenConstant.skyai),
-    new TokenAmount(BscUSDTokenConstant.fhe),
-    new TokenAmount(BscUSDTokenConstant.wsm),
-    new TokenAmount(BscUSDTokenConstant.cat),
+    new TokenAmount(BscUSDTokenConstant.usdz),
+    // new TokenAmount(BscUSDTokenConstant.aicell),
+    // new TokenAmount(BscUSDTokenConstant.obt),
+    // new TokenAmount(BscUSDTokenConstant.htp),
+    // new TokenAmount(BscUSDTokenConstant.skyai),
+    // new TokenAmount(BscUSDTokenConstant.fhe),
+    // new TokenAmount(BscUSDTokenConstant.wsm),
+    // new TokenAmount(BscUSDTokenConstant.cat),
     // new TokenAmount(BscUSDTokenConstant._1inch),
     // new TokenAmount(BscUSDTokenConstant.pundiai),
     // new TokenAmount(BscUSDTokenConstant.gfal),
@@ -204,16 +202,18 @@ const exec = async () => {
     // new TokenAmount(BscUSDTokenConstant.abra),
   ];
 
-  const RouteDetails = await SmartQuoterSwapPathUtil.prepareQuoteSwapPath(
-    tokenAmounts,
-  );
+  const [swapRoute, arbitrageRoute] = await Promise.all([
+    SmartQuoterSwapPathUtil.prepareQuoteSwapPath(tokenAmounts, 2),
+    SmartQuoterSwapPathUtil.prepareQuoteSwapPath(tokenAmounts, 3),
+  ]);
+  const routeDetails = [...swapRoute, ...arbitrageRoute];
 
   let counter = 0;
   while (true) {
     console.log(
       `${new Date().toISOString()}: Start quoteBestRoute - ${counter++}`,
     );
-    await quoteBestRoute(RouteDetails);
+    await quoteBestRoute(routeDetails);
   }
 };
 

@@ -3,7 +3,6 @@ import { ethers } from 'ethers';
 import { Address, encodeAbiParameters } from 'viem';
 
 import { Token } from '@uniswap/sdk-core';
-import * as JSONbig from 'json-bigint';
 import {
   ContractFunctionRevertedError,
   createPublicClient,
@@ -13,16 +12,10 @@ import {
 } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
-import { V3Quoter__factory } from '../../typechain-types/factories/contracts/lens/V3Quoter__factory';
+import { V3Quoter__factory } from '../../typechain-types/factories/contracts/quote-v3/V3Quoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
 import { BscContractConstant } from '../common/bsc-contract.constant';
-import { RouterUtil } from '../common/router.util';
-import { LogUtil } from '../log/log.util';
-import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
-import {
-  SubgraphEndpoint,
-  SubgraphUtil,
-} from '../subgraph-arbitrage/subgraph.util';
+import { SubgraphEndpoint, SubgraphUtil } from '../subgraph/subgraph.util';
 
 dotenv.config();
 
@@ -38,7 +31,7 @@ const deploy = async () => {
       args: [],
     });
 
-  console.log('Transacion hash:', hash);
+  console.log('Transaction hash:', hash);
 
   // Wait for the transaction to be mined
   const receipt =

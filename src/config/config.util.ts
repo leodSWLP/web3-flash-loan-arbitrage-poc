@@ -44,11 +44,18 @@ export class ConfigUtil {
       .url('MONGO_URI must be a valid MongoDB connection URL')
       .nonempty('MONGO_URI is required'),
     SUBGRAPH_API_KEY: z.string().optional(),
+    AAVE_FLASH_LOAN_ADDRESS: z
+      .string()
+      .optional()
+      .transform((val) => (val === '' ? undefined : val))
+      .refine(
+        (val) => val !== undefined && /^0x[0-9a-fA-F]{40}$/.test(val),
+        'AAVE_FLASH_LOAN_ADDRESS must be a valid Ethereum address',
+      ),
     QUOTE_ADDRESS: z
       .string()
       .optional()
       .transform((val) => (val === '' ? undefined : val))
-
       .refine(
         (val) => val === undefined || /^0x[0-9a-fA-F]{40}$/.test(val),
         'QUOTE_ADDRESS must be a valid Ethereum address or undefined',
@@ -57,7 +64,6 @@ export class ConfigUtil {
       .string()
       .optional()
       .transform((val) => (val === '' ? undefined : val))
-
       .refine(
         (val) => val === undefined || /^0x[0-9a-fA-F]{40}$/.test(val),
         'V3_QUOTER_ADDRESS must be a valid Ethereum address or undefined',
@@ -66,14 +72,11 @@ export class ConfigUtil {
       .string()
       .optional()
       .transform((val) => (val === '' ? undefined : val))
-
       .refine(
         (val) => val === undefined || /^0x[0-9a-fA-F]{40}$/.test(val),
         'V3_ARBITRAGE_QUOTER_ADDRESS must be a valid Ethereum address or undefined',
       ),
-    DEBUG: z
-      .enum(['', 'true', 'false'])
-      .transform((v) => v === 'true'),
+    DEBUG: z.enum(['', 'true', 'false']).transform((v) => v === 'true'),
   });
 
   private static config: z.infer<typeof ConfigUtil.envSchema> | null = null;
@@ -101,4 +104,3 @@ export class ConfigUtil {
     }
   }
 }
-

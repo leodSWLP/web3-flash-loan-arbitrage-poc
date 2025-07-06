@@ -7,7 +7,7 @@ import { BscTxTokenConstant } from './common/bsc-token.constant';
 import {
   SubgraphArbitrageUtil,
   TokenAmount,
-} from './subgraph-arbitrage/subgraph-arbitrage.util';
+} from './subgraph/subgraph-arbitrage.util';
 
 dotenv.config();
 

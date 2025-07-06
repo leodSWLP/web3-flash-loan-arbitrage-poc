@@ -21,7 +21,6 @@ contract V3ArbitrageQuoter is Ownable {
         string dexName;
         string version;
         address factoryAddress;
-        address routerAddress;
         uint24 fee;
     }
 
@@ -39,7 +38,6 @@ contract V3ArbitrageQuoter is Ownable {
         uint256 amountIn;
         uint256 amountOut;
         address factoryAddress;
-        address routerAddress;
         uint24 fee;
         uint160 sqrtPriceX96;
         uint32 initializedTicksCrossed;
@@ -125,7 +123,6 @@ contract V3ArbitrageQuoter is Ownable {
                     amountIn: amountIn,
                     amountOut: amountOut,
                     factoryAddress: quoter.factoryAddress,
-                    routerAddress: quoter.routerAddress,
                     fee: quoter.fee,
                     sqrtPriceX96: sqrtPriceX96,
                     initializedTicksCrossed: ticksCrossed,
