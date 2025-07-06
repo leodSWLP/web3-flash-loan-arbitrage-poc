@@ -50,7 +50,7 @@ async function estimateDeploymentCost() {
 async function deployContract(gasLimit: bigint) {
   if (ConfigUtil.getConfig().V3_QUOTER_ADDRESS) {
     throw new Error(
-      'Contract already deployed- please check V3_QUOTER_ADDRESS',
+      'Contract already deployed - please check V3_QUOTER_ADDRESS',
     );
   }
   const provider = new ethers.JsonRpcProvider(
