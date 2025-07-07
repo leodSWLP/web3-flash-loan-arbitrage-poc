@@ -23,8 +23,15 @@ contract FlashArbitrageWithDebug is IFlashLoan, FlashLoanSimpleReceiverBase {
     function executeFlashLoan(
         address borrowToken,
         uint256 amountIn,
-        SwapDetail[] calldata swapDetails
+        SwapDetail[] calldata swapDetails,
+        uint64 maxBlockNumber
     ) external {
+
+        // maxBlockNumber == 0 means skip block number validation
+        if (maxBlockNumber != 0 && maxBlockNumber > block.number) {
+            revert BlockNumberExceedsCurrent(maxBlockNumber, uint64(block.number));
+        }
+        
         console2.log('Step 1: Starting flash loan execution');
         bytes memory params = abi.encode(swapDetails);
         uint16 referralCode = 0;

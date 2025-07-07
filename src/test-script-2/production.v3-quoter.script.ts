@@ -15,9 +15,7 @@ import { bsc } from 'viem/chains';
 import { V3Quoter__factory } from '../../typechain-types/factories/contracts/quote-v3/V3Quoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
 import { BscContractConstant } from '../common/bsc-contract.constant';
-import { RouterUtil } from '../common/router.util';
-import { LogUtil } from '../log/log.util';
-import { TokenAmount } from '../subgraph-arbitrage/subgraph-arbitrage.util';
+
 import { ConfigUtil } from '../config/config.util';
 import { SubgraphEndpoint, SubgraphUtil } from '../subgraph/subgraph.util';
 
@@ -167,22 +165,6 @@ const exec = async () => {
 
   // await deploy();
   await callQuote();
-  // await prepareQuoteSwapPath([
-  //     new TokenAmount(BscTxTokenConstant.usdt, '1000'),
-  //     new TokenAmount(BscTxTokenConstant.eth, '0.5'),
-  //     new TokenAmount(BscTxTokenConstant.btcb, '0.0001'),
-  //     new TokenAmount(BscTxTokenConstant.wbnb, '2'),
-  //     new TokenAmount(BscTxTokenConstant.zk, '2000'),
-  //     new TokenAmount(BscTxTokenConstant.usdc, '1000'),
-  //     new TokenAmount(BscTxTokenConstant.b2, '2000'),
-  //     new TokenAmount(BscTxTokenConstant.busd),
-  //     new TokenAmount(BscTxTokenConstant.koge),
-  //     new TokenAmount(BscTxTokenConstant.cake),
-  //     new TokenAmount(BscTxTokenConstant.rlb),
-  //     new TokenAmount(BscTxTokenConstant.turbo),
-  //     new TokenAmount(BscTxTokenConstant.pndc),
-  //     new TokenAmount(BscTxTokenConstant.shib),
-  // ]);
 
   const end = performance.now();
   const ms = end - start;

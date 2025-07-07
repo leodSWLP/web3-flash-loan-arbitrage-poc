@@ -25,7 +25,7 @@ export class ThrottlingUtil {
 
     for (let i = 0; i < functions.length; i += batchSize) {
       const startTime = performance.now();
-      LogUtil.debug(`throttleAsyncFunctions(): execute batch ${i}`);
+      LogUtil.debug(`throttleAsyncFunctions(): execute batch from index ${i}`);
       const batch = functions.slice(
         i,
         Math.min(i + batchSize, functions.length),

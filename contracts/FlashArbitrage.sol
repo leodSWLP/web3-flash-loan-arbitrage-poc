@@ -20,21 +20,24 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
     function executeFlashLoan(
         address borrowToken,
         uint256 amountIn,
-        SwapDetail[] calldata swapDetails
+        SwapDetail[] calldata swapDetails,
+        uint64 maxBlockNumber
     ) external {
+
+        // maxBlockNumber == 0 means skip block number validation
+        if (maxBlockNumber != 0 && maxBlockNumber > block.number) {
+            revert BlockNumberExceedsCurrent(maxBlockNumber, uint64(block.number));
+        }
         bytes memory params = abi.encode(swapDetails);
         uint16 referralCode = 0;
-        try
-            POOL.flashLoanSimple(
-                address(this),
-                borrowToken,
-                amountIn,
-                params,
-                referralCode
-            )
-        {} catch {
-            revert OperationStepFailed(0);
-        }
+
+        POOL.flashLoanSimple(
+            address(this),
+            borrowToken,
+            amountIn,
+            params,
+            referralCode
+        );
     }
 
     function _swap(

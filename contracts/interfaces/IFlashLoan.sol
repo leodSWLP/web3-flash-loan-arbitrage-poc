@@ -16,6 +16,9 @@ interface IFlashLoan {
         uint256 amountOut
     );
 
+    error BlockNumberExceedsCurrent(uint64 maxBlockNumber, uint64 currentBlockNumber);
+
+
     event ArbitrageProfitable(uint256 repayAmount, uint256 actualAmountOut);
 
     struct BorrowDetail {
