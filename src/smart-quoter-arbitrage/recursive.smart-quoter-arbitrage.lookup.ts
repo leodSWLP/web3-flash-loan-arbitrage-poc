@@ -15,10 +15,6 @@ import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { V3ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/quote-v3/V3ArbitrageQuoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
-import {
-  BscTxTokenConstant,
-  BscUSDTokenConstant,
-} from '../common/bsc-token.constant';
 import { ThrottlingUtil } from '../common/throttling.util';
 import { ConfigUtil } from '../config/config.util';
 import { LogUtil } from '../log/log.util';
@@ -85,8 +81,8 @@ const quoteBestRoute = async (routeDetails: RouteDetail[]) => {
   });
 
   const batchFunctions: (() => Promise<void>)[] = [];
-  const functionBatchSize = 4;
-  const callsPerSecond = 6;
+  const functionBatchSize = 3;
+  const callsPerSecond = 5;
   const batchSize = 10240;
 
   for (let i = 0; i < quoteCalls.length; i += functionBatchSize) {
@@ -137,7 +133,7 @@ const quoteBestRoute = async (routeDetails: RouteDetail[]) => {
             dirPath,
             `${timestamp}-${quoteCalls[i + j].routingSymbol}${
               isProfitable ? '-profitable' : ''
-            }.json`,
+            }.json`.replaceAll('->', '--'),
           );
 
           await fs.writeFile(
@@ -174,19 +170,19 @@ const quoteBestRoute = async (routeDetails: RouteDetail[]) => {
 const exec = async () => {
   const tokenAmounts = [
     new TokenAmount(BscTxTokenConstant.usdt, '10000'),
-    new TokenAmount(BscTxTokenConstant.eth, '10'),
+    new TokenAmount(BscTxTokenConstant.eth),
     new TokenAmount(BscTxTokenConstant.btcb),
-    new TokenAmount(BscTxTokenConstant.wbnb, '20'),
-    new TokenAmount(BscTxTokenConstant.zk),
+    new TokenAmount(BscTxTokenConstant.wbnb),
+    // new TokenAmount(BscTxTokenConstant.zk),
     new TokenAmount(BscTxTokenConstant.usdc),
-    new TokenAmount(BscTxTokenConstant.b2),
-    new TokenAmount(BscTxTokenConstant.busd),
-    new TokenAmount(BscTxTokenConstant.koge),
+    // new TokenAmount(BscTxTokenConstant.b2),
+    // new TokenAmount(BscTxTokenConstant.busd),
+    // new TokenAmount(BscTxTokenConstant.koge),
     new TokenAmount(BscTxTokenConstant.cake),
     // new TokenAmount(BscTxTokenConstant.rlb),
     // new TokenAmount(BscTxTokenConstant.turbo),
     // new TokenAmount(BscTxTokenConstant.pndc),
-    new TokenAmount(BscUSDTokenConstant.usdz),
+    // new TokenAmount(BscUSDTokenConstant.usdz),
     // new TokenAmount(BscUSDTokenConstant.aicell),
     // new TokenAmount(BscUSDTokenConstant.obt),
     // new TokenAmount(BscUSDTokenConstant.htp),

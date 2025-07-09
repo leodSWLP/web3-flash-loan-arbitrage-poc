@@ -124,7 +124,7 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
             dirPath,
             `${timestamp}-${quoteCalls[i + j].routingSymbol}${
               isProfitable ? '-profitable' : ''
-            }.json`,
+            }.json`.replaceAll('->', '--'),
           );
 
           await fs.writeFile(

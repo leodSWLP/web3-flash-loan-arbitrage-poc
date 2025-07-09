@@ -6,7 +6,7 @@ export interface ISwapDetail {
   permit2Address: string;
   tokenIn: string;
   tokenOut: string;
-  fee: string;
+  fee: number;
 }
 
 export interface ITradeMeta {
@@ -41,7 +41,7 @@ const swapDetailSchema = new Schema<ISwapDetail>(
     permit2Address: { type: String, required: true },
     tokenIn: { type: String, required: true },
     tokenOut: { type: String, required: true },
-    fee: { type: String, required: true }, // Store BigInt as string
+    fee: { type: Number, required: true },
   },
   { _id: false },
 );
@@ -74,7 +74,7 @@ const arbitrageResultSchema = new Schema<IArbitrageResult>(
     actualTradeResult: { type: tradeMetaSchema, default: null },
     gasPrice: { type: String, default: null },
     gasUsed: { type: String, default: null },
-    error: {type: Object, default: null},
+    error: { type: Object, default: null },
     swapPath: { type: [swapDetailSchema], required: true },
   },
   { timestamps: true }, // Automatically adds createdAt and updatedAt

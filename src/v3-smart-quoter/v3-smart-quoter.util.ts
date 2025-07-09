@@ -125,7 +125,7 @@ export class V3SmartQuoterUtil {
               dirPath,
               `${timestamp}-${quoteCallParams[i + j].routingSymbol}${
                 isProfitable ? '-profitable' : ''
-              }.json`,
+              }.json`.replaceAll('->', '--'),
             );
 
             await fs.writeFile(

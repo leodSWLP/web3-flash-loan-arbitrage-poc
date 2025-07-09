@@ -4,21 +4,12 @@ import { ethers } from 'ethers';
 import * as fs from 'fs/promises';
 import * as JSONbig from 'json-bigint';
 import * as path from 'path';
-import {
-  Address,
-  createPublicClient,
-  createWalletClient,
-  encodeAbiParameters,
-  http,
-} from 'viem';
+import { Address, createPublicClient, createWalletClient, http } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { V3ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/quote-v3/V3ArbitrageQuoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
-import {
-  BscTxTokenConstant,
-  BscUSDTokenConstant,
-} from '../common/bsc-token.constant';
+import { BscTxTokenConstant } from '../common/bsc-token.constant';
 import { ThrottlingUtil } from '../common/throttling.util';
 import { ConfigUtil } from '../config/config.util';
 import { LogUtil } from '../log/log.util';
@@ -44,14 +35,19 @@ const quoterDetailType = {
   ],
 } as const;
 
-const quoteBestRoute = async (routeDetails: RouteDetail[], triggerByBlockNumber?: bigint) => {
+const quoteBestRoute = async (
+  routeDetails: RouteDetail[],
+  triggerByBlockNumber?: bigint,
+) => {
   if (!ConfigUtil.getConfig().V3_ARBITRAGE_QUOTER_ADDRESS) {
     throw new Error(
       '.env missing contract address - V3_ARBITRAGE_QUOTER_ADDRESS',
     );
   }
 
-  const quoteCalls = routeDetails.map(detail => V3SmartQuoterUtil.prepareQuoterCallParam(detail));
+  const quoteCalls = routeDetails.map((detail) =>
+    V3SmartQuoterUtil.prepareQuoterCallParam(detail),
+  );
 
   const batchFunctions: (() => Promise<void>)[] = [];
   const functionBatchSize = 4;
@@ -65,8 +61,10 @@ const quoteBestRoute = async (routeDetails: RouteDetail[], triggerByBlockNumber?
     );
     batchFunctions.push(async () => {
       const callStart = performance.now();
-      
-      const blockNumberPromise = triggerByBlockNumber ? undefined : ShareContentLocalStore.getStore().viemChainClient.getBlockNumber();
+
+      const blockNumberPromise = triggerByBlockNumber
+        ? undefined
+        : ShareContentLocalStore.getStore().viemChainClient.getBlockNumber();
 
       const contracts = batchCalls.map((call) => ({
         address: ConfigUtil.getConfig().V3_ARBITRAGE_QUOTER_ADDRESS as Address,
@@ -80,8 +78,8 @@ const quoteBestRoute = async (routeDetails: RouteDetail[], triggerByBlockNumber?
           contracts,
           batchSize,
         });
-      
-      const blockNumber = triggerByBlockNumber ?? await blockNumberPromise!;
+
+      const blockNumber = triggerByBlockNumber ?? (await blockNumberPromise!);
 
       const dirPath = './profitable-arbitrages';
       await fs.mkdir(dirPath, { recursive: true });
@@ -111,7 +109,7 @@ const quoteBestRoute = async (routeDetails: RouteDetail[], triggerByBlockNumber?
             dirPath,
             `${timestamp}-${quoteCalls[i + j].routingSymbol}${
               isProfitable ? '-profitable' : ''
-            }.json`,
+            }.json`.replaceAll('->', '--'),
           );
 
           await fs.writeFile(
@@ -152,7 +150,6 @@ const quoteBestRoute = async (routeDetails: RouteDetail[], triggerByBlockNumber?
     `ThrottlingUtil.throttleAsyncFunctions() - execution time: ${ms}`,
   );
 };
-
 
 const exec = async () => {
   const tokenAmounts = [

@@ -78,11 +78,6 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
         args: [call.initialAmount, call.swapPaths],
       }));
 
-      const { results: quoteResults } =
-        await ShareContentLocalStore.getStore().viemChainClient.simulateCalls({
-          calls,
-        });
-
       const dirPath = './profitable-arbitrages';
       await fs.mkdir(dirPath, { recursive: true });
 
@@ -102,7 +97,7 @@ const quoteBestRoute = async (RouteDetails: RouteDetail[]) => {
       //       dirPath,
       //       `${quoteCalls[i + j].routingSymbol}-${timestamp}${
       //         isProfitable ? '-profitable' : ''
-      //       }.json`,
+      //       }.json`.replaceAll('->', '--'),
       //     );
       //     await fs.writeFile(
       //       filePath,
