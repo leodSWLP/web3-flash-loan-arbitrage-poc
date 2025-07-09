@@ -118,7 +118,7 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
             revert ArbitrageNotProfitable(repayAmount, currentAmount);
         }
 
-        emit ArbitrageProfitable(repayAmount, currentAmount);
+        emit ArbitrageProfitable(repayAmount, currentAmount, block.number);
 
         try
             IERC20(asset).transfer(initiator, currentAmount - repayAmount)

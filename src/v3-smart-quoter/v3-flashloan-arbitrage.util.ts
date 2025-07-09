@@ -2,7 +2,13 @@ import { ethers } from 'ethers';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
 import { RouteDetail } from './smart-quoter.swap-path.util';
 import { ConfigUtil } from '../config/config.util';
-import { Address } from 'viem';
+import {
+  Address,
+  ContractFunctionRevertedError,
+  decodeErrorResult,
+  parseEventLogs,
+  parseGwei,
+} from 'viem';
 import { FlashArbitrage__factory } from '../../typechain-types/factories/contracts/FlashArbitrage__factory';
 import { IFlashLoan } from '../../typechain-types/contracts/FlashArbitrage';
 import { BscContractConstant } from '../common/bsc-contract.constant';
@@ -22,18 +28,42 @@ export type QuoteResult = {
   gasEstimate: bigint;
 };
 
+export type FlashLoanResult = {
+  actualTradeResult?: {
+    blockNumber: number;
+    isProfitable: boolean;
+    finalAmount: string;
+    readableNetProfit: string;
+    profitRate: string;
+  },
+  gasPrice?: string;
+  gasUsed?: string;
+  error?: any;
+}
+
 export class V3FlashLoanArbitrageUtil {
-  static MAX_GAS_PRICE = ethers.parseUnits('5', 9);
+  static MAX_PRIORITY_FEE_PER_GAS = '5';
+  static DEFAULT_PRIORITY_FEE_PER_GAS = '1';
+  static MAX_BASE_FEE = '0.3';
+
   static async executeFlashLoanSwap(
     routeDetail: RouteDetail,
     quoteResults: QuoteResult[],
-    blockNumber: number,
-    gasPriceGWei? = '0.11',
+    blockNumber: bigint,
+    writeContractOptions?: {
+      maxPriorityFeePerGas?: string;
+    },
   ) {
-    let gasPrice = ethers.parseUnits(gasPriceGWei, 9);
-    if (gasPrice > this.MAX_GAS_PRICE) {
-      gasPrice = this.MAX_GAS_PRICE;
+    
+    const result: FlashLoanResult = {}; 
+    let maxPriorityFeePerGas = parseGwei(
+      writeContractOptions?.maxPriorityFeePerGas ?? this.DEFAULT_PRIORITY_FEE_PER_GAS,
+    );
+    if (maxPriorityFeePerGas > parseGwei(this.MAX_PRIORITY_FEE_PER_GAS)) {
+      maxPriorityFeePerGas = parseGwei(this.MAX_PRIORITY_FEE_PER_GAS);
     }
+    const maxBlockNumber = blockNumber + 2n;
+    let maxFeePerGas = maxPriorityFeePerGas + parseGwei(this.MAX_BASE_FEE);
 
     const borrowToken = routeDetail.swapPaths[0].tokenIn as Address;
     const borrowAmount = routeDetail.initialAmount;
@@ -60,39 +90,50 @@ export class V3FlashLoanArbitrageUtil {
         fee: quote.fee,
       });
     });
-      
-      //todo error handling and event handling
+
     const hash =
       await ShareContentLocalStore.getStore().viemWalletClient!.writeContract({
         address: ConfigUtil.getConfig().AAVE_FLASH_LOAN_ADDRESS! as Address,
         abi: FlashArbitrage__factory.abi,
         functionName: 'executeFlashLoan',
-        args: [borrowToken, borrowAmount, swapDetails, gasPrice],
+        args: [borrowToken, borrowAmount, swapDetails, maxBlockNumber],
         chain: bsc,
         account: privateKeyToAccount(
           process.env.WALLET_PRIVATE_KEY as `0x${string}`,
-          ),
-        gasPrice,
+        ),
+        maxFeePerGas,
+        maxPriorityFeePerGas
       });
 
     console.log('Transaction hash:', hash);
+    try {
+      // Wait for the transaction to be mined
+      const receipt =
+        await ShareContentLocalStore.getStore().viemChainClient.waitForTransactionReceipt(
+          {
+            hash,
+            pollingInterval: 500,
+          },
+        );
 
-    // Wait for the transaction to be mined
-    const receipt =
-      await ShareContentLocalStore.getStore().viemChainClient.waitForTransactionReceipt(
-        {
-          hash,
-          pollingInterval: 500,
-        },
-      );
-    const contractAddress = receipt.contractAddress;
+      if (receipt.status == 'success') {
+        const logs = receipt.logs;
+        const event = parseEventLogs({
+          abi: FlashArbitrage__factory.abi,
+          logs,
+          eventName: 'ArbitrageProfitable',
+        });
 
-    if (!contractAddress) {
-      throw new Error(
-        'Contract deployment failed: No contract address in receipt',
-      );
+        result.actualTradeResult = {
+          blockNumber: receipt.blockNumber,
+        }
+      }
+    } catch (err) {
+      if (err instanceof ContractFunctionRevertedError) {
+        console.log('Decoded Custom Error:', err);
+      } else {
+        console.error('An unexpected error occurred:', err);
+      }
     }
-    console.log('Contract deployed to:', contractAddress);
-    return contractAddress;
   }
 }

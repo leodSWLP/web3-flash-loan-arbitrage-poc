@@ -10,6 +10,7 @@ export interface ISwapDetail {
 }
 
 export interface ITradeMeta {
+  blockNumber: number;
   isProfitable: boolean;
   finalAmount: string;
   readableNetProfit: string;
@@ -18,7 +19,6 @@ export interface ITradeMeta {
 
 export interface IArbitrageResult extends Document {
   routingSymbol: string;
-  blockNumber: number;
   initialAmount: string;
   repayAmount: string;
   tradePrediction: ITradeMeta;
@@ -28,6 +28,7 @@ export interface IArbitrageResult extends Document {
   transactionHash?: string;
   actualTradeResult?: ITradeMeta;
   gasPrice?: string;
+  gasUsed?: string;
   error?: any;
   createdAt: Date;
   updatedAt: Date;
@@ -47,6 +48,7 @@ const swapDetailSchema = new Schema<ISwapDetail>(
 
 const tradeMetaSchema = new Schema<ITradeMeta>(
   {
+    blockNumber: { type: Number, required: true },
     isProfitable: { type: Boolean, required: true },
     finalAmount: { type: String, required: true },
     readableNetProfit: { type: String, required: true },
@@ -58,7 +60,6 @@ const tradeMetaSchema = new Schema<ITradeMeta>(
 const arbitrageResultSchema = new Schema<IArbitrageResult>(
   {
     routingSymbol: { type: String, required: true, indexes: true },
-    blockNumber: { type: Number, required: true },
     initialAmount: { type: String, required: true },
     repayAmount: { type: String, required: true },
     tradePrediction: { type: tradeMetaSchema, required: true },
@@ -72,7 +73,8 @@ const arbitrageResultSchema = new Schema<IArbitrageResult>(
     },
     actualTradeResult: { type: tradeMetaSchema, default: null },
     gasPrice: { type: String, default: null },
-    error: {type: Any, default: null},
+    gasUsed: { type: String, default: null },
+    error: {type: Object, default: null},
     swapPath: { type: [swapDetailSchema], required: true },
   },
   { timestamps: true }, // Automatically adds createdAt and updatedAt

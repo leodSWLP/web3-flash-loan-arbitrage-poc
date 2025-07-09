@@ -151,7 +151,7 @@ contract FlashArbitrageWithDebug is IFlashLoan, FlashLoanSimpleReceiverBase {
         }
 
         console2.log('Step 16: Arbitrage profitable, emitting event');
-        emit ArbitrageProfitable(repayAmount, currentAmount);
+        emit ArbitrageProfitable(repayAmount, currentAmount, block.number);
 
         try IERC20(asset).transfer(initiator, currentAmount - repayAmount) {
             console2.log('Step 17: Profit transfer to initiator successful');
