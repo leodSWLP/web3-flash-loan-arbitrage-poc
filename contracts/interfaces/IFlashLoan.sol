@@ -4,7 +4,8 @@ pragma solidity ^0.8.20;
 interface IFlashLoan {
     error ArbitrageNotProfitable(
         uint256 repayAmountRequired,
-        uint256 actualAmountOut
+        uint256 actualAmountOut,
+        uint256 blockNumber
     );
     error OperationStepFailed(uint8 step);
 
@@ -16,10 +17,12 @@ interface IFlashLoan {
         uint256 amountOut
     );
 
-    error BlockNumberExceedsCurrent(uint64 maxBlockNumber, uint64 currentBlockNumber);
+    error BlockNumberExceedsCurrent(
+        uint64 maxBlockNumber,
+        uint64 currentBlockNumber
+    );
 
-
-    event ArbitrageProfitable(uint256 repayAmount, uint256 actualAmountOut, uint256 blockNumber);
+    event ArbitrageProfitable(uint256 repayAmount, uint256 actualAmountOut);
 
     struct BorrowDetail {
         address caller;

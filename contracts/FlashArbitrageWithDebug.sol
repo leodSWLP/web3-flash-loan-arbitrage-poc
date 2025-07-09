@@ -26,12 +26,14 @@ contract FlashArbitrageWithDebug is IFlashLoan, FlashLoanSimpleReceiverBase {
         SwapDetail[] calldata swapDetails,
         uint64 maxBlockNumber
     ) external {
-
         // maxBlockNumber == 0 means skip block number validation
         if (maxBlockNumber != 0 && maxBlockNumber > block.number) {
-            revert BlockNumberExceedsCurrent(maxBlockNumber, uint64(block.number));
+            revert BlockNumberExceedsCurrent(
+                maxBlockNumber,
+                uint64(block.number)
+            );
         }
-        
+
         console2.log('Step 1: Starting flash loan execution');
         bytes memory params = abi.encode(swapDetails);
         uint16 referralCode = 0;
@@ -147,11 +149,15 @@ contract FlashArbitrageWithDebug is IFlashLoan, FlashLoanSimpleReceiverBase {
 
         if (currentAmount <= repayAmount) {
             console2.log('Step 15: Arbitrage not profitable');
-            revert ArbitrageNotProfitable(repayAmount, currentAmount);
+            revert ArbitrageNotProfitable(
+                repayAmount,
+                currentAmount,
+                block.number
+            );
         }
 
         console2.log('Step 16: Arbitrage profitable, emitting event');
-        emit ArbitrageProfitable(repayAmount, currentAmount, block.number);
+        emit ArbitrageProfitable(repayAmount, currentAmount);
 
         try IERC20(asset).transfer(initiator, currentAmount - repayAmount) {
             console2.log('Step 17: Profit transfer to initiator successful');

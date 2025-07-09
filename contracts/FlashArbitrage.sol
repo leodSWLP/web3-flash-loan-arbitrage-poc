@@ -23,10 +23,12 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
         SwapDetail[] calldata swapDetails,
         uint64 maxBlockNumber
     ) external {
-
         // maxBlockNumber == 0 means skip block number validation
         if (maxBlockNumber != 0 && maxBlockNumber > block.number) {
-            revert BlockNumberExceedsCurrent(maxBlockNumber, uint64(block.number));
+            revert BlockNumberExceedsCurrent(
+                maxBlockNumber,
+                uint64(block.number)
+            );
         }
         bytes memory params = abi.encode(swapDetails);
         uint16 referralCode = 0;
@@ -115,10 +117,14 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
         }
 
         if (currentAmount <= repayAmount) {
-            revert ArbitrageNotProfitable(repayAmount, currentAmount);
+            revert ArbitrageNotProfitable(
+                repayAmount,
+                currentAmount,
+                block.number
+            );
         }
 
-        emit ArbitrageProfitable(repayAmount, currentAmount, block.number);
+        emit ArbitrageProfitable(repayAmount, currentAmount);
 
         try
             IERC20(asset).transfer(initiator, currentAmount - repayAmount)
