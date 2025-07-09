@@ -226,7 +226,7 @@ const callContracts = async () => {
         address: aaveArbitrageAddress,
         abi: FlashArbitrageWithDebug__factory.abi,
         functionName: 'executeFlashLoan',
-        args: [bestRoute[0].tokenIn, bestRoute[0].amountIn, swapDetail],
+        args: [bestRoute[0].tokenIn, bestRoute[0].amountIn, swapDetail, 0n],
         account: localAccount,
         chain: localhostChain,
       });

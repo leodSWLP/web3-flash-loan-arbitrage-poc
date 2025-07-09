@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
+import { ConfigUtil } from '../config/config.util';
 
-interface ISwapDetail {
-  routerType: string;
+export interface ISwapDetail {
   routerAddress: string;
   permit2Address: string;
   tokenIn: string;
@@ -9,49 +9,73 @@ interface ISwapDetail {
   fee: string;
 }
 
-interface IArbitrageResult extends Document {
+export interface ITradeMeta {
+  blockNumber: number;
   isProfitable: boolean;
-  repayAmount: string;
-  initialAmount: string;
   finalAmount: string;
-  netProfit: string;
   readableNetProfit: string;
   profitRate: string;
-  path: string[];
+}
+
+export interface IArbitrageResult extends Document {
+  routingSymbol: string;
+  initialAmount: string;
+  repayAmount: string;
+  tradePrediction: ITradeMeta;
+  quotePath: any[];
   swapPath: ISwapDetail[];
-  actualIsProfitable?: boolean;
-  actualFinalAmount?: string;
-  actualNetProfit?: string;
-  actualProfitRate?: string;
+  isTradeExecuted: boolean;
+  transactionHash?: string;
+  actualTradeResult?: ITradeMeta;
+  gasPrice?: string;
+  gasUsed?: string;
+  error?: any;
   createdAt: Date;
   updatedAt: Date;
 }
 
 // Mongoose Schema
-const swapDetailSchema = new Schema<ISwapDetail>({
-  routerType: { type: String, required: true },
-  routerAddress: { type: String, required: true },
-  permit2Address: { type: String, required: true },
-  tokenIn: { type: String, required: true },
-  tokenOut: { type: String, required: true },
-  fee: { type: String, required: true }, // Store BigInt as string
-});
+const swapDetailSchema = new Schema<ISwapDetail>(
+  {
+    routerAddress: { type: String, required: true },
+    permit2Address: { type: String, required: true },
+    tokenIn: { type: String, required: true },
+    tokenOut: { type: String, required: true },
+    fee: { type: String, required: true }, // Store BigInt as string
+  },
+  { _id: false },
+);
+
+const tradeMetaSchema = new Schema<ITradeMeta>(
+  {
+    blockNumber: { type: Number, required: true },
+    isProfitable: { type: Boolean, required: true },
+    finalAmount: { type: String, required: true },
+    readableNetProfit: { type: String, required: true },
+    profitRate: { type: String, required: true },
+  },
+  { _id: false },
+);
 
 const arbitrageResultSchema = new Schema<IArbitrageResult>(
   {
-    isProfitable: { type: Boolean, required: true },
-    repayAmount: { type: String, required: true },
+    routingSymbol: { type: String, required: true, indexes: true },
     initialAmount: { type: String, required: true },
-    finalAmount: { type: String, required: true },
-    netProfit: { type: String, required: true },
-    readableNetProfit: { type: String, required: true },
-    profitRate: { type: String, required: true },
-    path: { type: [String], required: true },
+    repayAmount: { type: String, required: true },
+    tradePrediction: { type: tradeMetaSchema, required: true },
+    quotePath: { type: [Object], required: true },
+    isTradeExecuted: { type: Boolean, default: false },
+    transactionHash: {
+      type: String,
+      required: false,
+      default: null,
+      indexes: true,
+    },
+    actualTradeResult: { type: tradeMetaSchema, default: null },
+    gasPrice: { type: String, default: null },
+    gasUsed: { type: String, default: null },
+    error: {type: Object, default: null},
     swapPath: { type: [swapDetailSchema], required: true },
-    actualIsProfitable: { type: Boolean, default: null }, // actual result
-    actualFinalAmount: { type: String, default: null }, // actual finalAmount
-    actualNetProfit: { type: String, default: null }, // actual netProfit
-    actualProfitRate: { type: String, default: null }, // actual profit rate
   },
   { timestamps: true }, // Automatically adds createdAt and updatedAt
 );
@@ -63,10 +87,10 @@ const ArbitrageResultModel = mongoose.model<IArbitrageResult>(
 );
 
 export class TradeHistoryUtil {
-  static async connectToMongoDB(uri: string): Promise<void> {
+  static async connectToMongoDB(): Promise<void> {
     try {
       if (mongoose.connection.readyState === 0) {
-        await mongoose.connect(uri, {
+        await mongoose.connect(ConfigUtil.getConfig().MONGO_URI, {
           serverSelectionTimeoutMS: 5000,
           maxPoolSize: 10,
         });
@@ -118,21 +142,15 @@ export class TradeHistoryUtil {
 
   static async updateTradeHistory(
     tradeId: string,
-    actualResults: {
-      actualIsProfitable: boolean;
-      actualFinalAmount: bigint;
-      actualNetProfit: bigint;
-      actualProfitRate: string;
-    },
+    arbitrageResult: Partial<IArbitrageResult>,
   ): Promise<IArbitrageResult | null> {
     if (mongoose.connection.readyState !== 1) {
       throw new Error('MongoDB connection is not established');
     }
-    const convertedActualResults = this.convertBigIntToString(actualResults);
+    const convertedActualResults = this.convertBigIntToString(arbitrageResult);
     return await ArbitrageResultModel.findByIdAndUpdate(
       tradeId,
-      { $set: convertedActualResults },
-      { new: true },
+      convertedActualResults,
     );
   }
 
