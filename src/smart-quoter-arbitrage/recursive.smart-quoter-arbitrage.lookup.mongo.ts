@@ -1,9 +1,5 @@
-import * as dotenv from 'dotenv';
 import { ethers } from 'ethers';
 
-import * as fs from 'fs/promises';
-import * as JSONbig from 'json-bigint';
-import * as path from 'path';
 import { Address, createPublicClient, createWalletClient, http } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
@@ -19,7 +15,10 @@ import {
   SmartQuoterSwapPathUtil,
 } from '../v3-smart-quoter/smart-quoter.swap-path.util';
 import { V3SmartQuoterUtil } from '../v3-smart-quoter/v3-smart-quoter.util';
-dotenv.config();
+import { V3FlashLoanArbitrageUtil } from '../v3-smart-quoter/v3-flashloan-arbitrage.util';
+import TradeHistoryUtil from '../trade-history/trade-history-util';
+
+let counter = 0; //todo remove later
 
 export const account = privateKeyToAccount(
   ConfigUtil.getConfig().WALLET_PRIVATE_KEY as `0x${string}`,
@@ -50,8 +49,8 @@ const quoteBestRoute = async (
   );
 
   const batchFunctions: (() => Promise<void>)[] = [];
-  const functionBatchSize = 4;
-  const callsPerSecond = 6;
+  const functionBatchSize = 3;
+  const callsPerSecond = 5;
   const batchSize = 10240;
 
   for (let i = 0; i < quoteCalls.length; i += functionBatchSize) {
@@ -81,9 +80,6 @@ const quoteBestRoute = async (
 
       const blockNumber = triggerByBlockNumber ?? (await blockNumberPromise!);
 
-      const dirPath = './profitable-arbitrages';
-      await fs.mkdir(dirPath, { recursive: true });
-
       let successCounter = 0;
       for (let j = 0; j < quoteResults.length; j++) {
         if (
@@ -92,46 +88,64 @@ const quoteBestRoute = async (
           //   result.result[-1].amountOut > result.result[0].amountIn
         ) {
           successCounter++;
-          const netProfit =
+          const finalAmount =
             quoteResults[j].result![quoteResults[j].result!.length - 1]
-              .amountOut - quoteResults[j].result![0].amountIn;
+              .amountOut;
+          const netProfit = finalAmount - quoteResults[j].result![0].amountIn;
           const isProfitable = netProfit > 0n;
+          const readableNetProfit = ethers.formatUnits(netProfit, 18); //todo handle token in is not 18 decimals
+          const profitRate =
+            ethers.formatUnits(
+              (netProfit * ethers.parseUnits('1', 5)) /
+                quoteResults[j].result![0].amountIn,
+              3,
+            ) + '%';
+          const isCoverInterest = parseFloat(profitRate) > 0.05;
+
           if (!isProfitable) {
             continue;
           }
           console.log(
-            `!!!!!Profitable Tarde Found: ${
+            `!!!!! Profitable Tarde Found: ${
               quoteCalls[i + j].routingSymbol
-            }!!!!!`,
-          );
-          const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-          const filePath = path.join(
-            dirPath,
-            `${timestamp}-${quoteCalls[i + j].routingSymbol}${
-              isProfitable ? '-profitable' : ''
-            }.json`.replaceAll('->', '--'),
+            } with profitRate: ${profitRate} !!!!!`,
           );
 
-          await fs.writeFile(
-            filePath,
-            JSONbig.stringify(
-              {
+          const tradeRouteDetail = routeDetails[i + j];
+          const tradeQuoteResult = [...quoteResults[j].result!];
+          if (isCoverInterest) {
+            await V3FlashLoanArbitrageUtil.executeFlashLoanSwap(
+              tradeRouteDetail,
+              tradeQuoteResult,
+              blockNumber,
+              { maxPriorityFeePerGas: '0.2' },
+            ); //todo maxPriorityFee calculation
+            counter++; //todo remove later
+          } else {
+            const repayAmount = V3FlashLoanArbitrageUtil.calculateRepayAmount(
+              tradeRouteDetail.initialAmount,
+            );
+            TradeHistoryUtil.createTradeHistory({
+              routingSymbol: tradeRouteDetail.routingSymbol,
+              initialAmount: tradeRouteDetail.initialAmount.toString(),
+              repayAmount: repayAmount.toString(),
+              tradePrediction: {
+                blockNumber: Number(blockNumber),
                 isProfitable,
-                netProfit,
-                readableNetProfit: ethers.formatUnits(netProfit, 18),
-                profitRatio:
-                  ethers.formatUnits(
-                    (netProfit * ethers.parseUnits('1', 5)) /
-                      quoteResults[j].result![0].amountIn,
-                    3,
-                  ) + '%',
-                ...quoteResults[j],
+                finalAmount: finalAmount.toString(),
+                readableNetProfit,
+                profitRate,
               },
-              null,
-              2,
-            ),
-          );
+              quotePath: tradeQuoteResult,
+              swapPath:
+                V3FlashLoanArbitrageUtil.parseSwapDetails(tradeQuoteResult),
+              isTradeExecuted: false,
+            });
+          }
         }
+        if (counter > 2) {
+          break;
+        } //todo remove later
       }
 
       const callEnd = performance.now();
@@ -158,7 +172,7 @@ const exec = async () => {
     new TokenAmount(BscTxTokenConstant.btcb),
     new TokenAmount(BscTxTokenConstant.wbnb),
     new TokenAmount(BscTxTokenConstant.usdc),
-    new TokenAmount(BscTxTokenConstant.cake),
+    // new TokenAmount(BscTxTokenConstant.cake),
   ];
 
   const [swapRoute, arbitrageRoute] = await Promise.all([

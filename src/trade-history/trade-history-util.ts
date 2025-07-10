@@ -132,6 +132,7 @@ export class TradeHistoryUtil {
   static async createTradeHistory(
     arbitrageResult: Partial<IArbitrageResult>,
   ): Promise<IArbitrageResult> {
+    await this.connectToMongoDB();
     if (mongoose.connection.readyState !== 1) {
       throw new Error('MongoDB connection is not established');
     }
@@ -144,6 +145,7 @@ export class TradeHistoryUtil {
     tradeId: string,
     arbitrageResult: Partial<IArbitrageResult>,
   ): Promise<IArbitrageResult | null> {
+    await this.connectToMongoDB();
     if (mongoose.connection.readyState !== 1) {
       throw new Error('MongoDB connection is not established');
     }
@@ -157,6 +159,7 @@ export class TradeHistoryUtil {
   static async getTradeHistory(
     tradeId: string,
   ): Promise<IArbitrageResult | null> {
+    await this.connectToMongoDB();
     if (mongoose.connection.readyState !== 1) {
       throw new Error('MongoDB connection is not established');
     }

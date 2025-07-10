@@ -73,7 +73,8 @@ export class V3FlashLoanArbitrageUtil {
       const hash =
         await ShareContentLocalStore.getStore().viemWalletClient!.writeContract(
           {
-            address: ConfigUtil.getConfig().AAVE_FLASH_LOAN_ADDRESS! as Address,
+            address: ConfigUtil.getConfig()
+              .V3_FLASH_LOAN_ARBITRAGE_ADDRESS! as Address,
             abi: FlashArbitrage__factory.abi,
             functionName: 'executeFlashLoan',
             args: [borrowToken, borrowAmount, swapDetails, maxBlockNumber],
@@ -164,9 +165,7 @@ export class V3FlashLoanArbitrageUtil {
       profitRate,
     };
 
-    const repayAmount =
-      routeDetail.initialAmount +
-      this.calculateInterest(routeDetail.initialAmount);
+    const repayAmount = this.calculateRepayAmount(routeDetail.initialAmount);
 
     const arbitrageResult: Partial<IArbitrageResult> = {
       routingSymbol: routeDetail.routingSymbol,
@@ -184,6 +183,10 @@ export class V3FlashLoanArbitrageUtil {
     await TradeHistoryUtil.createTradeHistory(arbitrageResult);
   }
 
+  static calculateRepayAmount(initialValue: bigint, decimals = 18) {
+    return initialValue + this.calculateInterest(initialValue);
+  }
+
   static calculateInterest(initialValue: bigint, decimals = 18) {
     if (initialValue < 100000000n) {
       throw new Error('initialValue must be at least 9 digits');
@@ -195,7 +198,8 @@ export class V3FlashLoanArbitrageUtil {
 
     return result;
   }
-  private static parseSwapDetails(quoteResults: QuoteResult[]) {
+
+  static parseSwapDetails(quoteResults: QuoteResult[]) {
     const swapDetails: {
       routerAddress: Address;
       permit2Address: Address;

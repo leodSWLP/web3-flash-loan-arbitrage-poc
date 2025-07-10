@@ -76,6 +76,14 @@ export class ConfigUtil {
         (val) => val === undefined || /^0x[0-9a-fA-F]{40}$/.test(val),
         'V3_ARBITRAGE_QUOTER_ADDRESS must be a valid Ethereum address or undefined',
       ),
+    V3_FLASH_LOAN_ARBITRAGE_ADDRESS: z
+      .string()
+      .optional()
+      .transform((val) => (val === '' ? undefined : val))
+      .refine(
+        (val) => val === undefined || /^0x[0-9a-fA-F]{40}$/.test(val),
+        'V3_FLASH_LOAN_ARBITRAGE_ADDRESS must be a valid Ethereum address or undefined',
+      ),
     DEBUG: z.enum(['', 'true', 'false']).transform((v) => v === 'true'),
   });
 

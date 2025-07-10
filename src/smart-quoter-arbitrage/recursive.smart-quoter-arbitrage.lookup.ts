@@ -23,6 +23,7 @@ import {
   RouteDetail,
   SmartQuoterSwapPathUtil,
 } from '../v3-smart-quoter/smart-quoter.swap-path.util';
+import { BscTxTokenConstant } from '../common/bsc-token.constant';
 dotenv.config();
 
 export const account = privateKeyToAccount(
@@ -173,29 +174,7 @@ const exec = async () => {
     new TokenAmount(BscTxTokenConstant.eth),
     new TokenAmount(BscTxTokenConstant.btcb),
     new TokenAmount(BscTxTokenConstant.wbnb),
-    // new TokenAmount(BscTxTokenConstant.zk),
     new TokenAmount(BscTxTokenConstant.usdc),
-    // new TokenAmount(BscTxTokenConstant.b2),
-    // new TokenAmount(BscTxTokenConstant.busd),
-    // new TokenAmount(BscTxTokenConstant.koge),
-    new TokenAmount(BscTxTokenConstant.cake),
-    // new TokenAmount(BscTxTokenConstant.rlb),
-    // new TokenAmount(BscTxTokenConstant.turbo),
-    // new TokenAmount(BscTxTokenConstant.pndc),
-    // new TokenAmount(BscUSDTokenConstant.usdz),
-    // new TokenAmount(BscUSDTokenConstant.aicell),
-    // new TokenAmount(BscUSDTokenConstant.obt),
-    // new TokenAmount(BscUSDTokenConstant.htp),
-    // new TokenAmount(BscUSDTokenConstant.skyai),
-    // new TokenAmount(BscUSDTokenConstant.fhe),
-    // new TokenAmount(BscUSDTokenConstant.wsm),
-    // new TokenAmount(BscUSDTokenConstant.cat),
-    // new TokenAmount(BscUSDTokenConstant._1inch),
-    // new TokenAmount(BscUSDTokenConstant.pundiai),
-    // new TokenAmount(BscUSDTokenConstant.gfal),
-    // new TokenAmount(BscUSDTokenConstant.resolv),
-    // new TokenAmount(BscUSDTokenConstant.soph),
-    // new TokenAmount(BscUSDTokenConstant.abra),
   ];
 
   const [swapRoute, arbitrageRoute] = await Promise.all([

@@ -92,7 +92,7 @@ async function deployContract(gasLimit: bigint) {
       receipt!.contractAddress!,
       wallet,
     );
-    console.log(`Contract verified at: ${deployedContract.getAddress()}`);
+    console.log(`Contract verified at: ${await deployedContract.getAddress()}`);
 
     return receipt!.contractAddress;
   } catch (error) {

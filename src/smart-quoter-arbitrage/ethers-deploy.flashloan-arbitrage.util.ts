@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
 import { ethers } from 'ethers';
-import { V3Quoter__factory } from '../../typechain-types/factories/contracts/quote-v3/V3Quoter__factory';
+import { FlashArbitrage__factory } from '../../typechain-types/factories/contracts/FlashArbitrage__factory';
 import { ConfigUtil } from '../config/config.util';
 
 dotenv.config();
@@ -13,10 +13,12 @@ async function estimateDeploymentCost() {
     ConfigUtil.getConfig().WALLET_PRIVATE_KEY,
     provider,
   );
-  const contractFactory = new V3Quoter__factory(wallet);
+  const contractFactory = new FlashArbitrage__factory(wallet);
 
   try {
-    const deployTx = await contractFactory.getDeployTransaction();
+    const deployTx = await contractFactory.getDeployTransaction(
+      ConfigUtil.getConfig().AAVE_FLASH_LOAN_ADDRESS!,
+    );
     const estimatedGas = await provider.estimateGas(deployTx);
     console.log(`Estimated gas: ${estimatedGas.toString()}`);
 
@@ -48,9 +50,9 @@ async function estimateDeploymentCost() {
 }
 
 async function deployContract(gasLimit: bigint) {
-  if (ConfigUtil.getConfig().V3_QUOTER_ADDRESS) {
+  if (ConfigUtil.getConfig().V3_FLASH_LOAN_ARBITRAGE_ADDRESS) {
     throw new Error(
-      'Contract already deployed - please check V3_QUOTER_ADDRESS',
+      'Contract already deployed - please check V3_FLASH_LOAN_ARBITRAGE_ADDRESS',
     );
   }
   const provider = new ethers.JsonRpcProvider(
@@ -60,14 +62,17 @@ async function deployContract(gasLimit: bigint) {
     ConfigUtil.getConfig().WALLET_PRIVATE_KEY,
     provider,
   );
-  const contractFactory = new V3Quoter__factory(wallet);
+  const contractFactory = new FlashArbitrage__factory(wallet);
 
   try {
     console.log('Deploying contract...');
-    const deployTransaction = await contractFactory.deploy({
-      gasPrice: ethers.parseUnits('0.11', 9),
-      gasLimit,
-    });
+    const deployTransaction = await contractFactory.deploy(
+      ConfigUtil.getConfig().AAVE_FLASH_LOAN_ADDRESS!,
+      {
+        gasPrice: ethers.parseUnits('0.11', 9),
+        gasLimit,
+      },
+    );
 
     const txResponse = await deployTransaction.deploymentTransaction();
     if (!txResponse) {
@@ -80,7 +85,7 @@ async function deployContract(gasLimit: bigint) {
     console.log(`Gas used: ${receipt!.gasUsed.toString()}`);
     console.log(`Transaction fee: ${ethers.formatEther(receipt!.fee)} ETH`);
 
-    const deployedContract = V3Quoter__factory.connect(
+    const deployedContract = FlashArbitrage__factory.connect(
       receipt!.contractAddress!,
       wallet,
     );
