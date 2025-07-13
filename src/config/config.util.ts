@@ -8,6 +8,14 @@ export class ConfigUtil {
       .string()
       .url('BSC_RPC_URL must be a valid URL')
       .nonempty('BSC_RPC_URL is required'),
+    ROTATION_BSC_RPC_URLS: z
+      .string()
+      .optional()
+      .transform((val) => (val === '' ? undefined : val)),
+    BSC_WEBSOCKET_RPC_URL: z
+      .string()
+      .optional()
+      .transform((val) => (val === '' ? undefined : val)),
     BLOCK_NUMBER: z
       .string()
       .optional()

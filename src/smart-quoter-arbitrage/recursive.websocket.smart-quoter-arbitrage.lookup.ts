@@ -1,6 +1,12 @@
 import { ethers } from 'ethers';
 
-import { Address, createPublicClient, createWalletClient, http } from 'viem';
+import {
+  Address,
+  createPublicClient,
+  createWalletClient,
+  http,
+  webSocket,
+} from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { V3ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/quote-v3/V3ArbitrageQuoter__factory';
@@ -20,10 +26,6 @@ import TradeHistoryUtil from '../trade-history/trade-history-util';
 import { ViemClientUtil } from '../common/viem.client.util';
 
 let counter = 0; //todo remove later
-
-export const account = privateKeyToAccount(
-  ConfigUtil.getConfig().WALLET_PRIVATE_KEY as `0x${string}`,
-);
 
 const quoteBestRoute = async (
   routeDetails: RouteDetail[],
@@ -172,34 +174,42 @@ const exec = async () => {
   ]);
   const routeDetails = [...swapRoute, ...arbitrageRoute];
 
-  let counter = 0;
-  while (true) {
-    console.log(
-      `${new Date().toISOString()}: Start quoteBestRoute - ${counter++}`,
-    );
-    await quoteBestRoute(routeDetails);
-  }
+  //   let counter = 0;
+  //   while (true) {
+  //     console.log(
+  //       `${new Date().toISOString()}: Start quoteBestRoute - ${counter++}`,
+  //     );
+  //     await quoteBestRoute(routeDetails);
+  //   }
+
+  const webSocketClient = createPublicClient({
+    chain: bsc,
+    transport: webSocket(ConfigUtil.getConfig().BSC_WEBSOCKET_RPC_URL!),
+  });
+
+  const unwatch = webSocketClient.watchBlocks({
+    onBlock: async (block) => {
+      console.log(
+        `${new Date().toISOString()}: Start quoteBestRoute for Block - ${block.number}`,
+      );
+      try {
+        await quoteBestRoute(routeDetails, block.number);
+      } catch (error) {
+        console.error('Multicall error:', error);
+      }
+    },
+    onError: (error) => {
+      console.error('WebSocket error:', error);
+    },
+  });
 };
-
-const viemChainClient = createPublicClient({
-  chain: bsc,
-  transport: http(ConfigUtil.getConfig().BSC_RPC_URL, { timeout: 600_000 }),
-});
-
-const viemWalletClient = createWalletClient({
-  chain: bsc,
-  transport: http(ConfigUtil.getConfig().BSC_RPC_URL),
-  account,
-});
 
 const runWithShareContentLocalStore = () => {
   ShareContentLocalStore.initAsyncLocalStore(() => {
     ShareContentLocalStore.getStore().viemChain = bsc;
-    ShareContentLocalStore.getStore().viemChainClient = viemChainClient;
-    ShareContentLocalStore.getStore().viemWalletClient = viemWalletClient;
   }, exec);
 };
 
 runWithShareContentLocalStore();
 
-console.log('');
+console.log('getBestRoute() start');

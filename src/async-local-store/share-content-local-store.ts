@@ -14,6 +14,9 @@ export class ShareContentStore {
   viemChainClient: PublicClient;
   viemWalletClient?: WalletClient;
   redis?: Redis;
+
+  rotatingViemChainClients?: PublicClient[];
+  rotatingViemWalletClients?: WalletClient[];
 }
 
 export class ShareContentLocalStore {

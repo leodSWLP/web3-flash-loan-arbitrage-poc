@@ -93,6 +93,7 @@ export class TradeHistoryUtil {
         await mongoose.connect(ConfigUtil.getConfig().MONGO_URI, {
           serverSelectionTimeoutMS: 5000,
           maxPoolSize: 10,
+          dbName: 'trades',
         });
         console.log('Connected to MongoDB');
       }
