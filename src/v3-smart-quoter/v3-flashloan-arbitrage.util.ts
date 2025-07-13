@@ -69,26 +69,26 @@ export class V3FlashLoanArbitrageUtil {
 
     let flashLoanResult;
     if (!this.IS_EXECUTING_TRADE) {
-      this.IS_EXECUTING_TRADE = true;
-      const hash =
-        await ShareContentLocalStore.getStore().viemWalletClient!.writeContract(
-          {
-            address: ConfigUtil.getConfig()
-              .V3_FLASH_LOAN_ARBITRAGE_ADDRESS! as Address,
-            abi: FlashArbitrage__factory.abi,
-            functionName: 'executeFlashLoan',
-            args: [borrowToken, borrowAmount, swapDetails, maxBlockNumber],
-            chain: bsc,
-            account: privateKeyToAccount(
-              process.env.WALLET_PRIVATE_KEY as `0x${string}`,
-            ),
-            maxFeePerGas: gasFees.maxFeePerGas,
-            maxPriorityFeePerGas: gasFees.maxPriorityFeePerGas,
-          },
-        );
-
-      console.log('Transaction hash:', hash);
       try {
+        this.IS_EXECUTING_TRADE = true;
+        const hash =
+          await ShareContentLocalStore.getStore().viemWalletClient!.writeContract(
+            {
+              address: ConfigUtil.getConfig()
+                .V3_FLASH_LOAN_ARBITRAGE_ADDRESS! as Address,
+              abi: FlashArbitrage__factory.abi,
+              functionName: 'executeFlashLoan',
+              args: [borrowToken, borrowAmount, swapDetails, maxBlockNumber],
+              chain: bsc,
+              account: privateKeyToAccount(
+                process.env.WALLET_PRIVATE_KEY as `0x${string}`,
+              ),
+              maxFeePerGas: gasFees.maxFeePerGas,
+              maxPriorityFeePerGas: gasFees.maxPriorityFeePerGas,
+            },
+          );
+
+        console.log('Transaction hash:', hash);
         // Wait for the transaction to be mined
         const receipt =
           await ShareContentLocalStore.getStore().viemChainClient.waitForTransactionReceipt(
