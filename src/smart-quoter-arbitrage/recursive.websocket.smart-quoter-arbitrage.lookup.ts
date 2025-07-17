@@ -25,7 +25,7 @@ import { V3FlashLoanArbitrageUtil } from '../v3-smart-quoter/v3-flashloan-arbitr
 import TradeHistoryUtil from '../trade-history/trade-history-util';
 import { ViemClientUtil } from '../common/viem.client.util';
 
-const quoteBestRoute = async (
+const quoteAndTrade = async (
   routeDetails: RouteDetail[],
   triggerByBlockNumber?: bigint,
 ) => {
@@ -139,13 +139,17 @@ const quoteBestRoute = async (
       const callEnd = performance.now();
       const ms = callEnd - callStart; // Time in milliseconds
       LogUtil.debug(
-        `quoteBestRoute() - success: ${successCounter}, total: ${quoteResults.length}, execution time: ${ms}`,
+        `quoteAndTrade() - success: ${successCounter}, total: ${quoteResults.length}, execution time: ${ms}`,
       );
     });
   }
 
   const throttleStart = performance.now();
-  await ThrottlingUtil.throttleAsyncFunctions(batchFunctions, callsPerSecond);
+  await ThrottlingUtil.throttleAsyncFunctions(
+    batchFunctions,
+    callsPerSecond,
+    true,
+  );
   const throttleEnd = performance.now();
   const ms = throttleEnd - throttleStart; // Time in milliseconds
   LogUtil.debug(
@@ -172,28 +176,67 @@ const exec = async () => {
   //   let counter = 0;
   //   while (true) {
   //     console.log(
-  //       `${new Date().toISOString()}: Start quoteBestRoute - ${counter++}`,
+  //       `${new Date().toISOString()}: Start quoteAndTrade - ${counter++}`,
   //     );
-  //     await quoteBestRoute(routeDetails);
+  //     await quoteAndTrade(routeDetails);
   //   }
 
   const webSocketClient = createPublicClient({
     chain: bsc,
-    transport: webSocket(ConfigUtil.getConfig().BSC_WEBSOCKET_RPC_URL!),
+    transport: webSocket(ConfigUtil.getConfig().BSC_WEBSOCKET_RPC_URL!, {
+      reconnect: true,
+      retryCount: 3, // Initial retry attempts by viem
+      retryDelay: 1000, // 1 second delay between viem retries
+      timeout: 60000, // 60 seconds timeout for WebSocket connection
+      keepAlive: true, // Enable keep-alive to prevent idle disconnections
+    }),
   });
 
   let isExecutingQuote = false;
+  let maxWsBlockNumber = 0n;
+
+  const quoteAndTradeWithLock = async (block: any) => {
+    const start = performance.now();
+
+    await quoteAndTrade(routeDetails, block.number);
+
+    const end = performance.now();
+    const ms = end - start; // Time in milliseconds
+    const s = ms / 1000; // Time in seconds
+
+    LogUtil.info(
+      `${new Date().toISOString()}: Block [[${block.number}]] quote completed - execution time: ${ms.toFixed(2)} ms`,
+    );
+    isExecutingQuote = false;
+  };
 
   const unwatch = webSocketClient.watchBlocks({
+    emitMissed: false, // Prevent emitting missed blocks from previous syncs
+    emitOnBegin: false, // Prevent emitting the current block on subscription start
     onBlock: async (block) => {
+      if (!block || typeof block.number !== 'bigint') {
+        console.error(
+          `${new Date().toISOString()}: Invalid block data received`,
+          block,
+        );
+        return;
+      }
+
+      if (block.number <= maxWsBlockNumber) {
+        LogUtil.info(
+          `${new Date().toISOString()}: Skipping old or duplicate block - ${block.number} (Latest: ${maxWsBlockNumber})`,
+        );
+        return;
+      }
+      maxWsBlockNumber = block.number;
+
       console.log(
-        `${new Date().toISOString()}: Start quoteBestRoute for Block - ${block.number}`,
+        `${new Date().toISOString()}: Start quoteAndTrade for Block - ${block.number}`,
       );
       if (!isExecutingQuote) {
         try {
           isExecutingQuote = true;
-          await quoteBestRoute(routeDetails, block.number);
-          isExecutingQuote = false;
+          quoteAndTradeWithLock(block);
         } catch (error) {
           console.error('Multicall error:', error);
         }

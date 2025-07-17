@@ -1,6 +1,8 @@
+import { ConfigUtil } from '../config/config.util';
+
 export class LogUtil {
   static debug(...args) {
-    if (process.env.DEBUG) {
+    if (ConfigUtil.getConfig().DEBUG) {
       console.log(...args);
     }
   }

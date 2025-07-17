@@ -140,7 +140,8 @@ export class TradeHistoryUtil {
     if (mongoose.connection.readyState !== 1) {
       throw new Error('MongoDB connection is not established');
     }
-    const convertedData = this.convertBigIntToString(arbitrageResult);
+    const convertedData = this.convertBigIntToString(arbitrageResult); //todo it delete some attributes when Converting Bigint
+    convertedData.error = arbitrageResult.error;
     const tradeHistory = new ArbitrageResultModel(convertedData);
     try {
       const result = await tradeHistory.save();

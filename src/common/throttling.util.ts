@@ -4,6 +4,7 @@ export class ThrottlingUtil {
   static async throttleAsyncFunctions(
     functions: (() => Promise<any>)[],
     callsPerSecond: number = 18,
+    isImmediateReturn: boolean | undefined = false,
   ): Promise<{ result?: any; error?: Error }[]> {
     LogUtil.debug(
       `throttleAsyncFunctions(): functions length: ${functions.length}`,
@@ -49,7 +50,7 @@ export class ThrottlingUtil {
       results.push(...batchResults);
 
       const waitTime = performance.now() - (startTime + delayMs);
-      if (waitTime > 0) {
+      if (!isImmediateReturn && waitTime > 0) {
         await new Promise((resolve) => setTimeout(resolve, waitTime));
       }
     }

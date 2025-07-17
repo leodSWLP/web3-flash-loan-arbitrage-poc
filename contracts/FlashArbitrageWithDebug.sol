@@ -37,20 +37,14 @@ contract FlashArbitrageWithDebug is IFlashLoan, FlashLoanSimpleReceiverBase {
         console2.log('Step 1: Starting flash loan execution');
         bytes memory params = abi.encode(swapDetails);
         uint16 referralCode = 0;
-        try
-            POOL.flashLoanSimple(
-                address(this),
-                borrowToken,
-                amountIn,
-                params,
-                referralCode
-            )
-        {
-            console2.log('Step 2: Flash loan initiated successfully');
-        } catch {
-            console2.log('Step 3: Flash loan initiation failed');
-            revert OperationStepFailed(0);
-        }
+        POOL.flashLoanSimple(
+            address(this),
+            borrowToken,
+            amountIn,
+            params,
+            referralCode
+        );
+        console2.log('Step 2: Flash loan initiated successfully');
     }
 
     function _swap(
@@ -123,7 +117,7 @@ contract FlashArbitrageWithDebug is IFlashLoan, FlashLoanSimpleReceiverBase {
     ) external override returns (bool) {
         console2.log('Step 12: Starting executeOperation');
         SwapDetail[] memory swapDetails = abi.decode(params, (SwapDetail[]));
-        uint256 repayAmount = amount + permium;
+        uint256 repayAmount = amount + permium + 1;
         uint256 currentAmount = amount;
         for (uint8 i = 0; i < swapDetails.length; i++) {
             console2.log('Step 13: Processing swap ', i);
@@ -146,6 +140,9 @@ contract FlashArbitrageWithDebug is IFlashLoan, FlashLoanSimpleReceiverBase {
                 currentAmount
             );
         }
+
+        currentAmount = IERC20(swapDetails[swapDetails.length - 1].tokenOut)
+            .balanceOf(address(this));
 
         if (currentAmount <= repayAmount) {
             console2.log('Step 15: Arbitrage not profitable');

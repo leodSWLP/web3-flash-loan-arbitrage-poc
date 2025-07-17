@@ -1,17 +1,17 @@
-import { createPublicClient, http, decodeErrorResult, decodeFunctionData } from 'viem';
-import { mainnet } from 'viem/chains';
-import { ConfigUtil } from '../config/config.util';
+import { Address, createPublicClient, decodeFunctionData, http } from 'viem';
+import { bsc, mainnet } from 'viem/chains';
 import { FlashArbitrage__factory } from '../../typechain-types/factories/contracts/FlashArbitrage__factory';
-
+import { ConfigUtil } from '../config/config.util';
+import { bigint } from 'zod';
 
 // Set up Viem public client
 const publicClient = createPublicClient({
-  chain: mainnet,
+  chain: bsc,
   transport: http(ConfigUtil.getConfig().BSC_RPC_URL),
 });
 
 // Function to get and decode revert reason
-async function getRevertReason(txHash) {
+async function getRevertReason(txHash: `0x${string}`, blockNumber?: bigint) {
   try {
     // Fetch transaction and receipt
     const transaction = await publicClient.getTransaction({ hash: txHash });
@@ -37,14 +37,20 @@ async function getRevertReason(txHash) {
 
       // Simulate the transaction at the block it was included in
       try {
-        await publicClient.simulateContract({
+        await createPublicClient({
+          chain: bsc,
+          transport: http(ConfigUtil.getConfig().BSC_RPC_URL),
+          // transport: http('http://127.0.0.1:8545', { timeout: 18000 }),
+        }).simulateContract({
           account: transaction.from,
-          address: transaction.to!,
+          // address: transaction.to!,
+          address: '0x3A39a80ccBB9f23127017808112c0F53A08E3cbE' as Address,
+          // address: '0x41b0524c100819d33d0f784a5526326ac34906d3' as Address,
           abi: FlashArbitrage__factory.abi,
           functionName,
           args,
           value: transaction.value || 0n,
-          blockNumber: receipt.blockNumber,
+          blockNumber: blockNumber ?? receipt.blockNumber,
         });
         console.log('Simulation succeeded unexpectedly. Expected a revert.');
       } catch (simulationError) {
@@ -53,13 +59,14 @@ async function getRevertReason(txHash) {
           const { data } = simulationError.cause;
           if (data) {
             // Decode the revert reason using the ABI
-            const decodedError = decodeErrorResult({
-              abi: FlashArbitrage__factory.abi,
-              data,
-            });
-            console.log('Revert reason:', decodedError.errorName);
-            console.log('Error args:', decodedError.args);
-            return decodedError;
+
+            console.log('Revert reason:', data.errorName);
+            console.log(
+              'Error inputs:',
+              JSON.stringify(data.abiItem.inputs.map((item) => item.name)),
+            );
+            console.log('Error args:', data.args);
+            return data;
           } else {
             console.log('No revert data available.');
           }
@@ -76,5 +83,7 @@ async function getRevertReason(txHash) {
 }
 
 // Example usage
-const txHash = '0xc278023a8a37d0689e6a2844462242709649b8c0f2b88e87a9e8642f54ada7b8';
-getRevertReason(txHash);
+const txHash =
+  '0xc278023a8a37d0689e6a2844462242709649b8c0f2b88e87a9e8642f54ada7b8';
+const blockNumber = BigInt(54295820);
+getRevertReason(txHash, blockNumber);

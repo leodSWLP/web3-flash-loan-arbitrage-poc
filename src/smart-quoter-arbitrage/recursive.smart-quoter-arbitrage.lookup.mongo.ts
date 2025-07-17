@@ -23,7 +23,7 @@ export const account = privateKeyToAccount(
   ConfigUtil.getConfig().WALLET_PRIVATE_KEY as `0x${string}`,
 );
 
-const quoteBestRoute = async (
+const quoteAndTrade = async (
   routeDetails: RouteDetail[],
   triggerByBlockNumber?: bigint,
 ) => {
@@ -136,7 +136,7 @@ const quoteBestRoute = async (
       const callEnd = performance.now();
       const ms = callEnd - callStart; // Time in milliseconds
       LogUtil.debug(
-        `quoteBestRoute() - success: ${successCounter}, total: ${quoteResults.length}, execution time: ${ms}`,
+        `quoteAndTrade() - success: ${successCounter}, total: ${quoteResults.length}, execution time: ${ms}`,
       );
     });
   }
@@ -169,9 +169,9 @@ const exec = async () => {
   let counter = 0;
   while (true) {
     console.log(
-      `${new Date().toISOString()}: Start quoteBestRoute - ${counter++}`,
+      `${new Date().toISOString()}: Start quoteAndTrade - ${counter++}`,
     );
-    await quoteBestRoute(routeDetails);
+    await quoteAndTrade(routeDetails);
   }
 };
 

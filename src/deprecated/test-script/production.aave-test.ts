@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv';
 import { ethers } from 'ethers';
 import {
+  Address,
   ContractFunctionRevertedError,
   createPublicClient,
   createWalletClient,
@@ -11,6 +12,7 @@ import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { FlashArbitrage__factory } from '../../../typechain-types/factories/contracts/FlashArbitrage__factory';
 import { ShareContentLocalStore } from '../../async-local-store/share-content-local-store';
+import { ConfigUtil } from '../../config/config.util';
 dotenv.config();
 
 const deploy = async () => {
@@ -46,51 +48,50 @@ const deploy = async () => {
   console.log('Contract deployed to:', contractAddress);
 };
 
-const callFlashSwap = async () => {
+const estimateGas = async () => {
   try {
-    const hash =
-      await ShareContentLocalStore.getStore().viemWalletClient!.writeContract({
-        address: '0x6e31bf2599a7652a85185d88a9f1fa6521b0f5e8',
-        abi: FlashArbitrage__factory.abi,
-        functionName: 'executeFlashLoan',
-        args: [
-          '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
-          ethers.parseUnits('1', 18),
-          // 100000000000000n,
-          [
-            {
-              routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
-              permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
-              tokenIn: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
-              tokenOut: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
-              fee: 100,
-            },
-            {
-              routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
-              permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
-              tokenIn: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
-              tokenOut: '0x2170Ed0880ac9A755fd29B2688956BD959F933F8',
-              fee: 100,
-            },
-            {
-              routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
-              permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
-              tokenIn: '0x2170Ed0880ac9A755fd29B2688956BD959F933F8',
-              tokenOut: '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
-              fee: 100,
-            },
+    const gasEstimate =
+      await ShareContentLocalStore.getStore().viemChainClient!.estimateContractGas(
+        {
+          account: privateKeyToAccount(
+            ConfigUtil.getConfig().WALLET_PRIVATE_KEY as Address,
+          ),
+          address: ConfigUtil.getConfig()
+            .V3_FLASH_LOAN_ARBITRAGE_ADDRESS as Address,
+          abi: FlashArbitrage__factory.abi,
+          functionName: 'executeFlashLoan',
+          args: [
+            '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
+            ethers.parseUnits('1', 18),
+            // 100000000000000n,
+            [
+              {
+                routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+                permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+                tokenIn: '0x55d398326f99059fF775485246999027B3197955',
+                tokenOut: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+                fee: 100,
+              },
+              {
+                routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+                permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+                tokenIn: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+                tokenOut: '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
+                fee: 100,
+              },
+              {
+                routerAddress: '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb',
+                permit2Address: '0x31c2F6fcFf4F8759b3Bd5Bf0e1084A055615c768',
+                tokenIn: '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
+                tokenOut: '0x55d398326f99059fF775485246999027B3197955',
+                fee: 100,
+              },
+            ],
+            0n,
           ],
-        ],
-        account: account,
-        chain: localhostChain,
-      });
-    console.log('Transaction hash:', hash);
-
-    const receipt =
-      await ShareContentLocalStore.getStore().viemChainClient.waitForTransactionReceipt(
-        { hash },
+        },
       );
-    console.log('Transaction confirmed in block:', receipt.blockNumber);
+    console.log('estimateGas:', estimateGas);
   } catch (error) {
     console.error('Transaction failed with error:');
 
@@ -111,7 +112,7 @@ const exec = async () => {
   const start = performance.now();
 
   // await deploy();
-  await callFlashSwap();
+  await estimateGas();
 
   const end = performance.now();
   const ms = end - start;
@@ -152,7 +153,7 @@ export const localhostChain = defineChain({
 
 const viemChainClient = createPublicClient({
   chain: bsc,
-  transport: http('http://127.0.0.1:8545'),
+  transport: http(ConfigUtil.getConfig().BSC_RPC_URL, { timeout: 600_000 }),
 });
 
 const viemWalletClient = createWalletClient({

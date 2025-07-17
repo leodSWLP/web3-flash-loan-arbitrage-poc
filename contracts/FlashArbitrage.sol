@@ -99,7 +99,7 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
         bytes calldata params
     ) external override returns (bool) {
         SwapDetail[] memory swapDetails = abi.decode(params, (SwapDetail[]));
-        uint256 repayAmount = amount + permium;
+        uint256 repayAmount = amount + permium + 1;
         uint256 currentAmount = amount;
         for (uint8 i = 0; i < swapDetails.length; i++) {
             SwapDetail memory detail = swapDetails[i];
@@ -115,6 +115,9 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
 
             currentAmount = swapAmountOut;
         }
+
+        currentAmount = IERC20(swapDetails[swapDetails.length - 1].tokenOut)
+            .balanceOf(address(this));
 
         if (currentAmount <= repayAmount) {
             revert ArbitrageNotProfitable(
