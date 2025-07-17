@@ -1,5 +1,6 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
 import { ConfigUtil } from '../config/config.util';
+import { LogUtil } from '../log/log.util';
 
 export interface ISwapDetail {
   routerAddress: string;
@@ -74,7 +75,7 @@ const arbitrageResultSchema = new Schema<IArbitrageResult>(
     actualTradeResult: { type: tradeMetaSchema, default: null },
     gasPrice: { type: String, default: null },
     gasUsed: { type: String, default: null },
-    error: { type: Object, default: null },
+    error: { type: Schema.Types.Mixed, default: null },
     swapPath: { type: [swapDetailSchema], required: true },
   },
   { timestamps: true }, // Automatically adds createdAt and updatedAt
@@ -118,6 +119,8 @@ export class TradeHistoryUtil {
   private static convertBigIntToString(data: any): any {
     if (typeof data === 'bigint') {
       return data.toString();
+    } else if (data instanceof Date) {
+      return data;
     } else if (Array.isArray(data)) {
       return data.map((item) => this.convertBigIntToString(item));
     } else if (typeof data === 'object' && data !== null) {
@@ -139,7 +142,13 @@ export class TradeHistoryUtil {
     }
     const convertedData = this.convertBigIntToString(arbitrageResult);
     const tradeHistory = new ArbitrageResultModel(convertedData);
-    return await tradeHistory.save();
+    try {
+      const result = await tradeHistory.save();
+      return result;
+    } catch (err) {
+      LogUtil.info(`createTradeHistory() error: ${JSON.stringify(err)}`);
+      throw err;
+    }
   }
 
   static async updateTradeHistory(

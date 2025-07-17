@@ -25,8 +25,6 @@ import { V3FlashLoanArbitrageUtil } from '../v3-smart-quoter/v3-flashloan-arbitr
 import TradeHistoryUtil from '../trade-history/trade-history-util';
 import { ViemClientUtil } from '../common/viem.client.util';
 
-let counter = 0; //todo remove later
-
 const quoteBestRoute = async (
   routeDetails: RouteDetail[],
   triggerByBlockNumber?: bigint,
@@ -69,6 +67,7 @@ const quoteBestRoute = async (
           allowFailure: true,
           contracts,
           batchSize,
+          blockNumber: triggerByBlockNumber,
         });
 
       const blockNumber = triggerByBlockNumber ?? (await blockNumberPromise!);
@@ -113,7 +112,6 @@ const quoteBestRoute = async (
               blockNumber,
               { maxPriorityFeePerGas: '0.2' },
             ); //todo maxPriorityFee calculation
-            counter++; //todo remove later
           } else {
             const repayAmount = V3FlashLoanArbitrageUtil.calculateRepayAmount(
               tradeRouteDetail.initialAmount,
@@ -136,9 +134,6 @@ const quoteBestRoute = async (
             });
           }
         }
-        if (counter > 2) {
-          break;
-        } //todo remove later
       }
 
       const callEnd = performance.now();
@@ -187,15 +182,25 @@ const exec = async () => {
     transport: webSocket(ConfigUtil.getConfig().BSC_WEBSOCKET_RPC_URL!),
   });
 
+  let isExecutingQuote = false;
+
   const unwatch = webSocketClient.watchBlocks({
     onBlock: async (block) => {
       console.log(
         `${new Date().toISOString()}: Start quoteBestRoute for Block - ${block.number}`,
       );
-      try {
-        await quoteBestRoute(routeDetails, block.number);
-      } catch (error) {
-        console.error('Multicall error:', error);
+      if (!isExecutingQuote) {
+        try {
+          isExecutingQuote = true;
+          await quoteBestRoute(routeDetails, block.number);
+          isExecutingQuote = false;
+        } catch (error) {
+          console.error('Multicall error:', error);
+        }
+      } else {
+        LogUtil.info(
+          `${new Date().toISOString()}: Previous quote is still executing SKIP BLOCK - ${block.number}`,
+        );
       }
     },
     onError: (error) => {

@@ -19,8 +19,6 @@ import { V3FlashLoanArbitrageUtil } from '../v3-smart-quoter/v3-flashloan-arbitr
 import TradeHistoryUtil from '../trade-history/trade-history-util';
 import { ViemClientUtil } from '../common/viem.client.util';
 
-let counter = 0; //todo remove later
-
 export const account = privateKeyToAccount(
   ConfigUtil.getConfig().WALLET_PRIVATE_KEY as `0x${string}`,
 );
@@ -111,7 +109,6 @@ const quoteBestRoute = async (
               blockNumber,
               { maxPriorityFeePerGas: '0.2' },
             ); //todo maxPriorityFee calculation
-            counter++; //todo remove later
           } else {
             const repayAmount = V3FlashLoanArbitrageUtil.calculateRepayAmount(
               tradeRouteDetail.initialAmount,
@@ -134,9 +131,6 @@ const quoteBestRoute = async (
             });
           }
         }
-        if (counter > 2) {
-          break;
-        } //todo remove later
       }
 
       const callEnd = performance.now();

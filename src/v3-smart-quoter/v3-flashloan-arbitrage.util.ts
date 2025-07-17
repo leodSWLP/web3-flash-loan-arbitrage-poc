@@ -24,6 +24,9 @@ import TradeHistoryUtil, {
   ITradeMeta,
 } from '../trade-history/trade-history-util';
 import { LogUtil } from '../log/log.util';
+import * as JSONbig from 'json-bigint';
+import { ViemClientUtil } from '../common/viem.client.util';
+
 export type QuoteResult = {
   dexName: string;
   version: string;
@@ -52,6 +55,7 @@ export class V3FlashLoanArbitrageUtil {
   static MAX_BASE_FEE = '0.3';
   static IS_EXECUTING_TRADE = false;
 
+  static ESTIMATED_GAS = 900000n;
   static async executeFlashLoanSwap(
     routeDetail: RouteDetail,
     quoteResults: QuoteResult[],
@@ -60,7 +64,8 @@ export class V3FlashLoanArbitrageUtil {
       maxPriorityFeePerGas?: string;
     },
   ) {
-    const maxBlockNumber = blockNumber + 2n;
+    // const maxBlockNumber = blockNumber + 4n;
+    const maxBlockNumber = 0n;
     const gasFees = this.calculateGasFees(writeContractOptions);
 
     const borrowToken = routeDetail.swapPaths[0].tokenIn as Address;
@@ -68,51 +73,52 @@ export class V3FlashLoanArbitrageUtil {
     const swapDetails = this.parseSwapDetails(quoteResults);
 
     let flashLoanResult;
+    let hash;
     if (!this.IS_EXECUTING_TRADE) {
       try {
         this.IS_EXECUTING_TRADE = true;
-        const hash =
-          await ShareContentLocalStore.getStore().viemWalletClient!.writeContract(
-            {
-              address: ConfigUtil.getConfig()
-                .V3_FLASH_LOAN_ARBITRAGE_ADDRESS! as Address,
-              abi: FlashArbitrage__factory.abi,
-              functionName: 'executeFlashLoan',
-              args: [borrowToken, borrowAmount, swapDetails, maxBlockNumber],
-              chain: bsc,
-              account: privateKeyToAccount(
-                process.env.WALLET_PRIVATE_KEY as `0x${string}`,
-              ),
-              maxFeePerGas: gasFees.maxFeePerGas,
-              maxPriorityFeePerGas: gasFees.maxPriorityFeePerGas,
-            },
-          );
+        hash = await ViemClientUtil.getRotatingViemWalletClient().writeContract(
+          {
+            address: ConfigUtil.getConfig()
+              .V3_FLASH_LOAN_ARBITRAGE_ADDRESS! as Address,
+            abi: FlashArbitrage__factory.abi,
+            functionName: 'executeFlashLoan',
+            args: [borrowToken, borrowAmount, swapDetails, maxBlockNumber],
+            chain: bsc,
+            account: privateKeyToAccount(
+              process.env.WALLET_PRIVATE_KEY as `0x${string}`,
+            ),
+            maxFeePerGas: gasFees.maxFeePerGas,
+            maxPriorityFeePerGas: gasFees.maxPriorityFeePerGas,
+            gas: this.ESTIMATED_GAS,
+          },
+        );
 
         console.log('Transaction hash:', hash);
         // Wait for the transaction to be mined
         const receipt =
-          await ShareContentLocalStore.getStore().viemChainClient.waitForTransactionReceipt(
+          await ViemClientUtil.getRotatingViemClient().waitForTransactionReceipt(
             {
               hash,
               pollingInterval: 500,
             },
           );
 
-        if (receipt.status == 'success') {
-          const logs = receipt.logs;
-          const event = parseEventLogs({
-            abi: FlashArbitrage__factory.abi,
-            logs,
-            eventName: 'ArbitrageProfitable',
-          });
+        const logs = receipt.logs;
+        const event = parseEventLogs({
+          abi: FlashArbitrage__factory.abi,
+          logs,
+          eventName: 'ArbitrageProfitable',
+        });
 
-          flashLoanResult = this.parseFlashLoanResult(
-            routeDetail,
-            receipt,
-            event[0].args,
-            undefined,
-          );
-        }
+        flashLoanResult = this.parseFlashLoanResult(
+          routeDetail,
+          hash,
+          receipt,
+          event[0].args,
+          undefined,
+        );
+
         this.IS_EXECUTING_TRADE = false;
       } catch (err) {
         if (err instanceof ContractFunctionRevertedError) {
@@ -120,13 +126,18 @@ export class V3FlashLoanArbitrageUtil {
         } else {
           console.error('An unexpected error occurred:', err);
         }
-        this.IS_EXECUTING_TRADE = false;
         flashLoanResult = this.parseFlashLoanResult(
           routeDetail,
+          hash,
           undefined,
           undefined,
           err,
         );
+        LogUtil.debug(
+          `Error flashLoanResult: ${JSONbig.stringify(flashLoanResult)}`,
+        );
+      } finally {
+        this.IS_EXECUTING_TRADE = false;
       }
     } else {
       LogUtil.info(
@@ -172,15 +183,18 @@ export class V3FlashLoanArbitrageUtil {
       initialAmount: routeDetail.initialAmount.toString(),
       repayAmount: repayAmount.toString(),
       tradePrediction,
+      actualTradeResult: flashLoanResult?.actualTradeResult, // Use actual result if available
       quotePath: quoteResults,
       swapPath: this.parseSwapDetails(quoteResults),
       isTradeExecuted: !!flashLoanResult,
-      ...(flashLoanResult ?? {}),
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      transactionHash: flashLoanResult?.transactionHash, // Explicitly include transaction hash
+      error: flashLoanResult?.error,
     };
 
-    await TradeHistoryUtil.createTradeHistory(arbitrageResult);
+    const result = await TradeHistoryUtil.createTradeHistory(arbitrageResult);
+    console.log(
+      `TradeHistoryUtil.createTradeHistory result: ${JSONbig.stringify(result)}`,
+    );
   }
 
   static calculateRepayAmount(initialValue: bigint, decimals = 18) {
@@ -247,6 +261,7 @@ export class V3FlashLoanArbitrageUtil {
 
   private static parseFlashLoanResult(
     routeDetail: RouteDetail,
+    transactionHash?: string, // Add transactionHash parameter
     receipt?: TransactionReceipt,
     profitableEvent?: {
       repayAmount: bigint;
@@ -266,7 +281,7 @@ export class V3FlashLoanArbitrageUtil {
       );
     }
 
-    const result: FlashLoanResult = {};
+    const result: FlashLoanResult = { transactionHash }; // Always include transaction hash
     if (receipt && profitableEvent) {
       const finalAmount = profitableEvent.actualAmountOut;
       const netProfit = finalAmount - routeDetail.initialAmount;
@@ -287,7 +302,6 @@ export class V3FlashLoanArbitrageUtil {
       };
       result.gasPrice = receipt.blobGasPrice?.toString();
       result.gasUsed = receipt.gasUsed?.toString();
-      result.transactionHash = receipt.transactionHash;
     }
 
     if (error) {
