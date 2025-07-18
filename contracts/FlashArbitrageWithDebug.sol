@@ -141,9 +141,6 @@ contract FlashArbitrageWithDebug is IFlashLoan, FlashLoanSimpleReceiverBase {
             );
         }
 
-        currentAmount = IERC20(swapDetails[swapDetails.length - 1].tokenOut)
-            .balanceOf(address(this));
-
         if (currentAmount <= repayAmount) {
             console2.log('Step 15: Arbitrage not profitable');
             revert ArbitrageNotProfitable(
@@ -162,7 +159,7 @@ contract FlashArbitrageWithDebug is IFlashLoan, FlashLoanSimpleReceiverBase {
             console2.log('Step 18: Profit transfer to initiator failed');
             revert OperationStepFailed(4);
         }
-        try IERC20(asset).transfer(msg.sender, repayAmount) {
+        try IERC20(asset).approve(msg.sender, repayAmount) {
             console2.log('Step 19: Repayment transfer successful');
         } catch {
             console2.log('Step 20: Repayment transfer failed');

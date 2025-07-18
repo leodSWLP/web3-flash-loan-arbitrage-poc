@@ -116,9 +116,6 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
             currentAmount = swapAmountOut;
         }
 
-        currentAmount = IERC20(swapDetails[swapDetails.length - 1].tokenOut)
-            .balanceOf(address(this));
-
         if (currentAmount <= repayAmount) {
             revert ArbitrageNotProfitable(
                 repayAmount,
@@ -134,7 +131,7 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
         {} catch {
             revert OperationStepFailed(4);
         }
-        try IERC20(asset).transfer(msg.sender, repayAmount) {} catch {
+        try IERC20(asset).approve(msg.sender, repayAmount) {} catch {
             revert OperationStepFailed(5);
         }
         return true;
