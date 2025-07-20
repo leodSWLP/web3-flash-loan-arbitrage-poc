@@ -198,7 +198,8 @@ const exec = async () => {
   const quoteAndTradeWithLock = async (block: any) => {
     const start = performance.now();
 
-    await quoteAndTrade(routeDetails, block.number);
+    //since the block number may not be up today, websocket only use to trigger quote and trade
+    await quoteAndTrade(routeDetails, undefined);
 
     const end = performance.now();
     const ms = end - start; // Time in milliseconds

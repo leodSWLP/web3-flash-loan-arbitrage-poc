@@ -7,6 +7,7 @@ import {TickBitmap} from './libraries/TickBitmap.sol';
 import {UnsafeMath} from './libraries/UnsafeMath.sol';
 import {FixedPoint128} from './libraries/FixedPoint128.sol';
 import {TickMath} from './libraries/TickMath.sol';
+import {BitMath} from './libraries/BitMath.sol';
 import {SqrtPriceMath} from './libraries/SqrtPriceMath.sol';
 import {SwapMath} from './libraries/SwapMath.sol';
 import {BalanceDelta, toBalanceDelta, BalanceDeltaLibrary} from './types/BalanceDelta.sol';
@@ -16,9 +17,8 @@ import {LiquidityMath} from './libraries/LiquidityMath.sol';
 import {LPFeeLibrary} from './libraries/LPFeeLibrary.sol';
 import {CustomRevert} from './libraries/CustomRevert.sol';
 
-library V4Quote {
+abstract contract V4QuoteMath {
     using SafeCast for *;
-    using TickBitmap for mapping(int16 => uint256);
     using ProtocolFeeLibrary for *;
     using LPFeeLibrary for uint24;
     using CustomRevert for bytes4;
@@ -63,10 +63,6 @@ library V4Quote {
     /// @notice Thrown when trying to swap with max lp fee and specifying an output amount
     error InvalidFeeForExactOut();
 
-
-    public struct V4State() {
-        
-    }
     // info stored for each initialized individual tick
     struct TickInfo {
         // the total position liquidity that references this tick
@@ -90,8 +86,10 @@ library V4Quote {
     }
 
     struct SwapParams {
+        /// The desired input amount if negative (exactIn), or the desired output amount if positive (exactOut)
         int256 amountSpecified;
         int24 tickSpacing;
+        /// Whether to swap token0 for token1 or vice versa
         bool zeroForOne;
         uint160 sqrtPriceLimitX96;
         uint24 lpFeeOverride;
@@ -125,10 +123,79 @@ library V4Quote {
         uint256 feeGrowthGlobalX128;
     }
 
+    function getFeeGrowthGlobals(
+        bytes32 poolId
+    )
+        public
+        view
+        virtual
+        returns (uint256 feeGrowthGlobal0X128, uint256 feeGrowthGlobal1X128);
+
+    function getLiquidity(
+        bytes32 poolId
+    ) public view virtual returns (uint128 liquidity);
+
+    function getTickBitmap(
+        bytes32 poolId,
+        int16 tick
+    ) public view virtual returns (uint256 tickBitmap);
+
+    function getTickInfo(
+        bytes32 poolId,
+        int24 tick
+    )
+        public
+        view
+        virtual
+        returns (
+            uint128 liquidityGross,
+            int128 liquidityNet,
+            uint256 feeGrowthOutside0X128,
+            uint256 feeGrowthOutside1X128
+        );
+
+    function getSlot0(
+        bytes32 poolId
+    )
+        public
+        view
+        virtual
+        returns (
+            uint160 sqrtPriceX96,
+            int24 tick,
+            uint24 protocolFee,
+            uint24 lpFee
+        );
+
+    function getPackedSlot0(bytes32 poolId) public view returns (Slot0 slot0) {
+        (
+            uint160 sqrtPriceX96,
+            int24 tick,
+            uint24 protocolFee,
+            uint24 lpFee
+        ) = getSlot0(poolId);
+
+        assembly ('memory-safe') {
+            // Initialize slot0 as 0
+            slot0 := 0
+            // Pack lpFee (bits 208–231)
+            slot0 := or(slot0, shl(208, and(lpFee, 0xFFFFFF)))
+            // Pack protocolFee (bits 184–207)
+            slot0 := or(slot0, shl(184, and(protocolFee, 0xFFFFFF)))
+            // Pack tick (bits 160–183)
+            slot0 := or(slot0, shl(160, and(tick, 0xFFFFFF)))
+            // Pack sqrtPriceX96 (bits 0–159)
+            slot0 := or(
+                slot0,
+                and(sqrtPriceX96, 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF)
+            )
+        }
+    }
+
     /// @notice Executes a swap against the state, and returns the amount deltas of the pool
     /// @dev PoolManager checks that the pool is initialized before calling
     function swap(
-        State storage self,
+        bytes32 poolId,
         SwapParams memory params
     )
         internal
@@ -139,8 +206,13 @@ library V4Quote {
             SwapResult memory result
         )
     {
-        Slot0 slot0Start = self.slot0;
+        Slot0 slot0Start = getPackedSlot0(poolId);
         bool zeroForOne = params.zeroForOne;
+
+        (
+            uint256 feeGrowthGlobal0X128,
+            uint256 feeGrowthGlobal1X128
+        ) = getFeeGrowthGlobals(poolId);
 
         uint256 protocolFee = zeroForOne
             ? slot0Start.protocolFee().getZeroForOneFee()
@@ -155,7 +227,7 @@ library V4Quote {
         // initialize to the current tick
         result.tick = slot0Start.tick();
         // initialize to the current liquidity
-        result.liquidity = self.liquidity;
+        result.liquidity = getLiquidity(poolId);
 
         // if the beforeSwap hook returned a valid fee override, use that as the LP fee, otherwise load from storage
         // lpFee, swapFee, and protocolFee are all in pips
@@ -212,8 +284,8 @@ library V4Quote {
 
         StepComputations memory step;
         step.feeGrowthGlobalX128 = zeroForOne
-            ? self.feeGrowthGlobal0X128
-            : self.feeGrowthGlobal1X128;
+            ? feeGrowthGlobal0X128
+            : feeGrowthGlobal1X128;
 
         // continue swapping as long as we haven't used the entire input/output and haven't reached the price limit
         while (
@@ -222,13 +294,15 @@ library V4Quote {
         ) {
             step.sqrtPriceStartX96 = result.sqrtPriceX96;
 
-            (step.tickNext, step.initialized) = self
-                .tickBitmap
-                .nextInitializedTickWithinOneWord(
-                    result.tick,
-                    params.tickSpacing,
-                    zeroForOne
-                );
+            (
+                step.tickNext,
+                step.initialized
+            ) = nextInitializedTickWithinOneWord(
+                poolId,
+                result.tick,
+                params.tickSpacing,
+                zeroForOne
+            );
 
             // ensure that we do not overshoot the min/max tick, as the tick bitmap is not aware of these bounds
             if (step.tickNext <= TickMath.MIN_TICK) {
@@ -314,16 +388,10 @@ library V4Quote {
                         uint256 feeGrowthGlobal0X128,
                         uint256 feeGrowthGlobal1X128
                     ) = zeroForOne
-                            ? (
-                                step.feeGrowthGlobalX128,
-                                self.feeGrowthGlobal1X128
-                            )
-                            : (
-                                self.feeGrowthGlobal0X128,
-                                step.feeGrowthGlobalX128
-                            );
-                    int128 liquidityNet = V4Quote.crossTick(
-                        self,
+                            ? (step.feeGrowthGlobalX128, feeGrowthGlobal1X128)
+                            : (feeGrowthGlobal0X128, step.feeGrowthGlobalX128);
+                    int128 liquidityNet = crossTick(
+                        poolId,
                         step.tickNext,
                         feeGrowthGlobal0X128,
                         feeGrowthGlobal1X128
@@ -370,19 +438,59 @@ library V4Quote {
     }
 
     function crossTick(
+        bytes32 poolId,
         int24 tick,
         uint256 feeGrowthGlobal0X128,
         uint256 feeGrowthGlobal1X128
     ) internal view returns (int128 liquidityNet) {
+        (, liquidityNet, , ) = getTickInfo(poolId, tick);
+    }
+
+    function nextInitializedTickWithinOneWord(
+        bytes32 poolId,
+        int24 tick,
+        int24 tickSpacing,
+        bool lte
+    ) internal view returns (int24 next, bool initialized) {
         unchecked {
-            TickInfo storage info = self.ticks[tick];
-            info.feeGrowthOutside0X128 =
-                feeGrowthGlobal0X128 -
-                info.feeGrowthOutside0X128;
-            info.feeGrowthOutside1X128 =
-                feeGrowthGlobal1X128 -
-                info.feeGrowthOutside1X128;
-            liquidityNet = info.liquidityNet;
+            int24 compressed = TickBitmap.compress(tick, tickSpacing);
+
+            if (lte) {
+                (int16 wordPos, uint8 bitPos) = TickBitmap.position(compressed);
+                // all the 1s at or to the right of the current bitPos
+                uint256 mask = type(uint256).max >>
+                    (uint256(type(uint8).max) - bitPos);
+                uint256 masked = getTickBitmap(poolId, wordPos) & mask;
+
+                // if there are no initialized ticks to the right of or at the current tick, return rightmost in the word
+                initialized = masked != 0;
+                // overflow/underflow is possible, but prevented externally by limiting both tickSpacing and tick
+                next = initialized
+                    ? (compressed -
+                        int24(
+                            uint24(bitPos - BitMath.mostSignificantBit(masked))
+                        )) * tickSpacing
+                    : (compressed - int24(uint24(bitPos))) * tickSpacing;
+            } else {
+                // start from the word of the next tick, since the current tick state doesn't matter
+                (int16 wordPos, uint8 bitPos) = TickBitmap.position(
+                    ++compressed
+                );
+                // all the 1s at or to the left of the bitPos
+                uint256 mask = ~((1 << bitPos) - 1);
+                uint256 masked = getTickBitmap(poolId, wordPos) & mask;
+
+                // if there are no initialized ticks to the left of the current tick, return leftmost in the word
+                initialized = masked != 0;
+                // overflow/underflow is possible, but prevented externally by limiting both tickSpacing and tick
+                next = initialized
+                    ? (compressed +
+                        int24(
+                            uint24(BitMath.leastSignificantBit(masked) - bitPos)
+                        )) * tickSpacing
+                    : (compressed + int24(uint24(type(uint8).max - bitPos))) *
+                        tickSpacing;
+            }
         }
     }
 }

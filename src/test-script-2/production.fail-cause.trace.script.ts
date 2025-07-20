@@ -3,6 +3,7 @@ import { bsc, mainnet } from 'viem/chains';
 import { FlashArbitrage__factory } from '../../typechain-types/factories/contracts/FlashArbitrage__factory';
 import { ConfigUtil } from '../config/config.util';
 import { bigint } from 'zod';
+import * as JSONbig from 'json-bigint';
 
 // Set up Viem public client
 const publicClient = createPublicClient({
@@ -37,14 +38,14 @@ async function getRevertReason(txHash: `0x${string}`, blockNumber?: bigint) {
 
       // Simulate the transaction at the block it was included in
       try {
-        await createPublicClient({
+        const result = await createPublicClient({
           chain: bsc,
           transport: http(ConfigUtil.getConfig().BSC_RPC_URL),
           // transport: http('http://127.0.0.1:8545', { timeout: 18000 }),
         }).simulateContract({
           account: transaction.from,
-          // address: transaction.to!,
-          address: '0x3A39a80ccBB9f23127017808112c0F53A08E3cbE' as Address,
+          address: transaction.to!,
+          // address: '0x3A39a80ccBB9f23127017808112c0F53A08E3cbE' as Address,
           // address: '0x41b0524c100819d33d0f784a5526326ac34906d3' as Address,
           abi: FlashArbitrage__factory.abi,
           functionName,
@@ -52,7 +53,14 @@ async function getRevertReason(txHash: `0x${string}`, blockNumber?: bigint) {
           value: transaction.value || 0n,
           blockNumber: blockNumber ?? receipt.blockNumber,
         });
-        console.log('Simulation succeeded unexpectedly. Expected a revert.');
+        if (result) {
+          console.log('Simulation succeeded unexpectedly. Expected a revert.');
+          console.log(`result: ${JSONbig.stringify(result, null, 2)}`);
+        } else {
+          console.log(
+            'result is undefine, check is the block number correct, or is the target contract is deployed before block number',
+          );
+        }
       } catch (simulationError) {
         // Check if the error is a contract revert
         if (simulationError.name === 'ContractFunctionExecutionError') {
@@ -84,6 +92,6 @@ async function getRevertReason(txHash: `0x${string}`, blockNumber?: bigint) {
 
 // Example usage
 const txHash =
-  '0xc278023a8a37d0689e6a2844462242709649b8c0f2b88e87a9e8642f54ada7b8';
-const blockNumber = BigInt(54295820);
+  '0xed05f571e3b7efea63c026ee7909b660bdf3191a1a9d897faa8b056c78d796d1';
+const blockNumber = BigInt(54532524);
 getRevertReason(txHash, blockNumber);

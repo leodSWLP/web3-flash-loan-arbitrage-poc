@@ -168,10 +168,15 @@ const exec = async () => {
 
   let counter = 0;
   while (true) {
-    console.log(
-      `${new Date().toISOString()}: Start quoteAndTrade - ${counter++}`,
-    );
+    const callStart = performance.now();
+
     await quoteAndTrade(routeDetails);
+
+    const callEnd = performance.now();
+    const ms = callEnd - callStart;
+    console.log(
+      `${new Date().toISOString()}: Complete quoteAndTrade - ${counter++}, execution time: ${ms}`,
+    );
   }
 };
 

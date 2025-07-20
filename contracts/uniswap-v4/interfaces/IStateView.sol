@@ -40,4 +40,11 @@ interface IStateView {
     ) external view returns (uint128 liquidity);
 
     function poolManager() external view returns (address);
+
+    function getFeeGrowthGlobals(
+        bytes32 poolId
+    )
+        external
+        view
+        returns (uint256 feeGrowthGlobal0, uint256 feeGrowthGlobal1);
 }
