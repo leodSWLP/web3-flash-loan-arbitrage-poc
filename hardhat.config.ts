@@ -7,9 +7,22 @@ dotenv.config();
 const config: HardhatUserConfig = {
   solidity: {
     compilers: [
-      { version: '0.8.21' },
-      { version: '0.8.24' },
-      { version: '0.7.6' },
+      {
+        version: '0.8.21',
+      },
+      {
+        version: '0.8.24',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 100,
+          },
+          viaIR: true,
+        },
+      },
+      {
+        version: '0.7.6',
+      },
     ],
   },
   networks: {

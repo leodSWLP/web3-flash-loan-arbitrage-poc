@@ -5,6 +5,11 @@ import '@uniswap/v4-core/src/types/PoolId.sol';
 
 // This is for Uniswap V4 Quote
 interface IStateView {
+    function getTickBitmap(
+        bytes32 poolId,
+        int16 tick
+    ) external view returns (uint256 tickBitmap);
+
     function getSlot0(
         bytes32 poolId
     )

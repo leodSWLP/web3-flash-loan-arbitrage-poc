@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: BUSL-1.1
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.24;
 
 import {SafeCast} from './libraries/SafeCast.sol';
 import {TickBitmap} from './libraries/TickBitmap.sol';
@@ -129,7 +129,7 @@ abstract contract V4QuoteMath {
         public
         view
         virtual
-        returns (uint256 feeGrowthGlobal0X128, uint256 feeGrowthGlobal1X128);
+        returns (uint256 feeGrowthGlobal0, uint256 feeGrowthGlobal1);
 
     function getLiquidity(
         bytes32 poolId
@@ -199,19 +199,22 @@ abstract contract V4QuoteMath {
         SwapParams memory params
     )
         internal
+        view
         returns (
             BalanceDelta swapDelta,
-            uint256 amountToProtocol,
-            uint24 swapFee,
+            uint160 sqrtPriceX96After,
+            uint32 initializedTicksCrossed,
             SwapResult memory result
         )
     {
         Slot0 slot0Start = getPackedSlot0(poolId);
         bool zeroForOne = params.zeroForOne;
 
+        uint256 amountToProtocol;
+        uint24 swapFee;
         (
-            uint256 feeGrowthGlobal0X128,
-            uint256 feeGrowthGlobal1X128
+            uint256 feeGrowthGlobal0,
+            uint256 feeGrowthGlobal1
         ) = getFeeGrowthGlobals(poolId);
 
         uint256 protocolFee = zeroForOne
@@ -252,7 +255,7 @@ abstract contract V4QuoteMath {
         // swapFee is the pool's fee in pips (LP fee + protocol fee)
         // when the amount swapped is 0, there is no protocolFee applied and the fee amount paid to the protocol is set to 0
         if (params.amountSpecified == 0)
-            return (BalanceDeltaLibrary.ZERO_DELTA, 0, swapFee, result);
+            return (BalanceDeltaLibrary.ZERO_DELTA, 0, 0, result);
 
         if (zeroForOne) {
             if (params.sqrtPriceLimitX96 >= slot0Start.sqrtPriceX96()) {
@@ -284,8 +287,8 @@ abstract contract V4QuoteMath {
 
         StepComputations memory step;
         step.feeGrowthGlobalX128 = zeroForOne
-            ? feeGrowthGlobal0X128
-            : feeGrowthGlobal1X128;
+            ? feeGrowthGlobal0
+            : feeGrowthGlobal1;
 
         // continue swapping as long as we haven't used the entire input/output and haven't reached the price limit
         while (
@@ -388,8 +391,8 @@ abstract contract V4QuoteMath {
                         uint256 feeGrowthGlobal0X128,
                         uint256 feeGrowthGlobal1X128
                     ) = zeroForOne
-                            ? (step.feeGrowthGlobalX128, feeGrowthGlobal1X128)
-                            : (feeGrowthGlobal0X128, step.feeGrowthGlobalX128);
+                            ? (step.feeGrowthGlobalX128, feeGrowthGlobal1)
+                            : (feeGrowthGlobal0, step.feeGrowthGlobalX128);
                     int128 liquidityNet = crossTick(
                         poolId,
                         step.tickNext,
@@ -435,6 +438,11 @@ abstract contract V4QuoteMath {
                 );
             }
         }
+
+        sqrtPriceX96After = result.sqrtPriceX96;
+        int absTick = result.tick - slot0Start.tick();
+        absTick = absTick > 0 ? absTick : -absTick;
+        initializedTicksCrossed = uint32(int32(absTick));
     }
 
     function crossTick(

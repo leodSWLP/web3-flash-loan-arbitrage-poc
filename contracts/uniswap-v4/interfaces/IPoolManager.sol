@@ -3,9 +3,4 @@ pragma solidity ^0.8.24;
 
 import '@uniswap/v4-core/src/types/PoolId.sol';
 
-interface IPoolManager {
-    function getTickBitmap(
-        bytes32 poolId,
-        int16 tick
-    ) external view returns (uint256 tickBitmap);
-}
+interface IPoolManager {}
