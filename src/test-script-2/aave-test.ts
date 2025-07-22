@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv';
 import { ethers } from 'ethers';
 import {
+  Address,
   ContractFunctionRevertedError,
   createPublicClient,
   createWalletClient,
@@ -11,6 +12,8 @@ import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
 import { FlashArbitrageWithDebug__factory } from '../../typechain-types/factories/contracts/FlashArbitrageWithDebug__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
+import { AaveFlashLoanTest__factory } from '../../typechain-types/factories/contracts/AaveFlashLoanTest__factory';
+import { BscContractConstant } from '../common/bsc-contract.constant';
 dotenv.config();
 
 const deploy = async () => {
@@ -44,13 +47,51 @@ const deploy = async () => {
     );
   }
   console.log('Contract deployed to:', contractAddress);
+  return contractAddress;
+};
+
+const testSwapNativeToken = async (contractAddress: string) => {
+  try {
+    const data =
+      await ShareContentLocalStore.getStore().viemWalletClient?.writeContract({
+        address: '' as Address,
+        abi: AaveFlashLoanTest__factory.abi,
+        functionName: 'swapNativeToken',
+        args: [
+          BscContractConstant.uniswap.universalRouter,
+          BscContractConstant.uniswapV4.positionManager,
+          BscContractConstant.uniswap.permit2,
+          '0x4e5943586e4d264812aaf2cd3c36387a803f67677840d6863349c3b7475c67d2',
+          '0x0000000000000000000000000000000000000000',
+          '0x55d398326f99059ff775485246999027b3197955',
+          ethers.parseEther('10000'),
+        ],
+        account,
+        chain: localhostChain,
+      });
+    
+    console.log('Read Data:', data);
+  } catch (error) {
+    console.error('Transaction failed with error:');
+
+    if (error instanceof ContractFunctionRevertedError) {
+      const { reason, data } = error;
+      console.error('Revert reason:', reason || 'No reason provided');
+      console.error('Error data:', data);
+    } else {
+      // Handle other errors (e.g., gas issues, invalid inputs)
+      console.error('Error name:', error.name);
+      console.error('Error message:', error.message);
+      console.error('Error stack:', error.stack);
+    }
+  }
 };
 
 const exec = async () => {
   const start = performance.now();
 
-  await deploy();
-  // await callFlashSwap();
+  const contractAddress = await deploy();
+  await testSwapNativeToken(contractAddress);
 
   const end = performance.now();
   const ms = end - start;

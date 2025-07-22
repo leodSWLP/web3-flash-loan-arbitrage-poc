@@ -44,7 +44,7 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
 
     function _swap(
         address routerAddress,
-        address permist2Address,
+        address permit2Address,
         address tokenIn,
         address tokenOut,
         uint24 fee,
@@ -52,12 +52,12 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
         uint256 amountOutMinimum
     ) internal returns (uint256 amountOut) {
         // Approve Permit2 to spend tokenIn
-        try IERC20(tokenIn).approve(permist2Address, amountIn) {} catch {
+        try IERC20(tokenIn).approve(permit2Address, amountIn) {} catch {
             revert OperationStepFailed(1);
         }
         // Approve Universal Router via Permit2
         try
-            IPermit2(permist2Address).approve(
+            IPermit2(permit2Address).approve(
                 tokenIn,
                 routerAddress,
                 SafeCast.toUint160(amountIn),
