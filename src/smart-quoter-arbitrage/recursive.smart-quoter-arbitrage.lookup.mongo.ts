@@ -39,7 +39,7 @@ const quoteAndTrade = async (
 
   const batchFunctions: (() => Promise<void>)[] = [];
   const functionBatchSize = 3;
-  const callsPerSecond = 5;
+  const callsPerSecond = 7;
   const batchSize = 10240;
 
   for (let i = 0; i < quoteCalls.length; i += functionBatchSize) {
@@ -49,10 +49,6 @@ const quoteAndTrade = async (
     );
     batchFunctions.push(async () => {
       const callStart = performance.now();
-
-      const blockNumberPromise = triggerByBlockNumber
-        ? undefined
-        : ViemClientUtil.getRotatingViemClient().getBlockNumber();
 
       const contracts = batchCalls.map((call) => ({
         address: ConfigUtil.getConfig().V3_ARBITRAGE_QUOTER_ADDRESS as Address,
@@ -67,7 +63,7 @@ const quoteAndTrade = async (
           batchSize,
         });
 
-      const blockNumber = triggerByBlockNumber ?? (await blockNumberPromise!);
+      const blockNumber = triggerByBlockNumber ?? 0n;
 
       let successCounter = 0;
       for (let j = 0; j < quoteResults.length; j++) {
@@ -157,7 +153,7 @@ const exec = async () => {
     new TokenAmount(BscTxTokenConstant.btcb),
     new TokenAmount(BscTxTokenConstant.wbnb),
     new TokenAmount(BscTxTokenConstant.usdc),
-    // new TokenAmount(BscTxTokenConstant.cake),
+    new TokenAmount(BscTxTokenConstant.koge),
   ];
 
   const [swapRoute, arbitrageRoute] = await Promise.all([

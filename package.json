@@ -1,7 +1,8 @@
 {
   "name": "hardhat-project",
   "scripts": {
-    "compile": "npx hardhat compile"
+    "compile": "npx hardhat compile",
+    "start": "npm run compile && ts-node src/smart-quoter-arbitrage/recursive.smart-quoter-arbitrage.lookup.mongo.ts"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",

@@ -26,7 +26,6 @@ export class ConfigUtil {
           message: 'BLOCK_NUMBER must be a non-negative integer or empty',
         },
       ),
-    BSC_SCAN_API_KEY: z.string().optional(),
     WALLET_PRIVATE_KEY: z
       .string()
       .nonempty('WALLET_PRIVATE_KEY is required')

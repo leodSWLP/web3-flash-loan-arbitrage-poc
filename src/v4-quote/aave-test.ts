@@ -16,14 +16,16 @@ import { AaveFlashLoanTest__factory } from '../../typechain-types/factories/cont
 import { BscContractConstant } from '../common/bsc-contract.constant';
 dotenv.config();
 
+export const account = privateKeyToAccount(
+  '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80' as `0x${string}`,
+);
+
 const deploy = async () => {
   const hash =
     await ShareContentLocalStore.getStore().viemWalletClient!.deployContract({
       abi: FlashArbitrageWithDebug__factory.abi,
       bytecode: FlashArbitrageWithDebug__factory.bytecode,
-      account: privateKeyToAccount(
-        process.env.WALLET_PRIVATE_KEY as `0x${string}`,
-      ),
+      account: account,
       chain: localhostChain,
       args: ['0xff75B6da14FfbbfD355Daf7a2731456b3562Ba6D'],
     });
@@ -52,9 +54,9 @@ const deploy = async () => {
 
 const testSwapNativeToken = async (contractAddress: string) => {
   try {
-    const data =
-      await ShareContentLocalStore.getStore().viemWalletClient?.writeContract({
-        address: '' as Address,
+    const hash =
+      await ShareContentLocalStore.getStore().viemWalletClient!.writeContract({
+        address: contractAddress as Address,
         abi: AaveFlashLoanTest__factory.abi,
         functionName: 'swapNativeToken',
         args: [
@@ -64,13 +66,21 @@ const testSwapNativeToken = async (contractAddress: string) => {
           '0x4e5943586e4d264812aaf2cd3c36387a803f67677840d6863349c3b7475c67d2',
           '0x0000000000000000000000000000000000000000',
           '0x55d398326f99059ff775485246999027b3197955',
-          ethers.parseEther('10000'),
+          ethers.parseEther('2'),
         ],
         account,
         chain: localhostChain,
+        value: ethers.parseEther('2'),
       });
-    
-    console.log('Read Data:', data);
+
+    console.log('Transaction hash:', hash);
+
+    const receipt =
+      await ShareContentLocalStore.getStore().viemChainClient.waitForTransactionReceipt(
+        { hash },
+      );
+
+    console.log(receipt);
   } catch (error) {
     console.error('Transaction failed with error:');
 
@@ -93,6 +103,7 @@ const exec = async () => {
   const contractAddress = await deploy();
   await testSwapNativeToken(contractAddress);
 
+  // await testSwapNativeToken('0x9F96d59262D714126835028Eb898cc64E788ceb9');
   const end = performance.now();
   const ms = end - start;
   const s = ms / 1000;
@@ -100,10 +111,6 @@ const exec = async () => {
   console.log(`Execution time: ${ms.toFixed(2)} ms`);
   console.log(`Execution time: ${s.toFixed(2)} s`);
 };
-
-export const account = privateKeyToAccount(
-  process.env.WALLET_PRIVATE_KEY as `0x${string}`,
-);
 
 export const localhostChain = defineChain({
   id: 56,

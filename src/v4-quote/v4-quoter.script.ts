@@ -19,14 +19,16 @@ import { SubgraphEndpoint, SubgraphUtil } from '../subgraph/subgraph.util';
 
 dotenv.config();
 
+export const account = privateKeyToAccount(
+  '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80' as `0x${string}`,
+);
+
 const deploy = async () => {
   const hash =
     await ShareContentLocalStore.getStore().viemWalletClient!.deployContract({
       abi: V4ViewOnlyQuoterWithDebug__factory.abi,
       bytecode: V4ViewOnlyQuoterWithDebug__factory.bytecode,
-      account: privateKeyToAccount(
-        process.env.WALLET_PRIVATE_KEY as `0x${string}`,
-      ),
+      account: account,
       chain: localhostChain,
       args: [
         '0xd13dd3d6e93f276fafc9db9e6bb47c1180aee0c4',
@@ -104,10 +106,6 @@ const exec = async () => {
   console.log(`Execution time: ${ms.toFixed(2)} ms`);
   console.log(`Execution time: ${s.toFixed(2)} s`);
 };
-
-export const account = privateKeyToAccount(
-  '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80' as `0x${string}`,
-);
 
 export const localhostChain = defineChain({
   id: 56,

@@ -8,8 +8,8 @@ services:
     ports:
       - '8545:8545'
     environment:
-      FORK_URL: { YOUR_OWN_URL }
-      FORK_BLOCK_NUMBER: 54295837 # Optional - Remove if not needed
+      FORK_URL: https://56.rpc.thirdweb.com
+      # FORK_BLOCK_NUMBER: 54295837 # Optional - Remove if not needed
 
   redis:
     image: redis:7-alpine

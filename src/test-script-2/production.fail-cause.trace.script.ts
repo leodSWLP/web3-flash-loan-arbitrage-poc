@@ -92,6 +92,6 @@ async function getRevertReason(txHash: `0x${string}`, blockNumber?: bigint) {
 
 // Example usage
 const txHash =
-  '0xed05f571e3b7efea63c026ee7909b660bdf3191a1a9d897faa8b056c78d796d1';
-const blockNumber = BigInt(54532524);
+  '0xc94b20528920f6d3d6e20921d8f3f4ad418239aad1ec70837ddd27fc6e824ba0';
+const blockNumber = BigInt(54816299);
 getRevertReason(txHash, blockNumber);

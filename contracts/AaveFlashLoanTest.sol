@@ -61,7 +61,8 @@ contract AaveFlashLoanTest is IFlashLoan, FlashLoanSimpleReceiverBase {
         address tokenIn,
         address tokenOut,
         uint128 amountIn
-    ) external {
+    ) external payable {
+        console2.log('swapNativeToken start');
         console2.log('before - msg.sender balance:', msg.sender.balance);
         console2.log(
             'before - tokenOut balance:',
