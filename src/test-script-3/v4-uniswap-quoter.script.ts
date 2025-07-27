@@ -1,7 +1,9 @@
 import * as dotenv from 'dotenv';
 import { ethers } from 'ethers';
+import { Address } from 'viem';
+
+import { Token } from '@uniswap/sdk-core';
 import {
-  Address,
   ContractFunctionRevertedError,
   createPublicClient,
   createWalletClient,
@@ -10,10 +12,11 @@ import {
 } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { bsc } from 'viem/chains';
-import { FlashArbitrageWithDebug__factory } from '../../typechain-types/factories/contracts/FlashArbitrageWithDebug__factory';
+import { V4ViewOnlyQuoterWithDebug__factory } from '../../typechain-types/factories/contracts/uniswap-v4/V4ViewOnlyQuoterWithDebug__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
-import { AaveFlashLoanTest__factory } from '../../typechain-types/factories/contracts/AaveFlashLoanTest__factory';
 import { BscContractConstant } from '../common/bsc-contract.constant';
+import { SubgraphEndpoint, SubgraphUtil } from '../subgraph/subgraph.util';
+
 dotenv.config();
 
 export const account = privateKeyToAccount(
@@ -23,11 +26,14 @@ export const account = privateKeyToAccount(
 const deploy = async () => {
   const hash =
     await ShareContentLocalStore.getStore().viemWalletClient!.deployContract({
-      abi: FlashArbitrageWithDebug__factory.abi,
-      bytecode: FlashArbitrageWithDebug__factory.bytecode,
+      abi: V4ViewOnlyQuoterWithDebug__factory.abi,
+      bytecode: V4ViewOnlyQuoterWithDebug__factory.bytecode,
       account: account,
       chain: localhostChain,
-      args: ['0xff75B6da14FfbbfD355Daf7a2731456b3562Ba6D'],
+      args: [
+        '0xd13dd3d6e93f276fafc9db9e6bb47c1180aee0c4',
+        '0x7a4a5c919ae2541aed11041a1aeee68f1287f95b',
+      ],
     });
 
   console.log('Transaction hash:', hash);
@@ -52,35 +58,25 @@ const deploy = async () => {
   return contractAddress;
 };
 
-const testSwapNativeToken = async (contractAddress: string) => {
+const quoteExactInput = async (contractAddress: Address) => {
   try {
-    const hash =
-      await ShareContentLocalStore.getStore().viemWalletClient!.writeContract({
-        address: contractAddress as Address,
-        abi: AaveFlashLoanTest__factory.abi,
-        functionName: 'swapNativeToken',
+    const data =
+      await ShareContentLocalStore.getStore().viemChainClient.readContract({
+        address: contractAddress,
+        abi: V4ViewOnlyQuoterWithDebug__factory.abi,
+        functionName: 'quoteExactInput',
         args: [
-          BscContractConstant.uniswap.universalRouter,
-          BscContractConstant.uniswapV4.positionManager,
-          BscContractConstant.uniswap.permit2,
-          '0x4e5943586e4d264812aaf2cd3c36387a803f67677840d6863349c3b7475c67d2',
-          '0x0000000000000000000000000000000000000000',
-          '0x55d398326f99059ff775485246999027b3197955',
-          ethers.parseEther('2'),
+          {
+            poolId:
+              '0x4e5943586e4d264812aaf2cd3c36387a803f67677840d6863349c3b7475c67d2',
+            tokenIn: '0x0000000000000000000000000000000000000000',
+            tokenOut: '0x55d398326f99059ff775485246999027b3197955',
+            amountIn: ethers.parseEther('1'),
+          },
         ],
-        account,
-        chain: localhostChain,
-        value: ethers.parseEther('2'),
       });
-
-    console.log('Transaction hash:', hash);
-
-    const receipt =
-      await ShareContentLocalStore.getStore().viemChainClient.waitForTransactionReceipt(
-        { hash },
-      );
-
-    console.log(receipt);
+    console.log('Read Data:', data);
+    console.log(`Readable Output: ${ethers.formatEther(data[0])}`);
   } catch (error) {
     console.error('Transaction failed with error:');
 
@@ -101,9 +97,8 @@ const exec = async () => {
   const start = performance.now();
 
   const contractAddress = await deploy();
-  await testSwapNativeToken(contractAddress);
+  await quoteExactInput(contractAddress);
 
-  // await testSwapNativeToken('0x9F96d59262D714126835028Eb898cc64E788ceb9');
   const end = performance.now();
   const ms = end - start;
   const s = ms / 1000;
@@ -139,23 +134,30 @@ export const localhostChain = defineChain({
 
 const viemChainClient = createPublicClient({
   chain: bsc,
-  transport: http('http://127.0.0.1:8545'),
+  transport: http('http://127.0.0.1:8545', { timeout: 180000 }),
 });
 
 const viemWalletClient = createWalletClient({
   chain: localhostChain,
-  transport: http('http://127.0.0.1:8545', { timeout: 60000 }),
+  transport: http('http://127.0.0.1:8545'),
   account,
 });
 
-const runWithShareContentLocalStore = () => {
-  ShareContentLocalStore.initAsyncLocalStore(() => {
-    ShareContentLocalStore.getStore().viemChain = bsc;
-    ShareContentLocalStore.getStore().viemChainClient = viemChainClient;
-    ShareContentLocalStore.getStore().viemWalletClient = viemWalletClient;
-  }, exec);
+const main = () => {
+  console.log('run V4 uniswap-quoter.script');
+  const runWithShareContentLocalStore = () => {
+    ShareContentLocalStore.initAsyncLocalStore(() => {
+      ShareContentLocalStore.getStore().viemChain = bsc;
+      ShareContentLocalStore.getStore().viemChainClient = viemChainClient;
+      ShareContentLocalStore.getStore().viemWalletClient = viemWalletClient;
+    }, exec);
+  };
+
+  runWithShareContentLocalStore();
+
+  console.log('');
 };
 
-runWithShareContentLocalStore();
-
-console.log('');
+if (require.main === module) {
+  main();
+}

@@ -12,7 +12,10 @@ const publicClient = createPublicClient({
 });
 
 // Function to get and decode revert reason
-async function getRevertReason(txHash: `0x${string}`, blockNumber?: bigint) {
+async function getRevertReason(
+  txHash: `0x${string}`,
+  blockNumber?: bigint,
+): Promise<boolean> {
   try {
     // Fetch transaction and receipt
     const transaction = await publicClient.getTransaction({ hash: txHash });
@@ -33,7 +36,7 @@ async function getRevertReason(txHash: `0x${string}`, blockNumber?: bigint) {
         args = decoded.args;
       } catch (decodeError) {
         console.error('Failed to decode transaction input:', decodeError);
-        return;
+        return false;
       }
 
       // Simulate the transaction at the block it was included in
@@ -56,6 +59,7 @@ async function getRevertReason(txHash: `0x${string}`, blockNumber?: bigint) {
         if (result) {
           console.log('Simulation succeeded unexpectedly. Expected a revert.');
           console.log(`result: ${JSONbig.stringify(result, null, 2)}`);
+          return true;
         } else {
           console.log(
             'result is undefine, check is the block number correct, or is the target contract is deployed before block number',
@@ -74,7 +78,7 @@ async function getRevertReason(txHash: `0x${string}`, blockNumber?: bigint) {
               JSON.stringify(data.abiItem.inputs.map((item) => item.name)),
             );
             console.log('Error args:', data.args);
-            return data;
+            // return data;
           } else {
             console.log('No revert data available.');
           }
@@ -88,10 +92,35 @@ async function getRevertReason(txHash: `0x${string}`, blockNumber?: bigint) {
   } catch (error) {
     console.error('Error fetching transaction:', error);
   }
+
+  return false;
 }
 
+const foundBlockDelay = async (txHash: `0x${string}`, startFromBlock) => {
+  let blockDelay = 0n;
+  while (blockDelay < 10) {
+    const isSuccess = await getRevertReason(
+      txHash,
+      startFromBlock - blockDelay,
+    );
+    if (isSuccess) {
+      break;
+    }
+    blockDelay++;
+  }
+
+  const errorMessage = {
+    message: 'Profit opportunity details',
+    detectedBlock: Number(startFromBlock - blockDelay),
+    expectedExecutionBlock: Number(startFromBlock - blockDelay + 1n),
+    actualExecutionBlock: Number(startFromBlock),
+    blockDelay: Number(blockDelay - 1n),
+  };
+  console.log('\n\n---- Profitable Trade Info ----');
+  console.log(JSON.stringify(errorMessage, null, 2));
+};
 // Example usage
 const txHash =
-  '0xc94b20528920f6d3d6e20921d8f3f4ad418239aad1ec70837ddd27fc6e824ba0';
-const blockNumber = BigInt(54816299);
-getRevertReason(txHash, blockNumber);
+  '0x8243ff7f6b2718712fc6b15640661b5ca5e8a507ac59622ab20cae3021248184';
+const blockNumber = BigInt(55445724);
+foundBlockDelay(txHash, blockNumber);

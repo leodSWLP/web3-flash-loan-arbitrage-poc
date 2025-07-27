@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-import {V4QuoteMath} from './V4QuoteMath.sol';
+import {V4QuoteMathWithDebug} from './V4QuoteMathWithDebug.sol';
 import {IStateView} from './interfaces/IStateView.sol';
 import {IPoolManager} from './interfaces/IPoolManager.sol';
 import {IPositionManager} from './interfaces/IPositionManager.sol';
@@ -9,9 +9,9 @@ import {Ownable} from '@openzeppelin/contracts/access/Ownable.sol';
 import {PoolKey} from '@uniswap/v4-core/src/types/PoolKey.sol';
 import {SafeCast} from './libraries/SafeCast.sol';
 import {BalanceDelta, toBalanceDelta, BalanceDeltaLibrary} from './types/BalanceDelta.sol';
-import 'forge-std/console2.sol';
+import {console2} from 'forge-std/console2.sol';
 
-contract V4ViewOnlyQuoterWithDebug is V4QuoteMath, Ownable {
+contract V4ViewOnlyQuoterWithDebug is V4QuoteMathWithDebug, Ownable {
     using SafeCast for *;
 
     struct UniswapV4Config {

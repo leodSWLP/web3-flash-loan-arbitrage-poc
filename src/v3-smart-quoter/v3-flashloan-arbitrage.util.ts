@@ -100,6 +100,7 @@ export class V3FlashLoanArbitrageUtil {
           await ViemClientUtil.getRotatingViemClient().waitForTransactionReceipt(
             {
               hash,
+              timeout: 30000, // 60 seconds
               pollingInterval: 500,
             },
           );

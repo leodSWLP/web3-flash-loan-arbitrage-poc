@@ -13,9 +13,13 @@ import './interfaces/IPermit2.sol';
 contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
     using SafeERC20 for IERC20;
 
+    address public owner;
+
     constructor(
         address provider
-    ) FlashLoanSimpleReceiverBase(IPoolAddressesProvider(provider)) {}
+    ) FlashLoanSimpleReceiverBase(IPoolAddressesProvider(provider)) {
+        owner = msg.sender;
+    }
 
     function executeFlashLoan(
         address borrowToken,
@@ -127,7 +131,7 @@ contract FlashArbitrage is IFlashLoan, FlashLoanSimpleReceiverBase {
         emit ArbitrageProfitable(repayAmount, currentAmount);
 
         try
-            IERC20(asset).transfer(initiator, currentAmount - repayAmount)
+            IERC20(asset).transfer(owner, currentAmount - repayAmount)
         {} catch {
             revert OperationStepFailed(4);
         }

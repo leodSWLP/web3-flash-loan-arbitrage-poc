@@ -14,8 +14,9 @@ import 'forge-std/console2.sol';
 import './interfaces/IFlashLoan.sol';
 import './uniswap-v4/libraries/SafeCast.sol';
 import './interfaces/IPermit2.sol';
+import {PoolKey} from '@uniswap/v4-core/src/types/PoolKey.sol';
 
-contract AaveFlashLoanTest is IFlashLoan, FlashLoanSimpleReceiverBase {
+contract AaveBorrowDexSwapPreview is IFlashLoan, FlashLoanSimpleReceiverBase {
     using SafeCast for *;
 
     using SafeERC20 for IERC20;
@@ -26,6 +27,8 @@ contract AaveFlashLoanTest is IFlashLoan, FlashLoanSimpleReceiverBase {
         uint256 premium,
         uint256 repayAmount
     );
+
+    event SwapResult(uint256 initialAmount, uint256 amountOut);
 
     constructor(
         address provider
@@ -55,19 +58,14 @@ contract AaveFlashLoanTest is IFlashLoan, FlashLoanSimpleReceiverBase {
 
     function swapNativeToken(
         address router,
-        address positonManager,
+        address positionManager,
         address permit2,
         bytes32 poolId,
         address tokenIn,
         address tokenOut,
         uint128 amountIn
-    ) external payable {
+    ) external payable returns (uint256 amountOut) {
         console2.log('swapNativeToken start');
-        console2.log('before - msg.sender balance:', msg.sender.balance);
-        console2.log(
-            'before - tokenOut balance:',
-            IERC20(tokenOut).balanceOf(msg.sender)
-        );
         bytes memory commands = abi.encodePacked(uint8(Commands.V4_SWAP));
         bytes memory actions = abi.encodePacked(
             uint8(Actions.SWAP_EXACT_IN_SINGLE),
@@ -75,30 +73,39 @@ contract AaveFlashLoanTest is IFlashLoan, FlashLoanSimpleReceiverBase {
             uint8(Actions.TAKE_ALL)
         );
 
+        bool zeroForOne = tokenIn < tokenOut;
+        PoolKey memory poolKey = IPositionManager(positionManager).poolKeys(
+            toBytes25(poolId)
+        );
+
+        console2.log(
+            'after contract - currency0 balance:',
+            poolKey.currency0.balanceOf(address(this))
+        );
+        console2.log(
+            'after contract - currency1 balance:',
+            poolKey.currency1.balanceOf(address(this))
+        );
+        console2.log('pool key fee: ', poolKey.fee);
+        console2.log('pool key tickSpacing: ', uint24(poolKey.tickSpacing));
+
         bytes[] memory params = new bytes[](3);
         params[0] = abi.encode(
             IV4Router.ExactInputSingleParams({
-                poolKey: IPositionManager(positonManager).poolKeys(
-                    toBytes25(poolId)
-                ),
-                zeroForOne: true, // true if we're swapping token0 for token1
+                poolKey: poolKey,
+                zeroForOne: zeroForOne, // true if we're swapping token0 for token1
                 amountIn: amountIn, // amount of tokens we're swapping
                 amountOutMinimum: 0, // minimum amount we expect to receive
                 hookData: bytes('') // no hook data needed
             })
         );
-        params[1] = abi.encode(tokenIn, amountIn);
+        params[1] = abi.encode(tokenIn, type(uint256).max);
         params[2] = abi.encode(tokenOut, 0);
 
         bytes[] memory inputs = new bytes[](1);
         inputs[0] = abi.encode(actions, params);
-        if (tokenIn == address(0)) {
-            IUniversalRouter(router).execute{value: amountIn}(
-                commands,
-                inputs,
-                block.timestamp + 10
-            );
-        } else {
+        if (tokenIn != address(0)) {
+            console2.log('Try To Approve token');
             try IERC20(tokenIn).approve(permit2, amountIn) {} catch {
                 revert OperationStepFailed(1);
             }
@@ -112,6 +119,18 @@ contract AaveFlashLoanTest is IFlashLoan, FlashLoanSimpleReceiverBase {
             {} catch {
                 revert OperationStepFailed(2);
             }
+        }
+
+        if (tokenIn == address(0)) {
+            console2.log('Start Native Token In Trading');
+
+            IUniversalRouter(router).execute{value: amountIn}(
+                commands,
+                inputs,
+                block.timestamp + 10
+            );
+        } else {
+            console2.log('Start Native Token Out Trading');
 
             IUniversalRouter(router).execute(
                 commands,
@@ -121,10 +140,17 @@ contract AaveFlashLoanTest is IFlashLoan, FlashLoanSimpleReceiverBase {
         }
 
         console2.log('after - msg.sender balance:', msg.sender.balance);
+
         console2.log(
-            'after - tokenOut balance:',
-            IERC20(tokenOut).balanceOf(msg.sender)
+            'after contract - currency0 balance:',
+            poolKey.currency0.balanceOf(address(this))
         );
+        console2.log(
+            'after contract - currency1 balance:',
+            poolKey.currency1.balanceOf(address(this))
+        );
+
+        emit SwapResult(amountIn, poolKey.currency1.balanceOf(address(this)));
     }
 
     function executeOperation(
