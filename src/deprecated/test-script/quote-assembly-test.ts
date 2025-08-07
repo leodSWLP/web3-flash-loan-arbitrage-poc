@@ -309,7 +309,7 @@ export const account = privateKeyToAccount(
   process.env.WALLET_PRIVATE_KEY as `0x${string}`,
 );
 
-export const localhostChain = defineChain({
+const localhostChain = defineChain({
   id: 56,
   name: 'Local Hardhat',
   network: 'hardhat',

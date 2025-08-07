@@ -2,7 +2,7 @@ import { createPublicClient, http, Address, parseAbi, defineChain } from 'viem';
 import { bsc } from 'viem/chains';
 import { parseEther } from 'viem';
 
-export const localhostChain = defineChain({
+const localhostChain = defineChain({
   id: 56,
   name: 'Local Hardhat',
   network: 'hardhat',

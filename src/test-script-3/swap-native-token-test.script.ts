@@ -121,7 +121,7 @@ const exec = async () => {
   console.log(`Execution time: ${s.toFixed(2)} s`);
 };
 
-export const localhostChain = defineChain({
+const localhostChain = defineChain({
   id: 56,
   name: 'Local Hardhat',
   network: 'hardhat',

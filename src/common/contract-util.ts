@@ -2,7 +2,6 @@ import { Abi, Account, Address, Chain, DeployContractParameters } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { V3ArbitrageQuoter__factory } from '../../typechain-types/factories/contracts/quote-v3/V3ArbitrageQuoter__factory';
 import { ShareContentLocalStore } from '../async-local-store/share-content-local-store';
-import { localhostChain } from '../test-script-2/production.v3-quoter.script';
 
 export class ContractUtil {
   static async deploy<

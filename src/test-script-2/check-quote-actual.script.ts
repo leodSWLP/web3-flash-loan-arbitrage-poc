@@ -24,7 +24,7 @@ import { LogUtil } from '../log/log.util';
 import { ethers } from 'ethers';
 import { BscContractConstant } from '../common/bsc-contract.constant';
 
-export const localhostChain = defineChain({
+const localhostChain = defineChain({
   id: 56,
   name: 'Local Hardhat',
   network: 'hardhat',

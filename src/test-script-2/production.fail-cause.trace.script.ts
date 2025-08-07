@@ -22,8 +22,8 @@ async function getRevertReason(
     const receipt = await publicClient.getTransactionReceipt({ hash: txHash });
 
     // Check if transaction failed
-    if (receipt.status === 'reverted') {
-      console.log('Transaction failed. Simulating to get revert reason...');
+    if (receipt.status) {
+      // console.log('Transaction failed. Simulating to get revert reason...');
 
       // Decode the function call from transaction input
       let functionName, args;
@@ -121,6 +121,6 @@ const foundBlockDelay = async (txHash: `0x${string}`, startFromBlock) => {
 };
 // Example usage
 const txHash =
-  '0x8243ff7f6b2718712fc6b15640661b5ca5e8a507ac59622ab20cae3021248184';
-const blockNumber = BigInt(55445724);
+  '0xe813ea499d66bd0fd5d946e1a3a61beb4953d8088b561689d8b1db0f52864579';
+const blockNumber = BigInt(55123092);
 foundBlockDelay(txHash, blockNumber);
