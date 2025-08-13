@@ -38,7 +38,7 @@ async function getRevertReason(
         console.error('Failed to decode transaction input:', decodeError);
         return false;
       }
-
+      console.log(`args: ${JSONbig.stringify(args, null, 2)}`)
       // Simulate the transaction at the block it was included in
       try {
         const result = await createPublicClient({
@@ -121,6 +121,6 @@ const foundBlockDelay = async (txHash: `0x${string}`, startFromBlock) => {
 };
 // Example usage
 const txHash =
-  '0xe813ea499d66bd0fd5d946e1a3a61beb4953d8088b561689d8b1db0f52864579';
-const blockNumber = BigInt(55123092);
+  '0xb4d357caa200cc80a02887e3cf67f0d2bb8717b388484924ddb97627ac75df2d';
+const blockNumber = BigInt(55824048);
 foundBlockDelay(txHash, blockNumber);

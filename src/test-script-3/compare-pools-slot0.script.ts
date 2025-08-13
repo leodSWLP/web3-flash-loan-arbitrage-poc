@@ -32,7 +32,7 @@ const getSlot0HistoryInPools = async (
   },
 ) => {
   const { initalBlockNumber, isBackWard, rounds } = blockOptions;
-  const summaries: {
+  let summaries: {
     blockNumber: bigint;
     deltas: number[];
     poolDetails: {
@@ -70,6 +70,7 @@ const getSlot0HistoryInPools = async (
     });
   }
 
+  summaries = summaries.sort((a, b) => Math.abs(b.deltas[0]) - Math.abs(a.deltas[0]) )
   console.log(`summaries: ${JSONbig.stringify(summaries, null, 2)}`);
 };
 
