@@ -32,7 +32,7 @@ export class ShareContentLocalStore {
   static getStore(): ShareContentStore {
     const store = this.asyncLocalStore.getStore();
     if (!store) {
-      throw new Error('Please Transaction Local Store first');
+      throw new Error('Please Init Local Store first');
     }
     return store;
   }

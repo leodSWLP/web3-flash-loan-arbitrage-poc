@@ -28,9 +28,10 @@ async function watchPendingTxs() {
 
       // Optionally, fetch full transaction details for each hash
       for (const hash of hashes) {
-        try {
+          try {
           const transaction = await publicClient.getTransaction({ hash });
-          console.log("Transaction details:", transaction);
+          const utcTimestamp = new Date().toUTCString();
+          console.log(`[${utcTimestamp}] Transaction details:`, transaction);
         } catch (error) {
           console.error(`Error fetching transaction ${hash}:`, error);
         }
