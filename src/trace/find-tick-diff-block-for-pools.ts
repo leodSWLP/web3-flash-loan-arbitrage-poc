@@ -36,12 +36,14 @@ export type TraceSummary = {
   };
 };
 
-const tokenPair = {
-  pool0: '0x47a90A2d92A8367A91EfA1906bFc8c1E05bf10c4' as Address,
-  description0: 'uniswap USDT-WBNB 100',
-  pool1: '0xf2688fb5b81049dfb7703ada5e770543770612c4' as Address,
-  description1: 'pancakeswap USDC-WBNB 100',
-};
+// const tokenPair = {
+//   pool0: '0x47a90A2d92A8367A91EfA1906bFc8c1E05bf10c4' as Address,
+//   description0: 'uniswap USDT-WBNB 100',
+//   pool1: '0xf2688fb5b81049dfb7703ada5e770543770612c4' as Address,
+//   description1: 'pancakeswap USDC-WBNB 100',
+// };
+// const minTickDeltas = 7;
+
 
 // "7": 55822649,
 // "-8": 55821146
@@ -52,8 +54,25 @@ const tokenPair = {
 // "104": 55824046
 // "-9": 55824047
 
+// const tokenPair = {
+//   pool0: '0x387a86d863420ffa2eF88B2524E54513A0deD845' as Address,
+//   description0: 'uniswap USDT-BR 100',
+//   pool1: '0x380aaDF63D84D3A434073F1d5d95f02fB23d5228' as Address,
+//   description1: 'pancakeswap USDC-BR 100',
+// };
+// const minTickDeltas = 7;
+
+const tokenPair = {
+  pool0: '0x62fcb3c1794fb95bd8b1a97f6ad5d8a7e4943a1e' as Address,
+  description0: 'pancakeswap ETH-WBNB 100',
+  pool1: '0xd0e226f674bbf064f54ab47f42473ff80db98cba' as Address,
+  description1: 'pancakeswap ETH-WBNB 500',
+};
+const minTickDeltas = 7;
+
+
 const traceOptions = {
-  initalBlockNumber: BigInt(55828400),
+  initalBlockNumber: BigInt(55838400),
   isBackward: true,
   rounds: 5000n,
 };
@@ -67,6 +86,7 @@ const getTickDeltaBlockNumbers = async (
   let remainingRounds = traceOptions.rounds;
   let currentBlock = traceOptions.initalBlockNumber;
   const tickDeltaToBlockNumber: { [key: number]: bigint[] } = {};
+  let counter = 0;
   while (remainingRounds > 0) {
     const searchRounds = remainingRounds < 200n ? remainingRounds : 200n;
     const newSummaries = await getPairSummaries(v3PoolPair, {
@@ -99,7 +119,7 @@ const getTickDeltaBlockNumbers = async (
       )}`,
     );
     setTimeout(() => {
-      console.log('start next round');
+      console.log('start next round - ', counter++);
     }, 1000);
   }
   return tickDeltaToBlockNumber;
@@ -182,7 +202,6 @@ const viemChainClient = createPublicClient({
 });
 
 const runWithShareContentLocalStore = () => {
-  const minTickDeltas = 7;
   ShareContentLocalStore.initAsyncLocalStore(
     () => {
       ShareContentLocalStore.getStore().viemChain = bsc;
