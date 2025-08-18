@@ -42,20 +42,25 @@ const tokenPair = {
   pool1: '0xf2688fb5b81049dfb7703ada5e770543770612c4' as Address,
   description1: 'pancakeswap USDC-WBNB 100',
 };
+
 // "7": 55822649,
 // "-8": 55821146
 // "-9": 55824047
 // "9": 55820290,
+// "8" : 55826670,
+// "11": 55826914
+// "104": 55824046
+// "-9": 55824047
 
 const traceOptions = {
-  initalBlockNumber: BigInt(55824047),
+  initalBlockNumber: BigInt(55828400),
   isBackward: true,
   rounds: 5000n,
 };
 
 const getTickDeltaBlockNumbers = async (
   v3PoolPair: poolPair,
-  tickDeltas: number[],
+  minTickDeltas: number,
   traceOptions: TraceOptions,
 ) => {
   let summaries: TraceSummary[] = [];
@@ -69,19 +74,19 @@ const getTickDeltaBlockNumbers = async (
       isBackward: traceOptions.isBackward,
       rounds: searchRounds,
     });
-    newSummaries.forEach((summary) => {
-      if (tickDeltas.indexOf(Math.abs(summary.delta)) != -1) {
-        tickDeltaToBlockNumber[Math.abs(summary.delta)] = [
-          ...tickDeltaToBlockNumber[Math.abs(summary.delta)],
-          summary.blockNumber,
-        ];
-      }
-    });
-
-    if (tickDeltas.every((delta) => !!tickDeltaToBlockNumber[delta])) {
-      break;
+    
+    try {
+      newSummaries.forEach((summary) => {
+        if (Math.abs(summary.delta) > minTickDeltas) {
+          tickDeltaToBlockNumber[summary.delta] = [
+            ...tickDeltaToBlockNumber[summary.delta] ?? [],
+            summary.blockNumber,
+          ];
+        }
+      });
+    } catch (ex) {
+      console.log(ex);
     }
-
     summaries.push(...newSummaries);
     currentBlock += traceOptions.isBackward ? -200n : 200n;
     remainingRounds -= 200n;
@@ -177,15 +182,17 @@ const viemChainClient = createPublicClient({
 });
 
 const runWithShareContentLocalStore = () => {
+  const minTickDeltas = 7;
   ShareContentLocalStore.initAsyncLocalStore(
     () => {
       ShareContentLocalStore.getStore().viemChain = bsc;
       ShareContentLocalStore.getStore().viemChainClient = viemChainClient;
     },
     () => {
-      getTickDeltaBlockNumbers(tokenPair, [7, 8, 9], traceOptions);
+      getTickDeltaBlockNumbers(tokenPair, minTickDeltas, traceOptions);
     },
   );
+  
 };
 
 runWithShareContentLocalStore();
