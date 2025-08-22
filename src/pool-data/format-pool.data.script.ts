@@ -99,14 +99,14 @@ const replacePrefix = (str: string, prefix: string, replacement: string) => {
   return str;
 };
 
-function parseTokens(symbol: string): [string, string] {
+const parseTokens = (symbol: string): [string, string] => {
   return symbol.split('/') as [string, string];
 }
 
 // Build a graph from pools
-function buildGraph(
+const buildGraph = (
   pools: FormattedPoolInfoWithDex[],
-): Map<string, Array<{ to: string; pool: FormattedPoolInfoWithDex }>> {
+): Map<string, Array<{ to: string; pool: FormattedPoolInfoWithDex }>> => {
   const graph = new Map<
     string,
     Array<{ to: string; pool: FormattedPoolInfoWithDex }>
@@ -122,10 +122,10 @@ function buildGraph(
 }
 
 // Find common token between two pools
-function getCommonToken(
+const getCommonToken = (
   pool1: FormattedPoolInfoWithDex,
   pool2: FormattedPoolInfoWithDex,
-): string | null {
+): string | null => {
   const [token0_1, token1_1] = parseTokens(pool1.symbol);
   const [token0_2, token1_2] = parseTokens(pool2.symbol);
   if (token0_1 === token0_2 || token0_1 === token1_2) return token0_1;
@@ -134,16 +134,16 @@ function getCommonToken(
 }
 
 // Get the token to use from a pool given the previous token
-function getNextToken(
+const getNextToken =(
   pool: FormattedPoolInfoWithDex,
   prevToken: string,
-): string {
+): string => {
   const [token0, token1] = parseTokens(pool.symbol);
   return prevToken === token0 ? token1 : token0;
 }
 
 // Find all cycles using DFS
-function findCycles(
+const findCycles = (
   graph: Map<string, Array<{ to: string; pool: FormattedPoolInfoWithDex }>>,
   start: string,
   current: string,
@@ -151,7 +151,7 @@ function findCycles(
   visitedPools: Set<string>,
   maxLength: number,
   cycles: ArbitrageRoute[],
-) {
+) => {
   if (path.length > maxLength) return;
   if (current === start && path.length > 1) {
     // Build routeSymbol by determining pool directions
@@ -196,10 +196,10 @@ function findCycles(
 }
 
 // Main function to find arbitrage routes
-function findArbitrageRoutes(
+const findArbitrageRoutes = (
   pools: FormattedPoolInfoWithDex[],
   maxLength: number = 4,
-): ArbitrageRoute[] {
+): ArbitrageRoute[] => {
   const graph = buildGraph(pools);
   const cycles: ArbitrageRoute[] = [];
 
@@ -208,6 +208,21 @@ function findArbitrageRoutes(
   }
 
   return cycles;
+}
+
+const deduplicateAritrageRoutes = (routes: ArbitrageRoute[]) => {
+    const set = new Set<string>();
+    const filteredRoutes: ArbitrageRoute[] = []
+    routes.forEach(route => {
+        const keyArray = route.routePaths.map(path => `${path.dex}-${path.symbol}-${path.feeTier}`);
+        const key = keyArray.sort().join('::');
+        if (!set.has(key)) {
+            filteredRoutes.push(route);
+            set.add(key);
+        }
+    })
+
+    return filteredRoutes;
 }
 
 const allPoolData = formatDexPoolInfo();
@@ -219,6 +234,7 @@ let routes = findArbitrageRoutes(allPoolData.full);
 // console.log(JSON.stringify(routes, null, 2));
 
 routes = routes.filter(route => route.feeTierSum < 11 && route.routePaths.length <= 3).sort((a, b) => a.feeTierSum - b.feeTierSum);
+routes = deduplicateAritrageRoutes(routes);
 
 const routesPath = join(__dirname, 'routes.json');
 writeFileSync(routesPath, JSON.stringify(routes, null, 2), 'utf-8');
