@@ -1,0 +1,846 @@
+{
+  "pancakeswap": [
+    
+      {
+        "symbol": "USDT/WBNB",
+        "tvl": "$ 57,618,374",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "USDT/USDC",
+        "tvl": "$ 40,508,196",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USDT/KOGE",
+        "tvl": "$ 39,259,317",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "AIOT/WBNB",
+        "tvl": "$ 28,127,950",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "BTCB/WBNB",
+        "tvl": "$ 19,561,930",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "USDT/USD1",
+        "tvl": "$ 16,878,889",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "WBNB/BabyDoge",
+        "tvl": "$ 12,251,104",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "USDT/BTCB",
+        "tvl": "$ 11,289,532",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "USD1/USDf",
+        "tvl": "$ 11,230,738",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "CAKE/USDT",
+        "tvl": "$ 11,227,497",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "CAKE/WBNB",
+        "tvl": "$ 10,669,531",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "USDT/WBNB",
+        "tvl": "$ 10,188,567",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USDT/DUSD",
+        "tvl": "$ 8,578,656.1",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "ETH/USDT",
+        "tvl": "$ 8,454,229.4",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "sUSDX/USDX",
+        "tvl": "$ 8,422,588.0",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "SolvBTC/BTCB",
+        "tvl": "$ 8,138,569.5",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "Cheems/WBNB",
+        "tvl": "$ 8,079,916.5",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "USDT/BR",
+        "tvl": "$ 8,032,821.4",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "WHY/WBNB",
+        "tvl": "$ 7,682,657.5",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "xSolvBTC/SolvBTC",
+        "tvl": "$ 7,278,539.4",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "USD1/WBNB",
+        "tvl": "$ 6,602,049.3",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "WBNB/MYX",
+        "tvl": "$ 6,301,264.5",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "ETH/BTCB",
+        "tvl": "$ 6,232,170.6",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "ETH/WBNB",
+        "tvl": "$ 6,182,979.2",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "ETH/wBETH",
+        "tvl": "$ 4,736,024.8",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "slisBNB/WBNB",
+        "tvl": "$ 4,591,998.5",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "WBNB/TUT",
+        "tvl": "$ 4,020,818.2",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "USDT/BTCB",
+        "tvl": "$ 3,852,670.8",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "B/USD1",
+        "tvl": "$ 3,708,820.3",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USDT/FORM",
+        "tvl": "$ 3,573,652.2",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "ETH/BTCB",
+        "tvl": "$ 3,216,969.3",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "XRP/WBNB",
+        "tvl": "$ 3,176,815.2",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "M/USDT",
+        "tvl": "$ 3,054,811.0",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "BMT/WBNB",
+        "tvl": "$ 2,940,957.0",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "AIOZ/WBNB",
+        "tvl": "$ 2,827,871.8",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "SIREN/WBNB",
+        "tvl": "$ 2,671,703.3",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "XRP/USDT",
+        "tvl": "$ 2,639,212.1",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "ETH/WBNB",
+        "tvl": "$ 2,530,500.0",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "USDT/CGPT",
+        "tvl": "$ 2,417,371.5",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "ULTI/USDT",
+        "tvl": "$ 2,336,304.0",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "SIGN/USD1",
+        "tvl": "$ 2,290,256.9",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "USDC/WBNB",
+        "tvl": "$ 2,244,247.3",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "TST/WBNB",
+        "tvl": "$ 2,188,096.9",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "mubarak/WBNB",
+        "tvl": "$ 2,171,766.1",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "FIR/USDT",
+        "tvl": "$ 2,160,309.5",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "BTCB/WBNB",
+        "tvl": "$ 2,056,330.6",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "Broccoli/WBNB",
+        "tvl": "$ 1,942,234.3",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "BANK/WBNB",
+        "tvl": "$ 1,940,613.0",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "Liberty/USD1",
+        "tvl": "$ 1,891,525.0",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "BSU/USDT",
+        "tvl": "$ 1,869,374.1",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "SOL/WBNB",
+        "tvl": "$ 1,808,169.1",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "BAS/WBNB",
+        "tvl": "$ 1,769,890.2",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "B2/WBNB",
+        "tvl": "$ 1,765,651.9",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USD1/EGL1",
+        "tvl": "$ 1,715,119.1",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "WBNB/LINK",
+        "tvl": "$ 1,711,876.9",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "SOL/WBNB",
+        "tvl": "$ 1,652,602.6",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "MM/WBNB",
+        "tvl": "$ 1,649,410.4",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "DARK/WBNB",
+        "tvl": "$ 1,603,153.5",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "WBNB/RION",
+        "tvl": "$ 1,574,653.5",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "WBNB/CUDIS",
+        "tvl": "$ 1,567,111.3",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "BULLA/USD1",
+        "tvl": "$ 1,558,132.2",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "IN/WBNB",
+        "tvl": "$ 1,543,204.3",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USDT/OIK",
+        "tvl": "$ 1,532,594.0",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "WBNB/FHE",
+        "tvl": "$ 1,505,673.6",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "USDT/ZKJ",
+        "tvl": "$ 1,496,573.3",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "PUFFER/WBNB",
+        "tvl": "$ 1,473,532.5",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "ADA/WBNB",
+        "tvl": "$ 1,446,348.8",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "WBNB/XNY",
+        "tvl": "$ 1,431,502.9",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "DOGE/WBNB",
+        "tvl": "$ 1,416,179.6",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "PUMP/WBNB",
+        "tvl": "$ 1,409,994.4",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "PARTI/WBNB",
+        "tvl": "$ 1,399,115.4",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "USDT/CYC",
+        "tvl": "$ 1,371,279.4",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "Broccoli/WBNB",
+        "tvl": "$ 1,366,271.3",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "WBNB/HYPER",
+        "tvl": "$ 1,339,979.5",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "ZKWASM/WBNB",
+        "tvl": "$ 1,327,162.2",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "PENDLE/WBNB",
+        "tvl": "$ 1,318,379.5",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "WBNB/MGP",
+        "tvl": "$ 1,278,631.1",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "WBNB/LISTA",
+        "tvl": "$ 1,278,508.6",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "FAIR3/WBNB",
+        "tvl": "$ 1,277,195.3",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USDT/BUSD",
+        "tvl": "$ 1,255,851.7",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "KILO/WBNB",
+        "tvl": "$ 1,250,672.8",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USDT/SOL",
+        "tvl": "$ 1,237,178.8",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "USDT/GAIA",
+        "tvl": "$ 1,210,947.5",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "ETH/WBNB",
+        "tvl": "$ 1,207,540.0",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "lisUSD/WBNB",
+        "tvl": "$ 1,195,469.4",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "VRA/USDT",
+        "tvl": "$ 1,136,632.8",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USDT/SERAPH",
+        "tvl": "$ 1,129,577.4",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USDC/VELO",
+        "tvl": "$ 1,123,072.3",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USDT/ARIA",
+        "tvl": "$ 1,120,516.8",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "Jager/USD1",
+        "tvl": "$ 1,118,661.1",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "CAT/WBNB",
+        "tvl": "$ 1,111,716.3",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "WBNB/STO",
+        "tvl": "$ 1,101,927.7",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "AKE/WBNB",
+        "tvl": "$ 1,100,133.1",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "BTCB/stBTC",
+        "tvl": "$ 1,064,791.0",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "RICE/WBNB",
+        "tvl": "$ 1,063,623.7",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "BTCB/DOGE",
+        "tvl": "$ 1,055,116.5",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "USDC/MERL",
+        "tvl": "$ 1,053,772.4",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "WBNB/SFP",
+        "tvl": "$ 1,035,064.2",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "TUSD/USDT",
+        "tvl": "$ 989,896.80",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USDC/DGC",
+        "tvl": "$ 948,777.03",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USDT/ASP",
+        "tvl": "$ 940,170.10",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USDT/ZRC",
+        "tvl": "$ 936,056.94",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "RWA/WBNB",
+        "tvl": "$ 909,911.62",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USDT/SKYAI",
+        "tvl": "$ 901,407.18",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "SOON/WBNB",
+        "tvl": "$ 874,252.37",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "WBNB/MORE",
+        "tvl": "$ 865,748.83",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "LTC/WBNB",
+        "tvl": "$ 835,122.68",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "XRP/ETH",
+        "tvl": "$ 833,479.72",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "WBNB/UNI",
+        "tvl": "$ 833,436.53",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "SOPH/USDC",
+        "tvl": "$ 812,573.79",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "USDC/SQD",
+        "tvl": "$ 804,799.74",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "ETH/xPufETH",
+        "tvl": "$ 781,477.53",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "USDT/Bonk",
+        "tvl": "$ 771,500.49",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "PORT3/WBNB",
+        "tvl": "$ 753,161.75",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "AGT/WBNB",
+        "tvl": "$ 750,270.12",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "ROAM/USDT",
+        "tvl": "$ 745,653.92",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "ORDER/WBNB",
+        "tvl": "$ 741,128.05",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "PEPE/WBNB",
+        "tvl": "$ 694,164.42",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "TWT/WBNB",
+        "tvl": "$ 687,321.15",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "BDXN/USDT",
+        "tvl": "$ 682,715.95",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USELESS/WBNB",
+        "tvl": "$ 625,488.45",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "PERRY/WBNB",
+        "tvl": "$ 615,879.46",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "ADA/USDT",
+        "tvl": "$ 582,368.46",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "FAIR3/USD1",
+        "tvl": "$ 523,307.84",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USD1/UNIART",
+        "tvl": "$ 521,013.42",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "lisUSD/ETH",
+        "tvl": "$ 520,413.06",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "USD1/SIREN",
+        "tvl": "$ 516,019.44",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "XRP/BTCB",
+        "tvl": "$ 469,288.28",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "BANK/USD1",
+        "tvl": "$ 463,947.90",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "USDC/SLAY",
+        "tvl": "$ 456,232.65",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "lisUSD/USDT",
+        "tvl": "$ 454,733.78",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "PRAI/WBNB",
+        "tvl": "$ 438,077.06",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "DOT/WBNB",
+        "tvl": "$ 437,566.20",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "lisUSD/BTCB",
+        "tvl": "$ 434,022.27",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "HAEDAL/USDT",
+        "tvl": "$ 426,572.25",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "USDT/WoD",
+        "tvl": "$ 425,621.52",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "BROCCOLI/WBNB",
+        "tvl": "$ 399,992.21",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "AITECH/USDT",
+        "tvl": "$ 398,538.41",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "FIL/WBNB",
+        "tvl": "$ 391,115.61",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "WBNB/SHELL",
+        "tvl": "$ 379,265.50",
+        "feeTier": "1%"
+      },
+      {
+        "symbol": "SIGN/WBNB",
+        "tvl": "$ 376,288.48",
+        "feeTier": "0.05%"
+      },
+      {
+        "symbol": "VAI/USDT",
+        "tvl": "$ 364,620.09",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "WBNB/XVS",
+        "tvl": "$ 313,752.94",
+        "feeTier": "0.25%"
+      },
+      {
+        "symbol": "USDT/REX",
+        "tvl": "$ 300,182.58",
+        "feeTier": "0.01%"
+      },
+      {
+        "symbol": "ETH/BTCB",
+        "tvl": "$ 293,608.29",
+        "feeTier": "0.01%"
+      }
+    ],
+  "uniswap": [
+    {
+      "symbol": "Cake/USDT",
+      "tvl": "$7.6M",
+      "feeTier": "0.3%",
+      "volume24H": "25.34%"
+    },
+    {
+      "symbol": "USDT/BNB",
+      "tvl": "$4.3M",
+      "feeTier": "0.01%",
+      "volume24H": "75.29%"
+    },
+    {
+      "symbol": "WETH/BNB",
+      "tvl": "$3.9M",
+      "feeTier": "0.05%",
+      "volume24H": "42.64%"
+    },
+    {
+      "symbol": "USDT/AICell",
+      "tvl": "$2.9M",
+      "feeTier": "0.01%",
+      "volume24H": "203.8%"
+    },
+    {
+      "symbol": "USDC/KOGE",
+      "tvl": "$1.9M",
+      "feeTier": "0.01%",
+      "volume24H": "76.95%"
+    },
+    {
+      "symbol": "USDT/USDC",
+      "tvl": "$1.9M",
+      "feeTier": "0.01%",
+      "volume24H": "3.79%"
+    },
+    {
+      "symbol": "BNB/AAVE",
+      "tvl": "$1.2M",
+      "feeTier": "0.3%",
+      "volume24H": "37.34%"
+    },
+    {
+      "symbol": "BTCB/BNB",
+      "tvl": "$1.1M",
+      "feeTier": "0.05%",
+      "volume24H": "11.12%"
+    },
+    {
+      "symbol": "USDT/BNB",
+      "tvl": "$1.1M",
+      "feeTier": "0.05%",
+      "volume24H": "30.28%"
+    },
+    {
+      "symbol": "USDT/OIK",
+      "tvl": "$1.0M",
+      "feeTier": "0.01%",
+      "volume24H": "222.75%"
+    },
+    {
+      "symbol": "BNB/UNI",
+      "tvl": "$995.9K",
+      "feeTier": "0.3%",
+      "volume24H": "24.94%"
+    },
+    {
+      "symbol": "USDT/BTCB",
+      "tvl": "$875.4K",
+      "feeTier": "0.05%",
+      "volume24H": "31.08%"
+    },
+    {
+      "symbol": "TEM/BNB",
+      "tvl": "$739.7K",
+      "feeTier": "0.3%",
+      "volume24H": "0.37%"
+    },
+    {
+      "symbol": "Cake/BNB",
+      "tvl": "$682.8K",
+      "feeTier": "0.3%",
+      "volume24H": "0.90%"
+    },
+    {
+      "symbol": "XRP/USDT",
+      "tvl": "$624.4K",
+      "feeTier": "0.3%",
+      "volume24H": "51.06%"
+    },
+    {
+      "symbol": "XRP/BNB",
+      "tvl": "$451.5K",
+      "feeTier": "0.3%",
+      "volume24H": "18.49%"
+    },
+    {
+      "symbol": "wBETH/BNB",
+      "tvl": "$422.7K",
+      "feeTier": "0.3%",
+      "volume24H": "3.91%"
+    },
+    {
+      "symbol": "USDT/KOGE",
+      "tvl": "$408.3K",
+      "feeTier": "0.01%",
+      "volume24H": "69%"
+    },
+    {
+      "symbol": "USDT/USD1",
+      "tvl": "$356.8K",
+      "feeTier": "0.01%",
+      "volume24H": "11.39%"
+    }
+  ]
+}

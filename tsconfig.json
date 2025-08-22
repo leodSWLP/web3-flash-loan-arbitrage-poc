@@ -16,12 +16,14 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "resolveJsonModule": true
   },
   "include": [
     "hardhat.config.ts",
     "scripts/**/*.ts",
     "test/**/*.ts",
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/**/*.json"
   ]
 }

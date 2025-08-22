@@ -1,0 +1,1812 @@
+{
+  "pancakeswap": [
+    {
+      "symbol": "USDT/WBNB",
+      "tvl": 57618374,
+      "feeTier": 5
+    },
+    {
+      "symbol": "USDT/USDC",
+      "tvl": 40508196,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDT/KOGE",
+      "tvl": 39259317,
+      "feeTier": 1
+    },
+    {
+      "symbol": "AIOT/WBNB",
+      "tvl": 28127950,
+      "feeTier": 1
+    },
+    {
+      "symbol": "BTCB/WBNB",
+      "tvl": 19561930,
+      "feeTier": 5
+    },
+    {
+      "symbol": "USDT/USD1",
+      "tvl": 16878889,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WBNB/BabyDoge",
+      "tvl": 12251104,
+      "feeTier": 100
+    },
+    {
+      "symbol": "USDT/BTCB",
+      "tvl": 11289532,
+      "feeTier": 5
+    },
+    {
+      "symbol": "USD1/USDf",
+      "tvl": 11230738,
+      "feeTier": 1
+    },
+    {
+      "symbol": "CAKE/USDT",
+      "tvl": 11227497,
+      "feeTier": 25
+    },
+    {
+      "symbol": "CAKE/WBNB",
+      "tvl": 10669531,
+      "feeTier": 25
+    },
+    {
+      "symbol": "USDT/WBNB",
+      "tvl": 10188567,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDT/DUSD",
+      "tvl": 8578656,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WETH/USDT",
+      "tvl": 8454229,
+      "feeTier": 5
+    },
+    {
+      "symbol": "sUSDX/USDX",
+      "tvl": 8422588,
+      "feeTier": 5
+    },
+    {
+      "symbol": "SolvBTC/BTCB",
+      "tvl": 8138569,
+      "feeTier": 5
+    },
+    {
+      "symbol": "Cheems/WBNB",
+      "tvl": 8079916,
+      "feeTier": 25
+    },
+    {
+      "symbol": "USDT/BR",
+      "tvl": 8032821,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WHY/WBNB",
+      "tvl": 7682657,
+      "feeTier": 100
+    },
+    {
+      "symbol": "xSolvBTC/SolvBTC",
+      "tvl": 7278539,
+      "feeTier": 5
+    },
+    {
+      "symbol": "USD1/WBNB",
+      "tvl": 6602049,
+      "feeTier": 5
+    },
+    {
+      "symbol": "WBNB/MYX",
+      "tvl": 6301264,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WETH/BTCB",
+      "tvl": 6232170,
+      "feeTier": 25
+    },
+    {
+      "symbol": "WETH/WBNB",
+      "tvl": 6182979,
+      "feeTier": 5
+    },
+    {
+      "symbol": "WETH/wBETH",
+      "tvl": 4736024,
+      "feeTier": 5
+    },
+    {
+      "symbol": "slisBNB/WBNB",
+      "tvl": 4591998,
+      "feeTier": 5
+    },
+    {
+      "symbol": "WBNB/TUT",
+      "tvl": 4020818,
+      "feeTier": 100
+    },
+    {
+      "symbol": "USDT/BTCB",
+      "tvl": 3852670,
+      "feeTier": 1
+    },
+    {
+      "symbol": "B/USD1",
+      "tvl": 3708820,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDT/FORM",
+      "tvl": 3573652,
+      "feeTier": 25
+    },
+    {
+      "symbol": "WETH/BTCB",
+      "tvl": 3216969,
+      "feeTier": 5
+    },
+    {
+      "symbol": "XRP/WBNB",
+      "tvl": 3176815,
+      "feeTier": 25
+    },
+    {
+      "symbol": "M/USDT",
+      "tvl": 3054811,
+      "feeTier": 1
+    },
+    {
+      "symbol": "BMT/WBNB",
+      "tvl": 2940957,
+      "feeTier": 100
+    },
+    {
+      "symbol": "AIOZ/WBNB",
+      "tvl": 2827871,
+      "feeTier": 25
+    },
+    {
+      "symbol": "SIREN/WBNB",
+      "tvl": 2671703,
+      "feeTier": 100
+    },
+    {
+      "symbol": "XRP/USDT",
+      "tvl": 2639212,
+      "feeTier": 25
+    },
+    {
+      "symbol": "WETH/WBNB",
+      "tvl": 2530500,
+      "feeTier": 25
+    },
+    {
+      "symbol": "USDT/CGPT",
+      "tvl": 2417371,
+      "feeTier": 5
+    },
+    {
+      "symbol": "ULTI/USDT",
+      "tvl": 2336304,
+      "feeTier": 1
+    },
+    {
+      "symbol": "SIGN/USD1",
+      "tvl": 2290256,
+      "feeTier": 25
+    },
+    {
+      "symbol": "USDC/WBNB",
+      "tvl": 2244247,
+      "feeTier": 1
+    },
+    {
+      "symbol": "TST/WBNB",
+      "tvl": 2188096,
+      "feeTier": 100
+    },
+    {
+      "symbol": "mubarak/WBNB",
+      "tvl": 2171766,
+      "feeTier": 25
+    },
+    {
+      "symbol": "FIR/USDT",
+      "tvl": 2160309,
+      "feeTier": 1
+    },
+    {
+      "symbol": "BTCB/WBNB",
+      "tvl": 2056330,
+      "feeTier": 25
+    },
+    {
+      "symbol": "Broccoli/WBNB",
+      "tvl": 1942234,
+      "feeTier": 100
+    },
+    {
+      "symbol": "BANK/WBNB",
+      "tvl": 1940613,
+      "feeTier": 1
+    },
+    {
+      "symbol": "Liberty/USD1",
+      "tvl": 1891525,
+      "feeTier": 1
+    },
+    {
+      "symbol": "BSU/USDT",
+      "tvl": 1869374,
+      "feeTier": 1
+    },
+    {
+      "symbol": "SOL/WBNB",
+      "tvl": 1808169,
+      "feeTier": 5
+    },
+    {
+      "symbol": "BAS/WBNB",
+      "tvl": 1769890,
+      "feeTier": 1
+    },
+    {
+      "symbol": "B2/WBNB",
+      "tvl": 1765651,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USD1/EGL1",
+      "tvl": 1715119,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WBNB/LINK",
+      "tvl": 1711876,
+      "feeTier": 25
+    },
+    {
+      "symbol": "SOL/WBNB",
+      "tvl": 1652602,
+      "feeTier": 25
+    },
+    {
+      "symbol": "MM/WBNB",
+      "tvl": 1649410,
+      "feeTier": 1
+    },
+    {
+      "symbol": "DARK/WBNB",
+      "tvl": 1603153,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WBNB/RION",
+      "tvl": 1574653,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WBNB/CUDIS",
+      "tvl": 1567111,
+      "feeTier": 1
+    },
+    {
+      "symbol": "BULLA/USD1",
+      "tvl": 1558132,
+      "feeTier": 1
+    },
+    {
+      "symbol": "IN/WBNB",
+      "tvl": 1543204,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDT/OIK",
+      "tvl": 1532594,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WBNB/FHE",
+      "tvl": 1505673,
+      "feeTier": 100
+    },
+    {
+      "symbol": "USDT/ZKJ",
+      "tvl": 1496573,
+      "feeTier": 1
+    },
+    {
+      "symbol": "PUFFER/WBNB",
+      "tvl": 1473532,
+      "feeTier": 1
+    },
+    {
+      "symbol": "ADA/WBNB",
+      "tvl": 1446348,
+      "feeTier": 25
+    },
+    {
+      "symbol": "WBNB/XNY",
+      "tvl": 1431502,
+      "feeTier": 1
+    },
+    {
+      "symbol": "DOGE/WBNB",
+      "tvl": 1416179,
+      "feeTier": 25
+    },
+    {
+      "symbol": "PUMP/WBNB",
+      "tvl": 1409994,
+      "feeTier": 100
+    },
+    {
+      "symbol": "PARTI/WBNB",
+      "tvl": 1399115,
+      "feeTier": 100
+    },
+    {
+      "symbol": "USDT/CYC",
+      "tvl": 1371279,
+      "feeTier": 1
+    },
+    {
+      "symbol": "Broccoli/WBNB",
+      "tvl": 1366271,
+      "feeTier": 100
+    },
+    {
+      "symbol": "WBNB/HYPER",
+      "tvl": 1339979,
+      "feeTier": 100
+    },
+    {
+      "symbol": "ZKWASM/WBNB",
+      "tvl": 1327162,
+      "feeTier": 1
+    },
+    {
+      "symbol": "PENDLE/WBNB",
+      "tvl": 1318379,
+      "feeTier": 100
+    },
+    {
+      "symbol": "WBNB/MGP",
+      "tvl": 1278631,
+      "feeTier": 25
+    },
+    {
+      "symbol": "WBNB/LISTA",
+      "tvl": 1278508,
+      "feeTier": 100
+    },
+    {
+      "symbol": "FAIR3/WBNB",
+      "tvl": 1277195,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDT/BUSD",
+      "tvl": 1255851,
+      "feeTier": 1
+    },
+    {
+      "symbol": "KILO/WBNB",
+      "tvl": 1250672,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDT/SOL",
+      "tvl": 1237178,
+      "feeTier": 25
+    },
+    {
+      "symbol": "USDT/GAIA",
+      "tvl": 1210947,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WETH/WBNB",
+      "tvl": 1207540,
+      "feeTier": 1
+    },
+    {
+      "symbol": "lisUSD/WBNB",
+      "tvl": 1195469,
+      "feeTier": 25
+    },
+    {
+      "symbol": "VRA/USDT",
+      "tvl": 1136632,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDT/SERAPH",
+      "tvl": 1129577,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDC/VELO",
+      "tvl": 1123072,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDT/ARIA",
+      "tvl": 1120516,
+      "feeTier": 1
+    },
+    {
+      "symbol": "Jager/USD1",
+      "tvl": 1118661,
+      "feeTier": 100
+    },
+    {
+      "symbol": "CAT/WBNB",
+      "tvl": 1111716,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WBNB/STO",
+      "tvl": 1101927,
+      "feeTier": 100
+    },
+    {
+      "symbol": "AKE/WBNB",
+      "tvl": 1100133,
+      "feeTier": 1
+    },
+    {
+      "symbol": "BTCB/stBTC",
+      "tvl": 1064791,
+      "feeTier": 1
+    },
+    {
+      "symbol": "RICE/WBNB",
+      "tvl": 1063623,
+      "feeTier": 1
+    },
+    {
+      "symbol": "BTCB/DOGE",
+      "tvl": 1055116,
+      "feeTier": 5
+    },
+    {
+      "symbol": "USDC/MERL",
+      "tvl": 1053772,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WBNB/SFP",
+      "tvl": 1035064,
+      "feeTier": 25
+    },
+    {
+      "symbol": "TUSD/USDT",
+      "tvl": 989896,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDC/DGC",
+      "tvl": 948777,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDT/ASP",
+      "tvl": 940170,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDT/ZRC",
+      "tvl": 936056,
+      "feeTier": 1
+    },
+    {
+      "symbol": "RWA/WBNB",
+      "tvl": 909911,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDT/SKYAI",
+      "tvl": 901407,
+      "feeTier": 1
+    },
+    {
+      "symbol": "SOON/WBNB",
+      "tvl": 874252,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WBNB/MORE",
+      "tvl": 865748,
+      "feeTier": 1
+    },
+    {
+      "symbol": "LTC/WBNB",
+      "tvl": 835122,
+      "feeTier": 25
+    },
+    {
+      "symbol": "XRP/WETH",
+      "tvl": 833479,
+      "feeTier": 25
+    },
+    {
+      "symbol": "WBNB/UNI",
+      "tvl": 833436,
+      "feeTier": 25
+    },
+    {
+      "symbol": "SOPH/USDC",
+      "tvl": 812573,
+      "feeTier": 5
+    },
+    {
+      "symbol": "USDC/SQD",
+      "tvl": 804799,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WETH/xPufETH",
+      "tvl": 781477,
+      "feeTier": 5
+    },
+    {
+      "symbol": "USDT/Bonk",
+      "tvl": 771500,
+      "feeTier": 100
+    },
+    {
+      "symbol": "PORT3/WBNB",
+      "tvl": 753161,
+      "feeTier": 1
+    },
+    {
+      "symbol": "AGT/WBNB",
+      "tvl": 750270,
+      "feeTier": 1
+    },
+    {
+      "symbol": "ROAM/USDT",
+      "tvl": 745653,
+      "feeTier": 1
+    },
+    {
+      "symbol": "ORDER/WBNB",
+      "tvl": 741128,
+      "feeTier": 25
+    },
+    {
+      "symbol": "PEPE/WBNB",
+      "tvl": 694164,
+      "feeTier": 100
+    },
+    {
+      "symbol": "TWT/WBNB",
+      "tvl": 687321,
+      "feeTier": 25
+    },
+    {
+      "symbol": "BDXN/USDT",
+      "tvl": 682715,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USELESS/WBNB",
+      "tvl": 625488,
+      "feeTier": 100
+    },
+    {
+      "symbol": "PERRY/WBNB",
+      "tvl": 615879,
+      "feeTier": 100
+    },
+    {
+      "symbol": "ADA/USDT",
+      "tvl": 582368,
+      "feeTier": 25
+    },
+    {
+      "symbol": "FAIR3/USD1",
+      "tvl": 523307,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USD1/UNIART",
+      "tvl": 521013,
+      "feeTier": 1
+    },
+    {
+      "symbol": "lisUSD/WETH",
+      "tvl": 520413,
+      "feeTier": 25
+    },
+    {
+      "symbol": "USD1/SIREN",
+      "tvl": 516019,
+      "feeTier": 5
+    },
+    {
+      "symbol": "XRP/BTCB",
+      "tvl": 469288,
+      "feeTier": 5
+    },
+    {
+      "symbol": "BANK/USD1",
+      "tvl": 463947,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDC/SLAY",
+      "tvl": 456232,
+      "feeTier": 1
+    },
+    {
+      "symbol": "lisUSD/USDT",
+      "tvl": 454733,
+      "feeTier": 5
+    },
+    {
+      "symbol": "PRAI/WBNB",
+      "tvl": 438077,
+      "feeTier": 1
+    },
+    {
+      "symbol": "DOT/WBNB",
+      "tvl": 437566,
+      "feeTier": 25
+    },
+    {
+      "symbol": "lisUSD/BTCB",
+      "tvl": 434022,
+      "feeTier": 25
+    },
+    {
+      "symbol": "HAEDAL/USDT",
+      "tvl": 426572,
+      "feeTier": 5
+    },
+    {
+      "symbol": "USDT/WoD",
+      "tvl": 425621,
+      "feeTier": 100
+    },
+    {
+      "symbol": "BROCCOLI/WBNB",
+      "tvl": 399992,
+      "feeTier": 25
+    },
+    {
+      "symbol": "AITECH/USDT",
+      "tvl": 398538,
+      "feeTier": 25
+    },
+    {
+      "symbol": "FIL/WBNB",
+      "tvl": 391115,
+      "feeTier": 5
+    },
+    {
+      "symbol": "WBNB/SHELL",
+      "tvl": 379265,
+      "feeTier": 100
+    },
+    {
+      "symbol": "SIGN/WBNB",
+      "tvl": 376288,
+      "feeTier": 5
+    },
+    {
+      "symbol": "VAI/USDT",
+      "tvl": 364620,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WBNB/XVS",
+      "tvl": 313752,
+      "feeTier": 25
+    },
+    {
+      "symbol": "USDT/REX",
+      "tvl": 300182,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WETH/BTCB",
+      "tvl": 293608,
+      "feeTier": 1
+    }
+  ],
+  "uniswap": [
+    {
+      "symbol": "Cake/USDT",
+      "tvl": 7600000,
+      "feeTier": 30
+    },
+    {
+      "symbol": "USDT/WBNB",
+      "tvl": 4300000,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WETH/WBNB",
+      "tvl": 3900000,
+      "feeTier": 5
+    },
+    {
+      "symbol": "USDT/AICell",
+      "tvl": 2900000,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDC/KOGE",
+      "tvl": 1900000,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDT/USDC",
+      "tvl": 1900000,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WBNB/AAVE",
+      "tvl": 1200000,
+      "feeTier": 30
+    },
+    {
+      "symbol": "BTCB/WBNB",
+      "tvl": 1100000,
+      "feeTier": 5
+    },
+    {
+      "symbol": "USDT/WBNB",
+      "tvl": 1100000,
+      "feeTier": 5
+    },
+    {
+      "symbol": "USDT/OIK",
+      "tvl": 1000000,
+      "feeTier": 1
+    },
+    {
+      "symbol": "WBNB/UNI",
+      "tvl": 995900,
+      "feeTier": 30
+    },
+    {
+      "symbol": "USDT/BTCB",
+      "tvl": 875400,
+      "feeTier": 5
+    },
+    {
+      "symbol": "TEM/WBNB",
+      "tvl": 739700,
+      "feeTier": 30
+    },
+    {
+      "symbol": "Cake/WBNB",
+      "tvl": 682800,
+      "feeTier": 30
+    },
+    {
+      "symbol": "XRP/USDT",
+      "tvl": 624400,
+      "feeTier": 30
+    },
+    {
+      "symbol": "XRP/WBNB",
+      "tvl": 451500,
+      "feeTier": 30
+    },
+    {
+      "symbol": "wBETH/WBNB",
+      "tvl": 422700,
+      "feeTier": 30
+    },
+    {
+      "symbol": "USDT/KOGE",
+      "tvl": 408300,
+      "feeTier": 1
+    },
+    {
+      "symbol": "USDT/USD1",
+      "tvl": 356800,
+      "feeTier": 1
+    }
+  ],
+  "full": [
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/WBNB",
+      "tvl": 57618374,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/USDC",
+      "tvl": 40508196,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/KOGE",
+      "tvl": 39259317,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "AIOT/WBNB",
+      "tvl": 28127950,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "BTCB/WBNB",
+      "tvl": 19561930,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/USD1",
+      "tvl": 16878889,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/BabyDoge",
+      "tvl": 12251104,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/BTCB",
+      "tvl": 11289532,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USD1/USDf",
+      "tvl": 11230738,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "CAKE/USDT",
+      "tvl": 11227497,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "CAKE/WBNB",
+      "tvl": 10669531,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/WBNB",
+      "tvl": 10188567,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/DUSD",
+      "tvl": 8578656,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WETH/USDT",
+      "tvl": 8454229,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "sUSDX/USDX",
+      "tvl": 8422588,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "SolvBTC/BTCB",
+      "tvl": 8138569,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "Cheems/WBNB",
+      "tvl": 8079916,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/BR",
+      "tvl": 8032821,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WHY/WBNB",
+      "tvl": 7682657,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "xSolvBTC/SolvBTC",
+      "tvl": 7278539,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USD1/WBNB",
+      "tvl": 6602049,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/MYX",
+      "tvl": 6301264,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WETH/BTCB",
+      "tvl": 6232170,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WETH/WBNB",
+      "tvl": 6182979,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WETH/wBETH",
+      "tvl": 4736024,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "slisBNB/WBNB",
+      "tvl": 4591998,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/TUT",
+      "tvl": 4020818,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/BTCB",
+      "tvl": 3852670,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "B/USD1",
+      "tvl": 3708820,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/FORM",
+      "tvl": 3573652,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WETH/BTCB",
+      "tvl": 3216969,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "XRP/WBNB",
+      "tvl": 3176815,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "M/USDT",
+      "tvl": 3054811,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "BMT/WBNB",
+      "tvl": 2940957,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "AIOZ/WBNB",
+      "tvl": 2827871,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "SIREN/WBNB",
+      "tvl": 2671703,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "XRP/USDT",
+      "tvl": 2639212,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WETH/WBNB",
+      "tvl": 2530500,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/CGPT",
+      "tvl": 2417371,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "ULTI/USDT",
+      "tvl": 2336304,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "SIGN/USD1",
+      "tvl": 2290256,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDC/WBNB",
+      "tvl": 2244247,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "TST/WBNB",
+      "tvl": 2188096,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "mubarak/WBNB",
+      "tvl": 2171766,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "FIR/USDT",
+      "tvl": 2160309,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "BTCB/WBNB",
+      "tvl": 2056330,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "Broccoli/WBNB",
+      "tvl": 1942234,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "BANK/WBNB",
+      "tvl": 1940613,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "Liberty/USD1",
+      "tvl": 1891525,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "BSU/USDT",
+      "tvl": 1869374,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "SOL/WBNB",
+      "tvl": 1808169,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "BAS/WBNB",
+      "tvl": 1769890,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "B2/WBNB",
+      "tvl": 1765651,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USD1/EGL1",
+      "tvl": 1715119,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/LINK",
+      "tvl": 1711876,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "SOL/WBNB",
+      "tvl": 1652602,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "MM/WBNB",
+      "tvl": 1649410,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "DARK/WBNB",
+      "tvl": 1603153,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/RION",
+      "tvl": 1574653,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/CUDIS",
+      "tvl": 1567111,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "BULLA/USD1",
+      "tvl": 1558132,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "IN/WBNB",
+      "tvl": 1543204,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/OIK",
+      "tvl": 1532594,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/FHE",
+      "tvl": 1505673,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/ZKJ",
+      "tvl": 1496573,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "PUFFER/WBNB",
+      "tvl": 1473532,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "ADA/WBNB",
+      "tvl": 1446348,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/XNY",
+      "tvl": 1431502,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "DOGE/WBNB",
+      "tvl": 1416179,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "PUMP/WBNB",
+      "tvl": 1409994,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "PARTI/WBNB",
+      "tvl": 1399115,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/CYC",
+      "tvl": 1371279,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "Broccoli/WBNB",
+      "tvl": 1366271,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/HYPER",
+      "tvl": 1339979,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "ZKWASM/WBNB",
+      "tvl": 1327162,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "PENDLE/WBNB",
+      "tvl": 1318379,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/MGP",
+      "tvl": 1278631,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/LISTA",
+      "tvl": 1278508,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "FAIR3/WBNB",
+      "tvl": 1277195,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/BUSD",
+      "tvl": 1255851,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "KILO/WBNB",
+      "tvl": 1250672,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/SOL",
+      "tvl": 1237178,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/GAIA",
+      "tvl": 1210947,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WETH/WBNB",
+      "tvl": 1207540,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "lisUSD/WBNB",
+      "tvl": 1195469,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "VRA/USDT",
+      "tvl": 1136632,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/SERAPH",
+      "tvl": 1129577,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDC/VELO",
+      "tvl": 1123072,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/ARIA",
+      "tvl": 1120516,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "Jager/USD1",
+      "tvl": 1118661,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "CAT/WBNB",
+      "tvl": 1111716,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/STO",
+      "tvl": 1101927,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "AKE/WBNB",
+      "tvl": 1100133,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "BTCB/stBTC",
+      "tvl": 1064791,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "RICE/WBNB",
+      "tvl": 1063623,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "BTCB/DOGE",
+      "tvl": 1055116,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDC/MERL",
+      "tvl": 1053772,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/SFP",
+      "tvl": 1035064,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "TUSD/USDT",
+      "tvl": 989896,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDC/DGC",
+      "tvl": 948777,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/ASP",
+      "tvl": 940170,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/ZRC",
+      "tvl": 936056,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "RWA/WBNB",
+      "tvl": 909911,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/SKYAI",
+      "tvl": 901407,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "SOON/WBNB",
+      "tvl": 874252,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/MORE",
+      "tvl": 865748,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "LTC/WBNB",
+      "tvl": 835122,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "XRP/WETH",
+      "tvl": 833479,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/UNI",
+      "tvl": 833436,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "SOPH/USDC",
+      "tvl": 812573,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDC/SQD",
+      "tvl": 804799,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WETH/xPufETH",
+      "tvl": 781477,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/Bonk",
+      "tvl": 771500,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "PORT3/WBNB",
+      "tvl": 753161,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "AGT/WBNB",
+      "tvl": 750270,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "ROAM/USDT",
+      "tvl": 745653,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "ORDER/WBNB",
+      "tvl": 741128,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "PEPE/WBNB",
+      "tvl": 694164,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "TWT/WBNB",
+      "tvl": 687321,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "BDXN/USDT",
+      "tvl": 682715,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USELESS/WBNB",
+      "tvl": 625488,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "PERRY/WBNB",
+      "tvl": 615879,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "ADA/USDT",
+      "tvl": 582368,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "FAIR3/USD1",
+      "tvl": 523307,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USD1/UNIART",
+      "tvl": 521013,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "lisUSD/WETH",
+      "tvl": 520413,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USD1/SIREN",
+      "tvl": 516019,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "XRP/BTCB",
+      "tvl": 469288,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "BANK/USD1",
+      "tvl": 463947,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDC/SLAY",
+      "tvl": 456232,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "lisUSD/USDT",
+      "tvl": 454733,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "PRAI/WBNB",
+      "tvl": 438077,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "DOT/WBNB",
+      "tvl": 437566,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "lisUSD/BTCB",
+      "tvl": 434022,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "HAEDAL/USDT",
+      "tvl": 426572,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/WoD",
+      "tvl": 425621,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "BROCCOLI/WBNB",
+      "tvl": 399992,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "AITECH/USDT",
+      "tvl": 398538,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "FIL/WBNB",
+      "tvl": 391115,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/SHELL",
+      "tvl": 379265,
+      "feeTier": 100
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "SIGN/WBNB",
+      "tvl": 376288,
+      "feeTier": 5
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "VAI/USDT",
+      "tvl": 364620,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WBNB/XVS",
+      "tvl": 313752,
+      "feeTier": 25
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "USDT/REX",
+      "tvl": 300182,
+      "feeTier": 1
+    },
+    {
+      "dex": "pancakeswap",
+      "symbol": "WETH/BTCB",
+      "tvl": 293608,
+      "feeTier": 1
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "Cake/USDT",
+      "tvl": 7600000,
+      "feeTier": 30
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "USDT/WBNB",
+      "tvl": 4300000,
+      "feeTier": 1
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "WETH/WBNB",
+      "tvl": 3900000,
+      "feeTier": 5
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "USDT/AICell",
+      "tvl": 2900000,
+      "feeTier": 1
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "USDC/KOGE",
+      "tvl": 1900000,
+      "feeTier": 1
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "USDT/USDC",
+      "tvl": 1900000,
+      "feeTier": 1
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "WBNB/AAVE",
+      "tvl": 1200000,
+      "feeTier": 30
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "BTCB/WBNB",
+      "tvl": 1100000,
+      "feeTier": 5
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "USDT/WBNB",
+      "tvl": 1100000,
+      "feeTier": 5
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "USDT/OIK",
+      "tvl": 1000000,
+      "feeTier": 1
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "WBNB/UNI",
+      "tvl": 995900,
+      "feeTier": 30
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "USDT/BTCB",
+      "tvl": 875400,
+      "feeTier": 5
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "TEM/WBNB",
+      "tvl": 739700,
+      "feeTier": 30
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "Cake/WBNB",
+      "tvl": 682800,
+      "feeTier": 30
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "XRP/USDT",
+      "tvl": 624400,
+      "feeTier": 30
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "XRP/WBNB",
+      "tvl": 451500,
+      "feeTier": 30
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "wBETH/WBNB",
+      "tvl": 422700,
+      "feeTier": 30
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "USDT/KOGE",
+      "tvl": 408300,
+      "feeTier": 1
+    },
+    {
+      "dex": "uniswap",
+      "symbol": "USDT/USD1",
+      "tvl": 356800,
+      "feeTier": 1
+    }
+  ]
+}

@@ -1,0 +1,5186 @@
+[
+  {
+    "routeSymbol": "USDT -> USDC -> USDT",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> KOGE -> USDT",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 39259317,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 408300,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USD1 -> USDT",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USD1",
+        "tvl": 16878889,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USD1",
+        "tvl": 356800,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDT",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> OIK -> USDT",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/OIK",
+        "tvl": 1532594,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/OIK",
+        "tvl": 1000000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDT",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USDC -> USDT",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> OIK -> USDT",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/OIK",
+        "tvl": 1000000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/OIK",
+        "tvl": 1532594,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> KOGE -> USDT",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 408300,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 39259317,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USD1 -> USDT",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USD1",
+        "tvl": 356800,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USD1",
+        "tvl": 16878889,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> WBNB",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> WBNB",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> USDT -> USDC",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> USDT -> USDC",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "KOGE -> USDT -> KOGE",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 39259317,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 408300,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "KOGE -> USDT -> KOGE",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 408300,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 39259317,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USD1 -> USDT -> USD1",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USD1",
+        "tvl": 16878889,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USD1",
+        "tvl": 356800,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USD1 -> USDT -> USD1",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USD1",
+        "tvl": 356800,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USD1",
+        "tvl": 16878889,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "OIK -> USDT -> OIK",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/OIK",
+        "tvl": 1532594,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/OIK",
+        "tvl": 1000000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "OIK -> USDT -> OIK",
+    "feeTierSum": 2,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/OIK",
+        "tvl": 1000000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/OIK",
+        "tvl": 1532594,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USDC -> WBNB -> USDT",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USDC -> WBNB -> USDT",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USDC -> KOGE -> USDT",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 39259317,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USDC -> KOGE -> USDT",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 408300,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> KOGE -> USDC -> USDT",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 39259317,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> KOGE -> USDC -> USDT",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 39259317,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDC -> USDT",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDC -> USDT",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDC -> USDT",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDC -> USDT",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USDC -> WBNB -> USDT",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USDC -> WBNB -> USDT",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USDC -> KOGE -> USDT",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 39259317,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USDC -> KOGE -> USDT",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 408300,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> KOGE -> USDC -> USDT",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 408300,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> KOGE -> USDC -> USDT",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 408300,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> USDC -> WBNB",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> USDC -> WBNB",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDC -> USDT -> WBNB",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDC -> USDT -> WBNB",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDC -> USDT -> WBNB",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDC -> USDT -> WBNB",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> USDC -> WBNB",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> USDC -> WBNB",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> USDT -> KOGE -> USDC",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 39259317,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> USDT -> WBNB -> USDC",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> USDT -> WBNB -> USDC",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> USDT -> KOGE -> USDC",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 408300,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> WBNB -> USDT -> USDC",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> WBNB -> USDT -> USDC",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> WBNB -> USDT -> USDC",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> WBNB -> USDT -> USDC",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> KOGE -> USDT -> USDC",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 39259317,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> KOGE -> USDT -> USDC",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 39259317,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> KOGE -> USDT -> USDC",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 408300,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> KOGE -> USDT -> USDC",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 408300,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> USDT -> KOGE -> USDC",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 39259317,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> USDT -> WBNB -> USDC",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> USDT -> WBNB -> USDC",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> USDT -> KOGE -> USDC",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 408300,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "KOGE -> USDT -> USDC -> KOGE",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 39259317,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "KOGE -> USDT -> USDC -> KOGE",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 39259317,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "KOGE -> USDC -> USDT -> KOGE",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 39259317,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "KOGE -> USDC -> USDT -> KOGE",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 408300,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "KOGE -> USDC -> USDT -> KOGE",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 39259317,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "KOGE -> USDC -> USDT -> KOGE",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 408300,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "KOGE -> USDT -> USDC -> KOGE",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 408300,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "KOGE -> USDT -> USDC -> KOGE",
+    "feeTierSum": 3,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/KOGE",
+        "tvl": 408300,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDC/KOGE",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDT",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDT",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> BTCB -> USDT",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 11289532,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDT",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDT",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> BTCB -> USDT",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 11289532,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> BTCB -> USDT",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 875400,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDT",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDT",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDT",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDT",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> BTCB -> USDT",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 875400,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> WBNB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> WBNB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> WBNB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> WBNB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> WETH -> WBNB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 6182979,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> WETH -> WBNB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 6182979,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> WETH -> WBNB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 3900000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> WBNB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> WBNB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> WETH -> WBNB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 3900000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> WBNB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> WBNB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> USDT -> BTCB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 11289532,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> USDT -> BTCB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 11289532,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> USDT -> BTCB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 875400,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> WETH -> BTCB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 3216969,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> WETH -> BTCB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 3216969,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> USDT -> BTCB",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 875400,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> WBNB -> WETH",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 6182979,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> BTCB -> WETH",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 3216969,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> WBNB -> WETH",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 6182979,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> WBNB -> WETH",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 3900000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> BTCB -> WETH",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 3216969,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> WBNB -> WETH",
+    "feeTierSum": 6,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 3900000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDC -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDC -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USDC -> WBNB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USDC -> WBNB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USD1 -> WBNB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USD1",
+        "tvl": 16878889,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USD1 -> WBNB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USD1",
+        "tvl": 16878889,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> BTCB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USD1 -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USD1",
+        "tvl": 16878889,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USD1 -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USD1",
+        "tvl": 356800,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> WETH -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> BTCB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WETH -> WBNB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WETH -> WBNB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WETH -> BTCB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> BTCB -> WBNB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> BTCB -> WBNB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> BTCB -> WETH -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> BTCB -> WBNB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> BTCB -> WBNB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> BTCB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USD1 -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USD1",
+        "tvl": 16878889,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USD1 -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USD1",
+        "tvl": 356800,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> WETH -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> BTCB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USDC -> WBNB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USDC -> WBNB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDC -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDC -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USD1 -> WBNB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USD1",
+        "tvl": 356800,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> USD1 -> WBNB -> USDT",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USD1",
+        "tvl": 356800,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> USDC -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> USDC -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> BTCB -> USDT -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> BTCB -> USDT -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> BTCB -> WETH -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> USD1 -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USD1",
+        "tvl": 16878889,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> WETH -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> BTCB -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> BTCB -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> USD1 -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USD1",
+        "tvl": 356800,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USD1 -> USDT -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USD1",
+        "tvl": 16878889,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USD1 -> USDT -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USD1",
+        "tvl": 16878889,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USD1 -> FAIR3 -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "FAIR3/USD1",
+        "tvl": 523307,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "FAIR3/WBNB",
+        "tvl": 1277195,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USD1 -> BANK -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BANK/USD1",
+        "tvl": 463947,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BANK/WBNB",
+        "tvl": 1940613,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USD1 -> USDT -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USD1",
+        "tvl": 356800,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USD1 -> USDT -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USD1",
+        "tvl": 356800,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDC -> USDT -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDC -> USDT -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDC -> USDT -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDC -> USDT -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> BANK -> USD1 -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "BANK/WBNB",
+        "tvl": 1940613,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BANK/USD1",
+        "tvl": 463947,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> FAIR3 -> USD1 -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "FAIR3/WBNB",
+        "tvl": 1277195,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "FAIR3/USD1",
+        "tvl": 523307,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> WETH -> USDT -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> WETH -> USDT -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> WETH -> BTCB -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> WETH -> BTCB -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> USD1 -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USD1",
+        "tvl": 16878889,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> WETH -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> BTCB -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> BTCB -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> USD1 -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USD1",
+        "tvl": 356800,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> BTCB -> USDT -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> BTCB -> USDT -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> BTCB -> WETH -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> USDC -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> USDC -> WBNB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> USDT -> WBNB -> USDC",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> USDT -> WBNB -> USDC",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> WBNB -> USDT -> USDC",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> WBNB -> USDT -> USDC",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> WBNB -> USDT -> USDC",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USDC",
+        "tvl": 40508196,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> WBNB -> USDT -> USDC",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> USDT -> WBNB -> USDC",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDC -> USDT -> WBNB -> USDC",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USDC",
+        "tvl": 1900000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDC/WBNB",
+        "tvl": 2244247,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> WBNB -> USDT -> BTCB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> WBNB -> WETH -> BTCB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> WBNB -> USDT -> BTCB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> USDT -> WBNB -> BTCB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> USDT -> WBNB -> BTCB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> USDT -> WETH -> BTCB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> USDT -> WBNB -> BTCB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> USDT -> WBNB -> BTCB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> WETH -> USDT -> BTCB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> WETH -> WBNB -> BTCB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> WETH -> WBNB -> BTCB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> WBNB -> USDT -> BTCB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> WBNB -> WETH -> BTCB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> WBNB -> USDT -> BTCB",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USD1 -> USDT -> WBNB -> USD1",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USD1",
+        "tvl": 16878889,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USD1 -> USDT -> WBNB -> USD1",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USD1",
+        "tvl": 16878889,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USD1 -> WBNB -> USDT -> USD1",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USD1",
+        "tvl": 16878889,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USD1 -> WBNB -> USDT -> USD1",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USD1",
+        "tvl": 356800,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USD1 -> WBNB -> BANK -> USD1",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BANK/WBNB",
+        "tvl": 1940613,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BANK/USD1",
+        "tvl": 463947,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USD1 -> WBNB -> FAIR3 -> USD1",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "FAIR3/WBNB",
+        "tvl": 1277195,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "FAIR3/USD1",
+        "tvl": 523307,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USD1 -> WBNB -> USDT -> USD1",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/USD1",
+        "tvl": 16878889,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USD1 -> WBNB -> USDT -> USD1",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USD1",
+        "tvl": 356800,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USD1 -> FAIR3 -> WBNB -> USD1",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "FAIR3/USD1",
+        "tvl": 523307,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "FAIR3/WBNB",
+        "tvl": 1277195,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USD1 -> BANK -> WBNB -> USD1",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "BANK/USD1",
+        "tvl": 463947,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BANK/WBNB",
+        "tvl": 1940613,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USD1 -> USDT -> WBNB -> USD1",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USD1",
+        "tvl": 356800,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USD1 -> USDT -> WBNB -> USD1",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/USD1",
+        "tvl": 356800,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> USDT -> WBNB -> WETH",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> USDT -> BTCB -> WETH",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> USDT -> WBNB -> WETH",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> WBNB -> BTCB -> WETH",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> WBNB -> USDT -> WETH",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 10188567,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> WBNB -> USDT -> WETH",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 4300000,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> WBNB -> BTCB -> WETH",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> BTCB -> WBNB -> WETH",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> BTCB -> USDT -> WETH",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 3852670,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/USDT",
+        "tvl": 8454229,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> BTCB -> WBNB -> WETH",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/BTCB",
+        "tvl": 293608,
+        "feeTier": 1
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 1207540,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BANK -> WBNB -> USD1 -> BANK",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "BANK/WBNB",
+        "tvl": 1940613,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BANK/USD1",
+        "tvl": 463947,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BANK -> USD1 -> WBNB -> BANK",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "BANK/USD1",
+        "tvl": 463947,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BANK/WBNB",
+        "tvl": 1940613,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "FAIR3 -> WBNB -> USD1 -> FAIR3",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "FAIR3/WBNB",
+        "tvl": 1277195,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "FAIR3/USD1",
+        "tvl": 523307,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "FAIR3 -> USD1 -> WBNB -> FAIR3",
+    "feeTierSum": 7,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "FAIR3/USD1",
+        "tvl": 523307,
+        "feeTier": 1
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USD1/WBNB",
+        "tvl": 6602049,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "FAIR3/WBNB",
+        "tvl": 1277195,
+        "feeTier": 1
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDT",
+    "feeTierSum": 10,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> BTCB -> USDT",
+    "feeTierSum": 10,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 11289532,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 875400,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> WBNB -> USDT",
+    "feeTierSum": 10,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "USDT -> BTCB -> USDT",
+    "feeTierSum": 10,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 875400,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 11289532,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> WBNB",
+    "feeTierSum": 10,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> BTCB -> WBNB",
+    "feeTierSum": 10,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> WETH -> WBNB",
+    "feeTierSum": 10,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 6182979,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 3900000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> WETH -> WBNB",
+    "feeTierSum": 10,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 3900000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 6182979,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> BTCB -> WBNB",
+    "feeTierSum": 10,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WBNB -> USDT -> WBNB",
+    "feeTierSum": 10,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/WBNB",
+        "tvl": 57618374,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> WBNB -> BTCB",
+    "feeTierSum": 10,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> USDT -> BTCB",
+    "feeTierSum": 10,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 11289532,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 875400,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> WBNB -> BTCB",
+    "feeTierSum": 10,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 1100000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "BTCB/WBNB",
+        "tvl": 19561930,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "BTCB -> USDT -> BTCB",
+    "feeTierSum": 10,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 875400,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "USDT/BTCB",
+        "tvl": 11289532,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> WBNB -> WETH",
+    "feeTierSum": 10,
+    "routePaths": [
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 6182979,
+        "feeTier": 5
+      },
+      {
+        "dex": "uniswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 3900000,
+        "feeTier": 5
+      }
+    ]
+  },
+  {
+    "routeSymbol": "WETH -> WBNB -> WETH",
+    "feeTierSum": 10,
+    "routePaths": [
+      {
+        "dex": "uniswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 3900000,
+        "feeTier": 5
+      },
+      {
+        "dex": "pancakeswap",
+        "symbol": "WETH/WBNB",
+        "tvl": 6182979,
+        "feeTier": 5
+      }
+    ]
+  }
+]
